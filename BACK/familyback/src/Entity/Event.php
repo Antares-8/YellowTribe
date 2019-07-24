@@ -52,11 +52,6 @@ class Event
     private $place;
 
     /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $creator;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="events")
      */
     private $category;
@@ -146,18 +141,6 @@ class Event
     public function setPlace(?string $place): self
     {
         $this->place = $place;
-
-        return $this;
-    }
-
-    public function getCreator(): ?string
-    {
-        return $this->creator;
-    }
-
-    public function setCreator(string $creator): self
-    {
-        $this->creator = $creator;
 
         return $this;
     }
