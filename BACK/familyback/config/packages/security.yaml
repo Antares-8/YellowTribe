@@ -19,16 +19,19 @@ security:
             anonymous: true
 
             # to test authenticate without using form, we can use http_basic (display popup)
-            http_basic: true
-            # form_login: true
+            # http_basic: true
+            form_login: true
 
-            # provider: users_provider
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: homepage
 
-            # logout:
-            #     path: app_logout
-            # guard:
-            #     authenticators:
-            #         - App\Security\LoginFormAuthenticator
+            provider: users_provider
+
 
 
     # Easy way to control access for large sections of your site
