@@ -25,14 +25,13 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class AppFixtures extends Fixture
 {
     
-    // TODO: à décommenter quand les User auront la config d'authentification (avec implements UserInterface etc.)
     // to encode the plain password
-    // private $passwordEncoder;
+    private $passwordEncoder;
 
-    // public function __construct(UserPasswordEncoderInterface $passwordEncoder) 
-    // {
-    //     $this->passwordEncoder = $passwordEncoder;
-    // }
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder) 
+    {
+        $this->passwordEncoder = $passwordEncoder;
+    }
 
 
     public function load(ObjectManager $manager)
@@ -60,9 +59,9 @@ class AppFixtures extends Fixture
                 encode password brings security to our app 
                 there is no need to display a plain password
             */
-            // $encodedPassword = $this->passwordEncoder->encodePassword($fakeUser, 'barbiche');
-            // $fakeUser->setPassword($encodedPassword);
-            $fakeUser->setPassword('barbiche');
+            $encodedPassword = $this->passwordEncoder->encodePassword($fakeUser, 'barbiche');
+            $fakeUser->setPassword($encodedPassword);
+            // $fakeUser->setPassword('barbiche');
 
             $manager->persist($fakeUser);
 
