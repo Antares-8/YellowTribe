@@ -65,6 +65,19 @@ class AppFixtures extends Fixture
 
             $manager->persist($fakeUser);
 
+            $newUser = new User();
+            $newUser->setFirstname('user');
+            $newUser->setLastname('User');
+            //$newUser->setBirthDate(); TODO: 
+            $newUser->setEmail('user@user.user');
+            $newUser->setUsername('user');
+            $time = new \Datetime;
+            $newUser->setCreatedAt($time);
+            $encodedPassword = $this->passwordEncoder->encodePassword($newUser, 'user');
+            $newUser->setPassword($encodedPassword);
+
+            $manager->persist($newUser);
+
         
         // ***** Event *****
             $populator->addEntity('App\Entity\Event', 3, array(
