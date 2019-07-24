@@ -67,15 +67,6 @@ class AppFixtures extends Fixture
 
         
         // ***** Event *****
-            /*
-            title
-            begining_date
-            ending_date
-            created_at
-            description
-            place
-            creator
-            */
             $populator->addEntity('App\Entity\Event', 3, array(
                 'title' => function() use ($generator) { return $generator->unique()->eventTitle(); },
                 'beginingDate' => function() use ($generator) { return $generator->dateTimeBetween('now', '+2 years'); },
@@ -87,9 +78,22 @@ class AppFixtures extends Fixture
                 'creator' => function() use ($generator) { return $generator->name(); },
             ));
 
-            $populator->execute();
+
+        // ***** Tribe *****
+            $populator->addEntity('App\Entity\Group', 5, array (
+                'name' => function() use ($generator) { return $generator->lastName(); },
+            ));
+
+
+        $inserted = $populator->execute();
+
+        // $groups = $inserted['App\Entity\Group'];
+
+        // foreach ($groups as $group) {
+            
+        // }
         
-        // TODO: Group
+        // TODO: Tribe (=Group)
         
         // TODO: Category
         
