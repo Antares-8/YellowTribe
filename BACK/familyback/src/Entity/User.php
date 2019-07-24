@@ -54,6 +54,11 @@ class User
      */
     private $events;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tribe", inversedBy="users")
+     */
+    private $tribe;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
@@ -163,6 +168,18 @@ class User
                 $event->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTribe(): ?Tribe
+    {
+        return $this->tribe;
+    }
+
+    public function setTribe(?Tribe $tribe): self
+    {
+        $this->tribe = $tribe;
 
         return $this;
     }
