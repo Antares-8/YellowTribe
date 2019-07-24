@@ -84,26 +84,35 @@ class AppFixtures extends Fixture
                 'name' => function() use ($generator) { return $generator->lastName(); },
             ));
 
-
-        $inserted = $populator->execute();
-
-        // $groups = $inserted['App\Entity\Group'];
-
-        // foreach ($groups as $group) {
+        // ***** Category *****
+            $populator->addEntity('App\Entity\Category', 6, array (
+                'title' => function() use ($generator) { return $generator->unique()->categoryTitle(); },
+            ));
+        
+        // ***** Tag *****
+            $populator->addEntity('App\Entity\Tag', 6, array (
+                'title' => function() use ($generator) { return $generator->unique()->tagTitle(); },
+            ));
             
-        // }
+        // ***** Picture *****
+            $populator->addEntity('App\Entity\Picture', 2, array (
+                'url' => function() use ($generator) { return $generator->url(); },
+                'description' => function() use ($generator) { return $generator->realText(); },
+                'createdAt' => function() use ($generator) { return $generator->dateTimeBetween('-1 week', 'now'); },
+            ));
+
+        // ***** Comment *****
+            $populator->addEntity('App\Entity\Comment', 3, array (
+                'content' => function() use ($generator) { return $generator->sentence(10); },
+                'createdAt' => function() use ($generator) { return $generator->dateTimeBetween('-1 week', 'now'); },
+            ));
         
-        // TODO: Tribe (=Group)
-        
-        // TODO: Category
-        
-        // TODO: Tag (= family members)
-        
-        // TODO: Picture
-        
-        // TODO: Comment
-        
-        // TODO: Guest
+        // ***** Guest *****
+            $populator->addEntity('App\Entity\Guest', 15, array (
+                'email' => function() use ($generator) { return $generator->email(); },
+            ));
+            
+        $inserted = $populator->execute();
         
         $manager->flush();
     }
