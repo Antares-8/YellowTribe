@@ -16,8 +16,25 @@ class Picture
      */
     private $id;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="pictures")
+     */
+    private $event;
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getEvent(): ?Event
+    {
+        return $this->event;
+    }
+
+    public function setEvent(?Event $event): self
+    {
+        $this->event = $event;
+
+        return $this;
     }
 }
