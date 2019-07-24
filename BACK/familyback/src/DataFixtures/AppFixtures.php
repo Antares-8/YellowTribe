@@ -24,48 +24,70 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
-
+    
+    // TODO: à décommenter quand les User auront la config d'authentification (avec implements UserInterface etc.)
     // to encode the plain password
-    private $passwordEncoder;
+    // private $passwordEncoder;
 
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder) 
-    {
-        $this->passwordEncoder = $passwordEncoder;
-    }
+    // public function __construct(UserPasswordEncoderInterface $passwordEncoder) 
+    // {
+    //     $this->passwordEncoder = $passwordEncoder;
+    // }
 
 
     public function load(ObjectManager $manager)
     {
-        // $generator = Factory::create('fr_FR');
+        $generator = Factory::create('fr_FR');
 
         // App\DataFixtures\Faker\DataProvider - file with fake data
-        // $generator->addProvider(new DataProvider($generator));
+        $generator->addProvider(new DataProvider($generator));
 
-        // $populator = new Faker\ORM\Doctrine\Populator($generator, $manager);
+        $populator = new Faker\ORM\Doctrine\Populator($generator, $manager);
 
         // ***** User *****
-            $user = new User(); 
-            $user->setFirstname('Barbara');
-            $user->setLastname('Goulde');
-            //$user->setBirthDate(); // TODO: 
-            $user->setEmail('barbara.goulde@fake.mail');
+            $fakeUser = new User(); 
+            $fakeUser->setFirstname('Barbara');
+            $fakeUser->setLastname('Goulde');
+            //$fakeUser->setBirthDate(); TODO: 
+            $fakeUser->setEmail('barbara.goulde@fake.mail');
 
             $time = new \Datetime;
-            $user->setCreatedAt($time);
+            $fakeUser->setCreatedAt($time);
 
             /* 
-                'barbiche' is the password of our fake $user
+                'barbiche' is the password of our fake $fakeUser
                 encode password brings security to our app 
                 there is no need to display a plain password
             */
-            $encodedPassword = $this->passwordEncoder->encodePassword($user, 'barbiche');
-            $user->setPassword($encodedPassword);
+            // $encodedPassword = $this->passwordEncoder->encodePassword($fakeUser, 'barbiche');
+            // $fakeUser->setPassword($encodedPassword);
+            $fakeUser->setPassword('barbiche');
 
-            $manager->persist($user);
+            $manager->persist($fakeUser);
 
-            
-            
-        // TODO: Event
+        
+        // ***** Event *****
+            /*
+            title
+            begining_date
+            ending_date
+            created_at
+            description
+            place
+            creator
+            */
+            $populator->addEntity('App\Entity\Event', 3, array(
+                'title' => function() use ($generator) { return $generator->unique()->eventTitle(); },
+                'beginingDate' => function() use ($generator) { return $generator->dateTimeBetween('now', '+2 years'); },
+                'endingDate' => function() use ($generator) { return $generator->dateTimeBetween('now', '+2 years'); },
+                'createdAt' => function() use ($generator) { return $generator->dateTimeBetween('-1 week', 'now'); },
+                'updatedAt' => function() use ($generator) { return $generator->dateTimeBetween('now', '+2 years'); },
+                'description' => function() use ($generator) { return $generator->realText(); },
+                'place' => function() use ($generator) { return $generator->city(); },
+                'creator' => function() use ($generator) { return $generator->name(); },
+            ));
+
+            $populator->execute();
         
         // TODO: Group
         
