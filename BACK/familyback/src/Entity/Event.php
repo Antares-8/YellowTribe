@@ -73,6 +73,11 @@ class Event
      */
     private $pictures;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tribe", inversedBy="events")
+     */
+    private $tribe;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -250,6 +255,18 @@ class Event
                 $picture->setEvent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTribe(): ?Tribe
+    {
+        return $this->tribe;
+    }
+
+    public function setTribe(?Tribe $tribe): self
+    {
+        $this->tribe = $tribe;
 
         return $this;
     }
