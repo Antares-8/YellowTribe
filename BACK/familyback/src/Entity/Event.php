@@ -56,6 +56,11 @@ class Event
      */
     private $creator;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="events")
+     */
+    private $category;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -153,6 +158,18 @@ class Event
     public function setCreator(string $creator): self
     {
         $this->creator = $creator;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

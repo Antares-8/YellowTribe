@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ORM\Table(name="app_user") // To change User in app_user in database, User is a reserved name
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User
