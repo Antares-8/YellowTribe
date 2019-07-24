@@ -80,7 +80,7 @@ class AppFixtures extends Fixture
 
 
         // ***** Tribe *****
-            $populator->addEntity('App\Entity\Group', 5, array (
+            $populator->addEntity('App\Entity\Tribe', 5, array (
                 'name' => function() use ($generator) { return $generator->lastName(); },
             ));
 

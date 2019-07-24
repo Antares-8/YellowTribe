@@ -17,6 +17,7 @@ class Picture
     private $id;
 
     /**
+<<<<<<< HEAD
      * @ORM\Column(type="string", length=255)
      */
     private $url;
@@ -30,12 +31,18 @@ class Picture
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+=======
+     * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="pictures")
+     */
+    private $event;
+>>>>>>> relations
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
+<<<<<<< HEAD
     public function getUrl(): ?string
     {
         return $this->url;
@@ -68,6 +75,16 @@ class Picture
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+=======
+    public function getEvent(): ?Event
+    {
+        return $this->event;
+    }
+
+    public function setEvent(?Event $event): self
+    {
+        $this->event = $event;
+>>>>>>> relations
 
         return $this;
     }

@@ -2,10 +2,16 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+<<<<<<< HEAD
  * @ORM\Table(name="app_user")
+=======
+ * @ORM\Table(name="app_user") // To change User in app_user in database, User is a reserved name
+>>>>>>> relations
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User
@@ -46,6 +52,21 @@ class User
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Event", mappedBy="user")
+     */
+    private $events;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tribe", inversedBy="users")
+     */
+    private $tribe;
+
+    public function __construct()
+    {
+        $this->events = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +141,49 @@ class User
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Event[]
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(Event $event): self
+    {
+        if (!$this->events->contains($event)) {
+            $this->events[] = $event;
+            $event->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Event $event): self
+    {
+        if ($this->events->contains($event)) {
+            $this->events->removeElement($event);
+            // set the owning side to null (unless already changed)
+            if ($event->getUser() === $this) {
+                $event->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getTribe(): ?Tribe
+    {
+        return $this->tribe;
+    }
+
+    public function setTribe(?Tribe $tribe): self
+    {
+        $this->tribe = $tribe;
 
         return $this;
     }

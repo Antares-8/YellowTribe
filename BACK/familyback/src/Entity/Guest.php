@@ -21,6 +21,11 @@ class Guest
      */
     private $email;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tribe", inversedBy="guests")
+     */
+    private $tribe;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,6 +39,18 @@ class Guest
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getTribe(): ?Tribe
+    {
+        return $this->tribe;
+    }
+
+    public function setTribe(?Tribe $tribe): self
+    {
+        $this->tribe = $tribe;
 
         return $this;
     }
