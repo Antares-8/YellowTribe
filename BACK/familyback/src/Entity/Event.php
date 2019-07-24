@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
@@ -85,6 +86,7 @@ class Event
 
     public function __construct()
     {
+        $this->createdAt = new DateTime();
         $this->comments = new ArrayCollection();
         $this->pictures = new ArrayCollection();
         $this->tags = new ArrayCollection();

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,6 +31,11 @@ class Comment
      * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="comments")
      */
     private $event;
+
+    public function __construct()
+    {
+        $this->createdAt = new DateTime();
+    }
 
     public function getId(): ?int
     {

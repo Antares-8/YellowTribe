@@ -2,19 +2,17 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
-<<<<<<< HEAD
- * @ORM\Table(name="app_user")
-=======
  * @ORM\Table(name="app_user") // To change User in app_user in database, User is a reserved name
->>>>>>> relations
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -65,7 +63,15 @@ class User
 
     public function __construct()
     {
+        $this->createdAt = new DateTime();
         $this->events = new ArrayCollection();
+    }
+
+    public function getSalt()
+    {
+        // you *may* need a real salt depending on your encoder
+        // see section on salt below
+        return null;
     }
 
     public function getId(): ?int
