@@ -50,6 +50,7 @@ class AppFixtures extends Fixture
             $fakeUser->setLastname('Goulde');
             //$fakeUser->setBirthDate(); TODO: 
             $fakeUser->setEmail('barbara.goulde@fake.mail');
+            $fakeUser->setUsername('Barbara Goulde');
 
             $time = new \Datetime;
             $fakeUser->setCreatedAt($time);
@@ -75,7 +76,7 @@ class AppFixtures extends Fixture
                 'updatedAt' => function() use ($generator) { return $generator->dateTimeBetween('now', '+2 years'); },
                 'description' => function() use ($generator) { return $generator->realText(); },
                 'place' => function() use ($generator) { return $generator->city(); },
-                'creator' => function() use ($generator) { return $generator->name(); },
+                // 'creator' => function() use ($generator) { return $generator->name(); },
             ));
 
 

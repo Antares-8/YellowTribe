@@ -27,19 +27,19 @@ class Picture
      */
     private $description;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $createdAt;
-
     /** 
      * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="pictures")
      */
     private $event;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
     public function __construct()
     {
-        $this->createdAt = new DateTime();
+        $this->createdAt = new \DateTime;
     }
 
     public function getId(): ?int
@@ -71,18 +71,6 @@ class Picture
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
     public function getEvent(): ?Event
     {
         return $this->event;
@@ -91,6 +79,18 @@ class Picture
     public function setEvent(?Event $event): self
     {
         $this->event = $event;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

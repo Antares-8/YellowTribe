@@ -32,6 +32,11 @@ class User implements UserInterface, \Serializable
     private $lastname;
 
     /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $username;
+
+    /**
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $birthDate;
@@ -226,10 +231,30 @@ class User implements UserInterface, \Serializable
             // $this->salt
         ) = unserialize($serialized, ['allowed_classes' => false]);
     }
-    
+
     public function __toString() 
     {
         return $this->username;
     }
 
+
+    /**
+     * Get the value of username
+     */ 
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set the value of username
+     *
+     * @return  self
+     */ 
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
 }
