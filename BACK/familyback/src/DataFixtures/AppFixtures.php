@@ -36,21 +36,22 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        $generator = Factory::create('fr_FR');
+        // $generator = Factory::create('fr_FR');
 
         // App\DataFixtures\Faker\DataProvider - file with fake data
-        $generator->addProvider(new DataProvider($generator));
+        // $generator->addProvider(new DataProvider($generator));
 
-        $populator = new Faker\ORm\Doctrine\Populator($generator, $manager);
+        // $populator = new Faker\ORM\Doctrine\Populator($generator, $manager);
 
         // ***** User *****
             $user = new User(); 
             $user->setFirstname('Barbara');
             $user->setLastname('Goulde');
-            $user->setbirthDate(); // TODO: 
+            //$user->setBirthDate(); // TODO: 
             $user->setEmail('barbara.goulde@fake.mail');
+
             $time = new \Datetime;
-            $user-setCreatedAt($time);
+            $user->setCreatedAt($time);
 
             /* 
                 'barbiche' is the password of our fake $user
