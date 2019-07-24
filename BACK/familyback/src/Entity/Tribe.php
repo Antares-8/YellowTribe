@@ -28,9 +28,15 @@ class Tribe
      */
     private $events;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Guest", mappedBy="tribe")
+     */
+    private $guests;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
+        $this->guests = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -75,6 +81,37 @@ class Tribe
             // set the owning side to null (unless already changed)
             if ($event->getTribe() === $this) {
                 $event->setTribe(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Guest[]
+     */
+    public function getGuests(): Collection
+    {
+        return $this->guests;
+    }
+
+    public function addGuest(Guest $guest): self
+    {
+        if (!$this->guests->contains($guest)) {
+            $this->guests[] = $guest;
+            $guest->setTribe($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGuest(Guest $guest): self
+    {
+        if ($this->guests->contains($guest)) {
+            $this->guests->removeElement($guest);
+            // set the owning side to null (unless already changed)
+            if ($guest->getTribe() === $this) {
+                $guest->setTribe(null);
             }
         }
 
