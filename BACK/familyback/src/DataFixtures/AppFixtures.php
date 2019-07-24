@@ -1,5 +1,14 @@
 <?php
 
+/*
+    File used to provide fake data 
+
+    Fake data are generate thanks to Faker (PHP library)
+
+    https://github.com/fzaninotto/Faker 
+
+*/
+
 namespace App\DataFixtures;
 
 use Faker;
@@ -14,10 +23,12 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        // $product = new Product();
-        // $manager->persist($product);
+        $generator = Factory::create('fr_FR');
 
-        $manager->flush();
+        // App\DataFixtures\Faker\DataProvider
+        $generator->addProvider(new DataProvider($generator));
+
+        //$manager->flush();
 
         // TODO: User
 
