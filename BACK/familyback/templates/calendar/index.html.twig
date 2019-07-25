@@ -3,9 +3,13 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block body %}
-<h1>Page de profil</h1>
+<h1>Page Calendar</h1>
 
-<a href="{{ path('send_invitation') }}"><p>Inviter un nouveau membre à rejoindre votre groupe</p></a>
+{% for event in events %}
+
+    <div> {{ event.title }} </div>
+
+{% endfor %}
 
 <a href="{{ path('homepage') }}"><p>Retour à l'accueil</p></a>
 

@@ -5,7 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ProfileController extends AbstractController
+class UserController extends AbstractController
 {
     /**
      * @Route("/profile", name="profile")
@@ -16,6 +16,4 @@ class ProfileController extends AbstractController
             'title' => 'Mon profil',
         ]);
     }
-
-    
 }
