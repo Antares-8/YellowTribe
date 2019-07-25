@@ -32,6 +32,19 @@ class ProfileController extends AbstractController
         $form->handleRequest($request); 
 
         // TODO: condition à l'envoi du form et sa validation
+        if ($form->isSubmitted() && $form->isValid()) {
+             
+            $entityManager = $this->getDoctrine()->getManager(); 
+            $entityManager->persist($invitation);
+            $entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                'Invitation envoyée'
+            );
+
+            return $this->redirectToRoute('profile');
+        }
 
         return $this->render('profile/members.html.twig', [
             'form' => $form->createView(),

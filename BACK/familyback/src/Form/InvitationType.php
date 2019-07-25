@@ -13,6 +13,7 @@ class InvitationType extends AbstractType
     {
         $builder
             ->add('email')
+            // TODO: contraintes (doit ressembler à un mail + ne pas exister dans la BDD?)
             // ->add('tribe')
         ;
     }
