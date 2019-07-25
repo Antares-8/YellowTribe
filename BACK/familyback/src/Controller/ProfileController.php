@@ -17,5 +17,12 @@ class ProfileController extends AbstractController
         ]);
     }
 
-    
+    /**
+     * TODO: template with form to send an invitation to a new member 
+     * @Route("/group/invitation", name="send_invitation", methods={"GET"})
+     */
+    public function sendInvitation()
+    {
+        
+    }
 }
