@@ -8,13 +8,14 @@
 {% endblock %}
 
 {% block body %}
-<h1>Hello le projet!</h1>
+<div class="container homepage_container text-center">
 
-<nav>
-    <ul>
-        <a href="{{ path('profile') }}"><li>Page profil</li></a>
+            <h2>Slogan sur la famille connectée</h2>
+            <h4>et sa baseline sympa</h4>
 
-        {# <a href="{{ path('signup') }}"><li>Inscription</li></a> #}
-    </ul>
-</nav>
+            <a href="{{ path('profile') }}" class="btn btn-primary btn-lg" role="button">Me connecter</a>
+
+            {# <a href="{{ path('signup') }}">Inscription</a> #}
+</div>
+
 {% endblock %}

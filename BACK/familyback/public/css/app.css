@@ -1,3 +1,9 @@
+/* HOMEPAGE */
+.homepage_container {
+  max-width: 500px;
+  margin: auto;
+
+}
 
 /* HEADER */
 .header {
