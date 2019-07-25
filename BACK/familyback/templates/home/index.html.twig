@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<h1>Hello le projet!</h1>
+
+<nav>
+    <ul>
+        <a href="{{ path('profile') }}"><li>Page profil</li></a>
+        <a href="{{ path('contact_us') }}"><li>Nous contacter</li></a>
+        <a href="{{ path('legal_mention') }}"><li>Mentions légales</li></a>
+        {# <a href="{{ path('signup') }}"><li>Inscription</li></a> #}
+    </ul>
+</nav>
+{% endblock %}
