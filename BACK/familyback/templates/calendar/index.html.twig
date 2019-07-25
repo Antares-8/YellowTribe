@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<h1>Page Calendar</h1>
+
+{% for event in events %}
+
+    <div> {{ event.title }} </div>
+
+{% endfor %}
+
+<a href="{{ path('homepage') }}"><p>Retour à l'accueil</p></a>
+
+{% endblock %}
