@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Guest;
+use App\Form\InvitationType;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ProfileController extends AbstractController
 {
@@ -21,8 +25,16 @@ class ProfileController extends AbstractController
      * TODO: template with form to send an invitation to a new member 
      * @Route("/group/invitation", name="send_invitation", methods={"GET"})
      */
-    public function sendInvitation()
+    public function sendInvitation(Request $request): Response
     {
-        
+        $invitation = new Guest();
+        $form = $this->createForm(InvitationType::class, $invitation);
+        $form->handleRequest($request); 
+
+        // TODO: condition à l'envoi du form et sa validation
+
+        return $this->render('profile/members.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 }

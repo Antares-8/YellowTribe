@@ -13,7 +13,7 @@ class InvitationType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('tribe')
+            // ->add('tribe')
         ;
     }
 
