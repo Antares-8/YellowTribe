@@ -33,6 +33,9 @@ class ProfileController extends AbstractController
 
         // TODO: condition à compléter avec l'ajout (ajouter la tribu)
         if ($form->isSubmitted() && $form->isValid()) {
+            $user = $this->getUser();
+            $tribe = $user->getTribe();
+            $invitation->setTribe($tribe);
              
             $entityManager = $this->getDoctrine()->getManager(); 
             $entityManager->persist($invitation);
