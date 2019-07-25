@@ -1,5 +1,8 @@
 <?php
+/*
+    Controller used to send data for front (calendar)
 
+*/
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
