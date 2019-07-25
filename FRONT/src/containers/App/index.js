@@ -2,31 +2,35 @@
 import { connect } from 'react-redux';
 
 // == Import : local
-import DaysMonth from 'src/components/Month/DaysMonth';
+import App from 'src/components/App';
 
 // Action Creators
+import { addEventDate } from 'src/store/reducer';
 
 
-const mapStateToProps = ({ currentDate }) => ({
-  currentDate,
+const mapStateToProps = ({ eventDate }) => ({
+  eventDate,
 });
 
 
 const mapDispatchToProps = dispatch => ({
+  addEventDate: (value) => {
+    dispatch(addEventDate(value));
+  },
 });
 
 // Container
-const DaysMonthContainer = connect(
+const AppContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(DaysMonth);
+)(App);
 
 // == Export
-export default DaysMonthContainer;
+export default AppContainer;
 
 /* = export à la volée
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(DaysMonth);
+)(App);
 */

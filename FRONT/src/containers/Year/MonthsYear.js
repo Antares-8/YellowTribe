@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 
 // == Import : local
-import DaysMonth from 'src/components/Month/DaysMonth';
+import MonthYear from 'src/components/Year/MonthsYear';
 
 // Action Creators
 
@@ -16,17 +16,17 @@ const mapDispatchToProps = dispatch => ({
 });
 
 // Container
-const DaysMonthContainer = connect(
+const MonthYearContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(DaysMonth);
+)(MonthYear);
 
 // == Export
-export default DaysMonthContainer;
+export default MonthYearContainer;
 
 /* = export à la volée
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(DaysMonth);
+)(MonthYear);
 */

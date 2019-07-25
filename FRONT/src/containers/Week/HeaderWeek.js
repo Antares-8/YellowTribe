@@ -2,9 +2,10 @@
 import { connect } from 'react-redux';
 
 // == Import : local
-import DaysMonth from 'src/components/Month/DaysMonth';
+import HeaderWeek from 'src/components/Week/HeaderWeek';
 
 // Action Creators
+import { nextWeek, prevWeek } from 'src/store/reducer';
 
 
 const mapStateToProps = ({ currentDate }) => ({
@@ -13,20 +14,26 @@ const mapStateToProps = ({ currentDate }) => ({
 
 
 const mapDispatchToProps = dispatch => ({
+  nextWeek: () => {
+    dispatch(nextWeek());
+  },
+  prevWeek: () => {
+    dispatch(prevWeek());
+  },
 });
 
 // Container
-const DaysMonthContainer = connect(
+const HeaderWeekContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(DaysMonth);
+)(HeaderWeek);
 
 // == Export
-export default DaysMonthContainer;
+export default HeaderWeekContainer;
 
 /* = export à la volée
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(DaysMonth);
+)(HeaderWeek);
 */

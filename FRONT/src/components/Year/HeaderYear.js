@@ -9,16 +9,16 @@ import french from 'date-fns/locale/fr';
 
 
 // == Composant
-const HeaderMonth = ({ prevMonth, nextMonth, currentDate }) => {
+const HeaderYear = ({ prevYear, nextYear, currentDate }) => {
 
-  const dateFormat = 'MMMM YYYY';
+  const dateFormat = 'YYYY';
 
   // call function from reducer to change month on click
   const clickLeftHandler = () => {
-    prevMonth();
+    prevYear();
   };
   const clickRightHandler = () => {
-    nextMonth();
+    nextYear();
   };
 
   return (
@@ -38,11 +38,11 @@ const HeaderMonth = ({ prevMonth, nextMonth, currentDate }) => {
   );
 };
 
-HeaderMonth.propTypes = {
+HeaderYear.propTypes = {
   currentDate: PropTypes.string.isRequired,
-  nextMonth: PropTypes.func.isRequired,
-  prevMonth: PropTypes.func.isRequired,
+  nextYear: PropTypes.func.isRequired,
+  prevYear: PropTypes.func.isRequired,
 };
 
 // == Export
-export default HeaderMonth;
+export default HeaderYear;

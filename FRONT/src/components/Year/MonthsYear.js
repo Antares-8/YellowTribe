@@ -8,30 +8,30 @@ import french from 'date-fns/locale/fr';
 // == Import : local
 
 // == Composant
-const DaysMonth = ({ currentDate }) => {
+const DaysYear = ({ currentDate }) => {
 
-  const dateFormat = 'dddd';
-  const days = [];
-  const startDate = dateFns.startOfWeek(currentDate);
+  const dateFormat = 'MMMM';
+  const weeks = [];
+  const startDate = dateFns.startOfMonth(currentDate);
 
   const createDate = () => {
-    for (let i = 0; i < 7; i += 1) {
-      days.push(
+    for (let i = 0; i < 12; i += 1) {
+      weeks.push(
         <div className="col col-center" key={i}>
-          {dateFns.format(dateFns.addDays(startDate, i), dateFormat, { locale: french })}
+          {dateFns.format(dateFns.addWeeks(startDate, i), dateFormat, { locale: french })}
         </div>
       );
     }
   };
   createDate();
 
-  return <div className="days row">{days}</div>;
+  return <div className="days row">{weeks}</div>;
 };
 
-DaysMonth.propTypes = {
+DaysYear.propTypes = {
   currentDate: PropTypes.string.isRequired,
 
 };
 
 // == Export
-export default DaysMonth;
+export default DaysYear;

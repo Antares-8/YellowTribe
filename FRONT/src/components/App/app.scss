@@ -70,10 +70,12 @@ header #logo .icon {
 }
 
 main {
-  display: block;
   margin: 0 auto;
-  margin-top: 5em;
-  max-width: 50em;
+  margin-top: 2em;
+  float: right;
+  width: 75%;
+  max-width: 80em;
+  margin-right: 1.5em;
 }
 
 
@@ -124,11 +126,24 @@ main {
   border: 1px solid var(--border-color);
 }
 
+.calendar .type {
+  position: fixed;
+  left: 1.5em;
+  width: 19%;
+}
 .calendar .header {
+  position: fixed;
+  left: 1.5em;
+  top: 11em;
+  width: 19%;
+}
+
+.calendar .header,
+.calendar .type {
   text-transform: uppercase;
   font-weight: 700;
   font-size: 115%;
-  padding: 1.5em 0;
+  padding: 0.5em 0;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -160,6 +175,10 @@ main {
   border-bottom: 1px solid var(--border-color);
 }
 
+.calendar .week .body {
+  display: flex;
+}
+
 .calendar .body .cell {
   position: relative;
   height: 5em;
@@ -180,9 +199,22 @@ main {
   border-image: linear-gradient(45deg, #1a8fff 0%,#53cbf1 40%);
   border-image-slice: 1;
 }
+.calendar .body .event {
+  border-left: 10px solid transparent;
+  border-image: linear-gradient(45deg, #ff3c1a 0%,#f17853 40%);
+  border-image-slice: 1;
+}
 
 .calendar .body .row {
   border-bottom: 1px solid var(--border-color);
+}
+
+.calendar .week .body .row {
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-wrap: wrap;
+  height: 1180px;
+  width: calc(100%/7);
 }
 
 .calendar .body .row:last-child {
@@ -225,8 +257,22 @@ main {
   transition: .5s ease-in;
 }
 
+.calendar .year .body .col {
+  flex-grow: 0;
+  flex-basis: calc(100%/3);
+  width: calc(100%/3);
+}
+
 .calendar .body .col {
   flex-grow: 0;
   flex-basis: calc(100%/7);
   width: calc(100%/7);
+}
+
+.calendar .week .body .col { 
+  flex-grow: 0;
+  -webkit-flex-basis: calc(100%/7);
+  flex-basis: calc(100%/24);
+  height: calc(100%/24);
+  width: 100%;
 }

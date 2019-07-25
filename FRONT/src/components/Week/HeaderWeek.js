@@ -9,16 +9,16 @@ import french from 'date-fns/locale/fr';
 
 
 // == Composant
-const HeaderMonth = ({ prevMonth, nextMonth, currentDate }) => {
+const HeaderWeek = ({ prevWeek, nextWeek, currentDate }) => {
 
   const dateFormat = 'MMMM YYYY';
 
-  // call function from reducer to change month on click
+  // call function from reducer to change Week on click
   const clickLeftHandler = () => {
-    prevMonth();
+    prevWeek();
   };
   const clickRightHandler = () => {
-    nextMonth();
+    nextWeek();
   };
 
   return (
@@ -38,11 +38,11 @@ const HeaderMonth = ({ prevMonth, nextMonth, currentDate }) => {
   );
 };
 
-HeaderMonth.propTypes = {
+HeaderWeek.propTypes = {
   currentDate: PropTypes.string.isRequired,
-  nextMonth: PropTypes.func.isRequired,
-  prevMonth: PropTypes.func.isRequired,
+  nextWeek: PropTypes.func.isRequired,
+  prevWeek: PropTypes.func.isRequired,
 };
 
 // == Export
-export default HeaderMonth;
+export default HeaderWeek;

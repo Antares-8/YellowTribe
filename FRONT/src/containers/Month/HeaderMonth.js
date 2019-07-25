@@ -8,8 +8,8 @@ import HeaderMonth from 'src/components/Month/HeaderMonth';
 import { nextMonth, prevMonth } from 'src/store/reducer';
 
 
-const mapStateToProps = ({ currentMonth }) => ({
-  currentMonth,
+const mapStateToProps = ({ currentDate }) => ({
+  currentDate,
 });
 
 

@@ -2,17 +2,16 @@
 import { connect } from 'react-redux';
 
 // == Import : local
-import CellsMonth from 'src/components/Month/CellsMonth';
+import CellsYear from 'src/components/Year/CellsYear';
 
 // Action Creators
 import { onDateClick } from 'src/store/reducer';
 
 
-const mapStateToProps = ({ currentDate, selectedDate, eventDate }) => {
+const mapStateToProps = (state) => {
   return {
-    currentDate,
-    selectedDate,
-    eventDate,
+    currentDate: state.currentDate,
+    selectedDate: state.selectedDate,
   };
 };
 
@@ -24,17 +23,17 @@ const mapDispatchToProps = dispatch => ({
 });
 
 // Container
-const CellsMonthContainer = connect(
+const CellsYearContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(CellsMonth);
+)(CellsYear);
 
 // == Export
-export default CellsMonthContainer;
+export default CellsYearContainer;
 
 /* = export à la volée
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(CellsMonth);
+)(CellsYear);
 */

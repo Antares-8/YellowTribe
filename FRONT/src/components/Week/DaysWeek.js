@@ -8,9 +8,9 @@ import french from 'date-fns/locale/fr';
 // == Import : local
 
 // == Composant
-const DaysMonth = ({ currentDate }) => {
+const DaysWeek = ({ currentDate }) => {
 
-  const dateFormat = 'dddd';
+  const dateFormat = 'dddd D';
   const days = [];
   const startDate = dateFns.startOfWeek(currentDate);
 
@@ -28,10 +28,10 @@ const DaysMonth = ({ currentDate }) => {
   return <div className="days row">{days}</div>;
 };
 
-DaysMonth.propTypes = {
+DaysWeek.propTypes = {
   currentDate: PropTypes.string.isRequired,
 
 };
 
 // == Export
-export default DaysMonth;
+export default DaysWeek;

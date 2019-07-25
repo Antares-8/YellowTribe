@@ -2,9 +2,10 @@
 import { connect } from 'react-redux';
 
 // == Import : local
-import DaysMonth from 'src/components/Month/DaysMonth';
+import HeaderYear from 'src/components/Year/HeaderYear';
 
 // Action Creators
+import { nextYear, prevYear } from 'src/store/reducer';
 
 
 const mapStateToProps = ({ currentDate }) => ({
@@ -13,20 +14,26 @@ const mapStateToProps = ({ currentDate }) => ({
 
 
 const mapDispatchToProps = dispatch => ({
+  nextYear: () => {
+    dispatch(nextYear());
+  },
+  prevYear: () => {
+    dispatch(prevYear());
+  },
 });
 
 // Container
-const DaysMonthContainer = connect(
+const HeaderYearContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(DaysMonth);
+)(HeaderYear);
 
 // == Export
-export default DaysMonthContainer;
+export default HeaderYearContainer;
 
 /* = export à la volée
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(DaysMonth);
+)(HeaderYear);
 */
