@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle tribu{% endblock %}
+
+{% block body %}
+
+    <h2>Créer une nouvelle tribu</h2>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn">{{ button_label|default('Envoyer') }}</button>
+    {{ form_end(form) }}
+
+{% endblock %}
