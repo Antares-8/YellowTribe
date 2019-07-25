@@ -4,7 +4,7 @@ import dateFns from 'date-fns';
 const initialState = {
   currentDate: new Date(),
   selectedDate: new Date(),
-  eventDate: [],
+  eventDate: new Date (2019, 7, 24),
   calendarType: 'mois',
 };
 

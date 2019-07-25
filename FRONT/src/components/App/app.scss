@@ -82,12 +82,12 @@ main {
 /* GRID */
 
 .row {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
+  display: grid;
+  flex-basis: 100%;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 1.2rem repeat(5, 0.8rem);
+  grid-auto-flow: dense;
+  grid-gap: 3px 6px;
 }
 
 .row-middle {
@@ -257,22 +257,4 @@ main {
   transition: .5s ease-in;
 }
 
-.calendar .year .body .col {
-  flex-grow: 0;
-  flex-basis: calc(100%/3);
-  width: calc(100%/3);
-}
 
-.calendar .body .col {
-  flex-grow: 0;
-  flex-basis: calc(100%/7);
-  width: calc(100%/7);
-}
-
-.calendar .week .body .col { 
-  flex-grow: 0;
-  -webkit-flex-basis: calc(100%/7);
-  flex-basis: calc(100%/24);
-  height: calc(100%/24);
-  width: 100%;
-}

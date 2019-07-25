@@ -26,6 +26,7 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick, eventDate }) => {
     onDateClick(dateFns.parse(cloneDay));
   };
   console.log('eventDate', eventDate);
+  console.log('selectedDate', selectedDate);
 
 
   const createTable = () => {
@@ -36,11 +37,13 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick, eventDate }) => {
         const selected = classNames({
           disabled: dateFns.isSameMonth(day, monthStart) === false,
           selected: dateFns.isSameMonth(day, monthStart) && dateFns.isSameDay(day, selectedDate),
-          event: dateFns.isSameMonth(day, monthStart) && dateFns.isSameDay(day, eventDate),
+        });
+        const event = classNames({
+          event: dateFns.isSameDay(day, eventDate),
         });
         days.push(
           <div
-            className={`col cell ${selected}`}
+            className={`col cell ${selected} ${event}`}
             key={day}
             onClick={() => dateClickHandler(cloneDay)}
           >

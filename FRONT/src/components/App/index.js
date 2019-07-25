@@ -31,7 +31,7 @@ const App = ({ addEventDate, eventDate }) => {
         <form>
           <input type="date" name="start" />
           <input type="date" name="end" />
-          <button type="submit" onClick={clickHandler} >submit</button>
+          <button type="submit" onClick={clickHandler}>submit</button>
         </form>
       </div>
       <main>
