@@ -31,7 +31,6 @@ class ProfileController extends AbstractController
         $form = $this->createForm(InvitationType::class, $invitation);
         $form->handleRequest($request); 
 
-        // TODO: condition à compléter avec l'ajout (ajouter la tribu)
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $this->getUser();
             $tribe = $user->getTribe();
