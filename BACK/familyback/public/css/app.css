@@ -1,6 +1,11 @@
 
-
-
+/* HEADER */
+#logo_placeholder {
+  margin: 1.5em;
+  width: 100px;
+  height: 100px;
+  border: 1px solid black; 
+}
 
 
 /* FOOTER */
