@@ -23,7 +23,7 @@ class ProfileController extends AbstractController
 
     /**
      * TODO: template with form to send an invitation to a new member 
-     * @Route("/group/invitation", name="send_invitation", methods={"GET"})
+     * @Route("/group/invitation", name="send_invitation", methods={"GET", "POST"})
      */
     public function sendInvitation(Request $request): Response
     {
@@ -31,17 +31,17 @@ class ProfileController extends AbstractController
         $form = $this->createForm(InvitationType::class, $invitation);
         $form->handleRequest($request); 
 
-        // TODO: condition à l'envoi du form et sa validation
+        // TODO: condition à compléter avec l'ajout (ajouter la tribu)
         if ($form->isSubmitted() && $form->isValid()) {
              
             $entityManager = $this->getDoctrine()->getManager(); 
             $entityManager->persist($invitation);
             $entityManager->flush();
 
-            $this->addFlash(
-                'success',
-                'Invitation envoyée'
-            );
+            // $this->addFlash(
+            //     'success',
+            //     'Invitation envoyée'
+            // );
 
             return $this->redirectToRoute('profile');
         }
