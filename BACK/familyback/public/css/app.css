@@ -1,5 +1,10 @@
 
 /* HEADER */
+.header {
+  display: flex; 
+  align-items: center;
+}
+
 #logo_placeholder {
   margin: 1.5em;
   width: 100px;

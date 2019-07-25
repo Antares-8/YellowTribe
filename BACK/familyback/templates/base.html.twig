@@ -12,11 +12,17 @@
 
     <body>
         <header>
-            <div id="logo_placeholder" class="text-center">
-                LOGO
-                <i class="fab fa-forumbee"></i>
-            </div>
+            <div class="header">
+                <div id="logo_placeholder" class="text-center">
+                    LOGO
+                    <i class="fab fa-forumbee"></i>
+                </div>
 
+                {% block header %}
+
+
+                {% endblock %}
+            </div>
         </header>
 
         {% block body %}
