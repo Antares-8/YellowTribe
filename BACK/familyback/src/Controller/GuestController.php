@@ -39,7 +39,7 @@ class GuestController extends AbstractController
             return $this->redirectToRoute('profile');
         }
 
-        return $this->render('profile/members.html.twig', [
+        return $this->render('tribe/members.html.twig', [
             'form' => $form->createView(),
         ]);
     }
