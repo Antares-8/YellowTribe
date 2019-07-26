@@ -48,11 +48,15 @@ class SecurityController extends AbstractController
 
             $user->setPassword($encodedPassword);
 
+            // TODO: si l'utilisateur qui s'inscrit a reçu une invitation (càd $user->getEmail == un mail dans Guest), alors il appartient au groupe de l'invitation et est bien redirigé vers sa page de profil
+            
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-
-            return $this->redirectToRoute('profile_index');
+            
+            
+            // TODO: si l'email ne match avec aucun Guest, redirection vers Création d'un groupe 'newTribe' 
+            return $this->redirectToRoute('newTribe');
         }
 
         return $this->render('security/signup.html.twig', [

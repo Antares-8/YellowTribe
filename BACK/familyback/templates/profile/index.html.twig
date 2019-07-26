@@ -3,7 +3,7 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block body %}
-<h1>Page de profil</h1>
+<h1 class="text-center">Page de profil de {{ app.user.username }}</h1>
 
 <a href="{{ path('send_invitation') }}"><p>Inviter un nouveau membre à rejoindre votre groupe</p></a>
 
