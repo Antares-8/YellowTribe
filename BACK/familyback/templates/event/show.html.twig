@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h2>Détail d'un événement :</h2>
+
+    <ul>
+        
+        <li>Titre : {{ event.title }}</li>
+        <li>Date de début : le {{ event.beginingDate|date('d/m/Y')}} à {{ event.beginingDate|date('h') }}h{{ event.beginingDate|date('m')}} </li>
+        <li>Date de fin : le {{ event.endingDate|date('d/m/Y')}} à {{ event.endingDate|date('h') }}h{{ event.endingDate|date('m')}} </li>
+        <li>Description : {{ event.description }}</li>
+        <li>Lieu : {{ event.place }}</li>
+        <li>Commentaires :
+             <ol>
+                {% for comment in event.comments %}
+                    <li>{{ comment.content }}</li>
+                {% endfor %}
+
+             </ol>
+        </li>
+        <li>Photos : 
+            <ol>
+                {% for picture in event.pictures %}
+                    <li>{{ picture.url }}</li>
+                {% endfor %}
+    
+            </ol>
+        </li>
+        <li>Tags : 
+            <ol>
+                {% for tag in event.tags %}
+                    <li>{{ tag.title }}</li>
+                {% endfor %}
+       
+            </ol>
+        </li>
+        <li>A l'origine de l'événement : {{ event.user }}</li>
+
+    </ul>
+
+    <a href="{{ path('event_edit', {'id': event.id}) }}">Modifier</a>
+
+    {{ include('event/_delete_form.html.twig') }}
+
+{% endblock %}

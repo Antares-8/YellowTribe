@@ -3,11 +3,15 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block body %}
-<h1>Page Calendar</h1>
+<h1>Page Calendrier</h1>
 
 {% for event in events %}
 
-    <div> {{ event.title }} </div>
+    <div> 
+        <a href=" {{ path('event_show', {'id': event.id }) }}">
+            {{ event.title }}
+        </a>
+    </div>
 
 {% endfor %}
 
