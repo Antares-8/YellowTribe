@@ -49,23 +49,20 @@ class SecurityController extends AbstractController
 
             $user->setPassword($encodedPassword);
 
-            // TODO: si l'utilisateur qui s'inscrit a reçu une invitation (càd $user->getEmail == un mail dans Guest), alors il appartient au groupe de l'invitation et est bien redirigé vers sa page de profil
-            // recup les mails des guests (sécurité ?)
+            // find all guest email (is it a secure method?)
             $guestMails = $guestRepository->findAll(); 
-
+            // new user's mail 
             $userMail = $user->getEmail();
 
+            // check if $userMail match with a $guestMail. If it does, setTribe for the new user
             foreach ($guestMails as $checkMail) {
-                //dump($checkMail->getEmail());
                 if ($userMail == $checkMail->getEmail()) {
 
-                    //dump($user->getTribe());
 
                     $userTribe = $checkMail->getTribe();
                     
                     $user->setTribe($userTribe); 
 
-                    //dump($user->getTribe());
                     $entityManager = $this->getDoctrine()->getManager();
                     $entityManager->persist($user);
                     $entityManager->flush();
@@ -83,10 +80,13 @@ class SecurityController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                'Bienvenue chez Yellow Tribe! Vous pouvez vous connecter avec votre email et votre mot de passe'
+            );
             
-            
-            // TODO: si l'email ne match avec aucun Guest, redirection vers Création d'un groupe 'newTribe' 
-            return $this->redirectToRoute('newTribe');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('security/signup.html.twig', [
