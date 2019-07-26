@@ -6,6 +6,7 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Form\EventType;
 use App\Repository\EventRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,14 +16,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class EventController extends AbstractController
 {
 
-
     /**
      * @Route("/event", name="event", methods={"GET","POST"})
      */
     public function index(EventRepository $eventRepository)
     {
         $events = $eventRepository->findAll();
-
 
         return $this->render('event/index.html.twig', [
             'events' => $events,
@@ -37,6 +36,31 @@ class EventController extends AbstractController
     {
         return $this->render('event/show.html.twig', [
             'event' => $event,
+        ]);
+    }
+
+    /**
+     * @Route("/event/{id}/edit", name="event_edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
+     */
+    public function edit(Request $request, Event $event): Response
+    {
+        $form = $this->createForm(EventType::class, $event);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash(
+                'info',
+                'L\'événement a bien été mis à jour'
+            );
+
+            return $this->redirectToRoute('event', ['id' => $event->getId()]);
+        }
+
+        return $this->render('event/edit.html.twig', [
+            'event' => $event,
+            'form' =>$form,
         ]);
     }
 

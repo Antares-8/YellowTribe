@@ -1,0 +1,13 @@
+{% extends 'backend/backend_layout.html.twig' %}
+
+{% block title %}Mise à jour d'un événement{% endblock %}
+
+{% block body %}
+
+<h2>Modifier un événement : </h2>
+
+{{ include('event/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+
+{% endblock %}
