@@ -33,8 +33,14 @@ class TribeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $user = $this->getUser();
+
+            $user->setTribe($tribe);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($tribe);
+            $entityManager->persist($user);
             $entityManager->flush();
 
             $this->addFlash(
@@ -42,7 +48,7 @@ class TribeController extends AbstractController
                 'Nouvelle tribu créée !'
             );
             
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('profile_index');
         }
 
         return $this->render('tribe/newTribe.html.twig', [

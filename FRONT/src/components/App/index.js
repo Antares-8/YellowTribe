@@ -1,10 +1,12 @@
 // == Import : npm
 import React from 'react';
 import PropTypes from 'prop-types';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 
 // == Import : local
 import Calendar from 'src/containers/Calendar';
+import Month from 'src/components/Month';
 import './app.scss';
 
 // == Composant
@@ -28,20 +30,23 @@ const App = ({ addEventDate, eventDate }) => {
         </div>
       </header>
 
-      
+
       ////
       <div className="sidebar">
         <form>
           <input type="date" name="start" />
           <input type="date" name="end" />
-          <button type="submit" onClick={clickHandler}>submit</button>
+          <button type="submit">submit</button>
         </form>
       </div>
       /////
 
-      <main>
-        <Calendar />
-      </main>
+      <Router>
+        <main>
+          <Route exact path="/calendar" component={Calendar} />
+        </main>
+      </Router>
+
     </div>
   );
 };

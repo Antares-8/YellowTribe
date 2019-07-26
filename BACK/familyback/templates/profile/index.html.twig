@@ -5,7 +5,18 @@
 {% block body %}
 <h1 class="text-center">Page de profil de {{ app.user.username }}</h1>
 
-<a href="{{ path('send_invitation') }}"><p>Inviter un nouveau membre à rejoindre votre groupe</p></a>
+    {% if app.user.tribe == null %}
+
+    <p>Vous n'avez pas encore de tribu.</p> 
+    <a href="{{ path('newTribe') }}" class="btn btn-primary btn-lg" role="button">Créer ma tribu</a>
+
+    {% else %}
+
+    <p>Votre tribu est {{ app.user.tribe }}</p>
+    <a href="{{ path('send_invitation') }}"><p>Inviter un nouveau membre à rejoindre votre groupe</p></a>
+
+    {% endif %}
+
 
 <a href="{{ path('profile_edit') }}"><p>Modifier mes informations</p></a>
 
