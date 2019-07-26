@@ -1,7 +1,7 @@
 // == Import : npm
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 
 // == Import : local
@@ -18,7 +18,7 @@ const App = ({ addEventDate, eventDate }) => {
   //   console.log('value :', evt.target.value);
   //   addEventDate(value);
   // }
-  console.log(eventDate);
+  console.log(window.location.origin);
   return (
     <div className="App">
       <header>
@@ -43,6 +43,8 @@ const App = ({ addEventDate, eventDate }) => {
 
       <Router>
         <main>
+          <Link to="/calendar">calendar</Link>
+          <Link to="/">return</Link>
           <Route exact path="/calendar" component={Calendar} />
         </main>
       </Router>
