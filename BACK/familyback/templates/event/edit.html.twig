@@ -6,8 +6,8 @@
 
 <h2>Modifier un événement : </h2>
 
-{{ include('event/_form.html.twig', {'button_label': 'Update'}) }}
+{{ include('event/_form.html.twig') }}
 
-
+<a href="{{ path('event') }}">Retour à la liste des événements</a>
 
 {% endblock %}

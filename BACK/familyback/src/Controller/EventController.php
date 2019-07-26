@@ -60,7 +60,7 @@ class EventController extends AbstractController
 
         return $this->render('event/edit.html.twig', [
             'event' => $event,
-            'form' =>$form,
+            'form' =>$form->createView(),
         ]);
     }
 
@@ -76,7 +76,7 @@ class EventController extends AbstractController
 
             $this->addFlash(
                 'danger',
-                'Suppression effectuée'
+                'L\'événement a bien été supprimé'
             );
         }
 

@@ -15,13 +15,9 @@ class EventType extends AbstractType
             ->add('title')
             ->add('beginingDate')
             ->add('endingDate')
-            ->add('createdAt')
-            ->add('updatedAt')
             ->add('description')
             ->add('place')
             ->add('category')
-            ->add('user')
-            ->add('tribe')
             ->add('tags')
         ;
     }
