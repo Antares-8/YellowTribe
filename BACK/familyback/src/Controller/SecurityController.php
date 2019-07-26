@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Repository\GuestRepository;
 
 class SecurityController extends AbstractController
 {
@@ -33,7 +34,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/signup", name="app_signup", methods={"GET", "POST"})
      */
-    public function signup(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function signup(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuestRepository $guestRepository): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -49,7 +50,36 @@ class SecurityController extends AbstractController
             $user->setPassword($encodedPassword);
 
             // TODO: si l'utilisateur qui s'inscrit a reçu une invitation (càd $user->getEmail == un mail dans Guest), alors il appartient au groupe de l'invitation et est bien redirigé vers sa page de profil
-            
+            // recup les mails des guests (sécurité ?)
+            $guestMails = $guestRepository->findAll(); 
+
+            $userMail = $user->getEmail();
+
+            foreach ($guestMails as $checkMail) {
+                //dump($checkMail->getEmail());
+                if ($userMail == $checkMail->getEmail()) {
+
+                    //dump($user->getTribe());
+
+                    $userTribe = $checkMail->getTribe();
+                    
+                    $user->setTribe($userTribe); 
+
+                    //dump($user->getTribe());
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $entityManager->persist($user);
+                    $entityManager->flush();
+
+                    $this->addFlash(
+                        'success',
+                        'Bienvenue dans la tribu "' . $user->getTribe() . '"! Vous pouvez vous connecter.'
+                    );
+
+                    return $this->redirectToRoute('profile_index');
+
+                } 
+            }
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
