@@ -7,6 +7,8 @@ namespace App\Controller;
 
 use App\Entity\Event;
 use App\Repository\EventRepository;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -36,5 +38,24 @@ class EventController extends AbstractController
         return $this->render('event/show.html.twig', [
             'event' => $event,
         ]);
+    }
+
+    /**
+     * @Route("/event/{id}", name="event_delete", methods={"DELETE"}, requirements={"id"="\d+"})
+     */
+    public function delete(Request $request, Event $event): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$event->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($event);
+            $entityManager->flush();
+
+            $this->addFlash(
+                'danger',
+                'Suppression effectuée'
+            );
+        }
+
+        return $this->redirectToRoute('event');
     }
 }
