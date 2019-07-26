@@ -42,20 +42,31 @@ class UserType extends AbstractType
                     ])
                 ]
             ])
-            //->add('username')
+            ->add('username', TextType::class, [
+                'empty_data' => '',
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min' => 2,
+                        'max' => 32,
+                        'minMessage' => 'Pas assez de catactères (min attendu: {{ limit }}',
+                        'maxMessage' => 'Trop de caractères (max attendu : {{ limit }}',
+                    ])
+                ]
+            ])
             ->add('birthDate', BirthdayType::class, [
                 'placeholder' => [
                     'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
                 ],
                 'required' => false,
             ])
-            ->add('password', RepeatedType:: class, [
-                'Type' => PasswordType::class,
-                'invalid_message' => "The password fields must match",
-                'options' => ['attr' => ['class' => 'password-fiel']],
+            ->add('password', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'invalid_message' => 'The password fields must match.',
+                'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
 
-                'first_options' => ['label' => 'Password'],
+                'first_options'  => ['label' => 'Password'],
                 'second_options' => ['label' => 'Repeat Password'],
             ])
             ->add('email')
@@ -68,7 +79,7 @@ class UserType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'attr' => ['novalidate' => 'novalidate'],
+            'attr' => ['novalidate' => 'novalidate']
         ]);
     }
 }

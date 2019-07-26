@@ -5,9 +5,11 @@
 {% block body %}
 <h1>Page de profil</h1>
 
-<a href="{{ path('send_invitation') }}"><p>Inviter un nouveau membre à rejoindre votre groupe</p></a>
 
-<a href="{{ path('profile_edit') }}"><p>Modifier mes informations</p></a>
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
 
 
 <a href="{{ path('homepage') }}"><p>Retour à l'accueil</p></a>
