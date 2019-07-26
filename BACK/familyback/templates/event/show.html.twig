@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h2>Détail d'un événement :</h2>
+
+    <ul>
+        
+        <li>Titre : {{ event.title }}</li>
+        <li>Date de début : le {{ event.beginingDate|date('d/m/Y')}} à {{ event.beginingDate|date('h') }}h{{ event.beginingDate|date('m')}} </li>
+        <li>Date de fin : le {{ event.endingDate|date('d/m/Y')}} à {{ event.endingDate|date('h') }}h{{ event.endingDate|date('m')}} </li>
+        <li>Description : {{ event.description }}</li>
+        <li>Lieu : {{ event.place }}</li>
+        <li>Commentaires : {#{{ event.comments }}</li>#}
+        <li>Photos : {#{{ event.pictures }}</li>#}
+        <li>Tags : {#{{ event.tags }}</li>#}
+        <li>A l'origine de l'événement : {{ event.user }}</li>
+
+    </ul>
+
+{% endblock %}
