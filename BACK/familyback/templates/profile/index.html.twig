@@ -13,10 +13,10 @@
     {% else %}
 
     <p>Votre tribu est {{ app.user.tribe }}</p>
+    <a href="{{ path('send_invitation') }}"><p>Inviter un nouveau membre à rejoindre votre groupe</p></a>
 
     {% endif %}
 
-<a href="{{ path('send_invitation') }}"><p>Inviter un nouveau membre à rejoindre votre groupe</p></a>
 
 <a href="{{ path('profile_edit') }}"><p>Modifier mes informations</p></a>
 
