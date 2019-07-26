@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Repository\GuestRepository;
 
 class SecurityController extends AbstractController
 {
@@ -33,7 +34,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/signup", name="app_signup", methods={"GET", "POST"})
      */
-    public function signup(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function signup(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuestRepository $guestRepository): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -48,15 +49,44 @@ class SecurityController extends AbstractController
 
             $user->setPassword($encodedPassword);
 
-            // TODO: si l'utilisateur qui s'inscrit a reçu une invitation (càd $user->getEmail == un mail dans Guest), alors il appartient au groupe de l'invitation et est bien redirigé vers sa page de profil
-            
+            // find all guest email (is it a secure method?)
+            $guestMails = $guestRepository->findAll(); 
+            // new user's mail 
+            $userMail = $user->getEmail();
+
+            // check if $userMail match with a $guestMail. If it does, setTribe for the new user
+            foreach ($guestMails as $checkMail) {
+                if ($userMail == $checkMail->getEmail()) {
+
+
+                    $userTribe = $checkMail->getTribe();
+                    
+                    $user->setTribe($userTribe); 
+
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $entityManager->persist($user);
+                    $entityManager->flush();
+
+                    $this->addFlash(
+                        'success',
+                        'Bienvenue dans la tribu "' . $user->getTribe() . '"! Vous pouvez vous connecter.'
+                    );
+
+                    return $this->redirectToRoute('profile_index');
+
+                } 
+            }
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                'Bienvenue chez Yellow Tribe! Vous pouvez vous connecter avec votre email et votre mot de passe'
+            );
             
-            
-            // TODO: si l'email ne match avec aucun Guest, redirection vers Création d'un groupe 'newTribe' 
-            return $this->redirectToRoute('newTribe');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('security/signup.html.twig', [
