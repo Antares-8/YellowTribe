@@ -70,6 +70,7 @@ class User implements UserInterface, \Serializable
     {
         $this->createdAt = new DateTime();
         $this->events = new ArrayCollection();
+        //$this->username = $this->firstname . $this->lastname; // construct a default username 
     }
 
     public function getSalt()
