@@ -11,9 +11,30 @@
         <li>Date de fin : le {{ event.endingDate|date('d/m/Y')}} à {{ event.endingDate|date('h') }}h{{ event.endingDate|date('m')}} </li>
         <li>Description : {{ event.description }}</li>
         <li>Lieu : {{ event.place }}</li>
-        <li>Commentaires : {#{{ event.comments }}</li>#}
-        <li>Photos : {#{{ event.pictures }}</li>#}
-        <li>Tags : {#{{ event.tags }}</li>#}
+        <li>Commentaires :
+             <ol>
+                {% for comment in event.comments %}
+                    <li>{{ comment.content }}</li>
+                {% endfor %}
+
+             </ol>
+        </li>
+        <li>Photos : 
+            <ol>
+                {% for picture in event.pictures %}
+                    <li>{{ picture.url }}</li>
+                {% endfor %}
+    
+            </ol>
+        </li>
+        <li>Tags : 
+            <ol>
+                {% for tag in event.tags %}
+                    <li>{{ tag.title }}</li>
+                {% endfor %}
+       
+            </ol>
+        </li>
         <li>A l'origine de l'événement : {{ event.user }}</li>
 
     </ul>
