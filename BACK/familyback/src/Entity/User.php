@@ -70,6 +70,7 @@ class User implements UserInterface, \Serializable
     {
         $this->createdAt = new DateTime();
         $this->events = new ArrayCollection();
+        //$this->username = $this->firstname . $this->lastname; // construct a default username 
     }
 
     public function getSalt()
@@ -125,7 +126,7 @@ class User implements UserInterface, \Serializable
         return $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword(string $password = null): self // default is null to ensure edit profile without changing password
     {
         $this->password = $password;
 
@@ -257,4 +258,6 @@ class User implements UserInterface, \Serializable
 
         return $this;
     }
+
+
 }
