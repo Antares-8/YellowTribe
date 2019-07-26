@@ -9,13 +9,13 @@ import './app.scss';
 
 // == Composant
 const App = ({ addEventDate, eventDate }) => {
-  const clickHandler = (evt) => {
-    evt.preventDefault();
-    console.log(eventDate);
-    const { value } = evt.target;
-    console.log('value :', evt.target.value);
-    addEventDate(value);
-  }
+  // const clickHandler = (evt) => {
+  //   evt.preventDefault();
+  //   console.log(eventDate);
+  //   const { value } = evt.target;
+  //   console.log('value :', evt.target.value);
+  //   addEventDate(value);
+  // }
   console.log(eventDate);
   return (
     <div className="App">
@@ -27,6 +27,9 @@ const App = ({ addEventDate, eventDate }) => {
           </span>
         </div>
       </header>
+
+      
+      ////
       <div className="sidebar">
         <form>
           <input type="date" name="start" />
@@ -34,6 +37,8 @@ const App = ({ addEventDate, eventDate }) => {
           <button type="submit" onClick={clickHandler}>submit</button>
         </form>
       </div>
+      /////
+
       <main>
         <Calendar />
       </main>

@@ -1,8 +1,13 @@
 {
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.10",
     "react-dom": "^16.8.6",
     "react-is": "^16.8.6",
     "styled-components": "^4.3.2"
+  },
+  "devDependencies": {
+    "json-loader": "^0.5.7"
   }
 }

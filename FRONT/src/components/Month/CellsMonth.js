@@ -1,3 +1,4 @@
+/* eslint-disable no-loop-func */
 // == Import : npm
 import React from 'react';
 import dateFns from 'date-fns';
@@ -6,17 +7,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 // == Import : local
-
+import events from 'src/components/Data/events.json';
 // == Composant
-const CellsMonth = ({ currentDate, selectedDate, onDateClick, eventDate }) => {
+const CellsMonth = ({ currentDate, selectedDate, onDateClick }) => {
 
   const monthStart = dateFns.startOfMonth(currentDate);
   const monthEnd = dateFns.endOfMonth(monthStart);
   const startDate = dateFns.startOfWeek(monthStart);
   const endDate = dateFns.endOfWeek(monthEnd);
-
-  const eventStart= new Date(2019, 6, 10);
-  const eventEnd= new Date(2019, 6, 30);
 
   const dateFormat = 'D';
   const rows = [];
@@ -30,10 +28,7 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick, eventDate }) => {
   const dateClickHandler = (cloneDay) => {
     onDateClick(dateFns.parse(cloneDay));
   };
-  console.log('eventDate', eventDate);
-  console.log('selectedDate', selectedDate);
 
-  
   const createTable = () => {
     while (day <= endDate) {
       for (let i = 1; i < 8; i += 1) {
@@ -42,7 +37,6 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick, eventDate }) => {
         const selected = classNames({
           disabled: dateFns.isSameMonth(day, monthStart) === false,
           selected: dateFns.isSameMonth(day, monthStart) && dateFns.isSameDay(day, selectedDate),
-          event: dateFns.isSameDay(day, eventDate),
         });
         days.push(
           <div
@@ -57,31 +51,49 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick, eventDate }) => {
         );
         day = dateFns.addDays(day, 1);
       }
-
-      const colEventCenterRow = new Date(days[6].key) > new Date(eventStart) && new Date(days[0].key) < new Date(eventEnd) ? 1 : 0;
-      const colSpanEventCenterRow = new Date(days[6].key) > new Date(eventStart) && new Date(days[0].key) < new Date(eventEnd) ? 7 : 0;
-
-
-      const colCalc = days.findIndex(dayC => dayC.key == eventStart) + 1;
-      const col = colCalc === 0 ? colEventCenterRow : colCalc;
-
-      const colSpanCalc = days.findIndex(dayC => dayC.key == eventEnd) + 1;
-      const colSpan = colSpanCalc === 0 ? colSpanEventCenterRow : colSpanCalc - col + 1;
-      const hidden = col === 0 ? 'none' : 'inline';
-
-      const Events = styled.div`
-        grid-column: ${col} / span ${colSpan};
-        display: ${hidden};
-        z-index: 200; 
-        background-color: black;
-      `;
-      console.log(col, colSpan);
       rows.push(
         <div className="row" key={day}>
           {days}
-          <Events>
-          event
-          </Events>
+          {/* I'm begining a loop on the events datas */}
+          {events.map((event) => {
+            // test to know if the row is under or outside an event period
+            const colEventCenterRow = new Date(days[6].key) > new Date(event.beginingDate)
+            && new Date(days[0].key) < new Date(event.endingDate) ? 1 : 0;
+            const colSpanEventCenterRow = new Date(days[6].key) > new Date(event.beginingDate)
+            && new Date(days[0].key) < new Date(event.endingDate) ? 7 : 0;
+            // I'm finding case number where my event beggin
+            const colCalc = days.findIndex(dayC => dateFns.isSameMonth(dayC.key, new Date(event.beginingDate))
+            && dateFns.isSameDay(dayC.key, new Date(event.beginingDate))
+            && dateFns.isSameYear(dayC.key, new Date(event.beginingDate)))
+            + 1;
+            // If th result is 0, it's that the begining is not on the row,
+            // so I use my test to know if it's empty or full row
+            const col = colCalc === 0 ? colEventCenterRow : colCalc;
+
+            // I use the same method for the end of the event and the span of the grid.
+            const colSpanCalc = days.findIndex(dayC => dateFns.isSameMonth(dayC.key, new Date(event.endingDate))
+            && dateFns.isSameDay(dayC.key, new Date(event.endingDate))
+            && dateFns.isSameYear(dayC.key, new Date(event.endingDate)))
+            + 1;
+            
+            const colSpan = colSpanCalc === 0 ? colSpanEventCenterRow : colSpanCalc - col + 1;
+            console.log(colSpanCalc, col, colSpan);
+            // if the test is empty we display the line
+            const hidden = col === 0 ? 'none' : 'inline';
+            // I create a styled components to fixe directly the col and span on the grid-colum style
+            const Events = styled.div`
+              grid-column: ${col} / span ${colSpan};
+              display: ${hidden};
+              z-index: 200; 
+              background-color: black;
+            `;
+            // I return the event in the DOM
+            return (
+              <Events>
+                {event.title}
+              </Events> 
+            )
+          })}
         </div>
       );
       days = [];
