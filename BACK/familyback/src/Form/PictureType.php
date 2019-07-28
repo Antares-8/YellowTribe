@@ -14,7 +14,6 @@ class PictureType extends AbstractType
         $builder
             ->add('url')
             ->add('description')
-            ->add('createdAt')
             ->add('event')
         ;
     }

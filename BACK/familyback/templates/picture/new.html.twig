@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout d'une photo{% endblock %}
+
+{% block body %}
+
+    <h2>Ajoutez une photo</h2>
+
+    {{ include('picture/_form.html.twig') }}
+
+    <a href="{{ path('event') }}"><p>Retour à la liste des événements</p></a>
+
+{% endblock %}
