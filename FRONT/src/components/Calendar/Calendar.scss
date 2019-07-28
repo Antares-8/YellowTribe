@@ -70,40 +70,22 @@ header #logo .icon {
 }
 
 main {
+  display: block;
   margin: 0 auto;
-  margin-top: 2em;
-  float: right;
-  width: 75%;
-  max-width: 80em;
-  margin-right: 1.5em;
+  margin-top: 5em;
+  max-width: 50em;
 }
 
 
 /* GRID */
+
 .row {
-display: flex;
-}
-
-.Month .body .row {
-  display: grid;
-  flex-basis: 100%;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: 1.2rem repeat(5, 0.8rem);
-  grid-auto-flow: dense;
-  grid-gap: 3px 6px;
-}
-
-.week .body .row {
-  display: grid;
-  flex-basis: 100%;
-  grid-template-columns: 1.2rem repeat(5, 0.8rem);
-  grid-template-rows: repeat(24, 1fr);
-  grid-auto-flow: column;
-  grid-gap: 6px 3px;
-}
-
-.week .body .cell {
-  grid-column: 1/1; 
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .row-middle {
@@ -134,6 +116,7 @@ display: flex;
 
 /* Calendar */
 
+
 .calendar {
   display: block;
   position: relative;
@@ -142,24 +125,11 @@ display: flex;
   border: 1px solid var(--border-color);
 }
 
-.calendar .type {
-  position: fixed;
-  left: 1.5em;
-  width: 19%;
-}
 .calendar .header {
-  position: fixed;
-  left: 1.5em;
-  top: 14em;
-  width: 19%;
-}
-
-.calendar .header,
-.calendar .type {
   text-transform: uppercase;
   font-weight: 700;
   font-size: 115%;
-  padding: 0.5em 0;
+  padding: 1.5em 0;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -192,7 +162,7 @@ display: flex;
 }
 
 .calendar .week .body {
-  display: flex;
+  display: flex; 
 }
 
 .calendar .body .cell {
@@ -215,23 +185,15 @@ display: flex;
   border-image: linear-gradient(45deg, #1a8fff 0%,#53cbf1 40%);
   border-image-slice: 1;
 }
-.calendar .body .event {
-  border-left: 10px solid transparent;
-  border-image: linear-gradient(45deg, #ff3c1a 0%,#f17853 40%);
-  border-image-slice: 1;
-}
 
 .calendar .body .row {
   border-bottom: 1px solid var(--border-color);
 }
-
-// .calendar .week .body .row {
-//   display: flex;
-//   -webkit-flex-direction: column;
-//   flex-wrap: wrap;
-//   height: 1180px;
-//   width: calc(100%/7);
-// }
+.calendar .week .body .row {
+  display: flex;
+  flex-direction: column;
+  height: 950px;
+}
 
 .calendar .body .row:last-child {
   border-bottom: none;
@@ -273,4 +235,8 @@ display: flex;
   transition: .5s ease-in;
 }
 
-
+.calendar .body .col {
+  flex-grow: 0;
+  flex-basis: calc(100%/7);
+  width: calc(100%/7);
+}
