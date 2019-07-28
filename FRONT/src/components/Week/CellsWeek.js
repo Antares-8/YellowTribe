@@ -32,7 +32,7 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick }) => {
 
   const createTable = () => {
     while (hour <= endDate) {
-      for (let i = 0; i < 24; i += 1) {
+      for (let i = 1; i < 25; i += 1) {
         formattedDate = dateFns.format(hour, dateFormat);
         const clonehour = hour;
         const selected = classNames({
@@ -60,7 +60,7 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick }) => {
             const colEventCenterRow = new Date(hours[6].key) > new Date(event.beginingDate)
             && new Date(hours[0].key) < new Date(event.endingDate) ? 1 : 0;
             const colSpanEventCenterRow = new Date(hours[6].key) > new Date(event.beginingDate)
-            && new Date(hours[0].key) < new Date(event.endingDate) ? 7 : 0;
+            && new Date(hours[0].key) < new Date(event.endingDate) ? 24 : 0;
             // I'm finding case number where my event beggin
             const colCalc = hours.findIndex(hourC => dateFns.isSameHour(hourC.key, new Date(event.beginingDate))
             && dateFns.isSameDay(hourC.key, new Date(event.beginingDate))
@@ -84,7 +84,7 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick }) => {
             const hidden = col === 0 ? 'none' : 'inline';
             // I create a styled components to fixe directly the col and span on the grid-colum style
             const Events = styled.div`
-              grid-column: ${col} / span ${colSpan};
+              grid-row: ${col} / span ${colSpan};
               display: ${hidden};
               z-index: 200; 
               background-color: black;

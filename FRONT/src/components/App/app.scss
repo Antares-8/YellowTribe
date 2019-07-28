@@ -80,14 +80,30 @@ main {
 
 
 /* GRID */
-
 .row {
+display: flex;
+}
+
+.Month .body .row {
   display: grid;
   flex-basis: 100%;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: 1.2rem repeat(5, 0.8rem);
   grid-auto-flow: dense;
   grid-gap: 3px 6px;
+}
+
+.week .body .row {
+  display: grid;
+  flex-basis: 100%;
+  grid-template-columns: 1.2rem repeat(5, 0.8rem);
+  grid-template-rows: repeat(24, 1fr);
+  grid-auto-flow: column;
+  grid-gap: 6px 3px;
+}
+
+.week .body .cell {
+  grid-column: 1/1; 
 }
 
 .row-middle {
@@ -134,7 +150,7 @@ main {
 .calendar .header {
   position: fixed;
   left: 1.5em;
-  top: 11em;
+  top: 14em;
   width: 19%;
 }
 
@@ -209,13 +225,13 @@ main {
   border-bottom: 1px solid var(--border-color);
 }
 
-.calendar .week .body .row {
-  display: flex;
-  -webkit-flex-direction: column;
-  flex-wrap: wrap;
-  height: 1180px;
-  width: calc(100%/7);
-}
+// .calendar .week .body .row {
+//   display: flex;
+//   -webkit-flex-direction: column;
+//   flex-wrap: wrap;
+//   height: 1180px;
+//   width: calc(100%/7);
+// }
 
 .calendar .body .row:last-child {
   border-bottom: none;
