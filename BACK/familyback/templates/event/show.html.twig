@@ -39,8 +39,12 @@
 
     </ul>
 
-    <a href="{{ path('event_edit', {'id': event.id}) }}">Modifier</a>
+    <a href="{{ path('event_edit', {'id': event.id}) }}"><button class="btn">Modifier</button>
+    </a>
 
     {{ include('event/_delete_form.html.twig') }}
+
+    <a href="{{ path('event') }}"><p>Retour à la liste des events</p></a>
+    <a href="{{ path('homepage') }}"><p>Retour à l'accueil</p></a>
 
 {% endblock %}
