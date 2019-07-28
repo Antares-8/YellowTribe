@@ -9,6 +9,7 @@ import { Input } from 'semantic-ui-react';
 // == Import : local
 import Calendar from 'src/containers/Calendar';
 import Month from 'src/components/Month';
+import 'semantic-ui-css/semantic.min.css';
 import './app.scss';
 
 // == Composant
