@@ -30,6 +30,35 @@ class EventController extends AbstractController
     }
 
     /**
+     * @Route("/event/new", name="event_new", methods={"GET","POST"})
+     */
+    public function new(Request $request): Response
+    {
+        $event = new Event();
+        $form = $this->createForm(EventType::class, $event);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($event);
+            $entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                'Nouvel événement créé !'
+            );
+            
+            return $this->redirectToRoute('event');
+        }
+
+        return $this->render('event/new.html.twig', [
+            'event' => $event,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
      * @Route("/event/{id}", name="event_show", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function show(Event $event)
