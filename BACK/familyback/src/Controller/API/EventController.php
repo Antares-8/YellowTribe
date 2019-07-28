@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Controller\Api;
+namespace App\Controller\API;
 
+use App\Repository\EventRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -19,6 +20,6 @@ class EventController extends AbstractController
     {
         $events = $repository->findAll();
 
-        return $this->json($events); // Convertit le content-type en json et pas en HTML
+        return $this->json($events); // Convert the content-type into json instead of HTML
     }
 }
