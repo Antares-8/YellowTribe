@@ -19,6 +19,29 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
+    /**
+     * Get Events ordered by updatedAt date
+     * 
+     *  @return Event[] Returns an array of Event objects
+     */
+    public function findAllOrderedByUpdatedAtDate()
+    {
+        $query = $this->createQueryBuilder('e')
+                      ->orderBy('m.updatedAt', 'ASC');
+
+        return $query->getQuery()->getResult();
+    }
+
+    // Get 10 last results
+    public function lastRelease($limit){
+
+        $query = $this->createQueryBuilder('e')
+                      ->orderBy('e.id', 'DESC')
+                      ->setMaxResults( $limit );
+
+        return $query->getQuery()->getResult();
+    }
+
     // /**
     //  * @return Event[] Returns an array of Event objects
     //  */

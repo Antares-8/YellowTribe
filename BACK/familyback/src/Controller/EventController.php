@@ -21,10 +21,13 @@ class EventController extends AbstractController
      */
     public function index(EventRepository $eventRepository)
     {
-        $events = $eventRepository->findAll();
+        $events = $eventRepository->findAllOrderedByUpdatedAtDate();
+
+        $lastEvents = $eventRepository->lastRelease(10);
 
         return $this->render('event/index.html.twig', [
             'events' => $events,
+            'lastEvents' => $lastEvents,
             'title' => 'Calendrier',
         ]);
     }
