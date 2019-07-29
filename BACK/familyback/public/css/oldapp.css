@@ -1,0 +1,43 @@
+/* HOMEPAGE */
+.homepage_container {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* HEADER */
+.header {
+  display: flex; 
+  align-items: center;
+}
+
+#logo_placeholder {
+  margin: 1.5em;
+  width: 100px;
+  height: 100px;
+  border: 1px solid black; 
+}
+
+
+/* FOOTER */
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 1em 0 1em 0;
+    background-color: black;
+    color: grey;
+    text-align: center;
+  }
+
+.footer a {
+  text-decoration: none;
+  color: grey;
+}
+
+.footer a:hover {
+  color: white;
+}
