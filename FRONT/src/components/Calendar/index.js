@@ -6,6 +6,8 @@ import Month from 'src/components/Month';
 import Week from 'src/components/Week';
 import Year from 'src/components/Year';
 
+import './calendar.scss';
+
 
 const Calendar = ({ prevCalendarType, nextCalendarType, calendarType }) => {
   const clickLeftHandler = () => {
