@@ -126,7 +126,7 @@ class Event
         return $this->endingDate;
     }
 
-    public function setEndingDate(\DateTimeInterface $endingDate): self
+    public function setEndingDate(\DateTimeInterface $endingDate = null): self
     {
         $this->endingDate = $endingDate;
 
