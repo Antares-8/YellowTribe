@@ -17,17 +17,27 @@ class EventController extends AbstractController
 {
 
     /**
-     * @Route("/event", name="event", methods={"GET","POST"})
+     * @Route("/newsfeed", name="newsfeed", methods={"GET","POST"})
      */
-    public function index(EventRepository $eventRepository)
+    public function indexNewsfeed(EventRepository $eventRepository)
     {
         $events = $eventRepository->findAllOrderedByUpdatedAtDate();
 
         $lastEvents = $eventRepository->lastRelease(10);
 
-        return $this->render('event/index.html.twig', [
+        return $this->render('event/newsfeed.html.twig', [
             'events' => $events,
             'lastEvents' => $lastEvents,
+            'title' => 'Fil d\'actualités',
+        ]);
+    }
+
+    /**
+     * @Route("/calendar", name="calendar", methods={"GET","POST"})
+     */
+    public function indexCalendar(EventRepository $eventRepository)
+    {
+        return $this->render('event/index.html.twig', [
             'title' => 'Calendrier',
         ]);
     }

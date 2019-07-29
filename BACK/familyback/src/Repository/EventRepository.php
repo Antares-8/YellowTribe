@@ -27,7 +27,7 @@ class EventRepository extends ServiceEntityRepository
     public function findAllOrderedByUpdatedAtDate()
     {
         $query = $this->createQueryBuilder('e')
-                      ->orderBy('m.updatedAt', 'ASC');
+                      ->orderBy('e.updatedAt', 'DESC');
 
         return $query->getQuery()->getResult();
     }

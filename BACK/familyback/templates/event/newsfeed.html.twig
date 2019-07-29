@@ -6,11 +6,14 @@
 <h1>Page Calendrier</h1>
 <a href="{{ path('homepage') }}"><p>Retour à l'accueil</p></a>
 
-   <div id="root"></div>
+{% for event in events %}
 
+<div class="card">
+    <div class="card-body">
+        {{ event.title }}  
+    </div>
+</div>
 
-
-
-
+{% endfor %}
 
 {% endblock %}
