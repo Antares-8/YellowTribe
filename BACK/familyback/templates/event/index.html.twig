@@ -4,21 +4,13 @@
 
 {% block body %}
 <h1>Page Calendrier</h1>
-
-
-{% for event in events %}
-
-    <div> 
-        <a href=" {{ path('event_show', {'id': event.id }) }}">
-            {{ event.title }}
-        </a>
-    </div>
-
-{% endfor %}
-
-
-
 <a href="{{ path('homepage') }}"><p>Retour à l'accueil</p></a>
+
+
+   <div id="root"></div>
+
+
+
 
 
 
