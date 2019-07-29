@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\CommentRepository;
 
 class EventController extends AbstractController
 {
@@ -21,6 +22,10 @@ class EventController extends AbstractController
      */
     public function indexNewsfeed(EventRepository $eventRepository)
     {
+        // TODO: créer une variable $actualités qui récupère toutes les nouveautés (event, comment, picture, member...) d'un groupe selon date d'update 
+        // TODO: créer une réquête custom (dans GroupRepository?) qui les récupère et les tri
+        // TODO: appeler ce repository dans cette méthode
+
         $events = $eventRepository->findAllOrderedByUpdatedAtDate();
 
         $lastEvents = $eventRepository->lastRelease(10);
