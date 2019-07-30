@@ -2,6 +2,7 @@
 /* GRID */
 .row {
   display: flex;
+  color:red;
   }
   
   .Month .body .row {
@@ -22,8 +23,8 @@
     grid-gap: 6px 3px;
   }
   
-  .week .body .cell {
-    grid-column: 1/1; 
+  .week .body .row .cell {
+    grid-column: 1/8; 
   }
   
   .row-middle {
@@ -114,6 +115,14 @@
   
   .calendar .week .body {
     display: flex;
+  }
+
+  .calendar .week .days.row {
+    text-align: left;
+  }
+
+  .calendar .week .days .number {
+    font-size: 130%;
   }
   
   .calendar .body .cell {

@@ -10,7 +10,8 @@ import french from 'date-fns/locale/fr';
 // == Composant
 const DaysWeek = ({ currentDate }) => {
 
-  const dateFormat = 'dddd D';
+  const dateDay = 'dddd';
+  const dateNumber = 'D'
   const days = [];
   const startDate = dateFns.startOfWeek(currentDate);
 
@@ -18,7 +19,8 @@ const DaysWeek = ({ currentDate }) => {
     for (let i = 0; i < 7; i += 1) {
       days.push(
         <div className="col col-center" key={i}>
-          {dateFns.format(dateFns.addDays(startDate, i), dateFormat, { locale: french })}
+          {dateFns.format(dateFns.addDays(startDate, i), dateDay, { locale: french })}
+          <div className="number">{dateFns.format(dateFns.addDays(startDate, i), dateNumber)} </div>
         </div>
       );
     }

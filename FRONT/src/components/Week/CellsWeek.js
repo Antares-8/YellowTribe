@@ -31,7 +31,9 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick }) => {
 
 
   const createTable = () => {
+    let rowEvent = 1;
     while (hour <= endDate) {
+      let keyCell = 1;
       for (let i = 1; i < 25; i += 1) {
         formattedDate = dateFns.format(hour, dateFormat);
         const clonehour = hour;
@@ -53,7 +55,6 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick }) => {
       }
       rows.push(
         <div className="row" key={hour}>
-          {hours}
           {/* I'm begining a loop on the events datas */}
           {events.map((event) => {
             // test to know if the row is under or outside an event period
@@ -79,7 +80,7 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick }) => {
             + 1;
             
             const colSpan = colSpanCalc === 0 ? colSpanEventCenterRow : colSpanCalc - col + 1;
-            console.log(colSpanCalc, col, colSpan);
+            rowEvent += 1; 
             // if the test is empty we display the line
             const hidden = col === 0 ? 'none' : 'inline';
             // I create a styled components to fixe directly the col and span on the grid-colum style
@@ -91,13 +92,15 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick }) => {
             `;
             // I return the event in the DOM
             return (
-              <Events>
+              <Events key={`${event.beginingDate}${hour}`}>
                 {event.title}
               </Events> 
             )
           })}
+          {hours}
         </div>
       );
+      rowEvent = 1;
       hours = [];
     }
   };
