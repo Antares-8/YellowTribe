@@ -32,7 +32,14 @@ class EventController extends AbstractController
 
         $comments = $commentRepository->findAllOrderedByCreatedAtDate();
 
-        $news = [$events, $comments];
+        $news = [];
+        foreach ($events as $event) {
+            $news[] = $event;
+        }
+        
+        foreach ($comments as $comment) {
+            $news[] = $comment;
+        }
 
         //$test = array_values($news);
 

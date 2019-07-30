@@ -9,26 +9,27 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         {# <link rel="stylesheet" href="{{ asset('css/app.css') }}"> #}
         <link href="{{ asset('css/1.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet"></head>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    </head>
 
         {% block stylesheets %}{% endblock %}
     </head>
 
 
     <body>
-        <header>
-            <div class="header">
-                <div id="logo_placeholder" class="text-center">
+        {# <header> #}
+            {# <div class="header"> #}
+                {# <div id="logo_placeholder" class="text-center">
                     LOGO
                     <i class="fab fa-forumbee"></i>
-                </div>
+                </div> #}
 
                 {% block header %}
 
 
                 {% endblock %}
-            </div>
-        </header>
+            {# </div> #}
+        {# </header> #}
 
             {% for label, messages in app.flashes %}
                 {% for message in messages %}
@@ -45,19 +46,30 @@
         {% endblock %}
 
 
+        <script type="text/javascript" src="{{ asset('js/vendors.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('/app.js') }}"></script>
+        {% block javascripts %}{% endblock %}
 
-        <footer class="footer">
+
+        <script type="text/javascript" src="{{ asset('js/vendors.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+
+        {# <footer class="footer">
             <div class="container">
                     {{ '©'|raw }} 2019 - <a href="{{ path('homepage') }}">Yellow Tribe</a> |
                     <a href="{{ path('legal_mention') }}">Mentions légales</a>    | 
                     <a href="{{ path('contact_us') }}">Nous contacter</a>
             </div>
         </footer>
+<<<<<<< HEAD
 
         <script type="text/javascript" src="{{ asset('js/vendors.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
         {% block javascripts %}{% endblock %}
 
 
+=======
+>>>>>>> master
     </body>
 </html>

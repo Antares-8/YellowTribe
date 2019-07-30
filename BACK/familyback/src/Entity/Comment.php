@@ -32,10 +32,15 @@ class Comment
      */
     private $event;
 
-    public function __construct()
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
+     */
+    private $user;
+
+    public function __construct() 
     {
         $this->createdAt = new DateTime();
-    }
+    } 
 
     public function getId(): ?int
     {
@@ -77,6 +82,19 @@ class Comment
 
         return $this;
     }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
     public function __toString()
     {
         return $this->content;

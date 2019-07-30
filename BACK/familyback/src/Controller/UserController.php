@@ -26,7 +26,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/profile/edit", name="edit", methods={"GET", "POST"})
+     * @Route("/edit", name="edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {

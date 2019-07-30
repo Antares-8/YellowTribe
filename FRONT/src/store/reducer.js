@@ -1,4 +1,15 @@
 import dateFns from 'date-fns';
+import dataCategories from 'src/components/Data/events.json';
+
+const categories = dataCategories.map(dataCategory => dataCategory.category);
+const categoriesState = {};
+categories.forEach((categorie) => {
+  categoriesState[categorie] = true;
+  return ({
+    ...categoriesState,
+    categorie,
+  });
+});
 
 // == Initial State
 const initialState = {
@@ -6,7 +17,9 @@ const initialState = {
   selectedDate: new Date(),
   eventDate: new Date(2019, 7, 24),
   calendarType: 'mois',
+  modalNewEvent: false,
 };
+
 
 // == Types
 const DATE_CLICK = 'DATE_CLICK';
@@ -19,6 +32,8 @@ const PREV_WEEK = 'PREV_WEEK';
 const NEXT_YEAR = 'NEXT_YEAR';
 const PREV_YEAR = 'PREV_YEAR';
 const ADD_EVENT = 'ADD_EVENT';
+const ADD_CATEGORY = 'ADD_CATEGORY';
+const MODAL_EVENT = 'MODAL_EVENT';
 
 
 // == Reducer
@@ -29,7 +44,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         selectedDate: action.semaines,
       };
- 
+
     case NEXT_YEAR:
       return {
         ...state,
@@ -108,6 +123,20 @@ const reducer = (state = initialState, action = {}) => {
         eventDate: action.value,
       };
 
+    case ADD_CATEGORY: {
+      const { category } = action;
+      return {
+        ...state,
+        [category]: true,
+      };
+    }
+
+    case MODAL_EVENT:
+      return {
+        ...state,
+        modalNewEvent: !state.modalNewEvent,
+      };
+
     default:
       return state;
   }
@@ -145,6 +174,13 @@ export const prevYear = () => ({
 export const addEventDate = value => ({
   type: ADD_EVENT,
   value,
+});
+export const addCategory = category => ({
+  type: ADD_CATEGORY,
+  category,
+});
+export const showModalNewEvent = () => ({
+  type: MODAL_EVENT,
 });
 
 

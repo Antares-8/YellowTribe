@@ -9,20 +9,10 @@ import { Button } from 'semantic-ui-react';
 
 // == Import : local
 import Calendar from 'src/containers/Calendar';
-import Month from 'src/components/Month';
-import Header from 'src/components/Header';
-import Sidebar from 'src/containers/Sidebar';
 import './app.scss';
 
 // == Composant
 const App = ({ addEventDate, eventDate }) => {
-  // const clickHandler = (evt) => {
-  //   evt.preventDefault();
-  //   console.log(eventDate);
-  //   const { value } = evt.target;
-  //   console.log('value :', evt.target.value);
-  //   addEventDate(value);
-  // }
   return (
     <div className="App">
       <Header />

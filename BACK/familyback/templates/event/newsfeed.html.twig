@@ -16,6 +16,21 @@
 
 {% endfor %}
 
+
+{% for new in news %}
+
+<div class="card">
+    <div class="card-body">
+            {{ new }} écrit par {{ new.id }}
+    </div>
+</div>
+
+{% endfor %}
+
+<pre>
+{{ dump(news) }}
+</pre>
+
 {# 
 <pre>
     {{ events|json_encode(constant('JSON_FORCE_OBJECT')) }}

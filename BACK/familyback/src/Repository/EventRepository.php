@@ -32,10 +32,21 @@ class EventRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
-    /**
-     * SELECT id, created_at, title FROM event UNION ALL SELECT id, created_at, content FROM comment
-     * pour event => user_id 
-     */
+    // /**
+    //  * SELECT id, created_at, title, user_id FROM event UNION ALL SELECT id, created_at, content, user_id FROM comment
+    //  *  
+    //  */
+    // public function findAllNews()
+    // {
+    //     $qb = $this->getEntityManager()->createQuery('
+    //         SELECT id, created_at, title, user_id
+    //         FROM App\Entity\Event event
+    //         UNION ALL SELECT id, created_at, content, user_id
+    //         FROM App\Entity\Comment comment
+    //     ');
+
+    //     return $qb->getResult();
+    // }
 
     // Get 10 last results
     public function lastRelease($limit){
