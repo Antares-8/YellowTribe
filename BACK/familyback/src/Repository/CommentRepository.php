@@ -19,6 +19,19 @@ class CommentRepository extends ServiceEntityRepository
         parent::__construct($registry, Comment::class);
     }
 
+    /**
+     * Get Comments ordered by updatedAt date
+     * 
+     *  @return Comment[] Returns an array of Comment objects
+     */
+    public function findAllOrderedByCreatedAtDate()
+    {
+        $query = $this->createQueryBuilder('c')
+                      ->orderBy('c.createdAt', 'DESC');
+
+        return $query->getQuery()->getResult();
+    }
+    
     // /**
     //  * @return Comment[] Returns an array of Comment objects
     //  */

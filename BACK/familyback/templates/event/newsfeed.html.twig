@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<h1>Page Calendrier</h1>
+<a href="{{ path('homepage') }}"><p>Retour à l'accueil</p></a>
+
+
+{% for new in news %}
+
+<div class="card">
+    <div class="card-body">
+            {{ new }} écrit par {{ new.user }}
+    </div>
+</div>
+
+{% endfor %}
+
+{# 
+<pre>
+    {{ events|json_encode(constant('JSON_FORCE_OBJECT')) }}
+</pre> #}
+
+{% endblock %}

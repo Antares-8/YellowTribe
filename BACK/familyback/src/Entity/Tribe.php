@@ -38,11 +38,17 @@ class Tribe
      */
     private $users;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Tag", mappedBy="tribe")
+     */
+    private $tags;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
         $this->guests = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -149,6 +155,37 @@ class Tribe
             // set the owning side to null (unless already changed)
             if ($user->getTribe() === $this) {
                 $user->setTribe(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Tag[]
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+            $tag->setTribe($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): self
+    {
+        if ($this->tags->contains($tag)) {
+            $this->tags->removeElement($tag);
+            // set the owning side to null (unless already changed)
+            if ($tag->getTribe() === $this) {
+                $tag->setTribe(null);
             }
         }
 
