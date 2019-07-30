@@ -9,7 +9,8 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         {# <link rel="stylesheet" href="{{ asset('css/app.css') }}"> #}
         <link href="{{ asset('css/1.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet"></head>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    </head>
 
         {% block stylesheets %}{% endblock %}
     </head>
@@ -45,6 +46,9 @@
         {% endblock %}
 
 
+        <script type="text/javascript" src="{{ asset('js/vendors.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('/app.js') }}"></script>
+        {% block javascripts %}{% endblock %}
 
 
         <script type="text/javascript" src="{{ asset('js/vendors.js') }}"></script>
@@ -57,7 +61,11 @@
                     <a href="{{ path('legal_mention') }}">Mentions légales</a>    | 
                     <a href="{{ path('contact_us') }}">Nous contacter</a>
             </div>
+<<<<<<< HEAD
+        </footer>
+=======
         </footer> #}
 
+>>>>>>> f022dbb9ee99ab629d3c1b4af4d7cc3288f2c4f1
     </body>
 </html>
