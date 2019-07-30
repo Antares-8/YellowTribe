@@ -17,19 +17,19 @@
 
 
     <body>
-        <header>
-            <div class="header">
-                <div id="logo_placeholder" class="text-center">
+        {# <header> #}
+            {# <div class="header"> #}
+                {# <div id="logo_placeholder" class="text-center">
                     LOGO
                     <i class="fab fa-forumbee"></i>
-                </div>
+                </div> #}
 
                 {% block header %}
 
 
                 {% endblock %}
-            </div>
-        </header>
+            {# </div> #}
+        {# </header> #}
 
             {% for label, messages in app.flashes %}
                 {% for message in messages %}
@@ -50,12 +50,22 @@
         <script type="text/javascript" src="{{ asset('/app.js') }}"></script>
         {% block javascripts %}{% endblock %}
 
-        <footer class="footer">
+
+        <script type="text/javascript" src="{{ asset('js/vendors.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+
+        {# <footer class="footer">
             <div class="container">
                     {{ '©'|raw }} 2019 - <a href="{{ path('homepage') }}">Yellow Tribe</a> |
                     <a href="{{ path('legal_mention') }}">Mentions légales</a>    | 
                     <a href="{{ path('contact_us') }}">Nous contacter</a>
             </div>
+<<<<<<< HEAD
         </footer>
+=======
+        </footer> #}
+
+>>>>>>> f022dbb9ee99ab629d3c1b4af4d7cc3288f2c4f1
     </body>
 </html>
