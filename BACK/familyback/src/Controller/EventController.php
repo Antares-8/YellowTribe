@@ -20,7 +20,7 @@ class EventController extends AbstractController
     /**
      * @Route("/newsfeed", name="newsfeed", methods={"GET","POST"})
      */
-    public function indexNewsfeed(EventRepository $eventRepository)
+    public function indexNewsfeed(EventRepository $eventRepository, CommentRepository $commentRepository)
     {
         // TODO: créer une variable $actualités qui récupère toutes les nouveautés (event, comment, picture, member...) d'un groupe selon date d'update 
         // TODO: créer une réquête custom (dans GroupRepository?) qui les récupère et les tri
@@ -30,10 +30,21 @@ class EventController extends AbstractController
 
         $lastEvents = $eventRepository->lastRelease(10);
 
+        $comments = $commentRepository->findAllOrderedByCreatedAtDate();
+
+        $news = [$events, $comments];
+
+        //$test = array_values($news);
+
+        //$newsAPI = json_encode($events);
+
         return $this->render('event/newsfeed.html.twig', [
             'events' => $events,
             'lastEvents' => $lastEvents,
+            'comments' => $comments,
             'title' => 'Fil d\'actualités',
+            //'newsAPI' => $newsAPI,
+            'news' => $news,
         ]);
     }
 
@@ -67,7 +78,7 @@ class EventController extends AbstractController
                 'Nouvel événement créé !'
             );
             
-            return $this->redirectToRoute('event');
+            return $this->redirectToRoute('calendar');
         }
 
         return $this->render('event/new.html.twig', [

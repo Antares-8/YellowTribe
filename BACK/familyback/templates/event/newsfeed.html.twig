@@ -10,10 +10,15 @@
 
 <div class="card">
     <div class="card-body">
-        {{ event.title }}  
+        {{ event.title|json_encode }}  
     </div>
 </div>
 
 {% endfor %}
+
+{# 
+<pre>
+    {{ events|json_encode(constant('JSON_FORCE_OBJECT')) }}
+</pre> #}
 
 {% endblock %}
