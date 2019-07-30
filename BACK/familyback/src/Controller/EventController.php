@@ -8,11 +8,12 @@ namespace App\Controller;
 use App\Entity\Event;
 use App\Form\EventType;
 use App\Repository\EventRepository;
+use App\Repository\CommentRepository;
+use JMS\Serializer\SerializerBuilder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Repository\CommentRepository;
 
 class EventController extends AbstractController
 {
@@ -28,8 +29,11 @@ class EventController extends AbstractController
 
         // TODO: tri par id ? L'id le plus haut étant le dernier créé, l'ordre peut se faire avec cette donnée
 
+        //$serializer = SerializerBuilder::create()->build();
         $events = $eventRepository->findAllOrderedByUpdatedAtDate();
         //$events = $eventRepository->findAll();
+        //$jsonNews = $serializer->serialize($events, 'json');
+        //dump($jsonNews);
 
         $lastEvents = $eventRepository->lastRelease(10);
 
@@ -44,7 +48,8 @@ class EventController extends AbstractController
         foreach ($comments as $comment) {
             $news[] = $comment;
         }
-
+        //$jsonNews = $serializer->serialize($news, 'json');
+        //dump($jsonNews);
         //$test = array_values($news);
 
         //$newsAPI = json_encode($events);
