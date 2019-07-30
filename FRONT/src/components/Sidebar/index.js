@@ -1,20 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Form, Checkbox } from 'semantic-ui-react';
+import classNames from 'class-names';
 
+import ModalNewEvent from 'src/components/Event/ModalNewEvent';
 import './sidebar.scss';
 
 
-const Sidebar = () => {
-
-  const clickHandler = () => {
-
-  }
+const Sidebar = ({ }) => {
 
   return (
     <div className="Sidebar">
+      <ModalNewEvent />
       <div className="title" onClick="clickHandler">
         categories
       </div>
@@ -33,7 +30,8 @@ const Sidebar = () => {
 };
 
 Sidebar.propTypes = {
-  
+  showModalNewEvent: PropTypes.func.isRequired,
+  modalSidebar: PropTypes.bool.isRequired,
 };
 
 // == Export
