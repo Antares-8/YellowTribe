@@ -6,30 +6,16 @@
 <h1>Page Calendrier</h1>
 <a href="{{ path('homepage') }}"><p>Retour à l'accueil</p></a>
 
-{% for event in events %}
-
-<div class="card">
-    <div class="card-body">
-        {{ event.title|json_encode }}  
-    </div>
-</div>
-
-{% endfor %}
-
 
 {% for new in news %}
 
 <div class="card">
     <div class="card-body">
-            {{ new }} écrit par {{ new.id }}
+            {{ new }} écrit par {{ new.user }}
     </div>
 </div>
 
 {% endfor %}
-
-<pre>
-{{ dump(news) }}
-</pre>
 
 {# 
 <pre>
