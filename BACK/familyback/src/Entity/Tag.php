@@ -28,6 +28,11 @@ class Tag
      */
     private $events;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tribe", inversedBy="tags")
+     */
+    private $tribe;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
@@ -74,6 +79,18 @@ class Tag
             $this->events->removeElement($event);
             $event->removeTag($this);
         }
+
+        return $this;
+    }
+
+    public function getTribe(): ?Tribe
+    {
+        return $this->tribe;
+    }
+
+    public function setTribe(?Tribe $tribe): self
+    {
+        $this->tribe = $tribe;
 
         return $this;
     }
