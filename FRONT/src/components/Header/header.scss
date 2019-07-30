@@ -1,10 +1,13 @@
 .App header {
   display: flex; 
+  height: 5.5em;
+  padding: 1.5em 1em; 
 }
 
 .headerLeft {
   display: flex; 
   width: 100%;
+  align-items: center;
 }
 
 .headerRight {
@@ -12,16 +15,46 @@
   justify-content: flex-end;
   width: 100%;
   float: right;
+  align-items: center;
+}
+
+//// RIGHT /////
+
+header #logo {
+  font-size: 130%;
+  text-align: center;
+  color: var(--main-color);
+  line-height: 1;
+  margin-right: 4em;
+}
+
+header #logo .icon {
+  padding-right: .25em;
+}
+
+.ui.input > input {
+  padding: 0.4em 0.7em;
+  width: 20em;
 }
 
 .iconeNews {
-  display: inline-block;
-  border-radius: 60px;
+  display: flex;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+  border-radius: 2em;
   box-shadow: 0px 0px 2px #888;
   padding: 0.5em 0.6em;
+  margin-left: 1.3em;
 }
 
-.profilePicture {
+//// LEFT /////
+
+.headerRight .username {
+  margin-right: 1.7em;
+}
+
+.headerRight .profilePicture {
   width: 1.7em; 
   height: 1.7em; 
   border-radius: 1.7em;
@@ -29,13 +62,15 @@
 }
 
 .ui.buttons .or:before {
-  margin-top: -1.29em;
+  margin-top: -1.26em;
   margin-left: -1em;
-  width: 2.8em;
-  height: 2.8em;
+  width: 2.71em;
+  height: 2.71em;
   border: 2px solid black;
 }
 
 .ui.buttons .groupButton {
   border: 1px solid black;
+  padding-left: 2.4em;
+  text-transform: uppercase;
 }

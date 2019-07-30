@@ -1,39 +1,51 @@
 // == Import : npm
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Button } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 
 
 // == Import : local
 import Calendar from 'src/containers/Calendar';
+import Event from 'src/components/Event';
+// import News from 'src/components/News';
 import Month from 'src/components/Month';
 import Header from 'src/components/Header';
 import Sidebar from 'src/containers/Sidebar';
 import './app.scss';
 
 // == Composant
-const App = ({ addEventDate, eventDate }) => {
-  // const clickHandler = (evt) => {
-  //   evt.preventDefault();
-  //   console.log(eventDate);
-  //   const { value } = evt.target;
-  //   console.log('value :', evt.target.value);
-  //   addEventDate(value);
-  // }
+const App = ({ }) => {
+  const [activeItem, setActiveItem] = 
+  window.location.pathname === '/calendar' 
+  ? useState('calendar')
+  : window.location.pathname === '/'
+  ? useState('calendar')
+  : useState('news')
+
+  const navHandle = evt => setActiveItem({ activeItem: evt.target.name });
+  console.log(activeItem);
+
   return (
     <div className="App">
-      <Header />
       <Router>
-        <main>
-          <Link to="/calendar">calendar</Link>
-          <Link to="/">return</Link>
-          <Route exact path="/calendar" component={Calendar} />
-        </main>
+        <Header />
+          <main>
+            <nav>
+              <Menu tabular>
+                <Menu.Item active={activeItem.activeItem === 'calendar' || activeItem === 'calendar'} onClick={navHandle}><Link to="/calendar" name="calendar">calendar</Link></Menu.Item>
+                <Menu.Item active={activeItem.activeItem === 'news' || activeItem === 'news'} onClick={navHandle}><Link to="/news" name="news">fil d'actu</Link></Menu.Item>
+              </Menu>
+            </nav>
+            <Route exact path="/calendar" component={Calendar} />
+            <Route exact path="/" component={Calendar} />
+            {/* <Route exact path="/news" component={News} /> */}
+            <Route exact path="/event/name1" component={Event} />
+            <Route exact path="/event" component={Event} />
+          </main>
+        <Sidebar />
+        <Link to="/event">event</Link>
       </Router>
-      <Sidebar />
 
     </div>
   );

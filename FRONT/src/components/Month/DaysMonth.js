@@ -17,7 +17,7 @@ const DaysMonth = ({ currentDate }) => {
   const createDate = () => {
     for (let i = 0; i < 7; i += 1) {
       days.push(
-        <div className="col col-center" key={i}>
+        <div className="col col-center day" key={i}>
           {dateFns.format(dateFns.addDays(startDate, i), dateFormat, { locale: french })}
         </div>
       );

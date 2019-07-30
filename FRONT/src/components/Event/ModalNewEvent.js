@@ -1,7 +1,7 @@
 // == Import : npm
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Router, Route } from 'react-router-dom';
+import { Router, Redirect, Route } from 'react-router-dom';
 import { Button, Icon, Modal, Form } from 'semantic-ui-react';
 import axios from 'axios';
 
@@ -39,7 +39,7 @@ const ModalNewEvent = () => {
     evt.preventDefault();
     setModal(false);
     setRedirect(true);
-    axios.post('http://', {
+    axios.post('http://192.168.43.152/projet-PlanningFamille/BACK/familyback/public/event/new', {
       title,
       begining_date: begining,
       ending_date: ending,
@@ -56,9 +56,9 @@ const ModalNewEvent = () => {
   const redirectEvent = () => {
     if (redirect) {
       return (
-        <Router>
-          <Route exact path="/calendar" component={Calendar} />
-        </Router>
+        <>
+          <Redirect to="/event/name1" />
+        </>
       );
     }
   };

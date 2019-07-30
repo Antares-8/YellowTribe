@@ -1,6 +1,4 @@
 /* FONT IMPORTS */
-
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
 .icon {
@@ -41,32 +39,17 @@
 }
 
 body {
-    font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  margin: 1em;
+}
+
+#root {
+    font-family: 'Reg', sans-serif;
     font-size: 1em;
     font-weight: 300;
     line-height: 1.5;
     color: var(--text-color);
     background: var(--bg-color);
     position: relative;
-}
-
-header {
-  display: flex;
-  width: 100%;
-  padding: 1.75em 0;
-  border-bottom: 1px solid var(--border-color);
-  background: var(--neutral-color);
-}
-
-header #logo {
-  font-size: 175%;
-  text-align: center;
-  color: var(--main-color);
-  line-height: 1;
-}
-
-header #logo .icon {
-  padding-right: .25em;
 }
 
 main {
@@ -78,3 +61,13 @@ main {
   margin-right: 1.5em;
 }
 
+/// NAV ////
+
+.ui.tabular.menu .item {
+  padding: 0 2.5em;
+  font-size: 110%;
+  font-family: Reg;
+}
+.ui.tabular.menu .active.item {
+  border-radius: 1.28571rem 1.28571rem 0 0 !important;
+}

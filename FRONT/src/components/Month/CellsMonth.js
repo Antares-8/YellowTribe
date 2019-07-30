@@ -28,8 +28,10 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick }) => {
   const dateClickHandler = (cloneDay) => {
     onDateClick(dateFns.parse(cloneDay));
   };
+ 
 
   const createTable = () => {
+    let rowEvent = 1;
     while (day <= endDate) {
       for (let i = 1; i < 8; i += 1) {
         formattedDate = dateFns.format(day, dateFormat);
@@ -56,6 +58,8 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick }) => {
           {days}
           {/* I'm begining a loop on the events datas */}
           {events.map((event) => {
+            {/* const quidOtherEvent = */}
+            console.log(events);
             // test to know if the row is under or outside an event period
             const colEventCenterRow = new Date(days[6].key) > new Date(event.beginingDate)
             && new Date(days[0].key) < new Date(event.endingDate) ? 1 : 0;
@@ -66,7 +70,7 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick }) => {
             && dateFns.isSameDay(dayC.key, new Date(event.beginingDate))
             && dateFns.isSameYear(dayC.key, new Date(event.beginingDate)))
             + 1;
-            // If th result is 0, it's that the begining is not on the row,
+            // If the result is 0, it's that the begining is not on the row,
             // so I use my test to know if it's empty or full row
             const col = colCalc === 0 ? colEventCenterRow : colCalc;
 
@@ -80,27 +84,28 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick }) => {
             console.log(colSpanCalc, col, colSpan);
             // if the test is empty we display the line
             const hidden = col === 0 ? 'none' : 'inline';
+            rowEvent += 1;  
             // I create a styled components to fixe directly the col and span on the grid-colum style
             const Events = styled.div`
               grid-column: ${col} / span ${colSpan};
+              grid-row: ${rowEvent} / span 3;
               display: ${hidden};
-              z-index: 200; 
-              background-color: black;
             `;
             // I return the event in the DOM
             return (
-              <Events>
-                {event.title}
+              <Events className={`events event${rowEvent}`}>
+                <div className="title">
+                  {event.title}
+                </div>
               </Events> 
             )
           })}
         </div>
       );
+      rowEvent = 1;
       days = [];
     }
   };
-  console.log(day);
-  console.log(rows, days);
 
   createTable();
   return (

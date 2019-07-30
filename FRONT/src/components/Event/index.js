@@ -1,38 +1,46 @@
 // == Import : npm
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Button } from 'semantic-ui-react';
+import axios from 'axios';
 
 
 // == Import : local
-import Calendar from 'src/containers/Calendar';
-import './app.scss';
+// import './Event.scss';
 
 // == Composant
-const App = ({ addEventDate, eventDate }) => {
+const Event = () => {
+  // console.log(window.location.pathname.slice(7)); 
+  useEffect(() => {
+    axios.get('http://192.168.43.152/projet-PlanningFamille/BACK/familyback/public/event')
+      .then((res) => {
+        const eventData = res.data;
+        console.log(eventData);
+      })
+  }, []);
   return (
-    <div className="App">
-      <Header />
-      <Router>
-        <main>
-          <Link to="/calendar">calendar</Link>
-          <Link to="/">return</Link>
-          <Route exact path="/calendar" component={Calendar} />
-        </main>
-      </Router>
-      <Sidebar />
-
+    <div className="event">
+      <div className="titleDate">
+        <div className="day"></div>
+        <div className="number"></div>
+        <div className="month"></div>
+      </div>
+      <div className="title"></div>
+      <div className="author">Organisé par <span></span></div>
+      <div className="dates">
+        du <span className="date"></span> à <span className="hour"></span>
+        au <span className="date"></span> à <span className="hour"></span>
+      </div>
+      <div className="location"></div>
+      <div className="description"></div>
     </div>
   );
-};
+  };
 
-App.propTypes = {
-  addEventDate: PropTypes.func.isRequired,
-  eventDate: PropTypes.string.isRequired,
+Event.propTypes = {
+  // addEventDate: PropTypes.func.isRequired,
+  // eventDate: PropTypes.string.isRequired,
 };
 
 // == Export
-export default App;
+export default Event;
