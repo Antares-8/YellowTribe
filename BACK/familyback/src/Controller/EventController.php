@@ -22,15 +22,19 @@ class EventController extends AbstractController
      */
     public function indexNewsfeed(EventRepository $eventRepository, CommentRepository $commentRepository)
     {
-        // TODO: créer une variable $actualités qui récupère toutes les nouveautés (event, comment, picture, member...) d'un groupe selon date d'update 
+        // TODO: créer une variable $news (array) qui récupère toutes les nouveautés (event, comment, picture, member...) d'un groupe selon date d'update 
         // TODO: créer une réquête custom (dans GroupRepository?) qui les récupère et les tri
         // TODO: appeler ce repository dans cette méthode
 
+        // TODO: tri par id ? L'id le plus haut étant le dernier créé, l'ordre peut se faire avec cette donnée
+
         $events = $eventRepository->findAllOrderedByUpdatedAtDate();
+        //$events = $eventRepository->findAll();
 
         $lastEvents = $eventRepository->lastRelease(10);
 
         $comments = $commentRepository->findAllOrderedByCreatedAtDate();
+        //$comments = $commentRepository->findAll();
 
         $news = [];
         foreach ($events as $event) {
