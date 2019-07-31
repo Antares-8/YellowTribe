@@ -7,10 +7,15 @@ import ModalNewEvent from 'src/components/Event/ModalNewEvent';
 import './sidebar.scss';
 
 
-const Sidebar = ({ }) => {
+const Sidebar = ({ idOpenEvent}) => {
+
+  // classNames //
+  const withEvent = classNames({
+    withEvent: idOpenEvent !== '',
+  });
 
   return (
-    <div className="Sidebar">
+    <div className={`sidebar ${withEvent}`}>
       <ModalNewEvent />
       <div className="title">
         categories

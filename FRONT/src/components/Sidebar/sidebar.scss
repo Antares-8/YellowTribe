@@ -1,33 +1,39 @@
-.Sidebar {
+.sidebar {
   position: fixed; 
   top: 22em;
-  left: 1.5em;
+  right: 1.5em;
   width: 14.3em;
-  margin-right: 3em;
   z-index: 200;
 }
 
-.Sidebar .ui.button {
+.sidebar .ui.button {
   position: fixed;
   top: 7em;
-  left: 1.7em;
+  right: 1.7em;
   border-radius: 6em;
   display: flex; 
   align-items: center;
   padding: 0.5em 1.7em;
 }
-.Sidebar .icon {
+
+.sidebar .icon {
   font-size: 190%;
   padding-bottom: 0.9em;
 }
 
-.Sidebar .title {
+.sidebar .title {
   padding-bottom: 0.25em;
   margin-bottom: 0.9em;
   border-bottom: 1px solid var(--border-color);
   margin-top: 1.5em;
 }
 
-.Sidebar .field {
+.sidebar .field {
   margin-bottom: 0.35em !important;
+}
+
+/// WITH EVENT OPEN /// 
+
+.sidebar.withEvent {
+  display: none; 
 }
