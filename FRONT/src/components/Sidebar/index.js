@@ -12,7 +12,7 @@ const Sidebar = ({ }) => {
   return (
     <div className="Sidebar">
       <ModalNewEvent />
-      <div className="title" onClick="clickHandler">
+      <div className="title">
         categories
       </div>
       <Form>
@@ -23,6 +23,21 @@ const Sidebar = ({ }) => {
       </Form>
       <Form>
         <Form.Field control={Checkbox} label={<label>choix3</label>} />
+      </Form>
+      <div className="title">
+        Tribe
+      </div>
+      <Form>
+        <Form.Field control={Checkbox} label={<label>Joëlle</label>} />
+      </Form>
+      <Form>
+        <Form.Field control={Checkbox} label={<label>Jean-Marie</label>} />
+      </Form>
+      <Form>
+        <Form.Field control={Checkbox} label={<label>Nadia</label>} />
+      </Form>
+      <Form>
+        <Form.Field control={Checkbox} label={<label>Raymond</label>} />
       </Form>
       
     </div>

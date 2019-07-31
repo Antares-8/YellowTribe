@@ -66,7 +66,7 @@ const ModalNewEvent = () => {
   return (
     <>
       <Button onClick={newEventHandler}>
-        créer un nouvel évenement
+      <span className="icon">add</span>nouvel évenement
       </Button>
       <Modal open={modal}>
         <Modal.Header>Profile Picture</Modal.Header>

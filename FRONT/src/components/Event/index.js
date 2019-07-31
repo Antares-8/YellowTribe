@@ -12,7 +12,7 @@ import axios from 'axios';
 const Event = () => {
   // console.log(window.location.pathname.slice(7)); 
   useEffect(() => {
-    axios.get('http://192.168.43.152/projet-PlanningFamille/BACK/familyback/public/event')
+    axios.get('http://95.142.174.217/projet-PlanningFamille/BACK/familyback/public/event')
       .then((res) => {
         const eventData = res.data;
         console.log(eventData);

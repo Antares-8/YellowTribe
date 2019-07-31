@@ -18,7 +18,7 @@ const Calendar = ({ prevCalendarType, nextCalendarType, calendarType }) => {
   };
   return (
     <div className="calendar">
-      <div className="type row flex-middle">
+      {/* <div className="type row flex-middle">
         <div className="col col-start">
           <div className="icon" onClick={clickLeftHandler}>
             chevron_left
@@ -30,7 +30,7 @@ const Calendar = ({ prevCalendarType, nextCalendarType, calendarType }) => {
         <div className="col col-end" onClick={clickRightHandler}>
           <div className="icon">chevron_right</div>
         </div>
-      </div>
+      </div> */}
       {calendarType === 'mois' && <Month />}
       {calendarType === 'semaines' && <Week />}
       {calendarType === 'années' && <Year />}

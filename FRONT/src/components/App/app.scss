@@ -39,7 +39,7 @@
 }
 
 body {
-  margin: 1em;
+  margin: 0em 1.6em;
 }
 
 #root {
@@ -52,13 +52,30 @@ body {
     position: relative;
 }
 
+nav {
+  display: block;
+  position: fixed;
+  top: 6em;
+}
+
+nav .item {
+  padding: 0.73em 2.5em !important;
+}
+
+.main {
+  margin: 0 auto;
+  margin-top: 7em;
+  float: right;
+  width: 80%;
+  max-width: 80em;
+}
+
 main {
   margin: 0 auto;
-  margin-top: 2em;
+  margin-top: 7em;
   float: right;
-  width: 75%;
+  width: 80%;
   max-width: 80em;
-  margin-right: 1.5em;
 }
 
 /// NAV ////
@@ -70,4 +87,74 @@ main {
 }
 .ui.tabular.menu .active.item {
   border-radius: 1.28571rem 1.28571rem 0 0 !important;
+}
+
+/// circulation type calendrier et periode /// 
+main .type.row {
+  position: fixed;
+  right: 222px;
+  top: 88px;
+  width: 14.3em;
+  border: none;
+  font-size: 100% !important;
+  z-index: 200;
+}
+
+main .header {
+  position: fixed;
+  right: 20px;
+  top: 88px;
+  width: 15.3em;
+  border: none !important;
+  font-size: 100% !important;
+  -webkit-align-items: center;
+  align-items: center;
+  z-index: 200;
+}
+.header .col-start, 
+.header .col-end {
+  flex-grow: 1;
+}
+.header .col-center {
+  flex-grow: 2;
+}
+
+.type .col-start, 
+.header .col-end {
+  flex-grow: 1;
+}
+.type .col-center {
+  flex-grow: 2;
+}
+
+main .header,
+main .type {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 115%;
+  padding: 0.5em 0;
+  border-bottom: 1px solid var(--border-color);
+}
+  
+main .header .icon,
+main .type .icon {
+  cursor: pointer;
+  transition: .15s ease-out;
+}
+
+main .header .icon:hover,
+main .type .icon:hover {
+  transform: scale(1.75);
+  transition: .25s ease-out;
+  color: var(--main-color);
+}
+
+main .header .icon:first-of-type
+main .type .icon:first-of-type  {
+  margin-left: 1em;
+}
+
+main .header .icon:last-of-type,
+main .type .icon:last-of-type {
+  margin-right: 1em;
 }

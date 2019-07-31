@@ -3,21 +3,24 @@ import { connect } from 'react-redux';
 
 // == Import : local
 import App from 'src/components/App';
-import dataCategories from 'src/components/Data/events.json';
+// import dataCategories from 'src/components/Data/events.json';
 
 // Action Creators
-import { addEventDate } from 'src/store/reducer';
+import { nextCalendarType, prevCalendarType } from 'src/store/reducer';
 
-const categories = dataCategories.map(dataCategory => dataCategory.category);
+// const categories = dataCategories.map(dataCategory => dataCategory.category);
 
-const mapStateToProps = ({ eventDate }) => ({
-  eventDate,
+const mapStateToProps = ({ calendarType }) => ({
+  calendarType,
 });
 
 
 const mapDispatchToProps = dispatch => ({
-  addEventDate: (value) => {
-    dispatch(addEventDate(value));
+  nextCalendarType: () => {
+    dispatch(nextCalendarType());
+  },
+  prevCalendarType: () => {
+    dispatch(prevCalendarType());
   },
 });
 

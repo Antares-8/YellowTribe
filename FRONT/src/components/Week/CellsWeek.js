@@ -55,6 +55,7 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick }) => {
       }
       rows.push(
         <div className="row" key={hour}>
+          {hours}
           {/* I'm begining a loop on the events datas */}
           {events.map((event) => {
             // test to know if the row is under or outside an event period
@@ -78,26 +79,26 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick }) => {
             && dateFns.isSameMonth(hourC.key, new Date(event.endingDate))
             && dateFns.isSameYear(hourC.key, new Date(event.endingDate)))
             + 1;
-            
+            console.log(rowEvent);
             const colSpan = colSpanCalc === 0 ? colSpanEventCenterRow : colSpanCalc - col + 1;
-            rowEvent += 1; 
             // if the test is empty we display the line
             const hidden = col === 0 ? 'none' : 'inline';
             // I create a styled components to fixe directly the col and span on the grid-colum style
             const Events = styled.div`
               grid-row: ${col} / span ${colSpan};
+              grid-column: ${rowEvent} /span 4;
               display: ${hidden};
-              z-index: 200; 
-              background-color: black;
             `;
+            rowEvent += 2; 
             // I return the event in the DOM
             return (
-              <Events key={`${event.beginingDate}${hour}`}>
-                {event.title}
-              </Events> 
+              <Events key={`${event.beginingDate}${hour}`} className={`events event${rowEvent}`}>
+                <div className="title">
+                  {event.title}
+                </div>
+              </Events>
             )
           })}
-          {hours}
         </div>
       );
       rowEvent = 1;

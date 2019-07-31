@@ -58,7 +58,6 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick }) => {
           {days}
           {/* I'm begining a loop on the events datas */}
           {events.map((event) => {
-            {/* const quidOtherEvent = */}
             console.log(events);
             // test to know if the row is under or outside an event period
             const colEventCenterRow = new Date(days[6].key) > new Date(event.beginingDate)

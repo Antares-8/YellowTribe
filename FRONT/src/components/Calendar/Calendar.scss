@@ -1,9 +1,8 @@
 
 /* GRID */
-.row {
-  display: flex;
-  color:red;
-  }
+  .row {
+    display: flex;
+    }
   
   .Month .body .row {
     display: grid;
@@ -24,7 +23,7 @@
   }
   
   .week .body .row .cell {
-    grid-column: 1/8; 
+    grid-column: 7/ span 1; 
   }
   
   .row-middle {
@@ -51,7 +50,10 @@
     justify-content: flex-end;
     text-align: right;
   }
-  
+ 
+  .body {
+    margin-top: 0.3em;
+  }
   
   /* Calendar */
   
@@ -61,46 +63,13 @@
     width: 100%;
     background: var(--neutral-color);
     border: 1px solid var(--border-color);
+    margin-top: 1.7em;
   }
   
   .calendar .type {
     position: fixed;
     left: 1.5em;
     width: 19%;
-  }
-  .calendar .header {
-    position: fixed;
-    left: 1.5em;
-    top: 14em;
-    width: 19%;
-  }
-  
-  .calendar .header,
-  .calendar .type {
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 115%;
-    padding: 0.5em 0;
-    border-bottom: 1px solid var(--border-color);
-  }
-  
-  .calendar .header .icon {
-    cursor: pointer;
-    transition: .15s ease-out;
-  }
-  
-  .calendar .header .icon:hover {
-    transform: scale(1.75);
-    transition: .25s ease-out;
-    color: var(--main-color);
-  }
-  
-  .calendar .header .icon:first-of-type {
-    margin-left: 1em;
-  }
-  
-  .calendar .header .icon:last-of-type {
-    margin-right: 1em;
   }
   
   .calendar .days {
@@ -111,6 +80,11 @@
     font-family: 'Reg', sans-serif; 
     padding: 1.5em 0;
     border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 9.75em;
+    z-index: 200;
+    background-color: white;
+    border-top:1px solid var(--border-color);
   }
   
   .calendar .week .body {
@@ -124,10 +98,18 @@
   .calendar .week .days .number {
     font-size: 130%;
   }
-  
+
+  .calendar .Month .body .cell {
+    position: relative;
+    height: 6.2em;
+  }
+  .calendar .week .body .cell {
+    position: relative;
+    height: 2em;
+  }
+
   .calendar .body .cell {
     position: relative;
-    height: 5em;
     border-right: 1px solid var(--border-color);
     overflow: hidden;
     cursor: pointer;
@@ -206,7 +188,7 @@
 
   /// event MONTH /// 
   .events {
-    z-index: 200; 
+    z-index: 50; 
     border-radius: 0.5em;
     border: 0.5px solid #89178a4f;
     background-color: #faaefb;
@@ -220,10 +202,17 @@
     background-color:#f114f34f; 
   }
   .event2:hover, .event3:hover, .event4:hover {
-    z-index:300;
+    z-index:100;
   }
   .event2:hover{
     background-color: #faaefb;
+  }
+
+  /// event WEEK /// 
+  .week .events .title {
+    width: 10em;
+    padding: 0.25em 1em;
+    transform: rotate(-90deg) translateX(-29px) translateY(-32px);
   }
   
   

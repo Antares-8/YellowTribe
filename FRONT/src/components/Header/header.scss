@@ -1,7 +1,15 @@
 .App header {
-  display: flex; 
-  height: 5.5em;
-  padding: 1.5em 1em; 
+  display: -webkit-flex;
+  display: flex;
+  padding: 0em 1em;
+  padding-top: 1.15em;
+  position: fixed;
+  top: 0;
+  height: 8.8em;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  background-color: white;
+  width: 100%;
 }
 
 .headerLeft {
@@ -16,6 +24,9 @@
   width: 100%;
   float: right;
   align-items: center;
+  position: fixed;
+  left: -1.7em;
+  top: 1.15em;
 }
 
 //// RIGHT /////
@@ -25,7 +36,7 @@ header #logo {
   text-align: center;
   color: var(--main-color);
   line-height: 1;
-  margin-right: 4em;
+  margin-right: 6em;
 }
 
 header #logo .icon {
@@ -51,7 +62,9 @@ header #logo .icon {
 //// LEFT /////
 
 .headerRight .username {
-  margin-right: 1.7em;
+  margin-right: 2em;
+  margin-bottom: 0.2em;
+  font-size: 0.9rem;
 }
 
 .headerRight .profilePicture {
@@ -64,13 +77,19 @@ header #logo .icon {
 .ui.buttons .or:before {
   margin-top: -1.26em;
   margin-left: -1em;
-  width: 2.71em;
-  height: 2.71em;
+  width: 2.19em;
+  height: 2.19em;
+  border-radius: 2.19em;
   border: 2px solid black;
 }
 
-.ui.buttons .groupButton {
+.headerRight .ui.buttons .groupButton {
   border: 1px solid black;
   padding-left: 2.4em;
   text-transform: uppercase;
+  font-size: 0.7rem;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  height: 3.2em;
 }
+
