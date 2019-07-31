@@ -4,8 +4,10 @@
     "beginingDate": "2019-07-9 15:00:00",
     "endingDate": "2019-07-21 15:00:00",
     "description": "Quelqu'un peut nourrir Carlos ce weekend?",
+    "comment": "Ouais mais il va encore pourrir mon canapé ! ",
     "category": "Weekend-End",
-    "user": 6,
+    "place": "Biarritz",
+    "user": "Carlos",
     "color": "red"
   },
   {
@@ -14,8 +16,10 @@
     "beginingDate": "2019-07-10 18:00:00",
     "endingDate": "2019-07-15 15:00:00",
     "description": "ça vous dit ?!",
+    "comment": "Trop cool les Seychelles",
     "category": "Vacances",
-    "user": 6,
+    "place": "Seychelles",
+    "user": "Julien",
     "color": "black"
   }
 ]
