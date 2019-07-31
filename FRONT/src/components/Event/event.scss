@@ -1,0 +1,76 @@
+
+/// PARTIE LARGE /// 
+
+.agendaEtEvent {
+  display: flex; 
+
+}
+
+.PageEvent .main {
+  width: 100%;
+}
+
+.PageEvent .calendar {
+  width: 30%;
+}
+
+
+/// PARTI EVENT /// 
+
+.event {
+  position: fixed;
+  top: 9em;
+  right: 2em;
+  padding: 1em 2em;
+  float: right;
+  width: 39%;
+  max-width: 80em;
+  border: 1px solid #d4d4d5;
+}
+.event .titlePart {
+  display: flex; 
+}
+
+  .event .titleDate {
+    line-height: 1.4;
+    margin-right: 2em; 
+    margin-top: 0.2em;
+  }
+
+  .event .title{
+    display: flex; 
+    flex-direction: column; 
+  }
+  /// Titrage + baseline /// 
+    .event .title .mainTitle {
+      text-transform: uppercase;
+      font-size: 160%;
+    }
+    .event .title .baseTitle {
+      display: flex; 
+      font-size: 70%; 
+    }
+      .event .title .baseTitle .cercle {
+        width: 1em;
+        height: 1em;
+        border-radius: 1em;
+        margin: 0em 0.6em; 
+      }
+  /// Date à coté du titre  /// 
+    .event .titleDate .day{
+      text-transform: capitalize;
+    }
+
+    .event .titleDate .number {
+      font-size: 145%;
+    }
+
+    .event .titleDate .month{
+      text-transform: capitalize;
+    }
+
+hr {
+  margin: 2em 0em;
+}
+
+

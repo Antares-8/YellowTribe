@@ -2,15 +2,16 @@
 import { connect } from 'react-redux';
 
 // == Import : local
-import Calendar from 'src/components/Calendar';
+import Nav from 'src/components/Nav';
+// import dataCategories from 'src/components/Data/events.json';
 
 // Action Creators
 import { nextCalendarType, prevCalendarType } from 'src/store/reducer';
 
+// const categories = dataCategories.map(dataCategory => dataCategory.category);
 
-const mapStateToProps = ({ calendarType, idOpenEvent }) => ({
+const mapStateToProps = ({ calendarType }) => ({
   calendarType,
-  idOpenEvent,
 });
 
 
@@ -24,17 +25,17 @@ const mapDispatchToProps = dispatch => ({
 });
 
 // Container
-const CalendarContainer = connect(
+const NavContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Calendar);
+)(Nav);
 
 // == Export
-export default CalendarContainer;
+export default NavContainer;
 
 /* = export à la volée
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Calendar);
+)(Nav);
 */

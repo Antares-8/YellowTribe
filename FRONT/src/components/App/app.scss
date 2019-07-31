@@ -62,18 +62,42 @@ nav .item {
   padding: 0.73em 2.5em !important;
 }
 
+.navigation .item {
+  text-transform: capitalize;
+  font-size: 110%;
+  font-family: 'Reg';
+  background: 0 0;
+  border-bottom: none;
+  border-radius: 1.28571rem 1.28571rem 0 0 !important;
+  border-left: 1px solid #d4d4d5;
+  border-right: 1px solid #d4d4d5;
+  border-top: 2px solid #d4d4d5;
+  color: rgba(0, 0, 0, 0.87);
+  font-weight: 400;
+  padding: 0.73em 2.5em !important;
+}
+
 .main {
   margin: 0 auto;
   margin-top: 7em;
-  float: right;
-  width: 80%;
+  float: left;
+  width: 75%;
   max-width: 80em;
+  transition: width .2s ease; 
 }
-
-main {
+.main.withEvent {
   margin: 0 auto;
   margin-top: 7em;
-  float: right;
+  float: left;
+  width: 57%;
+  max-width: 80em;
+  transition: width .2s ease; 
+}
+
+.navigation {
+  margin: 0 auto;
+  margin-top: 7em;
+  float: left;
   width: 80%;
   max-width: 80em;
 }
@@ -90,7 +114,7 @@ main {
 }
 
 /// circulation type calendrier et periode /// 
-main .type.row {
+.navigation .type.row {
   position: fixed;
   right: 222px;
   top: 88px;
@@ -100,7 +124,7 @@ main .type.row {
   z-index: 200;
 }
 
-main .header {
+.navigation .header {
   position: fixed;
   right: 20px;
   top: 88px;
@@ -127,8 +151,8 @@ main .header {
   flex-grow: 2;
 }
 
-main .header,
-main .type {
+.navigation .header,
+.navigation .type {
   text-transform: uppercase;
   font-weight: 700;
   font-size: 115%;
@@ -136,25 +160,25 @@ main .type {
   border-bottom: 1px solid var(--border-color);
 }
   
-main .header .icon,
-main .type .icon {
+.navigation .header .icon,
+.navigation .type .icon {
   cursor: pointer;
   transition: .15s ease-out;
 }
 
-main .header .icon:hover,
-main .type .icon:hover {
+.navigation .header .icon:hover,
+.navigation .type .icon:hover {
   transform: scale(1.75);
   transition: .25s ease-out;
   color: var(--main-color);
 }
 
-main .header .icon:first-of-type
-main .type .icon:first-of-type  {
+.navigation .header .icon:first-of-type
+.navigation .type .icon:first-of-type  {
   margin-left: 1em;
 }
 
-main .header .icon:last-of-type,
-main .type .icon:last-of-type {
+.navigation .header .icon:last-of-type,
+.navigation .type .icon:last-of-type {
   margin-right: 1em;
 }

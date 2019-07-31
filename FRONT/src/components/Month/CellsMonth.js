@@ -9,7 +9,7 @@ import styled from 'styled-components';
 // == Import : local
 import events from 'src/components/Data/events.json';
 // == Composant
-const CellsMonth = ({ currentDate, selectedDate, onDateClick }) => {
+const CellsMonth = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEvent }) => {
 
   const monthStart = dateFns.startOfMonth(currentDate);
   const monthEnd = dateFns.endOfMonth(monthStart);
@@ -19,7 +19,6 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick }) => {
   const dateFormat = 'D';
   const rows = [];
 
-
   let days = [];
   let day = startDate;
   let formattedDate = '';
@@ -28,7 +27,11 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick }) => {
   const dateClickHandler = (cloneDay) => {
     onDateClick(dateFns.parse(cloneDay));
   };
- 
+
+  const clickHandleEvent = (evt) => {
+    const { id } = evt.target;
+    openEvent(id);
+  };
 
   const createTable = () => {
     let rowEvent = 1;
@@ -58,7 +61,6 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick }) => {
           {days}
           {/* I'm begining a loop on the events datas */}
           {events.map((event) => {
-            console.log(events);
             // test to know if the row is under or outside an event period
             const colEventCenterRow = new Date(days[6].key) > new Date(event.beginingDate)
             && new Date(days[0].key) < new Date(event.endingDate) ? 1 : 0;
@@ -80,9 +82,15 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick }) => {
             + 1;
             
             const colSpan = colSpanCalc === 0 ? colSpanEventCenterRow : colSpanCalc - col + 1;
-            console.log(colSpanCalc, col, colSpan);
             // if the test is empty we display the line
             const hidden = col === 0 ? 'none' : 'inline';
+
+            // classNames to know if the event is the event display
+            const eventDisplay = classNames({
+              eventDisplay: idOpenEvent == event.id,
+            });
+
+            // id row to know how to place the ligne on the grid row
             rowEvent += 1;  
             // I create a styled components to fixe directly the col and span on the grid-colum style
             const Events = styled.div`
@@ -92,7 +100,7 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick }) => {
             `;
             // I return the event in the DOM
             return (
-              <Events className={`events event${rowEvent}`}>
+              <Events key={`${event.beginingDate}${day}`} className={`events event${rowEvent} ${eventDisplay}`} id={event.id} onClick={clickHandleEvent}>
                 <div className="title">
                   {event.title}
                 </div>
@@ -118,7 +126,8 @@ CellsMonth.propTypes = {
   currentDate: PropTypes.string.isRequired,
   selectedDate: PropTypes.string.isRequired,
   onDateClick: PropTypes.func.isRequired,
-
+  openEvent: PropTypes.func.isRequired,
+  idOpenEvent: PropTypes.string.isRequired,
 };
 
 // == Export

@@ -32,6 +32,12 @@ body {
   border: none;
 }
 
+/* SINGUP TEMPLATE */
+.signup_container {
+  width: 50%;
+}
+
+
 /* FOOTER */
 .footer {
     position: fixed;

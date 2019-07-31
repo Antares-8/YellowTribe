@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import events from 'src/components/Data/events.json';
 
 // == Composant
-const CellsWeek = ({ currentDate, selectedDate, onDateClick }) => {
+const CellsWeek = ({ currentDate, selectedDate, onDateClick, idOpenEvent, openEvent }) => {
 
   const weekStart = dateFns.startOfWeek(currentDate);
   const weekEnd = dateFns.endOfWeek(weekStart);
@@ -27,6 +27,13 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick }) => {
   // call click date function from reducer
   const dateClickHandler = (clonehour) => {
     onDateClick(dateFns.parse(clonehour));
+  };
+
+  // click on a event row to display the event page
+  const clickHandleEvent = (evt) => {
+    console.log(evt.target);
+    const { id } = evt.target;
+    openEvent(id);
   };
 
 
@@ -79,20 +86,25 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick }) => {
             && dateFns.isSameMonth(hourC.key, new Date(event.endingDate))
             && dateFns.isSameYear(hourC.key, new Date(event.endingDate)))
             + 1;
-            console.log(rowEvent);
             const colSpan = colSpanCalc === 0 ? colSpanEventCenterRow : colSpanCalc - col + 1;
+
+            // classNames to know if the event is the event display
+            const eventDisplay = classNames({
+              eventDisplay: idOpenEvent == event.id,
+            });
+
             // if the test is empty we display the line
             const hidden = col === 0 ? 'none' : 'inline';
             // I create a styled components to fixe directly the col and span on the grid-colum style
             const Events = styled.div`
               grid-row: ${col} / span ${colSpan};
-              grid-column: ${rowEvent} /span 4;
+              grid-column: ${rowEvent} /span 3;
               display: ${hidden};
             `;
-            rowEvent += 2; 
+            rowEvent += 1; 
             // I return the event in the DOM
             return (
-              <Events key={`${event.beginingDate}${hour}`} className={`events event${rowEvent}`}>
+              <Events key={`${event.beginingDate}${hour} ${eventDisplay}`} className={`events event${rowEvent} ${eventDisplay}`} id={event.id} onClick={clickHandleEvent}>
                 <div className="title">
                   {event.title}
                 </div>
@@ -105,8 +117,6 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick }) => {
       hours = [];
     }
   };
-  console.log(hour);
-  console.log(rows, hours);
 
   createTable();
   return (
@@ -120,6 +130,8 @@ CellsWeek.propTypes = {
   currentDate: PropTypes.string.isRequired,
   selectedDate: PropTypes.string.isRequired,
   onDateClick: PropTypes.func.isRequired,
+  idOpenEvent: PropTypes.string.isRequired,
+  openEvent: PropTypes.func.isRequired,
 };
 
 // == Export

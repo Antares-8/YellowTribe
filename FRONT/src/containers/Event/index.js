@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 
 // == Import : local
-import App from 'src/components/App';
+import Event from 'src/components/Event';
 // import dataCategories from 'src/components/Data/events.json';
 
 // Action Creators
@@ -19,17 +19,17 @@ const mapDispatchToProps = dispatch => ({
 });
 
 // Container
-const AppContainer = connect(
+const EventContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(App);
+)(Event);
 
 // == Export
-export default AppContainer;
+export default EventContainer;
 
 /* = export à la volée
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(App);
+)(Event);
 */

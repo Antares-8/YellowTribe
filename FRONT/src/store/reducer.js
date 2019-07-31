@@ -18,6 +18,7 @@ const initialState = {
   eventDate: new Date(2019, 7, 24),
   calendarType: 'mois',
   modalNewEvent: false,
+  idOpenEvent: '',
 };
 
 
@@ -34,6 +35,7 @@ const PREV_YEAR = 'PREV_YEAR';
 const ADD_EVENT = 'ADD_EVENT';
 const ADD_CATEGORY = 'ADD_CATEGORY';
 const MODAL_EVENT = 'MODAL_EVENT';
+const OPEN_EVENT = 'OPEN_EVENT';
 
 
 // == Reducer
@@ -137,6 +139,12 @@ const reducer = (state = initialState, action = {}) => {
         modalNewEvent: !state.modalNewEvent,
       };
 
+    case OPEN_EVENT:
+      return {
+        ...state,
+        idOpenEvent: action.id,
+      };
+
     default:
       return state;
   }
@@ -181,6 +189,10 @@ export const addCategory = category => ({
 });
 export const showModalNewEvent = () => ({
   type: MODAL_EVENT,
+});
+export const openEvent = id => ({
+  type: OPEN_EVENT,
+  id,
 });
 
 

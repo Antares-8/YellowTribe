@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import CellsWeek from 'src/components/Week/CellsWeek';
 
 // Action Creators
-import { onDateClick } from 'src/store/reducer';
+import { onDateClick, openEvent } from 'src/store/reducer';
 
 
 const mapStateToProps = (state) => {
@@ -19,6 +19,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
   onDateClick: (day) => {
     dispatch(onDateClick(day));
+  },
+  openEvent: (id) => {
+    dispatch(openEvent(id));
   },
 });
 

@@ -5,14 +5,15 @@ import { connect } from 'react-redux';
 import CellsMonth from 'src/components/Month/CellsMonth';
 
 // Action Creators
-import { onDateClick } from 'src/store/reducer';
+import { onDateClick, openEvent } from 'src/store/reducer';
 
 
-const mapStateToProps = ({ currentDate, selectedDate, eventDate }) => {
+const mapStateToProps = ({ currentDate, selectedDate, eventDate, idOpenEvent }) => {
   return {
     currentDate,
     selectedDate,
     eventDate,
+    idOpenEvent,
   };
 };
 
@@ -20,6 +21,9 @@ const mapStateToProps = ({ currentDate, selectedDate, eventDate }) => {
 const mapDispatchToProps = dispatch => ({
   onDateClick: (day) => {
     dispatch(onDateClick(day));
+  },
+  openEvent: (id) => {
+    dispatch(openEvent(id));
   },
 });
 
