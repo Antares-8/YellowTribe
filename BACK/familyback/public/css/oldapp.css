@@ -11,7 +11,7 @@ body {
 }
 
 .homepage_content {
-  padding-bottom: 318px; /* to center, 8em = homepage_content size + footer size */
+  padding-bottom: 12em; /* to center, 8em = homepage_content size + footer size */
 }
 
 .btn-login {
