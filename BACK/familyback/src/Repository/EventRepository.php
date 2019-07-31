@@ -19,6 +19,19 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
+
+    public function findByTitle()
+    {
+
+        $query = $this->getEntityManager()->createQuery('
+            SELECT e.title, e.beginingDate, e.endingDate
+            FROM App\Entity\Event e
+        ');
+
+        return $query->getResult();
+
+    }
+
     /**
      * Get Events ordered by updatedAt date
      * 
