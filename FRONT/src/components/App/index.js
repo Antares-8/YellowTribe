@@ -15,6 +15,7 @@ import Header from 'src/components/Header';
 import Sidebar from 'src/containers/Sidebar';
 import Nav from 'src/containers/Nav';
 import Event from 'src/containers/Event';
+import ModalNewEvent from 'src/components/Event/ModalNewEvent';
 import './app.scss';
 
 // == Composant
@@ -26,6 +27,7 @@ const App = ({ idOpenEvent }) => {
         <Route exact path="/" component={Calendar} />
         <Header />
         <Nav />
+        <ModalNewEvent />
         {idOpenEvent !== '' && <Event />}
         <Sidebar />
         <Route exact path="/event/name1" component={PageEvent} />

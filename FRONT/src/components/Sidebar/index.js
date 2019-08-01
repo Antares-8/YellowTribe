@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Form, Checkbox } from 'semantic-ui-react';
 import classNames from 'class-names';
 
-import ModalNewEvent from 'src/components/Event/ModalNewEvent';
 import './sidebar.scss';
 
 
@@ -16,7 +15,6 @@ const Sidebar = ({ idOpenEvent}) => {
 
   return (
     <div className={`sidebar ${withEvent}`}>
-      <ModalNewEvent />
       <div className="title">
         categories
       </div>

@@ -36,6 +36,7 @@ const ADD_EVENT = 'ADD_EVENT';
 const ADD_CATEGORY = 'ADD_CATEGORY';
 const MODAL_EVENT = 'MODAL_EVENT';
 const OPEN_EVENT = 'OPEN_EVENT';
+const CLOSE_EVENT = 'CLOSE_EVENT';
 
 
 // == Reducer
@@ -145,6 +146,12 @@ const reducer = (state = initialState, action = {}) => {
         idOpenEvent: action.id,
       };
 
+    case CLOSE_EVENT:
+      return {
+        ...state,
+        idOpenEvent: '',
+      };
+
     default:
       return state;
   }
@@ -193,6 +200,9 @@ export const showModalNewEvent = () => ({
 export const openEvent = id => ({
   type: OPEN_EVENT,
   id,
+});
+export const closeEvent = () => ({
+  type: CLOSE_EVENT,
 });
 
 

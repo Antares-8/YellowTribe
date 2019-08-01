@@ -6,7 +6,7 @@ import Event from 'src/components/Event';
 // import dataCategories from 'src/components/Data/events.json';
 
 // Action Creators
-import {  } from 'src/store/reducer';
+import { closeEvent } from 'src/store/reducer';
 
 // const categories = dataCategories.map(dataCategory => dataCategory.category);
 
@@ -15,7 +15,9 @@ const mapStateToProps = ({ idOpenEvent }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-
+  closeEvent: () => {
+    dispatch(closeEvent());
+  },
 });
 
 // Container

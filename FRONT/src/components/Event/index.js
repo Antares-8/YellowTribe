@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import dateFns from 'date-fns';
 import french from 'date-fns/locale/fr';
 import styled from 'styled-components';
+import axios from 'axios';
 
 
 // == Import : local
@@ -12,16 +13,20 @@ import events from 'src/components/Data/events.json';
 import './event.scss';
 
 // == Composant
-const Event = ({ idOpenEvent }) => {
-  // console.log(window.location.pathname.slice(7)); 
-  // useEffect(() => {
-  //   axios.get('http://95.142.174.217/projet-PlanningFamille/BACK/familyback/public/event')
-  //     .then((res) => {
-  //       const eventData = res.data;
-  //       console.log(eventData);
-  //     })
-  // }, []);
-  
+const Event = ({ idOpenEvent, closeEvent }) => {
+  console.log(window.location.pathname.slice(7)); 
+  useEffect(() => {
+    axios.get('http://192.168.1.47/projet-PlanningFamille/BACK/familyback/public/api/events')
+      .then((res) => {
+        const eventData = res.data;
+        console.log(eventData);
+      })
+  }, []);
+
+  const clickCloseHandler = () => {
+    closeEvent();
+  };
+
   const eventData = events.filter(eventsData => eventsData.id == idOpenEvent);
   console.log(event);
   const event = eventData[0];
@@ -36,6 +41,7 @@ const Event = ({ idOpenEvent }) => {
 
   return (
     <div className="event">
+      <div className="icon close" onClick={clickCloseHandler}>close</div>
       <div className="titlePart">
         <div className="titleDate">
           <div className="day">{dateFns.format(new Date(event.beginingDate), formatDay, { locale: french })}</div>
@@ -65,6 +71,7 @@ const Event = ({ idOpenEvent }) => {
 
 Event.propTypes = {
   idOpenEvent: PropTypes.number.isRequired,
+  closeEvent: PropTypes.func.isRequired,
 };
 
 // == Export

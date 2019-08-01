@@ -116,7 +116,7 @@ nav .item {
 /// circulation type calendrier et periode /// 
 .navigation .type.row {
   position: fixed;
-  right: 222px;
+  right: 34em;
   top: 88px;
   width: 14.3em;
   border: none;
@@ -126,7 +126,7 @@ nav .item {
 
 .navigation .header {
   position: fixed;
-  right: 20px;
+  right: 19em;
   top: 88px;
   width: 15.3em;
   border: none !important;
@@ -181,4 +181,19 @@ nav .item {
 .navigation .header .icon:last-of-type,
 .navigation .type .icon:last-of-type {
   margin-right: 1em;
+}
+
+.modalEvent .ui.button {
+  position: fixed;
+  top: 5em;
+  right: 1.3em;
+  border-radius: 6em;
+  display: flex; 
+  align-items: center;
+  padding: 0.5em 1.7em;
+}
+
+.modalEvent .icon {
+  font-size: 190%;
+  padding-bottom: 0.9em;
 }
