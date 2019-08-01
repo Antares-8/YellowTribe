@@ -16,7 +16,7 @@
             <ol>
                 {% for tag in event.tags %}
                     <li>{{ tag.title }}</li>
-                {% endfor %}
+                {% endfor %}}
        
             </ol>
         </li>
@@ -59,7 +59,7 @@
 
     {{ include('event/_delete_form.html.twig') }}
 
-    <a href="{{ path('event') }}"><p>Retour à la liste des events</p></a>
+    <a href="{{ path('calendar') }}"><p>Retour à la liste des events</p></a>
     <a href="{{ path('homepage') }}"><p>Retour à l'accueil</p></a>
 
 {% endblock %}

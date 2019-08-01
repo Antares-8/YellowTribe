@@ -20,16 +20,27 @@ class EventRepository extends ServiceEntityRepository
     }
 
 
+    // public function findByTitle()
+    // {
+
+    //     $query = $this->getEntityManager()->createQuery('
+    //         SELECT e.id, e.title, e.beginingDate, e.endingDate, e.place, e.description
+    //         FROM App\Entity\Event e
+    //     ');
+
+    //     return $query->getResult();
+
+    // }
+
     public function findByTitle()
     {
+        $qb = $this->createQueryBuilder('e')
+            ->join('e.user', 'u')
+            ->addselect('u.username')
 
-        $query = $this->getEntityManager()->createQuery('
-            SELECT e.id, e.title, e.beginingDate, e.endingDate, e.place, e.description
-            FROM App\Entity\Event e
-        ');
+        ;
 
-        return $query->getResult();
-
+        return $qb->getQuery()->getArrayResult();
     }
 
     /**
