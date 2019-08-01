@@ -6,17 +6,42 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Entity\Tribe;
 use App\Form\EventType;
 use App\Repository\EventRepository;
 use App\Repository\CommentRepository;
-use JMS\Serializer\SerializerBuilder;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class EventController extends AbstractController
 {
+    /**
+     * @Route("/calendar", name="calendar", methods={"GET","POST"})
+     */
+    public function indexCalendar(EventRepository $eventRepository): Response
+    {
+        $connectedUser = $this->getUser();
+        $userTribeId = $connectedUser->getTribe();
+        //dump($userTribeId);
+
+        // search and find all events binded to user's tribe
+        $events = $eventRepository->findAllEventsByTribe($userTribeId);
+        $jsonEvents = $this->json($events);
+
+        return $this->render('event/index.html.twig', [
+            'title' => 'Calendrier',
+            'user' => $connectedUser,
+            'tribe' => $userTribeId,
+        ]);
+    }
+
 
     /**
      * @Route("/newsfeed", name="newsfeed", methods={"GET","POST"})
@@ -65,16 +90,6 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/calendar", name="calendar", methods={"GET","POST"})
-     */
-    public function indexCalendar(EventRepository $eventRepository)
-    {
-        return $this->render('event/index.html.twig', [
-            'title' => 'Calendrier',
-        ]);
-    }
-
-    /**
      * @Route("/event/new", name="event_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -104,7 +119,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/event/{id}", name="event_show", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/event/{event}", name="event_show", methods={"GET"})
      */
     public function show(Event $event)
     {
@@ -112,6 +127,36 @@ class EventController extends AbstractController
             'event' => $event,
         ]);
     }
+
+    /**
+     * @Route("/myevents", name="events_list", methods={"GET"})
+     */
+    public function userEventList(EventRepository $eventRepository)
+    {
+        $connectedUser = $this->getUser();
+        $events = $eventRepository->findEventByUser($connectedUser);
+        
+
+        return $this->render('event/user_events_list.html.twig', [
+            'title' => 'Mes événements créés',
+            'events' => $events,
+        ]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * @Route("/event/{id}/edit", name="event_edit", methods={"GET", "POST"}, requirements={"id"="\d+"})

@@ -42,7 +42,7 @@ class CommentController extends AbstractController
                 'Nouveau commentaire ajouté !'
             );
             
-            return $this->redirectToRoute('event');
+            return $this->redirectToRoute('calendar');
         }
 
         return $this->render('comment/new.html.twig', [

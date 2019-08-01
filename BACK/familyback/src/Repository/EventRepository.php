@@ -19,25 +19,58 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
+    /**
+     * Function used in EventController to return all events created by the current user ($user)
+     *
+     * @param [type] $user
+     * @return Event[]
+     */
+    public function findEventByUser($user)
+    {
+        $qb = $this->createQueryBuilder('e')
+                ->join('e.user', 'u') 
+                ->addselect('u')
+                ->where('e.user = :user')
+            ->setParameter('user', $user)
+        ;
 
-    // public function findByTitle()
-    // {
+        return $qb->getQuery()->getArrayResult();
+    }
 
-    //     $query = $this->getEntityManager()->createQuery('
-    //         SELECT e.id, e.title, e.beginingDate, e.endingDate, e.place, e.description
-    //         FROM App\Entity\Event e
-    //     ');
 
-    //     return $query->getResult();
+    public function findAllEventsByTribe($tribe)
+    {
+        $qb = $this->createQueryBuilder('e')
+                ->join('e.tribe', 't')
+                ->addselect('t')
+                ->where('e.tribe = :myTribe')
+            ->setParameter('myTribe', $tribe)
+        ;
 
-    // }
+        return $qb->getQuery()->getArrayResult();
+    }
 
-    public function findByTitle()
+    public function findAllEventWithUsername()
     {
         $qb = $this->createQueryBuilder('e')
             ->join('e.user', 'u')
             ->addselect('u.username')
 
+<<<<<<< HEAD
+=======
+    // function for newsfeed
+    public function findAllNews($tribe)
+    {
+
+        $qb = $this->createQueryBuilder('e')
+                ->join('e.tribe', 't')
+                ->addselect('t')
+                ->addselect('u')
+                ->from('App\Entity\User', 'u')
+                ->where('e.tribe = :myTribe', 'u.tribe = :myTribe')
+                ->orderBy('e.createdAt, u.createdAt', 'DESC')
+            ->setParameter('myTribe', $tribe)
+>>>>>>> 9a5e6f1acb9d64a41f46c1ff88b5010e0ef1f4c7
         ;
 
         return $qb->getQuery()->getArrayResult();
