@@ -29,6 +29,24 @@ class EventRepository extends ServiceEntityRepository
         return $qb->getQuery()->getArrayResult();
     }
 
+    public function findAllNews($tribe)
+    {
+        // $qb = $this->createQueryBuilder('t')
+        //     ->join('t.events', 'e')
+        //     ->addselect('e.title')
+        // ;
+        $qb = $this->createQueryBuilder('e')
+                ->join('e.tribe', 't')
+                ->addselect('t')
+                ->addselect('u')
+                ->from('App\Entity\User', 'u')
+                ->where('e.tribe = :myTribe', 'u.tribe = :myTribe')
+                ->orderBy('e.createdAt', 'DESC')
+            ->setParameter('myTribe', $tribe)
+        ;
+        return $qb->getQuery()->getArrayResult();
+    }
+
     /**
      * Get Events ordered by updatedAt date
      * 

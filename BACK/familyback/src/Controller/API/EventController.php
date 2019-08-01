@@ -3,8 +3,10 @@
 namespace App\Controller\API;
 
 use App\Entity\Event;
-use App\Repository\EventRepository;
+use App\Entity\Tribe;
 //use JMS\Serializer\SerializerBuilder;
+use App\Repository\EventRepository;
+use App\Repository\TribeRepository;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,6 +31,17 @@ class EventController extends AbstractController
         $events = $repository->findAllEventWithUsername();
 
         return $this->json($events);
+    }
+
+    /**
+     * @Route("/{tribe}/news", name="news_list")
+     */
+    public function newsList(EventRepository $eventRepository, Tribe $tribe): JsonResponse
+    {
+        //dd($tribe);
+        $news = $eventRepository->findAllNews($tribe);
+
+        return $this->json($news);
     }
 
     
