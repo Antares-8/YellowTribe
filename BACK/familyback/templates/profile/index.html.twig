@@ -15,7 +15,7 @@
         <h5 class="card-title">{{ app.user.firstname }} {{ app.user.lastname }}</h5>
         <p class="card-text">Email : {{ app.user.email }}</p>
         <p class="card-text">Username : {{ app.user.username }}</p>
-        <p class="card-text"><small class="text-muted"><a href="{{ path('profile_edit') }}">Modifier mes informations</a></small></p>
+        <p class="card-text"><small class="text-muted"><a href="{{ path('profile_edit') }}" class="btn btn-outline-warning btn-lg" role="button">Modifier mes informations</a></small></p>
       </div>
     </div>
   </div>
@@ -34,8 +34,8 @@
 
     <p>Votre tribu est {{ app.user.tribe }}</p>
     {# TODO: créer le tpl pour voir les membres de sa tribu avec la @Route '/{tribe}/members' #}
-    <p><a href="{{ path('tribe') }}">Voir les membres de ma tribu</a></p>
-    <p><a href="{{ path('send_invitation') }}"><p>Inviter un nouveau membre à rejoindre votre groupe</p></a></p>
+    <p><a href="{{ path('tribe') }}" class="btn btn-outline-warning btn-lg" role="button">Voir les membres de ma tribu</a></p>
+    <p><a href="{{ path('send_invitation') }}" class="btn btn-outline-warning btn-lg" role="button">Inviter un nouveau membre à rejoindre votre groupe</a></p>
 
     {% endif %}
 
@@ -43,6 +43,7 @@
 
 
 
-<p><a href="{{ path('homepage') }}">Retour à l'accueil</a></p>
+<p><a href="{{ path('calendar') }}" class="btn btn-outline-warning btn-lg" role="button">Voir le calendrier</a></p>
+<p><a href="{{ path('app_logout') }}" class="btn btn-outline-warning btn-lg" role="button">Me déconnecter</a></p>
 
 {% endblock %}
