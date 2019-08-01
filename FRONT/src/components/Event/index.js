@@ -16,7 +16,7 @@ import './event.scss';
 const Event = ({ idOpenEvent, closeEvent }) => {
   console.log(window.location.pathname.slice(7)); 
   useEffect(() => {
-    axios.get('http://192.168.1.47/projet-PlanningFamille/BACK/familyback/public/api/events')
+    axios.get('http://95.142.174.217/projet-PlanningFamille/BACK/familyback/public/api/events')
       .then((res) => {
         const eventData = res.data;
         console.log(eventData);
