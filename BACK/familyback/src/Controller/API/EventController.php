@@ -50,7 +50,7 @@ class EventController extends AbstractController
         //     ObjectNormalizer::SKIP_NULL_VALUES => true,
         // ]); // Convert the content-type into json instead of HTML
 
-        return $this->json($events);
+        return new JsonResponse($events);
     }
 
 
