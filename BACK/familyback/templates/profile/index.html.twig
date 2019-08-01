@@ -40,8 +40,7 @@
     {% endif %}
 
 
-
-
+<p><a href="{{ path('events_list') }}" class="btn btn-outline-warning btn-lg" role="button">Liste de mes événements</a></p> <p>pour info, j'en ai créé {{ app.user.events|length }}</p>
 
 <p><a href="{{ path('calendar') }}" class="btn btn-outline-warning btn-lg" role="button">Voir le calendrier</a></p>
 <p><a href="{{ path('app_logout') }}" class="btn btn-outline-warning btn-lg" role="button">Me déconnecter</a></p>

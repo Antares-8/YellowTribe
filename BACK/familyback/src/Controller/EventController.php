@@ -129,6 +129,36 @@ class EventController extends AbstractController
     }
 
     /**
+     * @Route("/myevents", name="events_list", methods={"GET"})
+     */
+    public function userEventList(EventRepository $eventRepository)
+    {
+        $connectedUser = $this->getUser();
+        $events = $eventRepository->findEventByUser($connectedUser);
+        
+
+        return $this->render('event/user_events_list.html.twig', [
+            'title' => 'Mes événements créés',
+            'events' => $events,
+        ]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
      * @Route("/event/{id}/edit", name="event_edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
      */
     public function edit(Request $request, Event $event): Response

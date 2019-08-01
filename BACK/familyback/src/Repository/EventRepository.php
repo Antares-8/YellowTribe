@@ -19,6 +19,25 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
+    /**
+     * Function used in EventController to return all events created by the current user ($user)
+     *
+     * @param [type] $user
+     * @return Event[]
+     */
+    public function findEventByUser($user)
+    {
+        $qb = $this->createQueryBuilder('e')
+                ->join('e.user', 'u') 
+                ->addselect('u')
+                ->where('e.user = :user')
+            ->setParameter('user', $user)
+        ;
+
+        return $qb->getQuery()->getArrayResult();
+    }
+
+
     public function findAllEventsByTribe($tribe)
     {
         $qb = $this->createQueryBuilder('e')
@@ -41,6 +60,7 @@ class EventRepository extends ServiceEntityRepository
         return $qb->getQuery()->getArrayResult();
     }
 
+    // function for newsfeed
     public function findAllNews($tribe)
     {
 
