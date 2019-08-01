@@ -34,7 +34,7 @@
 
     <p>Votre tribu est {{ app.user.tribe }}</p>
     {# TODO: créer le tpl pour voir les membres de sa tribu avec la @Route '/{tribe}/members' #}
-    <p><a href="{# {{ path('tribe_members') }} #}">Voir les membres de ma tribu</a></p>
+    <p><a href="{{ path('tribe') }}">Voir les membres de ma tribu</a></p>
     <p><a href="{{ path('send_invitation') }}"><p>Inviter un nouveau membre à rejoindre votre groupe</p></a></p>
 
     {% endif %}
