@@ -64,11 +64,13 @@ const ModalNewEvent = () => {
   };
 
   return (
-    <>
-      <Button onClick={newEventHandler}>
+    <div className="modalEvent">
+      <Button>
       <span className="icon">add</span>nouvel évenement
       </Button>
-      <Modal open={modal}>
+      <Modal trigger={<Button>
+        <span className="icon">add</span>nouvel évenement
+      </Button>}>
         <Modal.Header>Profile Picture</Modal.Header>
         <Modal.Content>
           <Form onSubmit={submitHandler}>
@@ -96,7 +98,7 @@ const ModalNewEvent = () => {
         </Modal.Actions>
       </Modal>
       {redirectEvent()}
-    </>
+    </div>
   );
 };
 
