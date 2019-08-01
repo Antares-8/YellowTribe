@@ -31,10 +31,7 @@ class EventRepository extends ServiceEntityRepository
 
     public function findAllNews($tribe)
     {
-        // $qb = $this->createQueryBuilder('t')
-        //     ->join('t.events', 'e')
-        //     ->addselect('e.title')
-        // ;
+
         $qb = $this->createQueryBuilder('e')
                 ->join('e.tribe', 't')
                 ->addselect('t')
