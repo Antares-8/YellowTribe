@@ -26,7 +26,7 @@ class EventController extends AbstractController
      */
     public function list(EventRepository $repository): JsonResponse
     {
-        $events = $repository->findByTitle();
+        $events = $repository->findAllEventWithUsername();
 
         return $this->json($events);
     }

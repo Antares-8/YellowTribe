@@ -19,17 +19,14 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
-
-    public function findByTitle()
+    public function findAllEventWithUsername()
     {
-
-        $query = $this->getEntityManager()->createQuery('
-            SELECT e.id, e.title, e.beginingDate, e.endingDate, e.place, e.description
-            FROM App\Entity\Event e
-        ');
-
-        return $query->getResult();
-
+        $qb = $this->createQueryBuilder('e')
+            ->join('e.user', 'u')
+            ->addselect('u.lastname')
+            ->addselect('u.firstname')
+        ;
+        return $qb->getQuery()->getArrayResult();
     }
 
     /**
@@ -44,6 +41,8 @@ class EventRepository extends ServiceEntityRepository
 
         return $query->getQuery()->getResult();
     }
+
+    
 
     // /**
     //  * SELECT id, created_at, title, user_id FROM event UNION ALL SELECT id, created_at, content, user_id FROM comment
