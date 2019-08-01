@@ -119,7 +119,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/event/{id}", name="event_show", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/event/{event}", name="event_show", methods={"GET"})
      */
     public function show(Event $event)
     {
