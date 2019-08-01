@@ -6,6 +6,7 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Entity\Tribe;
 use App\Form\EventType;
 use App\Repository\EventRepository;
 use App\Repository\CommentRepository;
@@ -69,6 +70,8 @@ class EventController extends AbstractController
      */
     public function indexCalendar(EventRepository $eventRepository)
     {
+        
+
         return $this->render('event/index.html.twig', [
             'title' => 'Calendrier',
         ]);
