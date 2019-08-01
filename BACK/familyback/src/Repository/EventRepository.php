@@ -19,6 +19,18 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
+    public function findAllEventsByTribe($tribe)
+    {
+        $qb = $this->createQueryBuilder('e')
+                ->join('e.tribe', 't')
+                ->addselect('t')
+                ->where('e.tribe = :myTribe')
+            ->setParameter('myTribe', $tribe)
+        ;
+
+        return $qb->getQuery()->getArrayResult();
+    }
+
     public function findAllEventWithUsername()
     {
         $qb = $this->createQueryBuilder('e')

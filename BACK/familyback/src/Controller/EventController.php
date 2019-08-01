@@ -10,14 +10,38 @@ use App\Entity\Tribe;
 use App\Form\EventType;
 use App\Repository\EventRepository;
 use App\Repository\CommentRepository;
-use JMS\Serializer\SerializerBuilder;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class EventController extends AbstractController
 {
+    /**
+     * @Route("/calendar", name="calendar", methods={"GET","POST"})
+     */
+    public function indexCalendar(EventRepository $eventRepository): Response
+    {
+        $connectedUser = $this->getUser();
+        $userTribeId = $connectedUser->getTribe();
+        //dump($userTribeId);
+
+        // search and find all events binded to user's tribe
+        $events = $eventRepository->findAllEventsByTribe($userTribeId);
+        $jsonEvents = $this->json($events);
+
+        return $this->render('event/index.html.twig', [
+            'title' => 'Calendrier',
+            'user' => $connectedUser,
+            'tribe' => $userTribeId,
+        ]);
+    }
+
 
     /**
      * @Route("/newsfeed", name="newsfeed", methods={"GET","POST"})
@@ -62,18 +86,6 @@ class EventController extends AbstractController
             'title' => 'Fil d\'actualités',
             //'newsAPI' => $newsAPI,
             'news' => $news,
-        ]);
-    }
-
-    /**
-     * @Route("/calendar", name="calendar", methods={"GET","POST"})
-     */
-    public function indexCalendar(EventRepository $eventRepository)
-    {
-        
-
-        return $this->render('event/index.html.twig', [
-            'title' => 'Calendrier',
         ]);
     }
 
