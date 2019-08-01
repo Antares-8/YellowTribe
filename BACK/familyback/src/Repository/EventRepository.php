@@ -41,7 +41,7 @@ class EventRepository extends ServiceEntityRepository
                 ->addselect('u')
                 ->from('App\Entity\User', 'u')
                 ->where('e.tribe = :myTribe', 'u.tribe = :myTribe')
-                ->orderBy('e.createdAt', 'DESC')
+                ->orderBy('e.createdAt, u.createdAt', 'DESC')
             ->setParameter('myTribe', $tribe)
         ;
         return $qb->getQuery()->getArrayResult();
@@ -60,23 +60,6 @@ class EventRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
-    
-
-    // /**
-    //  * SELECT id, created_at, title, user_id FROM event UNION ALL SELECT id, created_at, content, user_id FROM comment
-    //  *  
-    //  */
-    // public function findAllNews()
-    // {
-    //     $qb = $this->getEntityManager()->createQuery('
-    //         SELECT id, created_at, title, user_id
-    //         FROM App\Entity\Event event
-    //         UNION ALL SELECT id, created_at, content, user_id
-    //         FROM App\Entity\Comment comment
-    //     ');
-
-    //     return $qb->getResult();
-    // }
 
     // Get 10 last results
     public function lastRelease($limit){
