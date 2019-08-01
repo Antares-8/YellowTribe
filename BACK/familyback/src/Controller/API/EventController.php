@@ -50,27 +50,8 @@ class EventController extends AbstractController
         //     ObjectNormalizer::SKIP_NULL_VALUES => true,
         // ]); // Convert the content-type into json instead of HTML
 
-        return new JsonResponse($events);
+        return $this->json($events);
     }
-
-
-    // /**
-    //  * @Route("/event", name="eventList")
-    //  */
-    // public function eventList(EventRepository $repository)
-    // {
-    //     $serializer = SerializerBuilder::create()->build();
-    //     $serializer->serialize($repository, 'json');
-
-    //     dd($repository);
-    //     return $repository;
-
-
-        // $data = $serializer->deserialize($inputStr, $typeName, $format);
-
-        // return $this->render('event/index.html.twig', [
-        //     'title' => 'Calendrier',
-        // ]);
 
     
 }
