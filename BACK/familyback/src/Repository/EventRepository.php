@@ -24,7 +24,7 @@ class EventRepository extends ServiceEntityRepository
     {
 
         $query = $this->getEntityManager()->createQuery('
-            SELECT e.title, e.beginingDate, e.endingDate
+            SELECT e.id, e.title, e.beginingDate, e.endingDate, e.place, e.description
             FROM App\Entity\Event e
         ');
 
