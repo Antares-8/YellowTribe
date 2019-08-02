@@ -35,6 +35,18 @@ body {
 /* SINGUP TEMPLATE */
 .signup_container {
   width: 50%;
+  margin: auto;
+  padding-top: 2em;
+}
+
+
+/* NAV */
+.fa-sun {
+  color: #FFC107;
+}
+
+.btn_connexion {
+  border: none;
 }
 
 

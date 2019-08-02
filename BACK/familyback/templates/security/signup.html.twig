@@ -2,17 +2,24 @@
 
 {% block title %}Inscription{% endblock %}
 
-{% block body %}
-<div class="container">
-    <h1 class="display-4 text-center">Créer un compte</h1>
+{% block header %}
+    {% include "_nav.html.twig" %}
+{% endblock %}
 
-    <div class="signup_container">
+{% block body %}
+
+<div class="signup_container">
+    <h1 class="display-4 text-center mb-3">Créer un compte</h1>
+
+    <div class="">
 
         {{ form_start(form) }}
             {{ form_widget(form) }}
-            <button class="btn">{{ button_label|default('Save') }}</button>
+            <button class="btn btn-warning btn-lg d-flex m-auto">{{ button_label|default('Valider') }}</button>
         {{ form_end(form) }}
 
     </div>
+
+    <div class="mt-5 float-right"><span class="text-muted">* champs obligatoires</span></div>
 </div>
 {% endblock %}
