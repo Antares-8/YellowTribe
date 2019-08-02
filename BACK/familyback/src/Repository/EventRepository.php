@@ -11,36 +11,41 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class EventRepository extends ServiceEntityRepository
 {
+
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Event::class);
     }
+
     /**
      * Function used in EventController to return all events created by the current user ($user)
      *
      * @param [type] $user
      * @return Event[]
      */
+
     public function findEventByUser($user)
     {
         $qb = $this->createQueryBuilder('e')
-                ->join('e.user', 'u') 
-                ->addselect('u')
-                ->where('e.user = :user')
+            ->join('e.user', 'u') 
+            ->addselect('u')
+            ->where('e.user = :user')
             ->setParameter('user', $user)
         ;
         return $qb->getQuery()->getArrayResult();
     }
+
     public function findAllEventsByTribe($tribe)
     {
         $qb = $this->createQueryBuilder('e')
-                ->join('e.tribe', 't')
-                ->addselect('t')
-                ->where('e.tribe = :myTribe')
+            ->join('e.tribe', 't')
+            ->addselect('t')
+            ->where('e.tribe = :myTribe')
             ->setParameter('myTribe', $tribe)
         ;
         return $qb->getQuery()->getArrayResult();
     }
+
     public function findAllEventWithUsername()
     {
         $qb = $this->createQueryBuilder('e')
@@ -50,20 +55,22 @@ class EventRepository extends ServiceEntityRepository
         ;
         return $qb->getQuery()->getArrayResult();
     }
+
     // function for newsfeed
     public function findAllNews($tribe)
     {
         $qb = $this->createQueryBuilder('e')
-                ->join('e.tribe', 't')
-                ->addselect('t')
-                ->addselect('u')
-                ->from('App\Entity\User', 'u')
-                ->where('e.tribe = :myTribe', 'u.tribe = :myTribe')
-                ->orderBy('e.createdAt, u.createdAt', 'DESC')
+            ->join('e.tribe', 't')
+            ->addselect('t')
+            ->addselect('u')
+            ->from('App\Entity\User', 'u')
+            ->where('e.tribe = :myTribe', 'u.tribe = :myTribe')
+            ->orderBy('e.createdAt, u.createdAt', 'DESC')
             ->setParameter('myTribe', $tribe)
         ;
         return $qb->getQuery()->getArrayResult();
     }
+
     /**
      * Get Events ordered by updatedAt date
      * 
@@ -75,6 +82,7 @@ class EventRepository extends ServiceEntityRepository
                       ->orderBy('e.updatedAt', 'DESC');
         return $query->getQuery()->getResult();
     }
+
     // Get 10 last results
     public function lastRelease($limit){
         $query = $this->createQueryBuilder('e')
@@ -82,6 +90,8 @@ class EventRepository extends ServiceEntityRepository
                       ->setMaxResults( $limit );
         return $query->getQuery()->getResult();
     }
+
+    
     // /**
     //  * @return Event[] Returns an array of Event objects
     //  */
