@@ -5,6 +5,9 @@
 
 
 {% block header %}
+
+    {% include ('_nav.html.twig') %}
+
 {% endblock %}
 
 {% block body %}
@@ -13,11 +16,12 @@
             <h1 class="display-1 logo">Yellow Tribe</h1>
             <h2 class="display-4">Restez connecté avec votre tribu</h2>
 
-            <a href="{{ path('app_login') }}" class="btn btn-outline-warning btn-lg btn-login" role="button">Me connecter</a>
-
-            {# <a href="{{ path('signup') }}">Inscription</a> #}
     </div>
 </div>
+
+
+{% include ('_footer.html.twig') %}
+
 
 {% endblock %}
 

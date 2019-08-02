@@ -15,11 +15,14 @@
 
         {{ form_start(form) }}
             {{ form_widget(form) }}
-            <button class="btn btn-warning btn-lg d-flex m-auto">{{ button_label|default('Valider') }}</button>
+            <div class="float-right">
+                <button class="btn btn-warning btn-lg">{{ button_label|default('Valider') }}</button>
+                <a href="{{ path('homepage') }}" class="btn btn-outline-warning btn-lg" role="button">Annuler</a>
+            </div>
         {{ form_end(form) }}
 
     </div>
 
-    <div class="mt-5 float-right"><span class="text-muted">* champs obligatoires</span></div>
+    <div class="mt-5 "><span class="text-muted">* champs obligatoires</span></div>
 </div>
 {% endblock %}
