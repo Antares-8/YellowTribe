@@ -35,6 +35,14 @@ body {
   border: none;
 }
 
+.btn_connexion {
+  color: #FFFDD8;
+}
+
+.btn_connexion:hover {
+  color: #FFFDD8;
+}
+
 /* SINGUP TEMPLATE */
 .signup_container {
   width: 50%;
