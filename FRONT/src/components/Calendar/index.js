@@ -13,26 +13,24 @@ import './calendar.scss';
 
 const Calendar = ({ calendarType, idOpenEvent, addCategorieInState }) => {
 
-  const [categories, setCategories] = useState({});
+  // const [categories, setCategories] = useState({});
   const testcategorie = {
     categorie1: false, 
     categorie2: false, 
   };
-
-
 
   useEffect(() => {
     axios.get('http://95.142.174.217/api/events')
       .then((res) => {
         const eventsData = res.data;
         eventsData.map((eventData) => {
-          setCategories({
-            ...categories,
-            [eventData[0].place]: true,
-          });
+          // setCategories({
+          //   ...categories,
+          //   [eventData[0].place]: true,
+          // });
         });
-        console.log(categories);
         addCategorieInState(testcategorie);
+
       });
   }, []);
 
@@ -68,6 +66,7 @@ const Calendar = ({ calendarType, idOpenEvent, addCategorieInState }) => {
 Calendar.propTypes = {
   calendarType: PropTypes.string.isRequired,
   idOpenEvent: PropTypes.string.isRequired,
+  addCategorieInState: PropTypes.string.isRequired,
 };
 
 export default Calendar;
