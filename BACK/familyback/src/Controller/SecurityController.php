@@ -72,7 +72,7 @@ class SecurityController extends AbstractController
                         'Bienvenue dans la tribu "' . $user->getTribe() . '"! Vous pouvez vous connecter.'
                     );
 
-                    return $this->redirectToRoute('profile_index');
+                    return $this->redirectToRoute('app_login');
 
                 } 
             }
