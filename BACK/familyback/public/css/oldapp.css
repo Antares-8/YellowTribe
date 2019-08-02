@@ -45,6 +45,10 @@ body {
   color: #FFC107;
 }
 
+.logo_content {
+  font-weight: bold;
+}
+
 .btn_connexion {
   border: none;
 }
