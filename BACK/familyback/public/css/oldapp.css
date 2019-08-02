@@ -67,6 +67,11 @@ body {
   justify-content: center;
 }
 
+/* PROFILE TEMPLATE */
+.profile_container {
+  width: 100%;
+}
+
 /* NAV */
 .nav_container {
   position:fixed;
@@ -92,6 +97,11 @@ body {
   color: #FFFDD8;
 }
 
+/****   ALL BUTTONS   ****/
+.btn {
+  border: 2px solid #FFFDD8;
+}
+
 .btn_connexion, .btn_signup {
   border: none;
 }
@@ -101,6 +111,11 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-around;
+}
+
+/* in profile template */
+.fa_logout:hover {
+  color: #FFFDD8;
 }
 
 /* FOOTER */
