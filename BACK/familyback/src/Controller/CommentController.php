@@ -21,6 +21,7 @@ class CommentController extends AbstractController
         ]);
     }
 
+
     /**
      * @Route("/comment/new", name="comment_new", methods={"GET","POST"})
      */
@@ -41,12 +42,41 @@ class CommentController extends AbstractController
                 'Nouveau commentaire ajouté !'
             );
             
-            return $this->redirectToRoute('event');
+            return $this->redirectToRoute('calendar');
         }
 
         return $this->render('comment/new.html.twig', [
             'comment' => $comment,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/comment/{id}", name="comment_show", methods={"GET"}, requirements={"id"="\d+"})
+     */
+    public function show(Comment $comment)
+    {
+        return $this->render('comment/show.html.twig', [
+            'comment' => $comment,
+        ]);
+    }
+
+    /**
+     * @Route("/comment/{id}", name="comment_delete", methods={"DELETE"}, requirements={"id"="\d+"})
+     */
+    public function delete(Request $request, Comment $comment): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$comment->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($event);
+            $entityManager->flush();
+
+            $this->addFlash(
+                'danger',
+                'Le commentaire a bien été supprimé'
+            );
+        }
+
+        return $this->redirectToRoute('calendar');
     }
 }

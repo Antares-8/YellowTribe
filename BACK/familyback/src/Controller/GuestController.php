@@ -13,8 +13,8 @@ class GuestController extends AbstractController
 {
 
     /**
-     * TODO: template with form to send an invitation to a new member 
-     * @Route("/group/invitation", name="send_invitation", methods={"GET", "POST"})
+     * TODO: change template for a modal ? to send an invitation to a new member 
+     * @Route("/tribe/invitation", name="send_invitation", methods={"GET", "POST"})
      */
     public function sendInvitation(Request $request): Response
     {
@@ -36,10 +36,10 @@ class GuestController extends AbstractController
             //     'Invitation envoyée'
             // );
 
-            return $this->redirectToRoute('profile');
+            return $this->redirectToRoute('profile_index');
         }
 
-        return $this->render('tribe/members.html.twig', [
+        return $this->render('tribe/invite_members.html.twig', [
             'form' => $form->createView(),
         ]);
     }

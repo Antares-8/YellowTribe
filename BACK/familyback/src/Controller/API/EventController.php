@@ -3,8 +3,10 @@
 namespace App\Controller\API;
 
 use App\Entity\Event;
-use App\Repository\EventRepository;
+use App\Entity\Tribe;
 //use JMS\Serializer\SerializerBuilder;
+use App\Repository\EventRepository;
+use App\Repository\TribeRepository;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,51 +28,21 @@ class EventController extends AbstractController
      */
     public function list(EventRepository $repository): JsonResponse
     {
-        $events = $repository->findByTitle();
+        $events = $repository->findAllEventWithUsername();
 
-        //dd($events);
-
-        // $normalizers = [
-        //     new ObjectNormalizer(),
-        // ];
-
-        // $encoders = [
-        //     new JsonEncoder(),
-        // ];
-
-        // $serializer = new Serializer($normalizers, $encoders);
-
-        // $serializedData = $serializer->serialize($events, 'json', [
-        //     ObjectNormalizer::SKIP_NULL_VALUES => true,
-        // ]);
-
-        // dd($serializedData);
-
-        // return $this->json($events, Response::HTTP_OK, [], [
-        //     ObjectNormalizer::SKIP_NULL_VALUES => true,
-        // ]); // Convert the content-type into json instead of HTML
-
-        return new JsonResponse($events);
+        return $this->json($events);
     }
 
+    /**
+     * @Route("/{tribe}/news", name="news_list")
+     */
+    public function newsList(EventRepository $eventRepository, Tribe $tribe): JsonResponse
+    {
+        //dd($tribe);
+        $news = $eventRepository->findAllNews($tribe);
 
-    // /**
-    //  * @Route("/event", name="eventList")
-    //  */
-    // public function eventList(EventRepository $repository)
-    // {
-    //     $serializer = SerializerBuilder::create()->build();
-    //     $serializer->serialize($repository, 'json');
-
-    //     dd($repository);
-    //     return $repository;
-
-
-        // $data = $serializer->deserialize($inputStr, $typeName, $format);
-
-        // return $this->render('event/index.html.twig', [
-        //     'title' => 'Calendrier',
-        // ]);
+        return $this->json($news);
+    }
 
     
 }

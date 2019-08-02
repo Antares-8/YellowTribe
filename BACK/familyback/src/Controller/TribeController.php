@@ -16,8 +16,11 @@ class TribeController extends AbstractController
      */
     public function index()
     {
+        $connectedUser = $this->getUser();
+        $userTribeId = $connectedUser->getTribe();
+
         return $this->render('tribe/index.html.twig', [
-            'controller_name' => 'TribeController',
+            'tribe' => $userTribeId,
         ]);
     }
 
@@ -56,4 +59,8 @@ class TribeController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    
+
+
 }
