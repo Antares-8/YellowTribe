@@ -90,21 +90,7 @@ class EventController extends AbstractController
     }
 
     /**
-<<<<<<< HEAD
-     * @Route("/calendar", name="calendar", methods={"GET","POST"})
-     */
-    public function indexCalendar(EventRepository $eventRepository)
-    {
-        return $this->render('event/index.html.twig', [
-            'title' => 'Calendrier',
-        ]);
-    }
-
-    /**
      * @Route("/event/new", name="event_new", methods={"POST"})
-=======
-     * @Route("/event/new", name="event_new", methods={"GET","POST"})
->>>>>>> 4ec1d80aa4f26d3b8db0b996247f1fb23f2420cd
      */
     public function new(Request $request): Response
     {
