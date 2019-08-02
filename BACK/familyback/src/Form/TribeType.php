@@ -17,6 +17,7 @@ class TribeType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'empty_data' =>'',
+                'label' => 'Nom de tribu',
                 'constraints' => [
                     new NotBlank(),
                     new Length([
