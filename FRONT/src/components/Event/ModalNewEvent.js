@@ -38,8 +38,8 @@ const ModalNewEvent = () => {
   const submitHandler = (evt) => {
     evt.preventDefault();
     setModal(false);
-    setRedirect(true);
-    axios.post('http://192.168.43.152/projet-PlanningFamille/BACK/familyback/public/event/new', {
+
+    axios.post('http://95.142.174.217/event/new', {
       title,
       begining_date: begining,
       ending_date: ending,
