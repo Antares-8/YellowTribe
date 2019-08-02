@@ -65,9 +65,13 @@ header #logo .icon {
   padding-right: .25em;
 }
 
+
+/// barre de recherche /// 
 .ui.input > input {
   padding: 0.4em 0.7em;
   width: 20em;
+  display: flex; 
+  flex-direction: column; 
 }
 
 .iconeNews {

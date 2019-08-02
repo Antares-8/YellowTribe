@@ -1,5 +1,13 @@
 import dateFns from 'date-fns';
 import dataCategories from 'src/components/Data/events.json';
+import axios from 'axios';
+
+axios.get('http://95.142.174.217/api/events')
+  .then((res) => {
+    let eventsData = res.data;
+    console.log(eventsData);
+    // const categories = eventsData.map(eventData => eventData.category);
+  });
 
 const categories = dataCategories.map(dataCategory => dataCategory.category);
 const categoriesState = {};
