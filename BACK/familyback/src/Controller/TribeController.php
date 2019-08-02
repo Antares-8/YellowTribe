@@ -25,8 +25,6 @@ class TribeController extends AbstractController
     }
 
     /**
-     * TODO: les utilisateurs qui appartiennent déjà à une tribu ne peuvent pas en créer une nouvelle pour la MVP
-     * TODO: rajouter une condition pour vérifier que user a déjà une tribu 
      * @Route("/tribe/new", name="newTribe", methods={"GET","POST"})
      */
     public function newTribe(Request $request): Response
