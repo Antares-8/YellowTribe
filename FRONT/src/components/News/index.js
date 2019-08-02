@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 const News = ({}) => {
   console.log(window.location.pathname.slice(7)); 
   return (
+    
   );
 };
 

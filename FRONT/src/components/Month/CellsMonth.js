@@ -1,15 +1,18 @@
 /* eslint-disable no-loop-func */
 // == Import : npm
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import dateFns from 'date-fns';
 import classNames from 'class-names';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import axios from 'axios';
 
 // == Import : local
 import events from 'src/components/Data/events.json';
 // == Composant
 const CellsMonth = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEvent }) => {
+
+  // const [eventData, setEventData] = useState();
 
   const monthStart = dateFns.startOfMonth(currentDate);
   const monthEnd = dateFns.endOfMonth(monthStart);
@@ -113,10 +116,18 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenE
       days = [];
     }
   };
-
   createTable();
+
+  useEffect(() => {
+    axios.get('http://95.142.174.217/api/events')
+      .then((res) => {
+        const eventData = res.data;
+        console.log(eventData);
+      });
+  });
   return (
     <div className="body">
+      {/* {console.log(rows)} */}
       {rows}
     </div>
   );

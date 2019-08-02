@@ -1,15 +1,14 @@
 .App header {
   display: -webkit-flex;
   display: flex;
-  padding: 0em 1em;
   padding-top: 1.15em;
+  padding-left: 2em;
+  padding-right: 2em;
   position: fixed;
   top: 0;
-  height: 8.8em;
-  -webkit-align-items: flex-start;
-  align-items: flex-start;
-  background-color: #fdca36;
   width: 100%;
+  background-color: #fdca36;
+  
 }
 
 .App .PageEvent header {
@@ -26,6 +25,16 @@
   width: 100%;
 }
 
+.headerRow {
+  display: -webkit-flex;
+  display: flex;
+  height: 8.8em;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  background-color: #fdca36;
+  width: 100%;
+}
+
 .headerLeft {
   display: flex; 
   width: 100%;
@@ -36,9 +45,7 @@
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  float: right;
   align-items: center;
-  position: fixed;
   left: -1.7em;
   top: 1.15em;
 }
