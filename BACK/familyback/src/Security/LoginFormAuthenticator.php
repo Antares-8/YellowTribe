@@ -85,7 +85,13 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        // TODO: condition si l'utiliasteur n'a pas de tribu, redirection vers profil ou vers création de tribu
+        //dd($request->get('tribe'));
+
+        // If user doesn't belong to a tribe, rediction to the template to create one
+        if ($request->get('tribe') == null) {
+
+            return new RedirectResponse($this->urlGenerator->generate('newTribe'));
+        }
 
         return new RedirectResponse($this->urlGenerator->generate('calendar'));
 
