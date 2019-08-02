@@ -10,9 +10,11 @@
 
         {{ form_start(form) }}
             {{ form_widget(form) }}
-            <button class="btn">{{ button_label|default('Save') }}</button>
+            <button class="btn">{{ button_label|default('Valider') }}</button>
         {{ form_end(form) }}
 
     </div>
+
+    <p><span class="muted">Les champs accompagnés d'une * sont obligatoires</span></p>
 </div>
 {% endblock %}
