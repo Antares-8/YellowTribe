@@ -35,6 +35,8 @@ body {
 /* SINGUP TEMPLATE */
 .signup_container {
   width: 50%;
+  margin: auto;
+  padding-top: 2em;
 }
 
 

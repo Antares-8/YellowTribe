@@ -2,11 +2,16 @@
 
 {% block title %}Inscription{% endblock %}
 
+{% block header %}
+    {% include "_nav.html.twig" %}
+{% endblock %}
+
 {% block body %}
-<div class="container">
+
+<div class="signup_container">
     <h1 class="display-4 text-center">Créer un compte</h1>
 
-    <div class="signup_container">
+    <div class="">
 
         {{ form_start(form) }}
             {{ form_widget(form) }}
