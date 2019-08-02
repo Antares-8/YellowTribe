@@ -35,12 +35,28 @@ body {
 /* SINGUP TEMPLATE */
 .signup_container {
   width: 50%;
+  margin: auto;
+  padding-top: 2em;
+}
+
+
+/* NAV */
+.fa-sun {
+  color: #FFC107;
+}
+
+.logo_content {
+  font-weight: bold;
+}
+
+.btn_connexion {
+  border: none;
 }
 
 
 /* FOOTER */
 .footer {
-    position: fixed;
+    /* position: fixed; */
     left: 0;
     bottom: 0;
     width: 100%;
