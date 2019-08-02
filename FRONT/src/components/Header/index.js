@@ -10,7 +10,7 @@ import './header.scss';
 const Header = () => {
 
   // creation of hookState for the events who match with the search
-  const [eventsFind, setEventsFind] = useState([]);
+  const [eventsFind, setEventsFind] = useState({});
   // method who compare the search whith the events title. 
   const searchEvent = (eventsData, search) => {
     const searchLength = search.length;
