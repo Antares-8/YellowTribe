@@ -33,13 +33,12 @@ class UserController extends AbstractController
         $user = $this->getUser(); // authenticate User
 
         $form = $this->createForm(UserType::class, $user);
-
         $oldPassword = $user->getPassword();
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            
             if(!is_null($user->getPassword())){
 
                 $encodedPassword = $passwordEncoder->encodePassword(
@@ -52,6 +51,29 @@ class UserController extends AbstractController
             }
 
             $user->setPassword($encodedPassword);
+
+            // Before saving new informations, we have to get the avatar file
+            $file = $user->getAvatar();
+            
+            if(!is_null($user->getPoster())){
+
+                // Generating an unique file name in order not to crush another file, and concatenating with the extention of the origin file
+
+                $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+
+                try {
+
+                    // Moving the file into the right directory (configured in services.yaml)
+                    $file->move(
+                        $this->getParameter('avatar_directory'),
+                        $fileName
+                    );
+                } catch (FileException $e) {
+                    dump($e);
+                }
+
+                $user->setAvatar($fileName);
+            }
 
             $this->getDoctrine()->getManager()->flush();
 

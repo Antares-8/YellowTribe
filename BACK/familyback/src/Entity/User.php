@@ -301,12 +301,13 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    public function getAvatar(): ?string
+    // We have to remove the string type into getter / setter
+    public function getAvatar()
     {
         return $this->avatar;
     }
 
-    public function setAvatar(?string $avatar): self
+    public function setAvatar($avatar): self
     {
         $this->avatar = $avatar;
 
