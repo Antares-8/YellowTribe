@@ -40,6 +40,16 @@ body {
 }
 
 
+/* NAV */
+.fa-sun {
+  color: #FFC107;
+}
+
+.btn_connexion {
+  border: none;
+}
+
+
 /* FOOTER */
 .footer {
     position: fixed;
