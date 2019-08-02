@@ -31,6 +31,16 @@ class TribeController extends AbstractController
      */
     public function newTribe(Request $request): Response
     {
+        if ($this->getUser()->getTribe() != null) {
+
+            $this->addFlash(
+                'success',
+                'Impossible de créer une nouvelle tribu. Vous faîtes déjà parti de la tribu des '. $this->getUser()->getTribe() .' !'
+            );
+
+            return $this->redirectToRoute('tribe');
+        }
+
         $tribe = new Tribe();
         $form = $this->createForm(TribeType::class, $tribe);
         $form->handleRequest($request);
