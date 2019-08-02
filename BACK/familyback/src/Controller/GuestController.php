@@ -31,10 +31,10 @@ class GuestController extends AbstractController
             $entityManager->persist($invitation);
             $entityManager->flush();
 
-            // $this->addFlash(
-            //     'success',
-            //     'Invitation envoyée'
-            // );
+            $this->addFlash(
+                'success',
+                'Invitation envoyée à l\'adresse ' . $invitation->getEmail() 
+            );
 
             return $this->redirectToRoute('profile_index');
         }
