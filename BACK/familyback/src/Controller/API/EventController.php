@@ -7,6 +7,7 @@ use App\Entity\Tribe;
 //use JMS\Serializer\SerializerBuilder;
 use App\Repository\EventRepository;
 use App\Repository\TribeRepository;
+use App\Repository\CommentRepository;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,14 +37,19 @@ class EventController extends AbstractController
     /**
      * @Route("/{tribe}/news", name="news_list")
      */
-    public function newsList(EventRepository $eventRepository, Tribe $tribe): JsonResponse
+    public function newsList(CommentRepository $commentRepository, EventRepository $eventRepository, Tribe $tribe): JsonResponse
     {
         //dd($tribe);
         //$news = $eventRepository->findAllNews($tribe);
-        $events = $eventRepository->findTribeEventsByDate($tribe);
+        $lastEvents = $eventRepository->findTribeEventsByDate($tribe);
+        $lastComments = $commentRepository->findTribeCommentsByDate($tribe);
+
+        $news = [];
+        $news[] = $lastEvents;
+        $news[] = $lastComments;
 
         //dd($events);
-        return $this->json($events);
+        return $this->json($news);
     }
 
     

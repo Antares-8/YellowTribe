@@ -38,7 +38,7 @@ class CommentRepository extends ServiceEntityRepository
         $date->modify('-10 days');
 
         $qb = $this->createQueryBuilder('c')
-                ->join('c.event', 'e')
+                ->join('c.tribe', 't')
                 ->addselect('t')
                 ->where('c.tribe = :myTribe')
                 ->andWhere('c.createdAt > :date')
