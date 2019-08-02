@@ -36,6 +36,9 @@ class SecurityController extends AbstractController
      */
     public function signup(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuestRepository $guestRepository): Response
     {
+
+        // TODO: si déjà connecté (donc possède un compte), rediriger l'utilisateur vers son profil 
+
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);

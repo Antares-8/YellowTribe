@@ -9,20 +9,28 @@
 {% block body %}
 
 <div class="signup_container">
-    <h1 class="display-4 text-center mb-3">Créer un compte</h1>
 
-    <div class="">
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
-        {{ form_start(form) }}
-            {{ form_widget(form) }}
-            <div class="float-right">
-                <button class="btn btn-warning btn-lg">{{ button_label|default('Valider') }}</button>
-                <a href="{{ path('homepage') }}" class="btn btn-outline-warning btn-lg" role="button">Annuler</a>
-            </div>
-        {{ form_end(form) }}
+        <h1 class="display-4 text-center mb-3">Votre compte est déjà créé</h1>
+        
+    {% else %}
 
-    </div>
+        <h1 class="display-4 text-center mb-3">Créer un compte</h1>
 
-    <div class="mt-5 "><span class="text-muted">* champs obligatoires</span></div>
+        <div class="">
+
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <div class="float-right">
+                    <button class="btn btn-warning btn-lg">{{ button_label|default('Valider') }}</button>
+                    <a href="{{ path('homepage') }}" class="btn btn-outline-warning btn-lg" role="button">Annuler</a>
+                </div>
+            {{ form_end(form) }}
+
+        </div>
+
+        <div class="mt-5 "><span class="text-muted">* champs obligatoires</span></div>
+    {% endif %}
 </div>
 {% endblock %}
