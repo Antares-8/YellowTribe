@@ -71,6 +71,11 @@ class User implements UserInterface, \Serializable
      */
     private $comments;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $avatar;
+
     public function __construct()
     {
         $this->createdAt = new DateTime();
@@ -292,6 +297,18 @@ class User implements UserInterface, \Serializable
                 $comment->setRelation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(?string $avatar): self
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }
