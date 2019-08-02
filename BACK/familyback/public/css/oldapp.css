@@ -50,6 +50,11 @@ body {
   padding-top: 2em;
 }
 
+.signup_container .btn {
+  color: #FFFDD8;
+  border: none;
+}
+
 /* INVITATION TEMPLATE */
 .invitation_container {
   width: 50%;
