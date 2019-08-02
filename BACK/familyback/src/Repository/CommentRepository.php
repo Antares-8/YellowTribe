@@ -32,7 +32,24 @@ class CommentRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
-    public function findTribe
+    public function findTribeCommentsByDate($tribe)
+    {
+        $date = new \DateTime('now'); 
+        $date->modify('-10 days');
+
+        $qb = $this->createQueryBuilder('c')
+                ->join('c.event', 'e')
+                ->addselect('t')
+                ->where('c.tribe = :myTribe')
+                ->andWhere('c.createdAt > :date')
+                ->setParameters([
+                    'myTribe' => $tribe,
+                    'date' => $date
+                ])
+        ;
+
+        return $qb->getQuery()->getArrayResult();
+    }
     
     // /**
     //  * @return Comment[] Returns an array of Comment objects
