@@ -64,6 +64,27 @@ class EventRepository extends ServiceEntityRepository
         ;
         return $qb->getQuery()->getArrayResult();
     }
+
+    // search events created during the last 10 days
+    public function findTribeEventsByDate($tribe) 
+    {
+        $date = new \DateTime('now'); 
+        $date->modify('-10 days');
+
+        $qb = $this->createQueryBuilder('e')
+                ->join('e.tribe', 't')
+                ->addselect('t')
+                ->where('e.tribe = :myTribe')
+                ->andWhere('e.createdAt > :date')
+                ->setParameters([
+                    'myTribe' => $tribe,
+                    'date' => $date
+                ])
+        ;
+
+        return $qb->getQuery()->getArrayResult();
+    }
+
     /**
      * Get Events ordered by updatedAt date
      * 

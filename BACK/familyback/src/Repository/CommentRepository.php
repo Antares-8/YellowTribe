@@ -31,6 +31,8 @@ class CommentRepository extends ServiceEntityRepository
 
         return $query->getQuery()->getResult();
     }
+
+    public function findTribe
     
     // /**
     //  * @return Comment[] Returns an array of Comment objects

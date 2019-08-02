@@ -39,9 +39,11 @@ class EventController extends AbstractController
     public function newsList(EventRepository $eventRepository, Tribe $tribe): JsonResponse
     {
         //dd($tribe);
-        $news = $eventRepository->findAllNews($tribe);
+        //$news = $eventRepository->findAllNews($tribe);
+        $events = $eventRepository->findTribeEventsByDate($tribe);
 
-        return $this->json($news);
+        //dd($events);
+        return $this->json($events);
     }
 
     
