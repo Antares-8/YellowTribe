@@ -55,7 +55,7 @@ class UserController extends AbstractController
             // Before saving new informations, we have to get the avatar file
             $file = $user->getAvatar();
             
-            if(!is_null($user->getPoster())){
+            if(!is_null($user->getAvatar())){
 
                 // Generating an unique file name in order not to crush another file, and concatenating with the extention of the origin file
 
@@ -79,7 +79,7 @@ class UserController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Informations modifiées'
+                'Vos informations ont bienété modifiées'
             );
 
             return $this->redirectToRoute('profile_index');

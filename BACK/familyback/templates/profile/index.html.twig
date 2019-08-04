@@ -34,11 +34,11 @@
 
     <p>Votre tribu est {{ app.user.tribe }}</p>
 
-    <p>Votre photo de profil : <img src="{{ asset('uploads/avatars/default-avatar.png') }}" alt="default-avatar" {#{{ app.user.avatar }}#}</p>
+    <p>Votre photo de profil : {#<img src="{{ asset('uploads/avatars/default-avatar.png') }}" alt="default-avatar" {#{{ app.user.avatar }}#}</p>
 
-    {#<a href="{{ path('movie_show', { 'id': movie.id }) }}">
-      <img src="{{ asset(poster_upload_path ~ (movie.poster ?: 'default-movie.jpg')) }}" class="img-fluid">
-    </a>#}
+    {#<a href="{{ path('movie_show', { 'id': movie.id }) }}">#}
+      <img src="{{ asset(avatar_upload_path ~ (app.user.avatar ?: 'default-avatar.png')) | imagine_filter('thumb_back_list') }}"/>
+    {# </a> #}
 
 
     <p><a href="{{ path('tribe') }}" class="btn btn-outline-warning btn-lg" role="button">Voir les membres de ma tribu</a></p>

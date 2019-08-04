@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
@@ -85,11 +86,6 @@ class UserType extends AbstractType
             ->add('avatar', FileType::class, [
                 'label' => 'Photo de profil (jpg,png,gif)',
                 'required' => false,
-                // 'constraints' => [
-                //     new File([
-                //         'maxSize' => '1024k',
-                //     ])
-                // ]
             ])
             //->add('createdAt')
             //->add('tribe')
