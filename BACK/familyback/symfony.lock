@@ -165,6 +165,9 @@
     "hoa/zformat": {
         "version": "1.17.01.10"
     },
+    "imagine/imagine": {
+        "version": "v0.7.1"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
@@ -186,6 +189,19 @@
             "config/packages/dev/jms_serializer.yaml",
             "config/packages/jms_serializer.yaml",
             "config/packages/prod/jms_serializer.yaml"
+        ]
+    },
+    "liip/imagine-bundle": {
+        "version": "1.8",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.8",
+            "ref": "1d42bc3f713130582e6e0c475c49bc327ab0a2a2"
+        },
+        "files": [
+            "config/packages/liip_imagine.yaml",
+            "config/routes/liip_imagine.yaml"
         ]
     },
     "monolog/monolog": {

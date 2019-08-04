@@ -48,7 +48,9 @@
     {% else %}
 
     <p>Votre tribu est {{ app.user.tribe }}</p>
-    {# TODO: créer le tpl pour voir les membres de sa tribu avec la @Route '/{tribe}/members' #}
+
+    <p>Votre photo de profil : <img src="{{ asset(avatar_upload_path ~ (app.user.avatar ?: 'default-avatar.png')) | imagine_filter('thumb_back_list') }}"/></p>
+
     <p><a href="{{ path('tribe') }}" class="btn btn-outline-warning btn-lg" role="button">Voir les membres de ma tribu</a></p>
     <p><a href="{{ path('send_invitation') }}" class="btn btn-outline-warning btn-lg" role="button">Inviter un nouveau membre à rejoindre votre groupe</a></p>
 
@@ -57,7 +59,7 @@
 
 <p><a href="{{ path('events_list') }}" class="btn btn-outline-warning btn-lg" role="button">Liste de mes événements</a></p> <p>pour info, j'en ai créé {{ app.user.events|length }}</p>
 
-<p><a href="{{ path('calendar') }}" class="btn btn-outline-warning btn-lg" role="button">Voir le calendrier</a></p>
+<p><a href="{{ path('calendar') }}" class="btn btn-outline-warning btn-lg" role="button">Retour vers le calendrier</a></p>
 <p><a href="{{ path('app_logout') }}" class="btn btn-outline-warning btn-lg" role="button">Me déconnecter</a></p>
 
 {% endblock %}

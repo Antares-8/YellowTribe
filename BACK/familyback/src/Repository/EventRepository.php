@@ -66,8 +66,8 @@ class EventRepository extends ServiceEntityRepository
             ->from('App\Entity\User', 'u')
             ->where('e.tribe = :myTribe', 'u.tribe = :myTribe')
             ->orderBy('e.createdAt, u.createdAt', 'DESC')
-            ->setParameter('myTribe', $tribe)
-        ;
+            ->setParameter('myTribe', $tribe);
+        
         return $qb->getQuery()->getArrayResult();
     }
 
@@ -111,7 +111,10 @@ class EventRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
+<<<<<<< HEAD
     
+=======
+>>>>>>> profileTemplate
     // /**
     //  * @return Event[] Returns an array of Event objects
     //  */

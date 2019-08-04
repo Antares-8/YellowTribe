@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Table(name="app_user") // To change User in app_user in database, User is a reserved name
@@ -72,6 +74,12 @@ class User implements UserInterface, \Serializable
     private $comments;
 
     /**
+     * @Assert\File(
+     * maxSize = "1024k",
+     * mimeTypes={"image/gif", "image/jpeg", "image/png"},
+     * mimeTypesMessage = "Merci d'entrer une image au format gif, png ou jpeg"
+     * )
+     * 
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $avatar;
@@ -301,12 +309,13 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    public function getAvatar(): ?string
+    // We have to remove the string type in getter / setter : Symfony transforms string into an file object
+    public function getAvatar()
     {
         return $this->avatar;
     }
 
-    public function setAvatar(?string $avatar): self
+    public function setAvatar($avatar): self
     {
         $this->avatar = $avatar;
 
