@@ -309,7 +309,7 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    // We have to remove the string type into getter / setter
+    // We have to remove the string type in getter / setter : Symfony transforms string into an file object
     public function getAvatar()
     {
         return $this->avatar;

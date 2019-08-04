@@ -8,6 +8,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use App\Repository\UserRepository;
+
 
 
 /**
@@ -52,13 +56,13 @@ class UserController extends AbstractController
 
             $user->setPassword($encodedPassword);
 
+
             // Before saving new informations, we have to get the avatar file
             $file = $user->getAvatar();
             
             if(!is_null($user->getAvatar())){
 
                 // Generating an unique file name in order not to crush another file, and concatenating with the extention of the origin file
-
                 $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
 
                 try {
@@ -68,6 +72,7 @@ class UserController extends AbstractController
                         $this->getParameter('avatar_directory'),
                         $fileName
                     );
+                    // If error, error dump
                 } catch (FileException $e) {
                     dump($e);
                 }
@@ -79,7 +84,7 @@ class UserController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Vos informations ont bienété modifiées'
+                'Vos informations ont bien été modifiées'
             );
 
             return $this->redirectToRoute('profile_index');
