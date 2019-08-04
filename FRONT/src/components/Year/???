@@ -1,4 +1,3 @@
-/* eslint-disable no-loop-func */
 // == Import : npm
 import React, { useEffect, useState } from 'react';
 import dateFns from 'date-fns';
@@ -16,23 +15,29 @@ import events from 'src/components/Data/events.json';
 // == Composant
 const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEvent  }) => {
 
-  // about year calendar
-
   const yearStart = dateFns.startOfYear(currentDate);
   const yearEnd = dateFns.endOfYear(yearStart);
+  const monthStart = dateFns.startOfMonth(currentDate);
+  const monthEnd = dateFns.endOfMonth(monthStart);
   const startDate = dateFns.startOfMonth(yearStart);
+  const startDateMonth = dateFns.startOfWeek(yearStart);
   const endDate = dateFns.endOfMonth(yearEnd);
+  const endDateMonth = dateFns.endOfWeek(monthEnd);
 
   const dateFormatMonth = 'MMMM';
-  const trimester = [];
+  const dateFormatDay= 'D';
+  const rows = [];
+  const years = [];
 
   let months = [];
   let month = startDate;
+  let days= [];
+  let day = startDateMonth;
   let formattedDate = '';
-
+  let formattedDateD = '';
 
   // call click date function from reducer
-
+  
   const dateClickHandlerW = (cloneDay) => {
     onDateClick(dateFns.parse(cloneDay));
   };
@@ -42,47 +47,30 @@ const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEv
   };
 
   // classNames
-
-  const selected2 = classNames({
-    disabled: dateFns.isSameYear(month, yearStart) === false,
-    selected: dateFns.isSameYear(month, yearStart) && dateFns.isSameMonth(month, selectedDate),
+  const selected = classNames({
+    disabled: dateFns.isSameMonth(day, monthStart) === false,
+    selected: dateFns.isSameMonth(day, monthStart) && dateFns.isSameDay(day, selectedDate),
   });
 
   const createTable = () => {
     // for 1 year
     while (month <= endDate) {
-
       for (let i = 0; i < 3; i += 1) {
-        // about month calendar
-        const monthStart = dateFns.startOfMonth(month);
-        const monthEnd = dateFns.endOfMonth(monthStart);
-        const startDateMonth = dateFns.startOfWeek(monthStart);
-        const endDateMonth = dateFns.endOfWeek(monthEnd);
-
-        const dateFormatDay = 'D';
-        const rows = [];
-
-        let days = [];
-        let day = startDateMonth;
-        let formattedDateD = '';
-
         let rowEvent = 1;
+        // for 1 day 
         while (day <= endDateMonth) {
-          for (let i = 0; i < 7; i += 1) {
+          for (let i = 1; i < 8; i += 1) {
             formattedDateD = dateFns.format(day, dateFormatDay);
             const cloneDay = day;
-            const selected = classNames({
-              disabled: dateFns.isSameMonth(day, monthStart) === false,
-              selected: dateFns.isSameMonth(day, monthStart) && dateFns.isSameDay(day, selectedDate),
-            });
-            console.log(dateFns.isSameMonth(day, monthStart));
             days.push(
               <div
                 className={`col cell ${selected}`}
                 key={day}
+                col={i}
                 onClick={() => dateClickHandlerW(cloneDay)}
               >
                 <span className="number">{formattedDateD}</span>
+                <span className="bg">{formattedDateD}</span>
               </div>
             );
             day = dateFns.addDays(day, 1);
@@ -99,7 +87,7 @@ const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEv
                 const colEventCenterRow = new Date(days[6].key) > new Date(event.beginingDate)
                 && new Date(days[0].key) < new Date(event.endingDate) ? 1 : 0;
                 const colSpanEventCenterRow = new Date(days[6].key) > new Date(event.beginingDate)
-                && new Date(days[0].key) < new Date(event.endingDate) ? 7 : 1;
+                && new Date(days[0].key) < new Date(event.endingDate) ? 7 : 0;
                 // I'm finding case number where my event beggin
                 const colCalc = days.findIndex(dayC => dateFns.isSameMonth(dayC.key, new Date(event.beginingDate))
                 && dateFns.isSameDay(dayC.key, new Date(event.beginingDate))
@@ -114,7 +102,7 @@ const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEv
                 && dateFns.isSameDay(dayC.key, new Date(event.endingDate))
                 && dateFns.isSameYear(dayC.key, new Date(event.endingDate)))
                 + 1;
-
+                
                 const colSpan = colSpanCalc === 0 ? colSpanEventCenterRow : colSpanCalc - col + 1;
                 // if the test is empty we display the line
                 const hidden = col === 0 ? 'none' : 'inline';
@@ -129,12 +117,15 @@ const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEv
                 // I create a styled components to fixe directly the col and span on the grid-colum style
                 const Events = styled.div`
                   grid-column: ${col} / span ${colSpan};
-                  grid-row: ${rowEvent} / span 1;
+                  grid-row: ${rowEvent} / span 3;
                   display: ${hidden};
                 `;
                 // I return the event in the DOM
                 return (
                   <Events key={`${event.beginingDate}${day}`} className={`events event${rowEvent} ${eventDisplay}`} id={event.id} onClick={clickHandleEvent}>
+                    <div className="title">
+                      {event.title}
+                    </div>
                   </Events> 
                 )
               })}
@@ -144,32 +135,39 @@ const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEv
           days = [];
         }
         formattedDate = dateFns.format(month, dateFormatMonth);
+        const clonemonth = month;
+        const selected = classNames({
+          disabled: dateFns.isSameYear(month, yearStart) === false,
+          selected: dateFns.isSameYear(month, yearStart) && dateFns.isSameMonth(month, selectedDate),
+        });
         months.push(
-          <div key={month} className="month">
-            {formattedDate}
+          <div
+            className={`col cell ${selected}`}
+            key={month}
+            onClick={() => dateClickHandler(clonemonth)}
+          >       
+            {dateFns.format(dateFns.addMonths(startDate, i), dateFormatMonth, { locale: french })}
             {rows}
-          </div>,
+          </div>
         );
         month = dateFns.addMonths(month, 1);
-      }
-      trimester.push(
-        <div className="trimester" key={month}>
+      years.push(
+        <div className="month" key={month}>
           {months}
-        </div>,
+        </div>
       );
       months = [];
     }
-  };
-
+};
 
   createTable();
   return (
     <div className="body">
-      {trimester}
+      {years}
     </div>
   );
 };
-
+}
 
 CellsYear.propTypes = {
   currentDate: PropTypes.string.isRequired,
@@ -181,3 +179,27 @@ CellsYear.propTypes = {
 
 // == Export
 export default CellsYear;
+
+
+////////////////////////
+
+ // for 1 year
+    while (month <= endDate) {
+      console.log(month, endDate);
+      for (let i = 0; i < 3; i += 1) {
+        formattedDate = dateFns.format(month, dateFormatMonth);
+        months.push(
+          <div key={month}>       
+            {formattedDate}
+          </div>
+        );
+        month = dateFns.addMonths(month, 1);
+      }
+      trimester.push(
+        <div className="trimester" key={month}>
+          {months}
+        </div>
+      );
+      months = [];
+    }
+  };

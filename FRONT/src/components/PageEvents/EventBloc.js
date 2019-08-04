@@ -12,12 +12,11 @@ import { Link } from 'react-router-dom';
 // == Import : local
 // import './Event.scss';
 import events from 'src/components/Data/events.json';
-import './event.scss';
 
 
 // == Composant
-const Event = ({ idOpenEvent, closeEvent }) => {
-  console.log(window.location.pathname.slice(7)); 
+const EventBloc = ({ idOpenEvent, closeEvent }) => {
+  const idEvent = window.location.pathname.slice(7); 
   useEffect(() => {
     axios.get(`http://95.142.174.217/api/events/${idOpenEvent}`)
       .then((res) => {
@@ -29,8 +28,8 @@ const Event = ({ idOpenEvent, closeEvent }) => {
   const clickCloseHandler = () => {
     closeEvent();
   };
-
-  const eventData = events.filter(eventsData => eventsData.id == idOpenEvent);
+  
+  const eventData = events.filter(eventsData => eventsData.id == idEvent);
   const event = eventData[0];
   const formatHour = 'HH';
   const formatDay = 'dddd';
@@ -50,7 +49,7 @@ const Event = ({ idOpenEvent, closeEvent }) => {
           <div className="number">{dateFns.format(new Date(event.beginingDate), formatNumber, { locale: french })}</div>
           <div className="month">{dateFns.format(new Date(event.beginingDate), formatMonth, { locale: french })}</div>
         </div>
-        <div className="title"> 
+        <div className="title">
           <div className="mainTitle">{event.title}</div>
           <div className="baseTitle">
             <div className="author">Organisé par <span>{event.user}</span> / </div>
@@ -77,10 +76,10 @@ const Event = ({ idOpenEvent, closeEvent }) => {
   );
 };
 
-Event.propTypes = {
+EventBloc.propTypes = {
   idOpenEvent: PropTypes.number.isRequired,
   closeEvent: PropTypes.func.isRequired,
 };
 
 // == Export
-export default Event;
+export default EventBloc;

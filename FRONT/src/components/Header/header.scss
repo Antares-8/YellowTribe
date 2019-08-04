@@ -1,13 +1,11 @@
 .App header {
   display: -webkit-flex;
   display: flex;
-  padding-top: 1.15em;
-  padding-left: 2em;
-  padding-right: 2em;
+  height: 7.68em;
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #fdca36;
+  background-color: var(--background-dark);
   
 }
 
@@ -21,17 +19,20 @@
   height: 4.8em;
   -webkit-align-items: flex-start;
   align-items: flex-start;
-  background-color: #fdca36;
+  background-color: var(--background-dark);
   width: 100%;
 }
 
 .headerRow {
   display: -webkit-flex;
   display: flex;
-  height: 8.8em;
+  height: 3.85em;
+  padding-top: 0.8em;
+  padding-left: 1.7em;
+  padding-right: 1.7em;
   -webkit-align-items: flex-start;
   align-items: flex-start;
-  background-color: #fdca36;
+  background-color: var(--border-dark);
   width: 100%;
 }
 
@@ -39,10 +40,12 @@
   display: flex; 
   width: 100%;
   align-items: center;
+  flex: 2; 
 }
 
 .headerRight {
   display: flex;
+  flex: 1;
   justify-content: flex-end;
   width: 100%;
   align-items: center;
@@ -55,9 +58,9 @@
 header #logo {
   font-size: 130%;
   text-align: center;
-  color: rgb(26, 26, 26);
+  color: var(--text-dark);
   line-height: 1;
-  margin-right: 6em;
+  margin-right: 4em;
   font-family: 'Bold', sans-serif;
 }
 
@@ -72,6 +75,10 @@ header #logo .icon {
   width: 20em;
   display: flex; 
   flex-direction: column; 
+  border-radius: 0.8em;
+  background-color: var(--background-light); 
+  color: var(--text-light);
+  border: 1px solid var(--border-dark);
 }
 
 .iconeNews {
@@ -91,13 +98,18 @@ header #logo .icon {
   margin-right: 2em;
   margin-bottom: 0.2em;
   font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
+.headerRight .tribeName {
+  font-size: 130%;
 }
 
 .headerRight .profilePicture {
   width: 1.7em; 
   height: 1.7em; 
   border-radius: 1.7em;
-  border: 1px solid black; 
+  border: 1px solid var(--border-light); 
 }
 
 .ui.buttons .or:before {
@@ -106,16 +118,22 @@ header #logo .icon {
   width: 2.19em;
   height: 2.19em;
   border-radius: 2.19em;
-  border: 2px solid black;
+  border: 2px solid var(--border-light);
 }
 
 .headerRight .ui.buttons .groupButton {
-  border: 1px solid black;
+  border: 1px solid var(--border-light);
   padding-left: 2.4em;
   text-transform: uppercase;
   font-size: 0.7rem;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
+  border-radius: 1em;
   height: 3.2em;
+  color: var(--text-light) !important;
+  background-color: var(--background-light) !important;
+}
+.ui.basic.black.button, .ui.basic.black.buttons .button {
+  box-shadow: none !important;
 }
 
