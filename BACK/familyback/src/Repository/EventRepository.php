@@ -71,8 +71,6 @@ class EventRepository extends ServiceEntityRepository
         return $qb->getQuery()->getArrayResult();
     }
 
-<<<<<<< HEAD
-=======
     // search events created in the last 10 days
     public function findTribeEventsByDate($tribe) 
     {
@@ -93,7 +91,6 @@ class EventRepository extends ServiceEntityRepository
         return $qb->getQuery()->getArrayResult();
     }
 
->>>>>>> 94fc2a9027855d1336dc2a7603645f61c293d79f
     /**
      * Get Events ordered by updatedAt date
      * 
