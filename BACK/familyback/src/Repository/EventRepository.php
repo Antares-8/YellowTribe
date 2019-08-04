@@ -111,10 +111,7 @@ class EventRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
-<<<<<<< HEAD
     
-=======
->>>>>>> profileTemplate
     // /**
     //  * @return Event[] Returns an array of Event objects
     //  */

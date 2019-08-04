@@ -74,7 +74,7 @@ class UserController extends AbstractController
 
                 // $user->setAvatar($fileName);
 
-                // Generating an unique file name in order not to crush another file, and concatenating with the extention of the origin file
+                // Generating an unique file name (function at the bottom of this file) in order not to crush another file, and concatenating with the extention of the origin file
                 $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
 
                 try {
@@ -84,7 +84,7 @@ class UserController extends AbstractController
                         $this->getParameter('avatar_directory'),
                         $fileName
                     );
-                    // If error, error dump
+                    // If error, error's dump
                 } catch (FileException $e) {
                     dump($e);
                 }
