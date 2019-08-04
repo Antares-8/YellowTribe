@@ -19,6 +19,26 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
+    // search users created in the last 10 days
+    public function findTribeUsersByDate($tribe) 
+    {
+        $date = new \DateTime('now'); 
+        $date->modify('-10 days');
+
+        $qb = $this->createQueryBuilder('u')
+                ->join('u.tribe', 't')
+                ->addselect('t')
+                ->where('u.tribe = :myTribe')
+                ->andWhere('u.createdAt > :date')
+                ->setParameters([
+                    'myTribe' => $tribe,
+                    'date' => $date
+                ])
+        ;
+
+        return $qb->getQuery()->getArrayResult();
+    }
+
     // /**
     //  * @return User[] Returns an array of User objects
     //  */

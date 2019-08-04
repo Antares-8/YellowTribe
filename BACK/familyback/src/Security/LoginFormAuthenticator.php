@@ -87,11 +87,12 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
         //dd($request->get('tribe'));
 
+        // UPDATE: even if user has a tribe, he is redirect to 'newTribe'
         // If user doesn't belong to a tribe, rediction to the template to create one
-        if ($request->get('tribe') == null) {
+        // if ($request->get('tribe') == null) {
 
-            return new RedirectResponse($this->urlGenerator->generate('newTribe'));
-        }
+        //     return new RedirectResponse($this->urlGenerator->generate('newTribe'));
+        // }
 
         return new RedirectResponse($this->urlGenerator->generate('calendar'));
 
