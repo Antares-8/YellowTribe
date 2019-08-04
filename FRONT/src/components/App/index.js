@@ -7,31 +7,18 @@ import classNames from 'class-names';
 
 
 // == Import : local
-import PageMain from 'src/components/PageMain';
-import PageEvent from 'src/components/PageEvent';
-import Calendar from 'src/containers/Calendar';
-// import News from 'src/components/News';
-import Header from 'src/components/Header';
-import Sidebar from 'src/containers/Sidebar';
-import Nav from 'src/containers/Nav';
-import Event from 'src/containers/Event';
-import ModalNewEvent from 'src/components/Event/ModalNewEvent';
+import PageMain from 'src/containers/PageMain';
+import PageEvents from 'src/containers/PageEvents';
+
 import './app.scss';
 
 // == Composant
-const App = ({ idOpenEvent }) => {
+const App = () => {
   return (
     <div className="App">
       <Router>
-        <Route exact path="/calendar" component={Calendar} />
-        <Route exact path="/" component={Calendar} />
-        <Header />
-        <Nav />
-        <ModalNewEvent />
-        {idOpenEvent !== '' && <Event />}
-        <Sidebar />
-        <Route exact path="/event/name1" component={PageEvent} />
-        <Route exact path="/event" component={PageEvent} />
+        <Route path="/" component={PageMain} />
+        <Route path="/event" component={PageEvents} />
       </Router>
     </div>
   );

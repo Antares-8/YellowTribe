@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import dateFns from 'date-fns';
-import dataCategories from 'src/components/Data/events.json';
-import axios from 'axios';
+
 
 // == Initial State
 const initialState = {

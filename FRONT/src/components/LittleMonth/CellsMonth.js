@@ -68,7 +68,7 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenE
             const colEventCenterRow = new Date(days[6].key) > new Date(event.beginingDate)
             && new Date(days[0].key) < new Date(event.endingDate) ? 1 : 0;
             const colSpanEventCenterRow = new Date(days[6].key) > new Date(event.beginingDate)
-            && new Date(days[0].key) < new Date(event.endingDate) ? 7 : 0;
+            && new Date(days[0].key) < new Date(event.endingDate) ? 7 : 1;
             // I'm finding case number where my event beggin
             const colCalc = days.findIndex(dayC => dateFns.isSameMonth(dayC.key, new Date(event.beginingDate))
             && dateFns.isSameDay(dayC.key, new Date(event.beginingDate))
@@ -83,7 +83,7 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenE
             && dateFns.isSameDay(dayC.key, new Date(event.endingDate))
             && dateFns.isSameYear(dayC.key, new Date(event.endingDate)))
             + 1;
-            
+            console.log(colSpanCalc);
             const colSpan = colSpanCalc === 0 ? colSpanEventCenterRow : colSpanCalc - col + 1;
             // if the test is empty we display the line
             const hidden = col === 0 ? 'none' : 'inline';
@@ -117,12 +117,14 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenE
     }
   };
   createTable();
-
+  
   useEffect(() => {
+    
     axios.get('http://95.142.174.217/api/events')
       .then((res) => {
         const eventData = res.data;
         console.log(eventData);
+        
       });
   });
   return (

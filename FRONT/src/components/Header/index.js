@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun } from '@fortawesome/free-solid-svg-icons';
-import { Button, Input, Dropdown } from 'semantic-ui-react';
+import { Button, Input, Dropdown } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import './header.scss';
@@ -59,7 +60,7 @@ const Header = () => {
         <div className="headerRow">
           <div className="headerLeft">
             <div id="logo">
-              <FontAwesomeIcon icon={faSun} /> Yellow Tribe
+              <FontAwesomeIcon icon={faSun} /> Yellow Tribes
             </div>
             <div className="ui input">
               <Input placeholder='State' icon="search" search selection onChange={changeSearchHandler} />
@@ -72,7 +73,7 @@ const Header = () => {
             </div>
             <Button.Group>
               <Button.Or text="" />
-              <Button basic color="black" className="groupButton">nom de tribes </Button>
+              <Button basic color="black" className="groupButton"> <div className="tribeName">nom de tribes</div></Button>
             </Button.Group>
           </div>
         </div>

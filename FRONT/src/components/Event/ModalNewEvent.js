@@ -65,11 +65,8 @@ const ModalNewEvent = () => {
 
   return (
     <div className="modalEvent">
-      <Button>
-      <span className="icon">add</span>nouvel évenement
-      </Button>
       <Modal trigger={<Button>
-        <span className="icon">add</span>nouvel évenement
+        <div className="addEvent"></div>
       </Button>}>
         <Modal.Header>Profile Picture</Modal.Header>
         <Modal.Content>

@@ -23,12 +23,16 @@
 /* VARIABLES */
 
 :root {
-  --main-color: #1a8fff;
-  --text-color: #777;
-  --text-color-light: #ccc;
-  --border-color: #eee;
-  --bg-color: #f9f9f9;
-  --neutral-color: #fff;
+  --main-color: #202122;
+  --text-dark: #fef7e1;
+  --text-light-dark: #fed661;
+  --text-light: #fcc53b;
+  --text-light-light: #fff5d7;
+  --background-light: #fff5d7;
+  --background-dark: #fcc53b;
+  --border-dark: #e6b523;
+  --border-light: #ffd861;
+  --color-ultraLight-light: 
 }
 
 
@@ -39,7 +43,8 @@
 }
 
 body {
-  margin: 0em 1.6em;
+  margin:0;
+  background-color: var(--background-dark);
   
 }
 
@@ -48,15 +53,15 @@ body {
     font-size: 1em;
     font-weight: 300;
     line-height: 1.5;
-    color: var(--text-color);
-    background: var(--bg-color);
+    color: var(--text-light);
     position: relative;
 }
 
 nav {
   display: block;
   position: fixed;
-  top: 6em;
+  top: 5em;
+  left: 1.7em;
 }
 
 nav .item {
@@ -70,28 +75,26 @@ nav .item {
   background: 0 0;
   border-bottom: none;
   border-radius: 1.28571rem 1.28571rem 0 0 !important;
-  border-left: 1px solid #d4d4d5;
-  border-right: 1px solid #d4d4d5;
-  border-top: 2px solid #d4d4d5;
-  color: rgba(0, 0, 0, 0.87);
+  border-left: 1px solid var(--border-light);
+  border-right: 1px solid var(--border-light);
+  border-top: 2px solid var(--border-light);
+  color: var(--text-light);
+  background-color:var(--background-light);
   font-weight: 400;
   padding: 0.73em 2.5em !important;
 }
 
 .main {
   margin: 0 auto;
-  margin-top: 7em;
+  margin-top: 6em;
+  margin-left: 1.7em;
   float: left;
   width: 75%;
   max-width: 80em;
   transition: width .2s ease; 
 }
 .main.withEvent {
-  margin: 0 auto;
-  margin-top: 7em;
-  float: left;
   width: 57%;
-  max-width: 80em;
   transition: width .2s ease; 
 }
 
@@ -104,14 +107,21 @@ nav .item {
 }
 
 /// NAV ////
+.ui.tabular.menu {
+  border-bottom: none;
+}
 
 .ui.tabular.menu .item {
   padding: 0 2.5em;
   font-size: 110%;
-  font-family: Reg;
+  font-family: 'Reg';
+  color: var(--text-dark);
 }
 .ui.tabular.menu .active.item {
   border-radius: 1.28571rem 1.28571rem 0 0 !important;
+  background-color: var(--background-light);
+  border-color: var(--background-light);
+  color: var(--text-light);
 }
 
 /// circulation type calendrier et periode /// 
@@ -184,17 +194,26 @@ nav .item {
   margin-right: 1em;
 }
 
+/// bouton ajouter un event
+
 .modalEvent .ui.button {
   position: fixed;
-  top: 5em;
+  top: 4.375em;
   right: 1.3em;
-  border-radius: 6em;
+  border-radius: 0.8em;
+  border: 0.18em solid var(--text-dark);
+  background-color: var(--background-dark);
+  color: var(--text-dark);
   display: flex; 
   align-items: center;
-  padding: 0.5em 1.7em;
+  padding: 0.05em 0.8em;
+}
+.modalEvent .ui.button .addEvent{
+  font-size: 110%;
 }
 
 .modalEvent .icon {
   font-size: 190%;
-  padding-bottom: 0.9em;
+  padding-bottom: 0.05em;
+  padding-right: 0.2em;
 }

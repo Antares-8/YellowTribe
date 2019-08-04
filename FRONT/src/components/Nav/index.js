@@ -1,7 +1,7 @@
 // == Import : npm
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import classNames from 'class-names';
 
@@ -49,9 +49,6 @@ const Nav = ({ prevCalendarType, nextCalendarType, calendarType }) => {
 
   return (
     <>
-      <div className={`navigation ${eventPart}`}>
-        <div className="item">évènement</div>
-      </div>
       <div className={`navigation ${eventPartHidden}`}>
         <nav>
           <Menu tabular>
