@@ -18,8 +18,9 @@ class InvitationType extends AbstractType
                 'constraints' => [
                     new NotBlank(),
                 ],
+                'label' => 'Email invité',
+                // 'help' => 'Veuillez renseigner l\'adresse email de la personne que vous souhaitez inviter',
             ])
-            // TODO: contraintes (doit ressembler à un mail + ne pas exister dans la BDD?)
             // ->add('tribe')
         ;
     }
