@@ -67,39 +67,30 @@
             {% endif %}
         </div>
 
-        <div class="card-container d-flex flex-wrap col-10">
+        <div class="col-10">
+            <a href="{{ path('send_invitation') }}" class="btn btn-outline-warning btn-lg mb-3" role="button"><div class=""><i class="fas fa-plus"></i> Inviter un nouvel utilisateur</div></a>
 
-                <div class="card mb-3 bg-warning mr-3 " style="max-width: 30%;">
-                    <div class="row no-gutters d-flex align-items-center">
-                        <div class="col-md-5 text-center">
-                            <a href="{{ path('send_invitation') }}" class="fa-invite"><i class="fas fa-plus-square fa-9x"></i></a>
-                        </div>
-                        <div class="col-md-7">
-                        <div class="card-body">
-                            <h5 class="card-titler font-weight-bold">Inviter un nouvel utilisateur</h5>
-                        </div>
+            <div class="card-container d-flex flex-wrap">
+
+                {% for user in tribe.users %}
+                    <div class="card mb-3 bg-warning mr-3" style="max-width: 30%;">
+                        <div class="row no-gutters d-flex align-items-center">
+                            <div class="col-md-5">
+                                <img src="{{ asset('uploads/avatars/default-avatar.png') }}" class="card-img" alt="avatar par défault">
+                            </div>
+                            <div class="col-md-7">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ user.firstname }} {{ user.lastname }} ({{ user.username }})</h5>
+                                <p class="card-text"></p>
+                                <p class="card-text"><small class="">Membre depuis le {{ user.createdAt|date("d M Y") }}</small></p>
+                            </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-            {% for user in tribe.users %}
-                <div class="card mb-3 bg-warning mr-3" style="max-width: 30%;">
-                    <div class="row no-gutters d-flex align-items-center">
-                        <div class="col-md-5">
-                            <img src="{{ asset('uploads/avatars/default-avatar.png') }}" class="card-img" alt="avatar par défault">
-                        </div>
-                        <div class="col-md-7">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ user.firstname }} {{ user.lastname }} ({{ user.username }})</h5>
-                            <p class="card-text"></p>
-                            <p class="card-text"><small class="">Membre depuis le {{ user.createdAt|date("d M Y") }}</small></p>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-            
-            
+                {% endfor %}
+                
+                
+            </div>
         </div>
     </div>
 </div>
