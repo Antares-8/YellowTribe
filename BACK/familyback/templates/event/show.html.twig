@@ -66,13 +66,24 @@
 
                     <div><i class="fas fa-map-marker-alt pr-2"></i> {{ event.place }}</div>               
                 </div>
-                
+
                 <div class="event-detailed_section">{{ event.description }}</div>
 
                 <div class="event-comment_section">
+
                     {% for comment in event.comments %}
+                    
                         <div>{{ comment.content }}</div>
+
                     {% endfor %}
+
+                    {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        <div class="float-right">
+                            <button class="btn btn-warning btn-lg">{{ button_label|default('Envoyer') }}</button>
+                        </div>        
+                    {{ form_end(form) }}
+
                 </div>
 
             </div>

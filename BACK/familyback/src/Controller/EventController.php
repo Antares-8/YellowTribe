@@ -7,7 +7,9 @@ namespace App\Controller;
 
 use App\Entity\Event;
 use App\Entity\Tribe;
+use App\Entity\Comment;
 use App\Form\EventType;
+use App\Form\CommentType;
 use App\Repository\EventRepository;
 use App\Repository\CommentRepository;
 use Symfony\Component\Serializer\Serializer;
@@ -79,10 +81,35 @@ class EventController extends AbstractController
     /**
      * @Route("/calendar/{event}", name="event_show", methods={"GET", "POST"})
      */
-    public function show(Event $event)
+    public function show(Event $event, Request $request)
     {
+        $connectedUser = $this->getUser();
+        $userTribeId = $connectedUser->getTribe();
+
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $comment->setEvent($event);
+            $comment->setUser($connectedUser);
+            $comment->setTribe($userTribeId);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                'Votre commentaire a bien été enregistré'
+            );
+            
+            return $this->redirect($request->getUri());
+        }
+
         return $this->render('event/show.html.twig', [
             'event' => $event,
+            'form' => $form->createView(),
         ]);
     }
 
