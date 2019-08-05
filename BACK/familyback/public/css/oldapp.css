@@ -199,3 +199,10 @@ body {
 .event-comment_section {
   padding-top: 1em;
 }
+
+.comment_content {
+  background-color: white;
+  padding: 1em 0 1em 1em;
+  margin-left: 1em;
+  margin-right: 10em;
+}
