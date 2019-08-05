@@ -36,7 +36,7 @@
             <div class="col-9 event-detailed_container">
             
                 <div class="event-detailed_section d-flex">
-                
+
                     <div class="event-date font-weight-bold text-center pr-4">
                         <div class="event-date_day">{{ event.beginingDate|localizeddate('none', 'none', 'fr', null, 'EEEE') }}</div>
                         <div class="event-date_number">{{ event.beginingDate|localizeddate('none', 'none', 'fr', null, 'd') }}</div>
@@ -52,7 +52,19 @@
                     </div>
                 
                 </div>
-                <div class="event-detailed_section">DATE DÉBUT + FIN + LOCATION</div>
+
+                <div class="event-detailed_section">
+                    {% if event.endingDate is empty %}
+
+                        <div><i class="fas fa-calendar-alt"></i> le {{ event.beginingDate|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM') }} à {{ event.beginingDate|date('H') }}h{{ event.beginingDate|date('i') }}</div>
+
+                    {% else %}
+
+                        <div><i class="fas fa-calendar-alt"></i> du {{ event.beginingDate|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM') }} au {{ event.endingDate|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM') }}</div>
+                        
+                    {% endif %}
+                    <div>LOCATION</div>               
+                </div>
                 <div class="event-detailed_section">DÉSCRIPTION</div>
                 <div class="event-detailed_section">SECTION COMMENTAIRES </div>
 
