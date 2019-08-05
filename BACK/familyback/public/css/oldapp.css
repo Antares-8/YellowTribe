@@ -111,6 +111,12 @@ body {
   color: #FFFDD8;
 }
 
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
 /****   ALL BUTTONS   ****/
 .btn {
   border: 2px solid #FFFDD8;

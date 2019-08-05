@@ -29,10 +29,18 @@
 <div class="tribe-template_container">
     <h1 class="text-center display-4">Tribu {{ tribe.name }}</h1>
 
-    <div class="row">
+    <div class="row mt-4">
         <div class="col-2">
+            <h3 class="text-center font-weight-bold mb-3">TAGS</h3>
+
             {% if tribe.tags is empty %}
-                Vous n'avez pas encore de tag
+                <div class="text-justify">
+                    <div class="mb-3">Oh non! votre tribu n'a toujours pas de tag!</div>
+                    <div class="mb-3">Les tags servent à identifier les personnes liées à un événement. Ils représentent chaque membre de la tribu, et même ceux qui ne possèdent pas de compte. Vous pouvez donc créer un tag pour grand-mère Yeta qui refuse de toucher à un ordinateur ou bien pour les enfants de votre frère qui préfèrent jouer à Fortnite.</div>
+                    
+                    {# TODO: ajouter un form pour créer un tag #}
+                    <button type="button" class="btn btn-outline-warning">Créer un tag</button>
+                </div>
             {% else %}
                 {% for tag in tribe.tags %}
                     {{ tag.title }}
