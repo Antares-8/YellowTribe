@@ -29,45 +29,51 @@
 <div class="tribe-template_container">
     <h1 class="text-center display-4">Tribu {{ tribe.name }}</h1>
 
-    <div class="">
-        sidebar
-    </div>
+    <div class="row">
+        <div class="col-2">
+            {% if tribe.tags is empty %}
+                Vous n'avez pas encore de tag
+            {% else %}
+                {% for tag in tribe.tags %}
+                    {{ tag.title }}
+                {% endfor %}
+            {% endif %}
+        </div>
 
-    <div class="card-container d-flex flex-wrap">
+        <div class="card-container d-flex flex-wrap col-10">
 
-            <div class="card mb-3 bg-warning mr-1 " style="max-width: 25%;">
-                <div class="row no-gutters d-flex align-items-center">
-                    <div class="col-md-5 text-center">
-                        <a href="{{ path('send_invitation') }}" class="fa-invite"><i class="fas fa-plus-square fa-8x"></i></a>
-                    </div>
-                    <div class="col-md-7">
-                    <div class="card-body">
-                        <h5 class="card-titler font-weight-bold">Inviter un nouvel utilisateur</h5>
-                    </div>
+                <div class="card mb-3 bg-warning mr-3 " style="max-width: 30%;">
+                    <div class="row no-gutters d-flex align-items-center">
+                        <div class="col-md-5 text-center">
+                            <a href="{{ path('send_invitation') }}" class="fa-invite"><i class="fas fa-plus-square fa-9x"></i></a>
+                        </div>
+                        <div class="col-md-7">
+                        <div class="card-body">
+                            <h5 class="card-titler font-weight-bold">Inviter un nouvel utilisateur</h5>
+                        </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        {% for user in tribe.users %}
-            <div class="card mb-3 bg-warning mr-1" style="max-width: 25%;">
-                <div class="row no-gutters d-flex align-items-center">
-                    <div class="col-md-5">
-                        <img src="{{ asset('uploads/avatars/default-avatar.png') }}" class="card-img" alt="avatar par défault">
-                    </div>
-                    <div class="col-md-7">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ user.firstname }} {{ user.lastname }} ({{ user.username }})</h5>
-                        <p class="card-text"></p>
-                        <p class="card-text"><small class="">Membre depuis le {{ user.createdAt|date("d M Y") }}</small></p>
-                    </div>
+            {% for user in tribe.users %}
+                <div class="card mb-3 bg-warning mr-3" style="max-width: 30%;">
+                    <div class="row no-gutters d-flex align-items-center">
+                        <div class="col-md-5">
+                            <img src="{{ asset('uploads/avatars/default-avatar.png') }}" class="card-img" alt="avatar par défault">
+                        </div>
+                        <div class="col-md-7">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ user.firstname }} {{ user.lastname }} ({{ user.username }})</h5>
+                            <p class="card-text"></p>
+                            <p class="card-text"><small class="">Membre depuis le {{ user.createdAt|date("d M Y") }}</small></p>
+                        </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
-        
-        
+            {% endfor %}
+            
+            
+        </div>
     </div>
-
-    <p>Je peux inviter de nouveaux membres en cliquant sur <a href="{{ path('send_invitation') }}" class="btn btn-outline-warning btn-lg" role="button">ce bouton</a></p>
 </div>
 {% endblock %}
