@@ -206,3 +206,14 @@ body {
   margin-left: 1em;
   margin-right: 10em;
 }
+
+/**** EVENT FORM (CREATION) ****/
+.event-form_container {
+  width: 50%;
+  margin: auto;
+  height: 100%; 
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+}
