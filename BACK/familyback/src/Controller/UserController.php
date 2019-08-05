@@ -62,18 +62,6 @@ class UserController extends AbstractController
             
             if(!is_null($user->getAvatar())){
 
-                // $file = $user->getAvatar();
-
-                // $fileName = $this->uniqid().'.'.$file->guessExtension();
-
-                // // Moving the file into the right directory (configured in services.yaml)
-                // $file->move(
-                //     $this->getParameter('avatar_directory'),
-                //     $fileName
-                // );
-
-                // $user->setAvatar($fileName);
-
                 // Generating an unique file name (function at the bottom of this file) in order not to crush another file, and concatenating with the extention of the origin file
                 $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
 
