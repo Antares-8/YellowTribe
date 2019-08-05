@@ -113,8 +113,8 @@ body {
   justify-content: space-around;
 }
 
-/* in profile template */
-.fa_logout:hover {
+/* in profile templates */
+.fa_logout:hover, .fa_profile:hover {
   color: #FFFDD8;
 }
 
