@@ -43,15 +43,20 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/calendar/new", name="event_new", methods={"POST"})
+     * @Route("/calendar/new", name="event_new", methods={"GET", "POST"})
      */
     public function new(Request $request): Response
     {
+        $connectedUser = $this->getUser();
+        $userTribeId = $connectedUser->getTribe();
+
         $event = new Event();
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+            $event->setUser($connectedUser);
+            $event->setTribe($userTribeId);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($event);
@@ -66,7 +71,7 @@ class EventController extends AbstractController
         }
 
         return $this->render('event/new.html.twig', [
-            'event' => $event,
+            //'event' => $event,
             'form' => $form->createView(),
         ]);
     }

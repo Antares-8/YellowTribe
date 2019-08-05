@@ -18,7 +18,7 @@ class EventType extends AbstractType
             ->add('description')
             ->add('place')
             ->add('category')
-            ->add('tags')
+            //->add('tags') will be add in detailed event
         ;
     }
 
