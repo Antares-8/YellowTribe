@@ -77,7 +77,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/calendar/{event}", name="event_show", methods={"GET"})
+     * @Route("/calendar/{event}", name="event_show", methods={"GET", "POST"})
      */
     public function show(Event $event)
     {
