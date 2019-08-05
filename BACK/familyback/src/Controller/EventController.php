@@ -82,7 +82,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/myevents", name="events_list", methods={"GET"})
+     * @Route("profile/myevents", name="events_list", methods={"GET"})
      */
     public function userEventList(EventRepository $eventRepository)
     {
