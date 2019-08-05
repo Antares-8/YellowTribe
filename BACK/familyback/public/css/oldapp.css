@@ -156,3 +156,53 @@ body {
 .footer a:hover {
   color: white;
 }
+
+/**** EVENT DETAILED TEMPLATE ****/
+.event-template_container {
+  width: 100%;
+  margin-top: 8em;
+  color: #fcc53b;
+}
+
+.event-calendar_container {
+  /*border: 1px solid #FFFDD8;*/
+  background-color: #fff5d7;
+  border-radius: 10px 0 0 0;
+  padding: 1em;
+  margin-right: 1em;
+}
+
+.event-detailed_container {
+  /*border: 1px solid #FFFDD8;*/
+  background-color: #fff5d7;
+  border-radius: 0 10px 0 0;
+  padding: 0 1em 1em 1em;
+}
+
+.event-detailed_section {
+  border-bottom: 1px solid #e6b523;
+  padding: 1em 0 1em 0;
+}
+
+.event-date_day {
+  font-size: 1.5em;
+}
+
+.event-date_number {
+  font-size: 3.5em;
+}
+
+.event-date_month {
+  font-size: 2em;
+}
+
+.event-comment_section {
+  padding-top: 1em;
+}
+
+.comment_content {
+  background-color: white;
+  padding: 1em 0 1em 1em;
+  margin-left: 1em;
+  margin-right: 10em;
+}
