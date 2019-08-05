@@ -42,55 +42,8 @@ class EventController extends AbstractController
         ]);
     }
 
-
     /**
-     * @Route("/newsfeed", name="newsfeed", methods={"GET","POST"})
-     */
-    public function indexNewsfeed(EventRepository $eventRepository, CommentRepository $commentRepository)
-    {
-        // TODO: créer une variable $news (array) qui récupère toutes les nouveautés (event, comment, picture, member...) d'un groupe selon date d'update 
-        // TODO: créer une réquête custom (dans GroupRepository?) qui les récupère et les tri
-        // TODO: appeler ce repository dans cette méthode
-
-        // TODO: tri par id ? L'id le plus haut étant le dernier créé, l'ordre peut se faire avec cette donnée
-
-        //$serializer = SerializerBuilder::create()->build();
-        $events = $eventRepository->findAllOrderedByUpdatedAtDate();
-        //$events = $eventRepository->findAll();
-        //$jsonNews = $serializer->serialize($events, 'json');
-        //dump($jsonNews);
-
-        $lastEvents = $eventRepository->lastRelease(10);
-
-        $comments = $commentRepository->findAllOrderedByCreatedAtDate();
-        //$comments = $commentRepository->findAll();
-
-        $news = [];
-        foreach ($events as $event) {
-            $news[] = $event;
-        }
-        
-        foreach ($comments as $comment) {
-            $news[] = $comment;
-        }
-        //$jsonNews = $serializer->serialize($news, 'json');
-        //dump($jsonNews);
-        //$test = array_values($news);
-
-        //$newsAPI = json_encode($events);
-
-        return $this->render('event/newsfeed.html.twig', [
-            'events' => $events,
-            'lastEvents' => $lastEvents,
-            'comments' => $comments,
-            'title' => 'Fil d\'actualités',
-            //'newsAPI' => $newsAPI,
-            'news' => $news,
-        ]);
-    }
-
-    /**
-     * @Route("/event/new", name="event_new", methods={"POST"})
+     * @Route("/calendar/new", name="event_new", methods={"POST"})
      */
     public function new(Request $request): Response
     {
@@ -119,7 +72,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/event/{event}", name="event_show", methods={"GET"})
+     * @Route("/calendar/{event}", name="event_show", methods={"GET"})
      */
     public function show(Event $event)
     {
