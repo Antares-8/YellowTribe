@@ -90,7 +90,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/event/new", name="event_new", methods={"POST"})
+     * @Route("/calendar/new", name="event_new", methods={"POST"})
      */
     public function new(Request $request): Response
     {
@@ -119,7 +119,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/event/{event}", name="event_show", methods={"GET"})
+     * @Route("/calendar/{event}", name="event_show", methods={"GET"})
      */
     public function show(Event $event)
     {
