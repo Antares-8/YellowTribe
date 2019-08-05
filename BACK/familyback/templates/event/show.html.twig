@@ -75,9 +75,14 @@
 
                             <div class="d-flex mb-2">
                                 <div class="mr-2"><i class="fas fa-user"></i></div>
-                                <div class="mr-2"> {{ comment.user.username }} </div>
+                                <div class="mr-2 font-weight-bold"> {{ comment.user.username }}</div>
                                 <div> 
-                                    le {{ comment.createdAt|date('d/m/Y') }} à {{ comment.createdAt|date('H:i') }} 
+                                    {% if comment.createdAt|date('d/m/Y') == "now"|date('d/m/Y') %}
+                                        | aujourd'hui 
+                                    {% else %}
+                                        | le {{ comment.createdAt|date('d/m/Y') }} 
+                                    {% endif %}
+                                    à {{ comment.createdAt|date('H:i') }} 
                                 </div>
                             </div>
 
