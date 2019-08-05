@@ -69,7 +69,7 @@ class EventController extends AbstractController
                 'Nouvel événement créé !'
             );
             
-            return $this->redirectToRoute('calendar');
+            return $this->redirectToRoute('event_show', ['event' => $event->getId()]);
         }
 
         return $this->render('event/new.html.twig', [
