@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Calendar from 'src/components/Calendar';
 
 // Action Creators
-import { nextCalendarType, prevCalendarType } from 'src/store/reducer';
+import { nextCalendarType, prevCalendarType, addCategorieInState } from 'src/store/reducer';
 
 
 const mapStateToProps = ({ calendarType, idOpenEvent }) => ({
@@ -21,6 +21,9 @@ const mapDispatchToProps = dispatch => ({
   prevCalendarType: () => {
     dispatch(prevCalendarType());
   },
+  addCategorieInState: (categories) => {
+    dispatch(addCategorieInState(categories));
+  }
 });
 
 // Container

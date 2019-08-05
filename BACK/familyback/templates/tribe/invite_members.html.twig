@@ -2,14 +2,27 @@
 
 {% block title %}Invitation{% endblock %}
 
+{% block header %}
+    {% include "_nav.html.twig" %}
+{% endblock %}
+
 {% block body %}
 
-    <h1>Envoyer une invitation</h1>
+<div class="invitation_container">
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <button class="btn">{{ button_label|default('Save') }}</button>
-    {{ form_end(form) }}
-    
+    <h1 class="display-4 text-center mb-3">Envoyer une invitation</h1>
+
+    <div class="text-justify mb-4">Veuillez renseigner l'adresse email de la personne que vous souhaitez inviter dans votre tribu. Notez que cette adresse devra être utilisée lors de sa future inscription et servira d'identifiant de connexion.</div>
+
+    <div>
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+           <div class="float-right">
+                <button class="btn btn-warning btn-lg">{{ button_label|default('Envoyer') }}</button>
+                <a href="{{ path('profile_index') }}" class="btn btn-outline-warning btn-lg" role="button">Annuler</a>
+            </div>        
+        {{ form_end(form) }}
+    </div>
+</div>
 
 {% endblock %}

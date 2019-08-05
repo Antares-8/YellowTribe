@@ -5,19 +5,28 @@
 
 
 {% block header %}
+
+    {% include ('_nav.html.twig') %}
+
 {% endblock %}
 
 {% block body %}
 <div class="homepage_container text-center">
     <div class="homepage_content">
-            <h1 class="display-1 logo">Yellow Tribe</h1>
-            <h2 class="display-4">Restez connecté avec votre tribu</h2>
+        <h1 class="display-1 logo">Yellow Tribe</h1>
+        <h2 class="display-4">Restez connecté avec votre tribu</h2>
 
-            <a href="{{ path('app_login') }}" class="btn btn-outline-warning btn-lg btn-login" role="button">Me connecter</a>
-
-            {# <a href="{{ path('signup') }}">Inscription</a> #}
+        <div class="fas_container">
+            <i class="fas fa-users fa-10x"></i>
+            <i class="fas fa-calendar-check fa-10x"></i>
+            <i class="fas fa-map-marker-alt fa-10x"></i>
+        </div>
     </div>
 </div>
+
+
+{% include ('_footer.html.twig') %}
+
 
 {% endblock %}
 

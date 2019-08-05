@@ -1,20 +1,26 @@
 .sidebar {
   position: fixed; 
   top: 22em;
-  right: 1.5em;
-  width: 22.5%;
+  right: 1.7em;
+  width: 19%;
   z-index: 200;
 }
 
 .sidebar .title {
   padding-bottom: 0.25em;
   margin-bottom: 0.9em;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-dark);
+  font-family: 'Bold';
   margin-top: 1.5em;
 }
 
 .sidebar .field {
   margin-bottom: 0.35em !important;
+}
+
+.sidebar .ui.checkbox label {
+  color: var(--text-dark);
 }
 
 /// WITH EVENT OPEN /// 

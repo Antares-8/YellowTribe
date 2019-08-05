@@ -37,6 +37,11 @@ class Comment
      */
     private $user;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tribe", inversedBy="comments")
+     */
+    private $tribe;
+
     public function __construct() 
     {
         $this->createdAt = new DateTime();
@@ -98,5 +103,17 @@ class Comment
     public function __toString()
     {
         return $this->content;
+    }
+
+    public function getTribe(): ?Tribe
+    {
+        return $this->tribe;
+    }
+
+    public function setTribe(?Tribe $tribe): self
+    {
+        $this->tribe = $tribe;
+
+        return $this;
     }
 }

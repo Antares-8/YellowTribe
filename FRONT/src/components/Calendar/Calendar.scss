@@ -51,9 +51,6 @@
     text-align: right;
   }
  
-  .body {
-    margin-top: 0.3em;
-  }
   
   /* Calendar */
   
@@ -79,12 +76,12 @@
     font-size: 90%;
     font-family: 'Reg', sans-serif; 
     padding: 1.5em 0;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-light);
     position: sticky;
-    top: 9.75em;
+    top: 8em;
     z-index: 200;
-    background-color: white;
-    border-top:1px solid var(--border-color);
+    background-color: var(--background-light);
+    border-top: 2px solid var( --border-light);
   }
   
   .calendar .week .body {
@@ -134,8 +131,13 @@
   }
   
   .calendar .body .row {
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--background-light);  
   }
+  .calendar .body .cell {
+    border-right: 1px solid var(--background-light); 
+    background-color: var(--background-light); 
+  }
+
   
   .calendar .body .row:last-child {
     border-bottom: none;
@@ -155,7 +157,7 @@
   }
   
   .calendar .body .disabled {
-    color: var(--text-color-light);
+    color: var(--background-light);
     pointer-events: none;
   }
   
@@ -218,5 +220,39 @@
   
 
   
-  
-  
+  // YEAR //
+  .calendar .year {
+    margin: 2em;
+  }
+.calendar .year .body {
+  display: flex;
+  flex-direction: column; 
+}
+
+.calendar .year .body .trimester  {
+  display: flex;
+}
+
+.calendar .year .month  {
+  width: calc( 100% / 3);
+  margin: 2em;
+}
+.calendar .year .row {
+  display: grid;
+    -webkit-flex-basis: 100%;
+    /* flex-basis: 100%; */
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 1.2rem repeat(2, 1.1rem);
+    /* grid-auto-flow: dense; */
+    /* grid-gap: 0; */
+    height: 4em;
+}
+.calendar .year .row {
+  text-align: center;
+}
+.calendar .year .row .number  {
+  font-size: 85%;
+}
+.calendar .year .row .col.cell.disabled{
+  color: #eee;
+}

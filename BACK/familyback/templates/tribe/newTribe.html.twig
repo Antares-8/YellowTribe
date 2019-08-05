@@ -2,13 +2,25 @@
 
 {% block title %}Nouvelle tribu{% endblock %}
 
+{% block header %}
+    {% include "_nav.html.twig" %}
+{% endblock %}
+
 {% block body %}
+<div class="invitation_container">
 
-    <h2>Créer une nouvelle tribu</h2>
+    <h1 class="display-4 text-center mb-3">Créer une nouvelle tribu</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <button class="btn">{{ button_label|default('Envoyer') }}</button>
-    {{ form_end(form) }}
+    <div class="text-justify mb-4">Veuillez renseigner le nom de votre tribu. Il sera attribué à tous les futurs membres de votre tribu. Choisissez le bien!</div>
+
+    <div>
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <div class="float-right">
+                <button class="btn btn-warning btn-lg">{{ button_label|default('Créer') }}</button>
+                <a href="{{ path('profile_index') }}" class="btn btn-outline-warning btn-lg" role="button">Annuler</a>
+            </div> 
+        {{ form_end(form) }}
+    </div>
 
 {% endblock %}

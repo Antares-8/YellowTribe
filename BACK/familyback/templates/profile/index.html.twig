@@ -2,24 +2,39 @@
 
 {% block title %}{{ title }}{% endblock %}
 
+{% block header %}
+
+  <div class="pt-2 d-flex justify-content-between align-items-center nav_container">
+
+    <div class="float-left text-center"><i class="fas fa-sun fa-4x"></i><p class="logo_content">Yellow Tribe</p></div>
+        
+        <div class="d-flex">
+
+            <p class="pl-2"><a href="{{ path('calendar') }}" class="btn btn-outline-warning btn-lg" role="button">Calendrier</a></p>
+
+            <a href="{{ path('app_logout') }}" class="fa_logout"><i class="fas fa-power-off fa-3x pl-3"></i></a>
+        
+        </div>
+
+    </div>
+
+  </div>
+
+{% endblock %}
+
 {% block body %}
 
+{# btn logout #}
+{# <i class="fas fa-power-off fa-10x"></i> #}
 
-<div class="card mb-3" style="max-width: 540px;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
+<div class="profile_container">
         <h5 class="card-title">{{ app.user.firstname }} {{ app.user.lastname }}</h5>
         <p class="card-text">Email : {{ app.user.email }}</p>
         <p class="card-text">Username : {{ app.user.username }}</p>
         <p class="card-text"><small class="text-muted"><a href="{{ path('profile_edit') }}" class="btn btn-outline-warning btn-lg" role="button">Modifier mes informations</a></small></p>
-      </div>
-    </div>
-  </div>
+
 </div>
+
 
 
 
@@ -33,7 +48,9 @@
     {% else %}
 
     <p>Votre tribu est {{ app.user.tribe }}</p>
-    {# TODO: créer le tpl pour voir les membres de sa tribu avec la @Route '/{tribe}/members' #}
+
+    <p>Votre photo de profil : <img src="{{ asset(avatar_upload_path ~ (app.user.avatar ?: 'default-avatar.png')) | imagine_filter('thumb_back_list') }}"/></p>
+
     <p><a href="{{ path('tribe') }}" class="btn btn-outline-warning btn-lg" role="button">Voir les membres de ma tribu</a></p>
     <p><a href="{{ path('send_invitation') }}" class="btn btn-outline-warning btn-lg" role="button">Inviter un nouveau membre à rejoindre votre groupe</a></p>
 
@@ -42,7 +59,7 @@
 
 <p><a href="{{ path('events_list') }}" class="btn btn-outline-warning btn-lg" role="button">Liste de mes événements</a></p> <p>pour info, j'en ai créé {{ app.user.events|length }}</p>
 
-<p><a href="{{ path('calendar') }}" class="btn btn-outline-warning btn-lg" role="button">Voir le calendrier</a></p>
+<p><a href="{{ path('calendar') }}" class="btn btn-outline-warning btn-lg" role="button">Retour vers le calendrier</a></p>
 <p><a href="{{ path('app_logout') }}" class="btn btn-outline-warning btn-lg" role="button">Me déconnecter</a></p>
 
 {% endblock %}

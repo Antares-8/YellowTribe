@@ -1,6 +1,9 @@
 /* HOMEPAGE */
 body {
   height: 100%;
+  background-color: #FFB400;
+  color: #FFFDD8;
+  overflow-y: scroll;
 }
 
 .homepage_container {
@@ -32,6 +35,14 @@ body {
   border: none;
 }
 
+.btn_connexion {
+  color: #FFFDD8;
+}
+
+.btn_connexion:hover {
+  color: #FFFDD8;
+}
+
 /* SINGUP TEMPLATE */
 .signup_container {
   width: 50%;
@@ -39,20 +50,73 @@ body {
   padding-top: 2em;
 }
 
+.signup_container .btn {
+  color: #FFFDD8;
+  border: none;
+}
+
+/* INVITATION TEMPLATE */
+.invitation_container {
+  width: 50%;
+  margin: auto;
+  line-height: 2em;
+  height: 80%; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* PROFILE TEMPLATE */
+.profile_container {
+  width: 100%;
+}
 
 /* NAV */
+.nav_container {
+  position:fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  padding: 0 1em 0 1em;
+}
+
 .fa-sun {
-  color: #FFC107;
+  color: #FFFDD8;
 }
 
 .logo_content {
   font-weight: bold;
 }
 
-.btn_connexion {
+.btn_signup {
+  background-color: #E3A000;
+}
+
+.nav_container .btn {
+  color: #FFFDD8;
+}
+
+/****   ALL BUTTONS   ****/
+.btn {
+  border: 2px solid #FFFDD8;
+}
+
+.btn_connexion, .btn_signup {
   border: none;
 }
 
+.fas_container {
+  margin-top: 1.5em;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* in profile template */
+.fa_logout:hover {
+  color: #FFFDD8;
+}
 
 /* FOOTER */
 .footer {

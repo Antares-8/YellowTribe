@@ -4,13 +4,16 @@ import PropTypes from 'prop-types';
 import dateFns from 'date-fns';
 import french from 'date-fns/locale/fr';
 import styled from 'styled-components';
+import { Icon } from 'semantic-ui-react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 // == Import : local
 // import './Event.scss';
 import events from 'src/components/Data/events.json';
 import './event.scss';
+
 
 // == Composant
 const Event = ({ idOpenEvent, closeEvent }) => {
@@ -28,7 +31,6 @@ const Event = ({ idOpenEvent, closeEvent }) => {
   };
 
   const eventData = events.filter(eventsData => eventsData.id == idOpenEvent);
-  console.log(event);
   const event = eventData[0];
   const formatHour = 'HH';
   const formatDay = 'dddd';
@@ -59,12 +61,18 @@ const Event = ({ idOpenEvent, closeEvent }) => {
       </div>
       <hr />
       <div className="dates"> <span className="icon">date_range </span> 
-        du <span className="date">{dateFns.format(new Date(event.beginingDate), formatLarge, { locale: french })}</span> à <span className="hour">{dateFns.format(new Date(event.beginingDate), formatHour)}h </span>
+        Du <span className="date">{dateFns.format(new Date(event.beginingDate), formatLarge, { locale: french })}</span> à <span className="hour">{dateFns.format(new Date(event.beginingDate), formatHour)}h </span>
         au <span className="date">{dateFns.format(new Date(event.endingDate), formatLarge, { locale: french })}</span> à <span className="hour">{dateFns.format(new Date(event.endingDate), formatHour)}h</span>
       </div>
-      <div className="location"><span className="icon">location_on</span> {event.place}</div>
+      <div className="location"><span className="icon">location_on</span>{event.place}</div>
       <hr />
       <div className="description"> {event.description}</div>
+      <hr />
+      <Link to={`/event/${event.id}`}>
+        <div className="bouton">
+          ouvrir l'event <Icon name='right chevron' />
+        </div>
+      </Link>
     </div>
   );
 };

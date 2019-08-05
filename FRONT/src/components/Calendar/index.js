@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'class-names';
+import axios from 'axios';
 
 
 import Month from 'src/components/Month';
@@ -10,7 +11,28 @@ import Year from 'src/components/Year';
 import './calendar.scss';
 
 
-const Calendar = ({ calendarType, idOpenEvent }) => {
+const Calendar = ({ calendarType, idOpenEvent, addCategorieInState }) => {
+
+  // const [categories, setCategories] = useState({});
+  const testcategorie = {
+    categorie1: false, 
+    categorie2: false, 
+  };
+
+  useEffect(() => {
+    axios.get('http://95.142.174.217/api/events')
+      .then((res) => {
+        const eventsData = res.data;
+        eventsData.map((eventData) => {
+          // setCategories({
+          //   ...categories,
+          //   [eventData[0].place]: true,
+          // });
+        });
+        addCategorieInState(testcategorie);
+
+      });
+  }, []);
 
   // classNames //
   const withEvent = classNames({
@@ -44,6 +66,7 @@ const Calendar = ({ calendarType, idOpenEvent }) => {
 Calendar.propTypes = {
   calendarType: PropTypes.string.isRequired,
   idOpenEvent: PropTypes.string.isRequired,
+  addCategorieInState: PropTypes.string.isRequired,
 };
 
 export default Calendar;

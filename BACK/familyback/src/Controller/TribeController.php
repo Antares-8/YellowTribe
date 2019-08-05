@@ -25,12 +25,20 @@ class TribeController extends AbstractController
     }
 
     /**
-     * TODO: les utilisateurs qui appartiennent déjà à une tribu ne peuvent pas en créer une nouvelle pour la MVP
-     * TODO: rajouter une condition pour vérifier que user a déjà une tribu 
      * @Route("/tribe/new", name="newTribe", methods={"GET","POST"})
      */
     public function newTribe(Request $request): Response
     {
+        if ($this->getUser()->getTribe() != null) {
+
+            $this->addFlash(
+                'success',
+                'Impossible de créer une nouvelle tribu. Vous faîtes déjà parti de la tribu des '. $this->getUser()->getTribe() .' !'
+            );
+
+            return $this->redirectToRoute('tribe');
+        }
+
         $tribe = new Tribe();
         $form = $this->createForm(TribeType::class, $tribe);
         $form->handleRequest($request);

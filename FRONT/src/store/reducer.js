@@ -1,15 +1,5 @@
 import dateFns from 'date-fns';
-import dataCategories from 'src/components/Data/events.json';
 
-const categories = dataCategories.map(dataCategory => dataCategory.category);
-const categoriesState = {};
-categories.forEach((categorie) => {
-  categoriesState[categorie] = true;
-  return ({
-    ...categoriesState,
-    categorie,
-  });
-});
 
 // == Initial State
 const initialState = {
@@ -37,6 +27,7 @@ const ADD_CATEGORY = 'ADD_CATEGORY';
 const MODAL_EVENT = 'MODAL_EVENT';
 const OPEN_EVENT = 'OPEN_EVENT';
 const CLOSE_EVENT = 'CLOSE_EVENT';
+const ADD_CATEGORIES_IN_STATE = 'ADD_CATEGORIES_IN_STATE';
 
 
 // == Reducer
@@ -151,6 +142,11 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         idOpenEvent: '',
       };
+    case ADD_CATEGORIES_IN_STATE:
+      return {
+        ...state,
+        ...action.categories,
+      };
 
     default:
       return state;
@@ -203,6 +199,10 @@ export const openEvent = id => ({
 });
 export const closeEvent = () => ({
   type: CLOSE_EVENT,
+});
+export const addCategorieInState = categories => ({
+  type: ADD_CATEGORIES_IN_STATE,
+  categories,
 });
 
 

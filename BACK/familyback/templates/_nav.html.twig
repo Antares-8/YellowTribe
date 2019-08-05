@@ -1,10 +1,27 @@
-<div class="pt-2">
+<div class="pt-2 d-flex justify-content-between align-items-center nav_container">
+
     <div class="float-left text-center"><i class="fas fa-sun fa-4x"></i><p class="logo_content">Yellow Tribe</p></div>
 
-    <div class="d-flex justify-content-end">
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
-        <p class="pl-2"><a href="{{ path('app_login') }}" class="btn btn-outline-warning btn-lg btn_connexion" role="button">Connexion</a></p>
+        <div class="d-flex">
 
-        <p class="pl-2"><a href="{{ path('app_signup') }}" class="btn btn-warning btn-lg" role="button">Inscription</a></p>
-    </div>
+            <p class="pl-2"><a href="{{ path('profile_index') }}" class="btn btn-outline-warning btn-lg" role="button">Profil</a></p>
+
+            <p class="pl-2"><a href="{{ path('calendar') }}" class="btn btn-outline-warning btn-lg" role="button">Calendrier</a></p>
+
+        </div>
+
+    {% else %}
+
+        <div class="d-flex">
+
+            <p class="pl-2"><a href="{{ path('app_login') }}" class="btn btn-outline-warning btn-lg btn_connexion" role="button">Connexion</a></p>
+
+            <p class="pl-2"><a href="{{ path('app_signup') }}" class="btn btn-warning btn-lg btn_signup" role="button">Inscription</a></p>
+
+        </div>
+
+    {% endif %}
+    
 </div>
