@@ -47,15 +47,18 @@ class EventController extends AbstractController
         
         $news = [];
         foreach ($lastEvents as $event) {
+            $event[] = ['type' => 'event'];
             $news[] = $event;
         }
 
         foreach ($lastComments as $comment) {
+            $comment[] = ['type' => 'comment'];
             $news[] = $comment;
 
         }
 
         foreach ($lastUsers as $user) {
+            $user[] = ['type' => 'user'];
             $news[] = $user;
 
         }
