@@ -26,7 +26,6 @@
 
 {% block body %}
 
-{# TODO: mettre en forme ce template #}
     <div class="event-template_container">
         <div class="row">
             <div class="root col-2 event-calendar_container">
@@ -104,26 +103,5 @@
         </div>
     </div>
 
-
-
-
-    {# <a href="{{ path('event_edit', {'id': event.id}) }}"><button class="btn">Modifier</button>
-    </a> #}
-
-    {# <a href="{{ path('comment_new', {'id': event.id}) }}"><button class="btn">Ajouter un commentaire</button> #}
-    
-
-    {#<a href="{{ path('tag_new', {'id': event.id}) }}"><button class="btn">Ajouter un tag</button>
-    </a>#}
-    
-
-
-
-    {# {{ include('event/_delete_form.html.twig') }} #}
-
-    <a href="{# {{ path('event') }} #}"><p>Retour à la liste des events</p></a>
-
-    {# <a href="{{ path('homepage') }}"><p>Retour à l'accueil</p></a>
-    <a href="{{ path('calendar') }}"><p>Calendrier</p></a> #}
 
 {% endblock %}
