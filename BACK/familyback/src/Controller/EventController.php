@@ -96,21 +96,6 @@ class EventController extends AbstractController
         ]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * @Route("/event/{id}/edit", name="event_edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
      */
