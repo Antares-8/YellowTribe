@@ -46,9 +46,22 @@ class EventController extends AbstractController
         $lastUsers = $userRepository->findTribeUsersByDate($tribe);
         
         $news = [];
-        $news[] = $lastEvents;
-        $news[] = $lastComments;
-        $news[] = $lastUsers;
+        foreach ($lastEvents as $event) {
+            $event[] = ['type' => 'event'];
+            $news[] = $event;
+        }
+
+        foreach ($lastComments as $comment) {
+            $comment[] = ['type' => 'comment'];
+            $news[] = $comment;
+
+        }
+
+        foreach ($lastUsers as $user) {
+            $user[] = ['type' => 'user'];
+            $news[] = $user;
+
+        }
 
         //dd($events);
         return $this->json($news);
