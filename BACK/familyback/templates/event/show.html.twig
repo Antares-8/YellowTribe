@@ -56,17 +56,24 @@
                 <div class="event-detailed_section">
                     {% if event.endingDate is empty %}
 
-                        <div><i class="fas fa-calendar-alt"></i> le {{ event.beginingDate|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM') }} à {{ event.beginingDate|date('H') }}h{{ event.beginingDate|date('i') }}</div>
+                        <div class="mb-2"><i class="fas fa-calendar-alt pr-2"></i> le {{ event.beginingDate|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM') }} à {{ event.beginingDate|date('H') }}h{{ event.beginingDate|date('i') }}</div>
 
                     {% else %}
 
-                        <div><i class="fas fa-calendar-alt"></i> du {{ event.beginingDate|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM') }} au {{ event.endingDate|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM') }}</div>
-                        
+                        <div class="mb-2"><i class="fas fa-calendar-alt pr-2"></i> du {{ event.beginingDate|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM') }} au {{ event.endingDate|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM') }}</div>
+
                     {% endif %}
-                    <div>LOCATION</div>               
+
+                    <div><i class="fas fa-map-marker-alt pr-2"></i> {{ event.place }}</div>               
                 </div>
-                <div class="event-detailed_section">DÉSCRIPTION</div>
-                <div class="event-detailed_section">SECTION COMMENTAIRES </div>
+                
+                <div class="event-detailed_section">{{ event.description }}</div>
+
+                <div class="event-comment_section">
+                    {% for comment in event.comments %}
+                        <div>{{ comment.content }}</div>
+                    {% endfor %}
+                </div>
 
             </div>
         </div>

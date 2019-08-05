@@ -195,3 +195,7 @@ body {
 .event-date_month {
   font-size: 2em;
 }
+
+.event-comment_section {
+  padding-top: 1em;
+}
