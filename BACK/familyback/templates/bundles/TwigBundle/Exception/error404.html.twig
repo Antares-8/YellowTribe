@@ -1,10 +1,16 @@
+{# Customized 404
+
+    To preview : http://127.0.0.1:8001/_error/404
+#}
+
 {% extends 'base.html.twig' %}
 
-{% block content %}
+
+{% block body %}
     <div id="custom-404">
 
         <h1>
-            Cette page n'existe pas !
+            Cette page n'existe pas 
         </h1>
 
         <div class="d-flex justify-content-center">
@@ -13,7 +19,8 @@
             <i class="fas fa-sad-tear"></i> 
         </div>
 
-        <a href="{{ path('homepage') }}">Retour à l'accueil.</a>.
+        <a href="{{ path('calendar') }}"><button class="btn">Retour au calendrier</button></a>
+
     </div>
 
 {% endblock %}
