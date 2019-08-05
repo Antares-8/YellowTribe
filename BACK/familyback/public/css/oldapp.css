@@ -72,6 +72,11 @@ body {
   width: 100%;
 }
 
+/* in profile templates */
+.fa_logout:hover, .fa_profile:hover {
+  color: #FFFDD8;
+}
+
 /* NAV */
 .nav_container {
   position:fixed;
@@ -97,6 +102,24 @@ body {
   color: #FFFDD8;
 }
 
+/**** TRIBE TEMPLATE ****/
+.tribe-template_container {
+  margin-top: 8em;
+}
+
+.fa-invite:hover {
+  color: #FFFDD8;
+}
+
+.tag_badge {
+  font-size: 1em;
+  margin: 0.5em 0.5em 0 0;
+}
+
+.fa-plus-square {
+  width: 100%;
+}
+
 /****   ALL BUTTONS   ****/
 .btn {
   border: 2px solid #FFFDD8;
@@ -111,11 +134,6 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-around;
-}
-
-/* in profile template */
-.fa_logout:hover {
-  color: #FFFDD8;
 }
 
 /* FOOTER */
