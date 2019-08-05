@@ -112,7 +112,7 @@ class EventController extends AbstractController
                 'L\'événement a bien été mis à jour'
             );
 
-            return $this->redirectToRoute('event', ['id' => $event->getId()]);
+            return $this->redirectToRoute('calendar', ['id' => $event->getId()]);
         }
 
         return $this->render('event/edit.html.twig', [

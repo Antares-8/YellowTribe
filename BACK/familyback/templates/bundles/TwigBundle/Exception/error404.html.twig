@@ -1,7 +1,10 @@
+{# Overrinding Symfony's 404 error
+http://127.0.0.1:8000/_error/404 to preview
+#}
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <div id="custom-404">
+    <div {#id="custom-404"#}>
 
         <h1>
             Cette page n'existe pas !
