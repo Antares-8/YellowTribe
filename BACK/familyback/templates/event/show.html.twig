@@ -61,7 +61,12 @@
                             <div class="event-category"><i class="fas fa-dot-circle"></i> {{ event.category }}</div>
                         </div>
                     </div>
-                
+
+                    {% if event.user == app.user %}
+                        <div class="">
+                            <a href="{{ path('event_edit', {'event': event.id}) }}" class="btn btn-outline-warning btn-lg" role="button"><i class="far fa-edit"></i></a>
+                        </div>
+                    {% endif %}
                 </div>
 
                 <div class="event-detailed_section">
