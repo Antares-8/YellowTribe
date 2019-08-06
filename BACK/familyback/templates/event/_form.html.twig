@@ -1,4 +1,7 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Sauvegarder') }}</button>
+           <div class="float-right">
+                <button class="btn btn-warning btn-lg">{{ button_label|default('Créer') }}</button>
+                <a href="{{ path('calendar') }}" class="btn btn-outline-warning btn-lg" role="button">Annuler</a>
+            </div> 
 {{ form_end(form) }}

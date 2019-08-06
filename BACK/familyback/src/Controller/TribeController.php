@@ -8,23 +8,48 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Tag;
+use App\Form\TagType;
 
 class TribeController extends AbstractController
 {
     /**
-     * @Route("/tribe", name="tribe")
+     * List of all members + tags bind to user's tribe
+     * @Route("/tribe", name="tribe", methods={"GET", "POST"})
      */
-    public function index()
+    public function index(Request $request): Response
     {
         $connectedUser = $this->getUser();
         $userTribeId = $connectedUser->getTribe();
 
+        $tag = new Tag();
+        $form = $this->createForm(TagType::class, $tag);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $tag->setTribe($userTribeId);
+
+            $entityManager = $this->getDoctrine()->getManager(); 
+            $entityManager->persist($tag);
+            $entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                'Le tag '. $tag->getTitle() .' a bien été créé!'
+            );
+
+            // redirect to the same page with modification
+            return $this->redirect($request->getUri());
+        }
+
         return $this->render('tribe/index.html.twig', [
+            'form' => $form->createView(),
             'tribe' => $userTribeId,
         ]);
     }
 
     /**
+     * Create your first (and only) tribe
      * @Route("/tribe/new", name="newTribe", methods={"GET","POST"})
      */
     public function newTribe(Request $request): Response

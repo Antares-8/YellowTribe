@@ -72,6 +72,11 @@ body {
   width: 100%;
 }
 
+/* in profile templates */
+.fa_logout:hover, .fa_profile:hover {
+  color: #FFFDD8;
+}
+
 /* NAV */
 .nav_container {
   position:fixed;
@@ -97,6 +102,24 @@ body {
   color: #FFFDD8;
 }
 
+/**** TRIBE TEMPLATE ****/
+.tribe-template_container {
+  margin-top: 8em;
+}
+
+.fa-invite:hover {
+  color: #FFFDD8;
+}
+
+.tag_badge {
+  font-size: 1em;
+  margin: 0.5em 0.5em 0 0;
+}
+
+.fa-plus-square {
+  width: 100%;
+}
+
 /****   ALL BUTTONS   ****/
 .btn {
   border: 2px solid #FFFDD8;
@@ -118,6 +141,24 @@ body {
   color: #FFFDD8;
 }
 
+/* 404 custom */
+#custom-404 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 6em;
+}
+
+#custom-404 h1 {
+  font-size: 5em;
+}
+
+#custom-404 .fas{
+  font-size: 6em;
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+}
+
 /* FOOTER */
 .footer {
     /* position: fixed; */
@@ -137,4 +178,65 @@ body {
 
 .footer a:hover {
   color: white;
+}
+
+/**** EVENT DETAILED TEMPLATE ****/
+.event-template_container {
+  width: 100%;
+  margin-top: 8em;
+  color: #fcc53b;
+}
+
+.event-calendar_container {
+  /*border: 1px solid #FFFDD8;*/
+  background-color: #fff5d7;
+  border-radius: 10px 0 0 0;
+  padding: 1em;
+  margin-right: 1em;
+}
+
+.event-detailed_container {
+  /*border: 1px solid #FFFDD8;*/
+  background-color: #fff5d7;
+  border-radius: 0 10px 0 0;
+  padding: 0 1em 1em 1em;
+}
+
+.event-detailed_section {
+  border-bottom: 1px solid #e6b523;
+  padding: 1em 0 1em 0;
+}
+
+.event-date_day {
+  font-size: 1.5em;
+}
+
+.event-date_number {
+  font-size: 3.5em;
+}
+
+.event-date_month {
+  font-size: 2em;
+}
+
+.event-comment_section {
+  padding-top: 1em;
+}
+
+.comment_content {
+  background-color: white;
+  padding: 1em 0 1em 1em;
+  margin-left: 1em;
+  margin-right: 10em;
+}
+
+/**** EVENT FORM (CREATION) ****/
+.event-form_container {
+  width: 50%;
+  margin: auto;
+  height: 100%; 
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
 }

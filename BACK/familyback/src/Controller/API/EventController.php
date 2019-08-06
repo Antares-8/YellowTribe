@@ -5,6 +5,7 @@ namespace App\Controller\API;
 use App\Entity\Event;
 use App\Entity\Tribe;
 //use JMS\Serializer\SerializerBuilder;
+use App\Repository\TagRepository;
 use App\Repository\UserRepository;
 use App\Repository\EventRepository;
 use App\Repository\CommentRepository;
@@ -25,16 +26,18 @@ class EventController extends AbstractController
 {
 
     /**
-     * @Route("/events", name="events_list")
+     * Data API for calendar
+     * @Route("/{tribe}/events", name="events_list", methods={"GET", "POST"})
      */
-    public function list(EventRepository $repository): JsonResponse
+    public function eventsList(EventRepository $repository, Tribe $tribe): JsonResponse
     {
-        $events = $repository->findAllEventWithUsername();
+        $events = $repository->findAllEventsByTribe($tribe);
 
         return $this->json($events);
     }
 
     /**
+     * Data API for newsfeed
      * @Route("/{tribe}/news", name="news_list")
      */
     public function newsList(UserRepository $userRepository, CommentRepository $commentRepository, EventRepository $eventRepository, Tribe $tribe): JsonResponse
@@ -46,13 +49,37 @@ class EventController extends AbstractController
         $lastUsers = $userRepository->findTribeUsersByDate($tribe);
         
         $news = [];
-        $news[] = $lastEvents;
-        $news[] = $lastComments;
-        $news[] = $lastUsers;
+        foreach ($lastEvents as $event) {
+            $event[] = ['type' => 'event'];
+            $news[] = $event;
+        }
+
+        foreach ($lastComments as $comment) {
+            $comment[] = ['type' => 'comment'];
+            $news[] = $comment;
+
+        }
+
+        foreach ($lastUsers as $user) {
+            $user[] = ['type' => 'user'];
+            $news[] = $user;
+
+        }
 
         //dd($events);
         return $this->json($news);
     }
 
-    
+ 
+    /**
+     * Data API for test
+     * @Route("/{tribe}/tags", name="events_list", methods={"GET", "POST"})
+     */
+    public function tagsList(TagRepository $repository, Tribe $tribe): JsonResponse
+    {
+        $events = $repository->findAllTagsByTribe($tribe);
+
+        return $this->json($events);
+    }
+
 }

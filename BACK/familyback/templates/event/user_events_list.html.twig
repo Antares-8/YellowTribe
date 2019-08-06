@@ -3,8 +3,16 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block body %}
-<p>Vous avez créé {{ events|length }} événements </p>
-{% for event in events %}
-    <p>{{event.title}}</p>
-{% endfor %}
+
+    <p>Vous avez créé {{ events|length }} événements : </p>
+
+    {% for event in events %}
+        <p>{{event.title}}<a href="{{ path('event_edit', {'event': event.id}) }}" class="btn btn-outline-warning btn-lg" role="button">Modifier cet événement</a></p>
+    {% endfor %}
+
+    <p><a href="{{ path('event_new') }}" class="btn btn-outline-warning btn-lg" role="button"><i class="fas fa-plus"></i> Créer un nouvel événement</a></p>
+
+    <p><a href="{{ path('profile_index') }}" class="btn btn-outline-warning btn-lg" role="button">Retour vers mon profil</a></p>
+
+
 {% endblock %}

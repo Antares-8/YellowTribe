@@ -7,7 +7,10 @@ namespace App\Controller;
 
 use App\Entity\Event;
 use App\Entity\Tribe;
+use App\Entity\Comment;
 use App\Form\EventType;
+use App\Form\CommentType;
+use App\Form\EventTagType;
 use App\Repository\EventRepository;
 use App\Repository\CommentRepository;
 use Symfony\Component\Serializer\Serializer;
@@ -42,63 +45,22 @@ class EventController extends AbstractController
         ]);
     }
 
-
     /**
-     * @Route("/newsfeed", name="newsfeed", methods={"GET","POST"})
-     */
-    public function indexNewsfeed(EventRepository $eventRepository, CommentRepository $commentRepository)
-    {
-        // TODO: créer une variable $news (array) qui récupère toutes les nouveautés (event, comment, picture, member...) d'un groupe selon date d'update 
-        // TODO: créer une réquête custom (dans GroupRepository?) qui les récupère et les tri
-        // TODO: appeler ce repository dans cette méthode
-
-        // TODO: tri par id ? L'id le plus haut étant le dernier créé, l'ordre peut se faire avec cette donnée
-
-        //$serializer = SerializerBuilder::create()->build();
-        $events = $eventRepository->findAllOrderedByUpdatedAtDate();
-        //$events = $eventRepository->findAll();
-        //$jsonNews = $serializer->serialize($events, 'json');
-        //dump($jsonNews);
-
-        $lastEvents = $eventRepository->lastRelease(10);
-
-        $comments = $commentRepository->findAllOrderedByCreatedAtDate();
-        //$comments = $commentRepository->findAll();
-
-        $news = [];
-        foreach ($events as $event) {
-            $news[] = $event;
-        }
-        
-        foreach ($comments as $comment) {
-            $news[] = $comment;
-        }
-        //$jsonNews = $serializer->serialize($news, 'json');
-        //dump($jsonNews);
-        //$test = array_values($news);
-
-        //$newsAPI = json_encode($events);
-
-        return $this->render('event/newsfeed.html.twig', [
-            'events' => $events,
-            'lastEvents' => $lastEvents,
-            'comments' => $comments,
-            'title' => 'Fil d\'actualités',
-            //'newsAPI' => $newsAPI,
-            'news' => $news,
-        ]);
-    }
-
-    /**
-     * @Route("/event/new", name="event_new", methods={"POST"})
+     * create a new event
+     * @Route("/calendar/event/new", name="event_new", methods={"GET", "POST"})
      */
     public function new(Request $request): Response
     {
+        $connectedUser = $this->getUser();
+        $userTribeId = $connectedUser->getTribe();
+
         $event = new Event();
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+            $event->setUser($connectedUser);
+            $event->setTribe($userTribeId);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($event);
@@ -109,27 +71,73 @@ class EventController extends AbstractController
                 'Nouvel événement créé !'
             );
             
-            return $this->redirectToRoute('calendar');
+            return $this->redirectToRoute('event_show', ['event' => $event->getId()]);
         }
 
         return $this->render('event/new.html.twig', [
-            'event' => $event,
+            //'event' => $event,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/event/{event}", name="event_show", methods={"GET"})
+     * show a particular event in detailed
+     * @Route("/calendar/event/{event}", name="event_show", methods={"GET", "POST"})
      */
-    public function show(Event $event)
+    public function show(Event $event, Request $request)
     {
+        $connectedUser = $this->getUser();
+        $userTribeId = $connectedUser->getTribe();
+
+        $comment = new Comment();
+        $commentForm = $this->createForm(CommentType::class, $comment);
+        $commentForm->handleRequest($request);
+
+        if($commentForm->isSubmitted() && $commentForm->isValid()) {
+            $comment->setEvent($event);
+            $comment->setUser($connectedUser);
+            $comment->setTribe($userTribeId);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                'Votre commentaire a bien été enregistré'
+            );
+            
+            return $this->redirect($request->getUri());
+        }
+
+        // pass $userTribeId into EventTagType with the options
+        $eventTagForm = $this->createForm(EventTagType::class, $event, array(
+            'tribe' => $userTribeId,
+        ));
+
+        $eventTagForm->handleRequest($request);
+
+        if ($eventTagForm->isSubmitted() && $eventTagForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash(
+                'success',
+                'Tags ajoutés !'
+            );
+
+            return $this->redirectToRoute('event_show', ['event' => $event->getId()]);
+        }
+
         return $this->render('event/show.html.twig', [
             'event' => $event,
+            'tribe' => $userTribeId,
+            'commentForm' => $commentForm->createView(),
+            'tagForm' => $eventTagForm->createView(),
         ]);
     }
 
     /**
-     * @Route("/myevents", name="events_list", methods={"GET"})
+     * @Route("profile/myevents", name="events_list", methods={"GET"})
      */
     public function userEventList(EventRepository $eventRepository)
     {
@@ -143,23 +151,9 @@ class EventController extends AbstractController
         ]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
-     * @Route("/event/{id}/edit", name="event_edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
+     * update an event (if you are its creator)
+     * @Route("calendar/event/{event}/edit", name="event_edit", methods={"GET", "POST"}, requirements={"event"="\d+"})
      */
     public function edit(Request $request, Event $event): Response
     {
@@ -174,7 +168,7 @@ class EventController extends AbstractController
                 'L\'événement a bien été mis à jour'
             );
 
-            return $this->redirectToRoute('event', ['id' => $event->getId()]);
+            return $this->redirectToRoute('event_show', ['event' => $event->getId()]);
         }
 
         return $this->render('event/edit.html.twig', [
@@ -184,6 +178,7 @@ class EventController extends AbstractController
     }
 
     /**
+     * TODO: remove this function (user can't delete event)
      * @Route("/event/{id}", name="event_delete", methods={"DELETE"}, requirements={"id"="\d+"})
      */
     public function delete(Request $request, Event $event): Response
