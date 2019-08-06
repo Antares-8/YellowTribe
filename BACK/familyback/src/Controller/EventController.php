@@ -89,10 +89,10 @@ class EventController extends AbstractController
         $userTribeId = $connectedUser->getTribe();
 
         $comment = new Comment();
-        $form = $this->createForm(CommentType::class, $comment);
-        $form->handleRequest($request);
+        $commentForm = $this->createForm(CommentType::class, $comment);
+        $commentForm->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
+        if($commentForm->isSubmitted() && $commentForm->isValid()) {
             $comment->setEvent($event);
             $comment->setUser($connectedUser);
             $comment->setTribe($userTribeId);
@@ -112,7 +112,7 @@ class EventController extends AbstractController
         return $this->render('event/show.html.twig', [
             'event' => $event,
             'tribe' => $userTribeId,
-            'form' => $form->createView(),
+            'commentForm' => $commentForm->createView(),
         ]);
     }
 

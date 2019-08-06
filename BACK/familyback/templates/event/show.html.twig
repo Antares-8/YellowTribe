@@ -95,12 +95,12 @@
                         {% endfor %}
                     </div>
 
-                    {{ form_start(form) }}
-                        {{ form_widget(form) }}
+                    {{ form_start(commentForm) }}
+                        {{ form_widget(commentForm) }}
                         <div class="float-right">
                             <button class="btn btn-warning btn-lg">{{ button_label|default('Commenter') }}</button>
                         </div>        
-                    {{ form_end(form) }}
+                    {{ form_end(commentForm) }}
 
                 </div>
 
