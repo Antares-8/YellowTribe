@@ -19,6 +19,18 @@ class TagRepository extends ServiceEntityRepository
         parent::__construct($registry, Tag::class);
     }
 
+    public function findAllTagsByTribe($tribe) 
+    {
+        $qb = $this->createQueryBuilder('tag')
+            ->join('tag.tribe', 't')
+            ->addselect('t')
+            ->where('tag.tribe = :myTribe')
+            ->setParameter('myTribe', $tribe)
+        ;
+
+        return $qb->getQuery()->getArrayResult();
+    }
+
     // /**
     //  * @return Tag[] Returns an array of Tag objects
     //  */

@@ -10,6 +10,7 @@ use App\Entity\Tribe;
 use App\Entity\Comment;
 use App\Form\EventType;
 use App\Form\CommentType;
+use App\Form\EventTagType;
 use App\Repository\EventRepository;
 use App\Repository\CommentRepository;
 use Symfony\Component\Serializer\Serializer;
@@ -89,10 +90,10 @@ class EventController extends AbstractController
         $userTribeId = $connectedUser->getTribe();
 
         $comment = new Comment();
-        $form = $this->createForm(CommentType::class, $comment);
-        $form->handleRequest($request);
+        $commentForm = $this->createForm(CommentType::class, $comment);
+        $commentForm->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
+        if($commentForm->isSubmitted() && $commentForm->isValid()) {
             $comment->setEvent($event);
             $comment->setUser($connectedUser);
             $comment->setTribe($userTribeId);
@@ -109,9 +110,29 @@ class EventController extends AbstractController
             return $this->redirect($request->getUri());
         }
 
+        // pass $userTribeId into EventTagType with the options
+        $eventTagForm = $this->createForm(EventTagType::class, $event, array(
+            'tribe' => $userTribeId,
+        ));
+
+        $eventTagForm->handleRequest($request);
+
+        if ($eventTagForm->isSubmitted() && $eventTagForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash(
+                'success',
+                'Tags ajoutés !'
+            );
+
+            return $this->redirectToRoute('event_show', ['event' => $event->getId()]);
+        }
+
         return $this->render('event/show.html.twig', [
             'event' => $event,
-            'form' => $form->createView(),
+            'tribe' => $userTribeId,
+            'commentForm' => $commentForm->createView(),
+            'tagForm' => $eventTagForm->createView(),
         ]);
     }
 
@@ -147,7 +168,7 @@ class EventController extends AbstractController
                 'L\'événement a bien été mis à jour'
             );
 
-            return $this->redirectToRoute('calendar', ['id' => $event->getId()]);
+            return $this->redirectToRoute('event_show', ['event' => $event->getId()]);
         }
 
         return $this->render('event/edit.html.twig', [

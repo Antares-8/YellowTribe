@@ -30,6 +30,18 @@
         <div class="row">
             <div class="root col-2 event-calendar_container">
                 <i class="fas fa-calendar-alt fa-10x"></i>
+                <div class="event-tag_container">
+                    {{ form_start(tagForm) }}
+                        {{ form_widget(tagForm) }}
+                        <div class="float-right">
+                            <button class="btn btn-warning btn-lg">{{ button_label|default('Commenter') }}</button>
+                        </div>        
+                    {{ form_end(tagForm) }}
+
+                    {% for tag in event.tags %}
+                        <div>{{ tag.title }}</div>
+                    {% endfor %}
+                </div>
             </div>
 
             <div class="col-9 event-detailed_container">
@@ -90,12 +102,12 @@
                         {% endfor %}
                     </div>
 
-                    {{ form_start(form) }}
-                        {{ form_widget(form) }}
+                    {{ form_start(commentForm) }}
+                        {{ form_widget(commentForm) }}
                         <div class="float-right">
                             <button class="btn btn-warning btn-lg">{{ button_label|default('Commenter') }}</button>
                         </div>        
-                    {{ form_end(form) }}
+                    {{ form_end(commentForm) }}
 
                 </div>
 
