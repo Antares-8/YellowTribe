@@ -8,7 +8,7 @@ import french from 'date-fns/locale/fr';
 // == Import : local
 
 // == Composant
-const DaysMonth = ({ currentDate }) => {
+const DaysLittleMonth = ({ currentDate }) => {
 
   const dateFormat = 'dddd';
   const days = [];
@@ -28,10 +28,10 @@ const DaysMonth = ({ currentDate }) => {
   return <div className="days row">{days}</div>;
 };
 
-DaysMonth.propTypes = {
+DaysLittleMonth.propTypes = {
   currentDate: PropTypes.string.isRequired,
 
 };
 
 // == Export
-export default DaysMonth;
+export default DaysLittleMonth;

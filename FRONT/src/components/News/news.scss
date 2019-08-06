@@ -1,112 +1,90 @@
-
-/// PARTIE LARGE /// 
-
-.agendaEtEvent {
-  display: flex; 
-
+.news {
+  display: flex;
+  flex-direction: column;
+  margin-top: 7.5em;
 }
 
-.PageEvent .main {
-  width: 100%;
-}
-
-.PageEvent .calendar {
-  width: 30%;
-}
-
-.event .close {
-  position: absolute; 
-  top: 0.45em;
-  right: 0.45em;
-}
-.event .close.icon {
-  font-size: 183%;
-  margin:0;
-}
-
-
-/// PARTI EVENT /// 
-
-.event {
-  position: fixed;
-  top: 7.75em;
-  right: 2em;
+.news .cards {
+  margin-top: 7em;
+  position: relative; 
+  width: 74%; 
+  margin: 0.3em 2em; 
   padding: 1.5em 2em;
   float: right;
-  width: 38%;
   max-width: 80em;
   border: 1px solid var(--border-light);
   background-color: var(--background-light);
-  border-top-right-radius: 1em; 
+  border-top-right-radius: 1em;
 }
-.event .titlePart {
+
+.eventCard .titlePart {
   display: flex; 
 }
 
-  .event .titleDate {
+  .eventCard .titleDate {
     line-height: 1.4;
     margin-right: 2em; 
     margin-top: 0.2em;
   }
 
-  .event .title{
+  .eventCard .title{
     display: flex; 
     flex-direction: column; 
   }
   /// Titrage + baseline /// 
-    .event .title .mainTitle {
+    .eventCard .title .mainTitle {
       text-transform: uppercase;
       font-size: 160%;
       font-family: 'Bold';
       letter-spacing: 0.15px;
       line-height: 1.22;
     }
-    .event .title .baseTitle {
+    .eventCard .title .baseTitle {
       display: flex; 
       font-size: 70%; 
     }
-      .event .title .baseTitle span {
+      .eventCard .title .baseTitle span {
         font-family: 'Bold'; 
       }
-      .event .title .baseTitle .cercle {
+      .eventCard .title .baseTitle .cercle {
         width: 1em;
         height: 1em;
         border-radius: 1em;
         margin: 0em 0.6em; 
       }
   /// Date à coté du titre  /// 
-    .event .titleDate .day{
+    .eventCard .titleDate .day{
       text-transform: capitalize;
     }
 
-    .event .titleDate .number {
+    .eventCard .titleDate .number {
       font-size: 200%;
       font-family: 'Bold';
       line-height: 1.1;
     }
 
-    .event .titleDate .month{
+    .eventCard .titleDate .month{
       text-transform: capitalize;
       font-family: 'Bold';
     }
   
   /// Info pratique  /// 
 
-  .event .icon {
+  .eventCard .icon {
     margin-right : 0.3em;
     font-size: 139%;
     margin-bottom: 0.2em;
   }
-  .event .dates {
+  .eventCard .dates {
     line-height: 1.05;
   }
-  .event .location {
+  .eventCard .location {
     margin-top: 0.6em; 
   }
 
   /// Boutton // 
 
-  .event .bouton {
+  .eventCard .bouton {
     background-color: var(--background-dark); 
     color: var(--text-dark);
     border-radius: 0.5em; 
@@ -114,21 +92,30 @@
     display: inline; 
     float: right; 
   }
-  .event .bouton .icon {
+  
+  .eventCard .bouton .icon {
     font-size: 100%; 
   }
 
-  a {
-    color: var(--text-light); 
-  }
+  //// user Card /// 
 
-
-hr {
-  margin: 1.5em 0em 1em 0;
-  background-color: var(--border-light);	
-  border: 0;
-  height:1px;
+.userCard .mainPart {
+  display: flex; 
 }
 
+.userCard img {
+  width: 5em; 
+  height: 5em; 
+  border-radius: 5em; 
+}
 
+.userCard .name {
+  font-size: 160%;
+  font-family: 'Bold';
+  letter-spacing: 0.15px;
+  line-height: 1.22;
+}
+.userCard .textPart {
+  margin-left: 1.5em; 
+}
 

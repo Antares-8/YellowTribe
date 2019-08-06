@@ -9,6 +9,9 @@ const initialState = {
   calendarType: 'mois',
   modalNewEvent: false,
   idOpenEvent: '',
+  categories: [],
+  events: [],
+  news: [],
 };
 
 
@@ -28,6 +31,10 @@ const MODAL_EVENT = 'MODAL_EVENT';
 const OPEN_EVENT = 'OPEN_EVENT';
 const CLOSE_EVENT = 'CLOSE_EVENT';
 const ADD_CATEGORIES_IN_STATE = 'ADD_CATEGORIES_IN_STATE';
+export const FETCH_EVENT_CALENDAR = 'FETCH_EVENT_CALENDAR';
+const GET_DATA_EVENTS = 'GET_DATA_EVENTS';
+export const FETCH_NEWS = 'FETCH_NEWS';
+const GET_DATA_NEWS = 'GET_DATA_NEWS';
 
 
 // == Reducer
@@ -145,7 +152,18 @@ const reducer = (state = initialState, action = {}) => {
     case ADD_CATEGORIES_IN_STATE:
       return {
         ...state,
-        ...action.categories,
+        categories: action.categories,
+      };
+    case GET_DATA_EVENTS:
+      return {
+        ...state,
+        events: action.data,
+      };
+
+    case GET_DATA_NEWS:
+      return {
+        ...state,
+        news: action.data,
       };
 
     default:
@@ -204,7 +222,20 @@ export const addCategorieInState = categories => ({
   type: ADD_CATEGORIES_IN_STATE,
   categories,
 });
-
+export const fetchEventsCalendar = () => ({
+  type: FETCH_EVENT_CALENDAR,
+});
+export const getDataEvents = data => ({
+  type: GET_DATA_EVENTS,
+  data,
+});
+export const fetchNews = () => ({
+  type: FETCH_NEWS,
+});
+export const getDataNews = data => ({
+  type: GET_DATA_NEWS,
+  data,
+});
 
 // == Selectors
 

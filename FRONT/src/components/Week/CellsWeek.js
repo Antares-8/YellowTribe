@@ -7,10 +7,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 // == Import : local
-import events from 'src/components/Data/events.json';
 
 // == Composant
-const CellsWeek = ({ currentDate, selectedDate, onDateClick, idOpenEvent, openEvent }) => {
+const CellsWeek = ({ currentDate, selectedDate, onDateClick, idOpenEvent, openEvent, events }) => {
 
   const weekStart = dateFns.startOfWeek(currentDate);
   const weekEnd = dateFns.endOfWeek(weekStart);
@@ -132,6 +131,7 @@ CellsWeek.propTypes = {
   onDateClick: PropTypes.func.isRequired,
   idOpenEvent: PropTypes.string.isRequired,
   openEvent: PropTypes.func.isRequired,
+  events: PropTypes.array.isRequired,
 };
 
 // == Export

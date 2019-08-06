@@ -1,14 +1,20 @@
-// == Import : npm
-import { createStore } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 
-// == Import : local
-import reducer from 'src/store/reducer';
+import reducer from './reducer';
+import logMiddlleware from './LogMiddlleware';
 
-// == Store
-const store = createStore(
-  reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+// les enhancers représentent nos middleWares
+const enhancers = composeEnhancers(
+  applyMiddleware(logMiddlleware),
 );
 
-// == Export
+// on peut passer des "enhancers" à notre store
+const store = createStore(
+  reducer,
+  enhancers,
+);
+
 export default store;

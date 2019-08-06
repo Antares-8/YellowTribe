@@ -66,7 +66,7 @@ const Calendar = ({ calendarType, idOpenEvent, addCategorieInState }) => {
 Calendar.propTypes = {
   calendarType: PropTypes.string.isRequired,
   idOpenEvent: PropTypes.string.isRequired,
-  addCategorieInState: PropTypes.string.isRequired,
+  addCategorieInState: PropTypes.func.isRequired,
 };
 
 export default Calendar;

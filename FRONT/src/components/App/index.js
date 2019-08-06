@@ -13,11 +13,13 @@ import PageEvents from 'src/containers/PageEvents';
 import './app.scss';
 
 // == Composant
-const App = () => {
+const App = ({}) => {
   return (
     <div className="App">
       <Router>
-        <Route path="/" component={PageMain} />
+        <Route exact path="/" component={PageMain} />
+        <Route path="/calendar" component={PageMain} />
+        <Route path="/news" component={PageMain} />
         <Route path="/event" component={PageEvents} />
       </Router>
     </div>

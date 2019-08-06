@@ -1,17 +1,17 @@
 import React from 'react';
 
-// import HeaderMonth from 'src/containers/Month/HeaderMonth';
-import DaysMonth from 'src/containers/Month/DaysMonth';
-import CellsMonth from 'src/containers/Month/CellsMonth';
+import DaysLittleMonth from 'src/containers/LittleMonth/DaysLittleMonth';
+import CellsLittleMonth from 'src/containers/LittleMonth/CellsLittleMonth';
 
-const Month = () => {
+import './littleMonth.scss';
+
+const LittleMonth = () => {
   return (
-    <div className="Month">
-      {/* <HeaderMonth /> */}
-      <DaysMonth />
-      <CellsMonth />
+    <div className="littleMonth">
+      {/* <HeaderLittleMonth /> */}
+      <CellsLittleMonth />
     </div>
   );
 };
 
-export default Month;
+export default LittleMonth;

@@ -127,24 +127,40 @@ nav .item {
 /// circulation type calendrier et periode /// 
 .navigation .type.row {
   position: fixed;
-  right: 34em;
-  top: 88px;
-  width: 14.3em;
-  border: none;
+  display: flex; 
+  justify-content: space-around;
+  left: 3em;
+  bottom: 5em;
+  width: 15.3em;
+  padding: 0.4em 1em !important;
   font-size: 100% !important;
   z-index: 200;
+  border-radius: 1em;
+  background: var(--background-light);
+  border: 2px solid var(--background-dark);
+  color: var(--text-light);
 }
 
 .navigation .header {
   position: fixed;
-  right: 19em;
-  top: 88px;
+  display: flex; 
+  justify-content: space-around;
+  left: 3em;
+  bottom: 2em;
   width: 15.3em;
-  border: none !important;
+  padding: 0.4em 1em !important;
   font-size: 100% !important;
   -webkit-align-items: center;
   align-items: center;
   z-index: 200;
+  border-radius: 1em;
+  background: var(--background-light);
+  border: 2px solid var(--background-dark);
+  border-bottom: 2px solid var(--background-dark) !important;
+  color: var(--text-light);
+}
+.navigation .icon:last-of-type {
+  margin: 0 !important; 
 }
 .header .col-start, 
 .header .col-end {

@@ -2,10 +2,10 @@
 import { connect } from 'react-redux';
 
 // == Import : local
-import CellsMonth from 'src/components/Month/CellsMonth';
+import CellsLittleMonth from 'src/components/LittleMonth/CellsLittleMonth';
 
 // Action Creators
-import { onDateClick, openEvent, fetchEventsCalendar } from 'src/store/reducer';
+import { onDateClick, openEvent } from 'src/store/reducer';
 
 
 const mapStateToProps = ({ currentDate, selectedDate, eventDate, idOpenEvent, events }) => {
@@ -18,6 +18,7 @@ const mapStateToProps = ({ currentDate, selectedDate, eventDate, idOpenEvent, ev
   };
 };
 
+
 const mapDispatchToProps = dispatch => ({
   onDateClick: (day) => {
     dispatch(onDateClick(day));
@@ -25,23 +26,20 @@ const mapDispatchToProps = dispatch => ({
   openEvent: (id) => {
     dispatch(openEvent(id));
   },
-  fetchEventsCalendar: () => {
-    dispatch(fetchEventsCalendar());
-  },
 });
 
 // Container
-const CellsMonthContainer = connect(
+const CellsLittleMonthContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(CellsMonth);
+)(CellsLittleMonth);
 
 // == Export
-export default CellsMonthContainer;
+export default CellsLittleMonthContainer;
 
 /* = export à la volée
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(CellsMonth);
+)(CellsLittleMonth);
 */

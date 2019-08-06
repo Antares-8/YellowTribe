@@ -6,17 +6,20 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import EventBloc from 'src/components/PageEvents/EventBloc';
 import Header from 'src/components/Header';
 import LittleMonth from 'src/components/LittleMonth';
-import Sidebar from 'src/containers/Sidebar';
+import ModalNewEvent from 'src/components/Event/ModalNewEvent';
+
+import './pageEvents.scss';
+
 
 // == Composant
 const PageEvents = () => {
   return (
-    <div className="PageEvents">
+    <div className="pageEvents">
       <Router>
         <EventBloc />
         <LittleMonth />
         <Header />
-        <Sidebar />
+        <ModalNewEvent />
       </Router>
     </div>
   );
