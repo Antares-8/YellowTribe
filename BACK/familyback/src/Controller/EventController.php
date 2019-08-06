@@ -45,7 +45,8 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/calendar/new", name="event_new", methods={"GET", "POST"})
+     * create a new event
+     * @Route("/calendar/event/new", name="event_new", methods={"GET", "POST"})
      */
     public function new(Request $request): Response
     {
@@ -79,7 +80,8 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/calendar/{event}", name="event_show", methods={"GET", "POST"})
+     * show a particular event in detailed
+     * @Route("/calendar/event/{event}", name="event_show", methods={"GET", "POST"})
      */
     public function show(Event $event, Request $request)
     {
@@ -129,7 +131,8 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/event/{id}/edit", name="event_edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
+     * update an event (if you are its creator)
+     * @Route("calendar/event/{event}/edit", name="event_edit", methods={"GET", "POST"}, requirements={"event"="\d+"})
      */
     public function edit(Request $request, Event $event): Response
     {
@@ -154,6 +157,7 @@ class EventController extends AbstractController
     }
 
     /**
+     * TODO: remove this function (user can't delete event)
      * @Route("/event/{id}", name="event_delete", methods={"DELETE"}, requirements={"id"="\d+"})
      */
     public function delete(Request $request, Event $event): Response
