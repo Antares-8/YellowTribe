@@ -36,7 +36,7 @@
             {% if tribe.tags is empty %}
 
                 <div class="text-justify">
-                    <div class="mb-3">Oh non! votre tribu n'a toujours pas de tag!</div>
+                    <div class="mb-3">Oh non! votre tribu n'a toujours pas de tag !</div>
                     <div class="mb-3">Les tags servent à identifier les personnes liées à un événement. Ils représentent chaque membre de la tribu, et même ceux qui ne possèdent pas de compte. Vous pouvez donc créer un tag pour grand-mère Yeta qui refuse de toucher à un ordinateur ou bien pour les enfants de votre frère qui préfèrent jouer à Fortnite.</div>
 
                     {{ form_start(form) }}
@@ -76,7 +76,7 @@
                     <div class="card mb-3 bg-warning mr-3" style="max-width: 30%;">
                         <div class="row no-gutters d-flex align-items-center">
                             <div class="col-md-5">
-                                <img src="{{ asset('uploads/avatars/default-avatar.png') }}" class="card-img" alt="avatar par défault">
+                                <img src="{{ asset(avatar_upload_path ~ (app.user.avatar ?: 'default-avatar.png')) | imagine_filter('thumb_back_list') }}" class="card-img" alt="avatar par défault">
                             </div>
                             <div class="col-md-7">
                             <div class="card-body">
