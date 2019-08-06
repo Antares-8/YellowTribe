@@ -26,8 +26,7 @@ class EventController extends AbstractController
 {
 
     /**
-     * Data API for calendar
-     * @Route("/{tribe}/events", name="events_list", methods={"GET", "POST"})
+     * @Route("/{tribe}/events", name="events_list")
      */
     public function eventsList(EventRepository $repository, Tribe $tribe): JsonResponse
     {
@@ -73,13 +72,23 @@ class EventController extends AbstractController
  
     /**
      * Data API for test
-     * @Route("/{tribe}/tags", name="events_list", methods={"GET", "POST"})
+     * @Route("/{tribe}/tags", name="tags_list")
      */
     public function tagsList(TagRepository $repository, Tribe $tribe): JsonResponse
     {
-        $events = $repository->findAllTagsByTribe($tribe);
+        $tags = $repository->findAllTagsByTribe($tribe);
 
-        return $this->json($events);
+        return $this->json($tags);
+    }
+
+    /**
+     * @Route("/{tribe}/birthdays", name="birthdays_list")
+     */
+    public function birthdaysList(UserRepository $userRepository, Tribe $tribe): JsonResponse
+    {
+        $birthdays = $userRepository->findUserBirthdayByTribe($tribe);
+
+        return $this->json($birthdays);
     }
 
 }

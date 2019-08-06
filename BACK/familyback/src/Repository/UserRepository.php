@@ -39,6 +39,18 @@ class UserRepository extends ServiceEntityRepository
         return $qb->getQuery()->getArrayResult();
     }
 
+    public function findUserBirthdayByTribe($tribe)
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->join('u.tribe', 't')
+            ->addselect('t')
+            ->where('u.tribe = :myTribe')
+            ->setParameter('myTribe', $tribe)
+            ->addselect('u.birthDate')
+        ;
+
+        return $qb->getQuery()->getArrayResult();
+    }
     // /**
     //  * @return User[] Returns an array of User objects
     //  */
