@@ -14,6 +14,7 @@ use App\Form\TagType;
 class TribeController extends AbstractController
 {
     /**
+     * List of all members + tags bind to user's tribe
      * @Route("/tribe", name="tribe", methods={"GET", "POST"})
      */
     public function index(Request $request): Response
@@ -48,6 +49,7 @@ class TribeController extends AbstractController
     }
 
     /**
+     * Create your first (and only) tribe
      * @Route("/tribe/new", name="newTribe", methods={"GET","POST"})
      */
     public function newTribe(Request $request): Response
