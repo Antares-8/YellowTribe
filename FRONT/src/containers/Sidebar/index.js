@@ -18,6 +18,9 @@ const mapDispatchToProps = dispatch => ({
   showModalNewEvent: () => {
     dispatch(showModalNewEvent());
   },
+  addCategorieInState: categoriesTable => {
+    dispatch(addCategorieInState(categoriesTable));
+  },
 });
 
 // Container

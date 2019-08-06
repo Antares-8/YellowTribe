@@ -9,7 +9,7 @@ import french from 'date-fns/locale/fr';
 
 
 // == Composant
-const HeaderMonth = ({ prevMonth, nextMonth, currentDate }) => {
+const HeaderLittleMonth = ({ prevMonth, nextMonth, currentDate }) => {
 
   const dateFormat = 'MMMM YYYY';
 
@@ -38,11 +38,11 @@ const HeaderMonth = ({ prevMonth, nextMonth, currentDate }) => {
   );
 };
 
-HeaderMonth.propTypes = {
+HeaderLittleMonth.propTypes = {
   currentDate: PropTypes.string.isRequired,
   nextMonth: PropTypes.func.isRequired,
   prevMonth: PropTypes.func.isRequired,
 };
 
 // == Export
-export default HeaderMonth;
+export default HeaderLittleMonth;

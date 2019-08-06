@@ -6,11 +6,13 @@ import classNames from 'class-names';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import axios from 'axios';
+import french from 'date-fns/locale/fr';
+
 
 // == Import : local
 import events from 'src/components/Data/events.json';
 // == Composant
-const CellsMonth = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEvent }) => {
+const CellsLittleMonth = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEvent }) => {
 
   // const [eventData, setEventData] = useState();
 
@@ -20,11 +22,13 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenE
   const endDate = dateFns.endOfWeek(monthEnd);
 
   const dateFormat = 'D';
+  const dateFormatMonth = 'MMMM';
   const rows = [];
 
   let days = [];
   let day = startDate;
   let formattedDate = '';
+  const formattedDateMonth = dateFns.format(monthStart, dateFormatMonth, { locale: french });
 
   // call click date function from reducer
   const dateClickHandler = (cloneDay) => {
@@ -54,7 +58,6 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenE
             onClick={() => dateClickHandler(cloneDay)}
           >
             <span className="number">{formattedDate}</span>
-            <span className="bg">{formattedDate}</span>
           </div>
         );
         day = dateFns.addDays(day, 1);
@@ -98,15 +101,12 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenE
             // I create a styled components to fixe directly the col and span on the grid-colum style
             const Events = styled.div`
               grid-column: ${col} / span ${colSpan};
-              grid-row: ${rowEvent} / span 3;
+              grid-row: ${rowEvent} / span 1;
               display: ${hidden};
             `;
             // I return the event in the DOM
             return (
               <Events key={`${event.beginingDate}${day}`} className={`events event${rowEvent} ${eventDisplay}`} id={event.id} onClick={clickHandleEvent}>
-                <div className="title">
-                  {event.title}
-                </div>
               </Events> 
             )
           })}
@@ -117,25 +117,16 @@ const CellsMonth = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenE
     }
   };
   createTable();
-  
-  useEffect(() => {
-    
-    axios.get('http://95.142.174.217/api/events')
-      .then((res) => {
-        const eventData = res.data;
-        console.log(eventData);
-        
-      });
-  });
+
   return (
     <div className="body">
-      {/* {console.log(rows)} */}
+      <div className="month">{formattedDateMonth}</div>
       {rows}
     </div>
   );
 };
 
-CellsMonth.propTypes = {
+CellsLittleMonth.propTypes = {
   currentDate: PropTypes.string.isRequired,
   selectedDate: PropTypes.string.isRequired,
   onDateClick: PropTypes.func.isRequired,
@@ -144,4 +135,4 @@ CellsMonth.propTypes = {
 };
 
 // == Export
-export default CellsMonth;
+export default CellsLittleMonth;

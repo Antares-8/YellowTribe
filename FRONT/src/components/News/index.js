@@ -4,30 +4,64 @@ import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import classNames from 'class-names';
 import axios from 'axios';
+import dateFns, { compareAsc } from 'date-fns';
+import { Card } from 'semantic-ui-react';
 
 
 // == Import : local
-// import Calendar from 'src/containers/Calendar';
+import EventCard from 'src/components/News/EventCard';
+import UserCard from 'src/components/News/UserCard';
+
+import './news.scss';
 
 
 // == Composant
-const News = ({ }) => {
-  useEffect(() => {
-    axios.get('http://95.142.174.217/api/events')
-      .then((res) => {
-        const eventsData = res.data;
-        console.log(eventsData);
+const News = ({ news, fetchNews }) => {
+
+  const [cards, setCards] = useState([]);
+  console.log(news);
+
+  const createCards = (news) => {
+    const cardsTable = [];
+    if (news !== undefined) {
+      news.forEach((data) => {
+        if (data[0].type === 'event') {
+          cardsTable.push(
+            <div className="cards">
+              <EventCard data={data} />
+            </div>
+          );
+        }
+        if (data[0].type === 'user') {
+          cardsTable.push(
+            <div className="cards">
+              <UserCard data={data} />
+            </div>
+          );
+        }
       });
+    }
+    setCards(cardsTable);
+  };
+
+  useEffect(() => {
+    fetchNews();
   }, []);
+
+  useEffect(() => {
+    createCards(news);
+  }, [news]);
+
   return (
-    <div className="News"></div>
+    <div className="news">
+      {cards}
+    </div>
   );
 };
 
 News.propTypes = {
-  nextCalendarType: PropTypes.func.isRequired,
-  prevCalendarType: PropTypes.func.isRequired,
-  calendarType: PropTypes.string.isRequired,
+  news: PropTypes.array.isRequired,
+  fetchNews: PropTypes.func.isRequired,
 };
 
 // == Export

@@ -10,11 +10,9 @@ import french from 'date-fns/locale/fr';
 
 
 // == Import : local
-import events from 'src/components/Data/events.json';
-
 
 // == Composant
-const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEvent  }) => {
+const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEvent, events }) => {
 
   // about year calendar
 
@@ -177,6 +175,7 @@ CellsYear.propTypes = {
   onDateClick: PropTypes.func.isRequired,
   openEvent: PropTypes.func.isRequired,
   idOpenEvent: PropTypes.string.isRequired,
+  events: PropTypes.array.isRequired,
 };
 
 // == Export

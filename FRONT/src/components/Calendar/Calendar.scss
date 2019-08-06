@@ -86,10 +86,12 @@
   
   .calendar .week .body {
     display: flex;
+    background-color: var(--background-light);
+    padding-top: 1em;
   }
 
-  .calendar .week .days.row {
-    text-align: left;
+  .calendar .week .body .row {
+    border-right: 1px solid var(--border-light);
   }
 
   .calendar .week .days .number {
@@ -103,6 +105,8 @@
   .calendar .week .body .cell {
     position: relative;
     height: 2em;
+    color: var(--text-light);
+    font-size: 100%;
   }
 
   .calendar .body .cell {
@@ -178,11 +182,6 @@
     opacity: 0.05;
     transition: .5s ease-in;
   }
-
-  .calendar .week .body .cell .number {
-    font-size: 51.5%;
-    color: rgb(204, 204, 204);
-  }
   
 
   /// event MONTH /// 
@@ -222,7 +221,8 @@
   
   // YEAR //
   .calendar .year {
-    margin: 2em;
+    padding: 2em;
+    background-color: var(--background-light);
   }
 .calendar .year .body {
   display: flex;
@@ -235,7 +235,7 @@
 
 .calendar .year .month  {
   width: calc( 100% / 3);
-  margin: 2em;
+  margin: 1.5em;
 }
 .calendar .year .row {
   display: grid;

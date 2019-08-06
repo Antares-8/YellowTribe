@@ -1,0 +1,36 @@
+.pageEvents .littleMonth { 
+  position: fixed; 
+  top: 6em;
+}
+
+.pageEvents .littleMonth .body  {
+  width: 100%;
+  margin: 2em;
+  background-color: var(--background-light);
+  padding: 1.5em 2em;
+  border-top-left-radius: 1em;
+}
+
+.pageEvents .littleMonth .body .month {
+  text-transform: capitalize;
+}
+
+.pageEvents .littleMonth .row {
+  display: grid;
+    -webkit-flex-basis: 100%;
+    /* flex-basis: 100%; */
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 1.2rem repeat(2, 1.1rem);
+    /* grid-auto-flow: dense; */
+    /* grid-gap: 0; */
+    height: 4em;
+}
+.pageEvents .littleMonth .row {
+  text-align: center;
+}
+.pageEvents .littleMonth .row .number  {
+  font-size: 85%;
+}
+.pageEvents .littleMonth .row .col.cell.disabled{
+  color: #eee;
+}

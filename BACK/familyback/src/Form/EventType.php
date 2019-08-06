@@ -37,6 +37,7 @@ class EventType extends AbstractType
                 'years' => range(2019, 2099),
             ])
             ->add('endingDate', DateTimeType::class, [
+                'required' => false,
                 'label' => 'Optionnel: définir la date de fin de l\'événement',
                 'widget' => 'choice',
                 'placeholder' => [
@@ -68,12 +69,7 @@ class EventType extends AbstractType
                 'choice_label' => 'title',
                 'label' => 'Choisir une catégorie',
                 'multiple' => false,
-                'constraints' => [
-                    new Count([
-                        'min' => 1,
-                        'minMessage' => 'Vous devez choisir une catégorie',
-                    ])
-                ]
+                'placeholder' => 'Choisir',
             ])
             //->add('tags') will be add in detailed event
         ;
