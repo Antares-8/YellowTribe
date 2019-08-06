@@ -111,6 +111,7 @@ class EventController extends AbstractController
 
         return $this->render('event/show.html.twig', [
             'event' => $event,
+            'tribe' => $userTribeId,
             'form' => $form->createView(),
         ]);
     }
