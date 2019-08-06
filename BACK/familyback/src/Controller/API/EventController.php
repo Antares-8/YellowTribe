@@ -25,16 +25,18 @@ class EventController extends AbstractController
 {
 
     /**
-     * @Route("/events", name="events_list")
+     * Data API for calendar
+     * @Route("/{tribe}/events", name="events_list", methods={"GET", "POST"})
      */
-    public function list(EventRepository $repository): JsonResponse
+    public function eventsList(EventRepository $repository, Tribe $tribe): JsonResponse
     {
-        $events = $repository->findAllEventWithUsername();
+        $events = $repository->findAllEventsByTribe($tribe);
 
         return $this->json($events);
     }
 
     /**
+     * Data API for newsfeed
      * @Route("/{tribe}/news", name="news_list")
      */
     public function newsList(UserRepository $userRepository, CommentRepository $commentRepository, EventRepository $eventRepository, Tribe $tribe): JsonResponse
