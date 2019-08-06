@@ -2,15 +2,17 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\UserType;
+use App\Form\AvatarType;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use App\Repository\UserRepository;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
 
@@ -56,10 +58,37 @@ class UserController extends AbstractController
 
             $user->setPassword($encodedPassword);
 
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash(
+                'success',
+                'Vos informations ont bien été modifiées'
+            );
+
+            return $this->redirectToRoute('profile_index');
+        }
+
+        return $this->render('profile/edit.html.twig', [
+            'title' => 'Modifer mes informations',
+            'user' => $user,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/avatar/edit", name="avatar_edit", methods={"GET", "POST"})
+     */
+     public function avatarEdit(Request $request): Response
+     {
+         $user = $this->getUser();
+         $form = $this->createForm(AvatarType::class, $user);
+         $form->handleRequest($request);
+
+         if ($form->isSubmitted() && $form->isValid()) {
 
             // Before saving new informations, we have to get the avatar file
             $file = $user->getAvatar();
-            
+
             if(!is_null($user->getAvatar())){
 
                 // Generating an unique file name (function at the bottom of this file) in order not to crush another file, and concatenating with the extention of the origin file
@@ -83,19 +112,18 @@ class UserController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash(
-                'success',
-                'Vos informations ont bien été modifiées'
+                'info',
+                'Votre avatar a bien été mis à jour'
             );
 
             return $this->redirectToRoute('profile_index');
-        }
+         }
 
-        return $this->render('profile/edit.html.twig', [
-            'title' => 'Modifer mes informations',
-            'user' => $user,
-            'form' => $form->createView(),
-        ]);
-    }
+         return $this->render('profile/edit_avatar.html.twig', [
+            'title' => 'Modifier mon avatar',
+            'form' =>$form->createView()
+         ]);
+     }
 
     /**
      * @return string
@@ -107,3 +135,4 @@ class UserController extends AbstractController
         return md5(uniqid());
     }
 }
+
