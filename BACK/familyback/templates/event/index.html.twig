@@ -7,7 +7,9 @@
 <a href="{{ path('homepage') }}"><p>Retour à l'accueil</p></a>
  #}
 
-   <div id="root"></div>
+   <div id="root" class="{{ app.user }}">
+    data = {{ app.user }}
+   </div>
 
 
 
