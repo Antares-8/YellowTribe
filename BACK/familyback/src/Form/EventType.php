@@ -69,6 +69,7 @@ class EventType extends AbstractType
                 'choice_label' => 'title',
                 'label' => 'Choisir une catégorie',
                 'multiple' => false,
+                'placeholder' => 'Choisir',
             ])
             //->add('tags') will be add in detailed event
         ;
