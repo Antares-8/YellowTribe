@@ -31,7 +31,14 @@
             <div class="root col-2 event-calendar_container">
                 <i class="fas fa-calendar-alt fa-10x"></i>
                 <div class="event-tag_container">
-                    {% for tag in tribe.tags %}
+                    {{ form_start(tagForm) }}
+                        {{ form_widget(tagForm) }}
+                        <div class="float-right">
+                            <button class="btn btn-warning btn-lg">{{ button_label|default('Commenter') }}</button>
+                        </div>        
+                    {{ form_end(tagForm) }}
+
+                    {% for tag in event.tags %}
                         <div>{{ tag.title }}</div>
                     {% endfor %}
                 </div>

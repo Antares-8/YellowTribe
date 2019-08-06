@@ -5,6 +5,7 @@ namespace App\Controller\API;
 use App\Entity\Event;
 use App\Entity\Tribe;
 //use JMS\Serializer\SerializerBuilder;
+use App\Repository\TagRepository;
 use App\Repository\UserRepository;
 use App\Repository\EventRepository;
 use App\Repository\CommentRepository;
@@ -69,5 +70,16 @@ class EventController extends AbstractController
         return $this->json($news);
     }
 
-    
+ 
+    /**
+     * Data API for test
+     * @Route("/{tribe}/tags", name="events_list", methods={"GET", "POST"})
+     */
+    public function tagsList(TagRepository $repository, Tribe $tribe): JsonResponse
+    {
+        $events = $repository->findAllTagsByTribe($tribe);
+
+        return $this->json($events);
+    }
+
 }
