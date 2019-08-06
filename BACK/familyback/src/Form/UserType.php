@@ -83,13 +83,6 @@ class UserType extends AbstractType
                 ],
                 'required' => false,
             ])
-            ->add('avatar', FileType::class, [
-                'label' => 'Photo de profil (jpg,png,gif)',
-                'required' => false,
-                'data_class' => null
-            ])
-            //->add('createdAt')
-            //->add('tribe')
         ;
     }
 
