@@ -2,17 +2,28 @@
 
 {% block title %}{{ title }}{% endblock %}
 
+{% block header %}
+    {% include "_nav.html.twig" %}
+{% endblock %}
+
 {% block body %}
 
-<h1>Modifiez votre photo de profil</h1>
+<div class="avatar-edit_container">
 
+    <h1 class="display-4 text-center mb-3">Modifier sa photo de profil</h1>
 
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-           <div class="float-right">
-                <button class="btn btn-warning btn-lg">{{ button_label|default('Créer') }}</button>
-                <a href="{{ path('profile_index') }}" class="btn btn-outline-warning btn-lg" role="button">Annuler</a>
-            </div> 
-{{ form_end(form) }}
+    <div class="text-justify mb-4">Texte explicatif si besoin</div>
+
+    <div>
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+                <div class="float-right">
+                        <button class="btn btn-warning btn-lg">{{ button_label|default('Modifier') }}</button>
+                        <a href="{{ path('profile_index') }}" class="btn btn-outline-warning btn-lg" role="button">Annuler</a>
+                </div> 
+        {{ form_end(form) }}
+    </div>
+
+</div>
 
 {% endblock %}

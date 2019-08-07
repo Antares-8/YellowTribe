@@ -75,6 +75,7 @@ class User implements UserInterface, \Serializable
 
     /**
      * @Assert\File(
+     * groups={"registration"},
      * maxSize = "1024k",
      * mimeTypes={"image/gif", "image/jpeg", "image/png"},
      * mimeTypesMessage = "Merci d'entrer une image au format gif, png ou jpeg"

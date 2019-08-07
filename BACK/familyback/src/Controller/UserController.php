@@ -60,11 +60,11 @@ class UserController extends AbstractController
 
             $user->setPassword($encodedPassword);
 
-            if(is_null($user->getAvatar())){
-                $oldAvatar = $user->getAvatar()
-;           }
+            // if(is_null($user->getAvatar())){
+            //     $oldAvatar = $user->getAvatar();           
+            //}
 
-            $user->setAvatar($oldAvatar);
+            // $user->setAvatar($oldAvatar);
 
             $this->getDoctrine()->getManager()->flush();
 
@@ -88,6 +88,7 @@ class UserController extends AbstractController
      */
      public function avatarEdit(Request $request): Response
      {
+
          $user = $this->getUser();
          $form = $this->createForm(AvatarType::class, $user);
          $form->handleRequest($request);
