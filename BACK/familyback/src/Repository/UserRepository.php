@@ -42,11 +42,11 @@ class UserRepository extends ServiceEntityRepository
     public function findUserBirthdayByTribe($tribe)
     {
         $qb = $this->createQueryBuilder('u')
-            ->join('u.tribe', 't')
-            ->addselect('t')
+            ->select('u.birthDate')
+            ->addselect('u.firstname')
+            ->addselect('u.lastname')
             ->where('u.tribe = :myTribe')
             ->setParameter('myTribe', $tribe)
-            ->addselect('u.birthDate')
         ;
 
         return $qb->getQuery()->getArrayResult();
