@@ -26,8 +26,8 @@ class EventController extends AbstractController
 {
 
     /**
-     * Data API for calendar
-     * @Route("/{tribe}/events", name="events_list", methods={"GET", "POST"})
+     * Data API for events to add them in calendar
+     * @Route("/{tribe}/events", name="events_list")
      */
     public function eventsList(EventRepository $repository, Tribe $tribe): JsonResponse
     {
@@ -37,7 +37,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * Data API for newsfeed
+     * Data API for newsfeed | search all news (comments, members, events) from the last 10 days 
      * @Route("/{tribe}/news", name="news_list")
      */
     public function newsList(UserRepository $userRepository, CommentRepository $commentRepository, EventRepository $eventRepository, Tribe $tribe): JsonResponse
@@ -72,14 +72,25 @@ class EventController extends AbstractController
 
  
     /**
-     * Data API for test
-     * @Route("/{tribe}/tags", name="events_list", methods={"GET", "POST"})
+     * Data API for tags to add them in calendar and newsfeed views
+     * @Route("/{tribe}/tags", name="tags_list")
      */
     public function tagsList(TagRepository $repository, Tribe $tribe): JsonResponse
     {
-        $events = $repository->findAllTagsByTribe($tribe);
+        $tags = $repository->findAllTagsByTribe($tribe);
 
-        return $this->json($events);
+        return $this->json($tags);
+    }
+
+    /**
+     * Data API for birth dates to add them in calendar
+     * @Route("/{tribe}/birthdays", name="birthdays_list")
+     */
+    public function birthdaysList(UserRepository $userRepository, Tribe $tribe): JsonResponse
+    {
+        $birthdays = $userRepository->findUserBirthdayByTribe($tribe);
+
+        return $this->json($birthdays);
     }
 
 }
