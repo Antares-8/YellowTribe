@@ -184,6 +184,18 @@ body {
   height: 100%;
 }
 
+/* AVATAR EDITION */
+.avatar-edit_container {
+  width: 50%;
+  margin: auto;
+  line-height: 2em;
+  height: 80%; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 /* NAV */
 .nav_container {
   position:fixed;
