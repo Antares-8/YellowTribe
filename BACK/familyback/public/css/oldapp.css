@@ -21,6 +21,22 @@ body {
   margin-top: 2em;
 }
 
+/* CONTACT PAGE */
+.contactpage_container {
+  width: 50%;
+  height: 100%;
+  margin: auto;
+  padding-top: 12em;
+}
+
+.card-developer {
+  width: 30%;
+}
+
+.card-developer .card-title {
+  text-transform: uppercase;
+}
+
 /* LOGIN TEMPLATE */
 .login_container {
   height: 100%; 
