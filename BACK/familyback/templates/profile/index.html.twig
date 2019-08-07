@@ -25,39 +25,58 @@
 {% block body %}
 
 <div class="profile_container">
-        <h5 class="card-title">{{ app.user.firstname }} {{ app.user.lastname }}</h5>
-        <p class="card-text">Email : {{ app.user.email }}</p>
-        <p class="card-text">Username : {{ app.user.username }}</p>
-        <p class="card-text"><small class="text-muted"><a href="{{ path('profile_edit') }}" class="btn btn-outline-warning btn-lg" role="button">Modifier mes informations</a></small></p>
+
+  <h1 class="text-center profile_title">Profil de {{ app.user.firstname }} {{ app.user.lastname }}</h1>
+
+  <div class="d-flex justify-content-between">
+    <div class="profile_content">
+      <div class="text-center">Mes informations</div>
+
+      <div class="d-flex justify-content-around">
+
+        <div>
+
+          <div>Tribu : {{ app.user.tribe }}</div>
+          <div>Prénom : {{ app.user.firstname }}</div>
+          <div>Nom : {{ app.user.lastname }}</div>
+          <div>Username : {{ app.user.username }}</div>
+          <div>Email : {{ app.user.email }}</div>
+
+          <a href="{{ path('profile_edit') }}" class="btn btn-outline-warning btn-lg" role="button">Modifier mes informations</a>
+
+        </div>
+
+        <div class="text-center">
+
+          {# <div>Votre avatar</div>  #}
+          <img src="{{ asset(avatar_upload_path ~ (app.user.avatar ?: 'default-avatar.png')) | imagine_filter('thumb_back_list') }}"/>
+          <div><a href="{{ path('profile_avatar_edit') }}" class="btn btn-outline-warning btn-lg" role="button">Modifier</a></div>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+    <div class="profile_action text-center">
+    {% if app.user.tribe == null %}
+      <div>Vous n'avez pas encore de tribu!</div>
+      <div><a href="{{ path('newTribe') }}" class="btn btn-primary btn-lg" role="button">Créer ma tribu</a></div>
+    {% else %}
+      <div><a href="{{ path('tribe') }}" class="btn btn-outline-warning btn-lg" role="button">Tribu des {{ app.user.tribe.name }}</a></div>
+      <div><a href="{{ path('send_invitation') }}" class="btn btn-outline-warning btn-lg" role="button">Inviter un nouveau membre</a></div>
+    {% endif %}
+      <div><a href="{{ path('profile_edit') }}" class="btn btn-outline-warning btn-lg" role="button">Modifier mes informations</a></div>
+      <div><a href="{{ path('events_list') }}" class="btn btn-outline-warning btn-lg" role="button">Mes événements ({{ app.user.events|length }})</a></div>
+      <div><a href="{{ path('event_new') }}" class="btn btn-outline-warning btn-lg" role="button">Créer un événement</a></div>
+      <div><a href="{{ path('app_logout') }}" class="btn btn-outline-warning btn-lg" role="button">Déconnexion</a></div>
+    
+    </div>
+  <div>
 
 </div>
 
-<h1 class="text-center">Page de profil de {{ app.user.username }}</h1>
-
-    {% if app.user.tribe == null %}
-
-    <p>Vous n'avez pas encore de tribu.</p> 
-    <p><a href="{{ path('newTribe') }}" class="btn btn-primary btn-lg" role="button">Créer ma tribu</a></p>
-
-    {% else %}
-
-    <p>Votre tribu est {{ app.user.tribe }}</p>
-
-    <p>Votre photo de profil : <img src="{{ asset(avatar_upload_path ~ (app.user.avatar ?: 'default-avatar.png')) | imagine_filter('thumb_back_list') }}"/></p>
-    
-    <p><a href="{{ path('profile_avatar_edit') }}" class="btn btn-outline-warning btn-lg" role="button">Modifier l'avatar de mon profil</a></p>
-
-    <p><a href="{{ path('tribe') }}" class="btn btn-outline-warning btn-lg" role="button">Voir les membres de ma tribu</a></p>
-
-    <p><a href="{{ path('send_invitation') }}" class="btn btn-outline-warning btn-lg" role="button">Inviter un nouveau membre à rejoindre votre groupe</a></p>
-
-    {% endif %}
-
-
-<p><a href="{{ path('events_list') }}" class="btn btn-outline-warning btn-lg" role="button">Liste de mes événements</a></p> <p>pour info, j'en ai créé {{ app.user.events|length }}</p>
-
-<p><a href="{{ path('calendar') }}" class="btn btn-outline-warning btn-lg" role="button">Retour vers le calendrier</a></p>
-
-<p><a href="{{ path('app_logout') }}" class="btn btn-outline-warning btn-lg" role="button">Me déconnecter</a></p>
 
 {% endblock %}
