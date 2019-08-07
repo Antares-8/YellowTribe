@@ -12,7 +12,10 @@ class AvatarType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
+        $form = $this->createFormBuilder($avatar, [
+            'validation_groups' => ['registration'],
+        ])
+        // $builder
 
             ->add('avatar', FileType::class, [
                 'label' => 'Photo de profil (jpg,png,gif)',
@@ -26,6 +29,7 @@ class AvatarType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'validation_groups' => ['registration'],
             'attr' => ['novalidate' => 'novalidate']
         ]);
     }
