@@ -61,9 +61,13 @@
     </div>
 
     <div class="profile_action text-center">
-
+    {% if app.user.tribe == null %}
+      <div>Vous n'avez pas encore de tribu!</div>
+      <div><a href="{{ path('newTribe') }}" class="btn btn-primary btn-lg" role="button">Créer ma tribu</a></div>
+    {% else %}
       <div><a href="{{ path('tribe') }}" class="btn btn-outline-warning btn-lg" role="button">Tribu des {{ app.user.tribe.name }}</a></div>
       <div><a href="{{ path('send_invitation') }}" class="btn btn-outline-warning btn-lg" role="button">Inviter un nouveau membre</a></div>
+    {% endif %}
       <div><a href="{{ path('profile_edit') }}" class="btn btn-outline-warning btn-lg" role="button">Modifier mes informations</a></div>
       <div><a href="{{ path('events_list') }}" class="btn btn-outline-warning btn-lg" role="button">Mes événements ({{ app.user.events|length }})</a></div>
       <div><a href="{{ path('event_new') }}" class="btn btn-outline-warning btn-lg" role="button">Créer un événement</a></div>
