@@ -77,7 +77,7 @@ class UserType extends AbstractType
                 ]
             ])
             ->add('birthDate', BirthdayType::class, [
-                'label' => 'Anniversaire',
+                'label' => 'Date de naissance',
                 'placeholder' => [
                     'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
                 ],
