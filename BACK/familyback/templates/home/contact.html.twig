@@ -3,12 +3,58 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block header %}
-<h1>Nous contacter</h1>
+
+    {% include ('_nav.html.twig') %}
 
 {% endblock %}
 
 {% block body %}
 
-<a href="{{ path('homepage') }}"><p>Retour à l'accueil</p></a>
+<div class="contactpage_container text-center d-flex flex-column">
+
+    <h1 class="display-4 mb-4">
+        Nos développeurs 
+    </h1>
+
+    <div class="contactpage_content d-flex justify-content-between">
+
+        <div class="card-developer card text-white bg-warning mb-3" style="max-width: 18rem;">
+            <div class="card-header">
+                <img class="card-img-top" src="{{ asset('/uploads/developer_avatar/solennemz_avatar.png')}}" alt="Card image cap">
+            </div>
+                <div class="card-body">
+                    <h5 class="card-title">Florence Delattre</h5>
+                    <p class="card-text"><i class="fab fa-twitter fa-2x pr-2"></i><i class="fab fa-github fa-2x pr-2"></i><i class="fab fa-linkedin fa-2x"></i></p>
+            </div>
+        </div>
+
+        <div class="card-developer card text-white bg-warning mb-3" style="max-width: 18rem;">
+            <div class="card-header">
+                <img class="card-img-top" src="{{ asset('/uploads/developer_avatar/solennemz_avatar.png')}}" alt="Card image cap">
+            </div>
+                <div class="card-body">
+                    <h5 class="card-title">Julien Privat</h5>
+                    <p class="card-text"><i class="fab fa-twitter fa-2x pr-2"></i><i class="fab fa-github fa-2x pr-2"></i><i class="fab fa-linkedin fa-2x"></i></p>
+            </div>
+        </div>
+
+        <div class="card-developer card text-white bg-warning mb-3" style="max-width: 18rem;">
+            <div class="card-header">
+                <img class="card-img-top" src="{{ asset('/uploads/developer_avatar/solennemz_avatar.png')}}" alt="Card image cap">
+            </div>
+                <div class="card-body">
+                    <h5 class="card-title">Solenne Mazabraud</h5>
+                    <p class="card-text"><i class="fab fa-twitter fa-2x pr-2"></i><i class="fab fa-github fa-2x pr-2"></i><i class="fab fa-linkedin fa-2x"></i></p>
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+
+
+
+{% include ('_footer.html.twig') %}
+
 
 {% endblock %}

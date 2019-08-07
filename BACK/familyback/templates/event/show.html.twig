@@ -31,16 +31,32 @@
             <div class="root col-2 event-calendar_container">
                 <i class="fas fa-calendar-alt fa-10x"></i>
                 <div class="event-tag_container">
+
+                {% if event.tribe.tags is empty %}
+
+                    <div>
+                        <div>Oh non! Pour le moment il n'existe aucun tag dans votre tribu! Vous pouvez en ajouter sur la page de votre tribu. </div>
+                        <div><a href="{{ path('tribe')}}" class="btn btn-warning btn-lg" role="button" target="_blank">Ma tribu</a></div>
+                    </div>
+
+                {% else %}
+
+                    <div class="tag_form">
                     {{ form_start(tagForm) }}
                         {{ form_widget(tagForm) }}
-                        <div class="float-right">
-                            <button class="btn btn-warning btn-lg">{{ button_label|default('Commenter') }}</button>
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-warning btn-lg">{{ button_label|default('Tagger') }}</button>
                         </div>        
                     {{ form_end(tagForm) }}
+                    </div>
 
                     {% for tag in event.tags %}
-                        <div>{{ tag.title }}</div>
+
+                        <div class="badge badge-info tag_badge">{{ tag.title }}</div>
+                    
                     {% endfor %}
+
+                {% endif %}
                 </div>
             </div>
 
