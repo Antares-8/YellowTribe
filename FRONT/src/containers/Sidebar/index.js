@@ -8,9 +8,10 @@ import Sidebar from 'src/components/Sidebar';
 import { showModalNewEvent } from 'src/store/reducer';
 
 
-const mapStateToProps = ({ modalNewEvent, idOpenEvent }) => ({
+const mapStateToProps = ({ modalNewEvent, idOpenEvent, tags }) => ({
   modalNewEvent,
   idOpenEvent,
+  tags,
 });
 
 

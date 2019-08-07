@@ -13,7 +13,15 @@ import PageEvents from 'src/containers/PageEvents';
 import './app.scss';
 
 // == Composant
-const App = ({}) => {
+const App = ({ getIdUser }) => {
+
+  useEffect(() => {
+    const userId = document.getElementById('root');
+    // getIdUser(userId.className);
+    getIdUser('8');
+  }, []);
+
+const userName = document.getElementById('root');
   return (
     <div className="App">
       <Router>

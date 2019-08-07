@@ -19,7 +19,6 @@ import './news.scss';
 const News = ({ news, fetchNews }) => {
 
   const [cards, setCards] = useState([]);
-  console.log(news);
 
   const createCards = (news) => {
     const cardsTable = [];
@@ -27,14 +26,14 @@ const News = ({ news, fetchNews }) => {
       news.forEach((data) => {
         if (data[0].type === 'event') {
           cardsTable.push(
-            <div className="cards">
+            <div className="cards" key={`${data.id}${data[0].type}`}>
               <EventCard data={data} />
             </div>
           );
         }
         if (data[0].type === 'user') {
           cardsTable.push(
-            <div className="cards">
+            <div className="cards" key={`${data.id}${data[0].type}`}>
               <UserCard data={data} />
             </div>
           );

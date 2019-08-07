@@ -1,11 +1,9 @@
 // == Import : npm
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import dateFns from 'date-fns';
 import french from 'date-fns/locale/fr';
 import styled from 'styled-components';
-import { Icon } from 'semantic-ui-react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 
@@ -13,15 +11,10 @@ import { Link } from 'react-router-dom';
 // import './Event.scss';
 
 // == Composant
-const EventCard = ({ idOpenEvent, closeEvent, data }) => {
-
-  const clickCloseHandler = () => {
-    closeEvent();
-  };
+const EventCard = ({ data }) => {
 
   const eventData = data;
   const event = eventData;
-  console.log('event:', event);
   const formatHour = 'HH';
   const formatDay = 'dddd';
   const formatNumber = 'D';
@@ -63,10 +56,7 @@ const EventCard = ({ idOpenEvent, closeEvent, data }) => {
 };
 
 EventCard.propTypes = {
-  events: PropTypes.array.isRequired,
-  idOpenEvent: PropTypes.number.isRequired,
-  closeEvent: PropTypes.func.isRequired,
-  data: PropTypes.array.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 // == Export

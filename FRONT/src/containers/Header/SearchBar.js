@@ -2,37 +2,36 @@
 import { connect } from 'react-redux';
 
 // == Import : local
-import Event from 'src/components/Event';
+import SearchBar from 'src/components/Header/SearchBar';
 // import dataCategories from 'src/components/Data/events.json';
 
 // Action Creators
-import { closeEvent } from 'src/store/reducer';
+import {  } from 'src/store/reducer';
 
 // const categories = dataCategories.map(dataCategory => dataCategory.category);
 
-const mapStateToProps = ({ idOpenEvent, events }) => ({
-  idOpenEvent, 
+const mapStateToProps = ({ profile, events }) => ({
+  profile,
   events,
 });
 
+
 const mapDispatchToProps = dispatch => ({
-  closeEvent: () => {
-    dispatch(closeEvent());
-  },
+
 });
 
 // Container
-const EventContainer = connect(
+const SearchBarContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Event);
+)(SearchBar);
 
 // == Export
-export default EventContainer;
+export default SearchBarContainer;
 
 /* = export à la volée
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Event);
+)(SearchBar);
 */

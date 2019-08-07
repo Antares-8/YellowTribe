@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Checkbox } from 'semantic-ui-react';
+import { Form, Checkbox, Label, Icon } from 'semantic-ui-react';
 import classNames from 'class-names';
 
 import './sidebar.scss';
 
 
-const Sidebar = ({ idOpenEvent}) => {
+const Sidebar = ({ idOpenEvent, tags }) => {
 
   // classNames //
   const withEvent = classNames({
     withEvent: idOpenEvent !== '',
   });
+  console.log(tags);
 
   return (
     <div className={`sidebar ${withEvent}`}>
@@ -19,37 +20,37 @@ const Sidebar = ({ idOpenEvent}) => {
         categories
       </div>
       <Form>
-        <Form.Field control={Checkbox} label={<label>choix1</label>} />
-      </Form>
-      <Form>
+        <Form.Field control={Checkbox} label={<label>All</label>} />
         <Form.Field control={Checkbox} label={<label>choix2</label>} />
       </Form>
-      <Form>
-        <Form.Field control={Checkbox} label={<label>choix3</label>} />
-      </Form>
-      <div className="title">
-        Tribe
+      <div className="tribeTag">
+        <div className="title">
+          Tribe
+        </div>
+        <div className="tags">
+          <Label>
+            Adrienne
+            <Icon name='delete' />
+          </Label>
+          <Label image>
+            Zoe
+            <Icon name='delete' />
+          </Label>
+          <Label image>
+            Nan
+            <Icon name='delete' />
+          </Label>
+        </div>
       </div>
-      <Form>
-        <Form.Field control={Checkbox} label={<label>Joëlle</label>} />
-      </Form>
-      <Form>
-        <Form.Field control={Checkbox} label={<label>Jean-Marie</label>} />
-      </Form>
-      <Form>
-        <Form.Field control={Checkbox} label={<label>Nadia</label>} />
-      </Form>
-      <Form>
-        <Form.Field control={Checkbox} label={<label>Raymond</label>} />
-      </Form>
+      
       
     </div>
   );
 };
 
 Sidebar.propTypes = {
-  showModalNewEvent: PropTypes.func.isRequired,
-  modalSidebar: PropTypes.bool.isRequired,
+  idOpenEvent: PropTypes.string.isRequired,
+  tags: PropTypes.array.isRequired,
 };
 
 // == Export

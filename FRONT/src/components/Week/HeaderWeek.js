@@ -3,13 +3,14 @@ import React from 'react';
 import dateFns from 'date-fns';
 import PropTypes from 'prop-types';
 import french from 'date-fns/locale/fr';
+import classNames from 'class-names';
 
 
 // == Import : local
 
 
 // == Composant
-const HeaderWeek = ({ prevWeek, nextWeek, currentDate }) => {
+const HeaderWeek = ({ prevWeek, nextWeek, currentDate, activeItem }) => {
 
   const dateFormat = 'MMMM YYYY';
 
@@ -20,9 +21,12 @@ const HeaderWeek = ({ prevWeek, nextWeek, currentDate }) => {
   const clickRightHandler = () => {
     nextWeek();
   };
+  const newsPartHidden = classNames({
+    hidden: activeItem === 'news',
+  });
 
   return (
-    <div className="header row flex-middle">
+    <div className={`header row flex-middle ${newsPartHidden}`}>
       <div className="col col-start">
         <div className="icon" onClick={clickLeftHandler}>
           chevron_left
@@ -42,6 +46,7 @@ HeaderWeek.propTypes = {
   currentDate: PropTypes.string.isRequired,
   nextWeek: PropTypes.func.isRequired,
   prevWeek: PropTypes.func.isRequired,
+  activeItem: PropTypes.string.isRequired,
 };
 
 // == Export
