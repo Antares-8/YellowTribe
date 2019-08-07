@@ -114,6 +114,7 @@ body {
   width: 50%;
   margin: auto;
   padding-top: 2em;
+  height: 100%;
 }
 
 .signup_container .btn {
@@ -180,6 +181,7 @@ body {
   width: 50%;
   margin: auto;
   padding-top: 8em;
+  height: 100%;
 }
 
 /* NAV */
