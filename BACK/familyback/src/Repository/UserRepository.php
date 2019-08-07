@@ -52,6 +52,22 @@ class UserRepository extends ServiceEntityRepository
 
         return $qb->getQuery()->getArrayResult();
     }
+
+    public function findCurrentUser($user)
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u.firstname')
+            ->addselect('u.lastname')
+            ->addselect('u.username')
+            ->addselect('u.avatar')
+            ->where('u = :currentUser')
+            ->setParameter('currentUser', $user)
+            //->addselect('u.tribe')
+        ;
+
+        return $qb->getQuery()->getArrayResult();
+    }
+
     // /**
     //  * @return User[] Returns an array of User objects
     //  */

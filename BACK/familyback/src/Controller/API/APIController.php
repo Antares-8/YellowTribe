@@ -2,6 +2,7 @@
 
 namespace App\Controller\API;
 
+use App\Entity\User;
 use App\Entity\Event;
 use App\Entity\Tribe;
 use App\Repository\TagRepository;
@@ -107,10 +108,12 @@ class APIController extends AbstractController
 
     /**
       * Data API connected user with tribe's name
-      * /{tribe}/{user}
+      * @Route("/user/{user}", name="user_data")
       */
-    public function userData()
+    public function userData(UserRepository $userRepository, User $user)
     {
-        
+        $userData = $userRepository->findCurrentUser($user);
+
+        return $this->json($userData);
     }
 }
