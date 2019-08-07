@@ -69,8 +69,7 @@ const createTable = (
     rows.push(
       <div className="row" key={`${day}${event.beginingDate}`}>
         {days}
-        {birthday = [{ beginingDate: "2019-08-10 18:00:00" }];
-        console.log(new Date(birthday[0].beginingDate))}
+        
         {/* I'm begining a loop on the events datas */}
         {events.map((event) => {
           // test to know if the row is under or outside an event period
