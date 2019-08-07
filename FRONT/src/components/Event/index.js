@@ -1,11 +1,10 @@
 // == Import : npm
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import dateFns from 'date-fns';
 import french from 'date-fns/locale/fr';
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
-import axios from 'axios';
 import { BrowserRouter, Link } from 'react-router-dom';
 
 
@@ -62,11 +61,11 @@ const Event = ({ idOpenEvent, closeEvent, events }) => {
       <div className="description"> {event.description}</div>
       <hr />
       <BrowserRouter forceRefresh={true}>
-      <Link to={`/calendar/event/${event.id}`}>
-        <div className="bouton">
-          ouvrir l'event <Icon name='right chevron' />
-        </div>
-      </Link>
+        <Link to={`/calendar/event/${event.id}`}>
+          <div className="bouton">
+            ouvrir l'event <Icon name='right chevron' />
+          </div>
+        </Link>
       </BrowserRouter>
     </div>
   );

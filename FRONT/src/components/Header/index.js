@@ -8,6 +8,7 @@ import './header.scss';
 
 const Header = ({ profile }) => {
 
+  console.log('profile', profile);
   return (
     <>
       <header>

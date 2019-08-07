@@ -5,7 +5,6 @@ import dateFns from 'date-fns';
 import classNames from 'class-names';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import axios from 'axios';
 
 // == Import : local
 // import events from 'src/components/Data/events.json';
@@ -69,7 +68,7 @@ const createTable = (
     rows.push(
       <div className="row" key={`${day}${event.beginingDate}`}>
         {days}
-        
+
         {/* I'm begining a loop on the events datas */}
         {events.map((event) => {
           // test to know if the row is under or outside an event period
@@ -128,6 +127,7 @@ const createTable = (
   return rows;
 };
 
+
 // == Composant
 const CellsMonth = ({
   currentDate,
@@ -141,10 +141,6 @@ const CellsMonth = ({
 }) => {
 
   const [rows, setRows] = useState([]);
-
-  useEffect(() => {
-    fetchEventsCalendar();
-  }, []);
 
   useEffect(() => {
     setRows(createTable(

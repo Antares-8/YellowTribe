@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Input, Dropdown } from 'semantic-ui-react'
+import { Input } from 'semantic-ui-react'
 import dateFns from 'date-fns';
 import french from 'date-fns/locale/fr';
 
@@ -53,8 +53,7 @@ const SearchBar = ({ profile, events }) => {
   );
 };
 
-SearchBar
-.propTypes = {
+SearchBar.propTypes = {
   profile: PropTypes.array.isRequired,
   events: PropTypes.array.isRequired,
 };
