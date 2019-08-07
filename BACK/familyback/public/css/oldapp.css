@@ -108,7 +108,7 @@ body {
   color: #FFFDD8;
 }
 
-/* SINGUP TEMPLATE */
+/* SIGNUP TEMPLATE */
 .signup_container {
   width: 50%;
   margin: auto;
@@ -134,7 +134,39 @@ body {
 
 /* PROFILE TEMPLATE */
 .profile_container {
-  width: 100%;
+  width: 70%;
+  height: 100%;
+  margin: auto;
+  padding-top: 12em;
+}
+
+.profile_container .btn {
+  border: none;
+  background-color: #fcc53b;
+  color: #fff5d7;
+}
+
+.profile_title {
+  font-size: 3em;
+  /* font-weight: bold; */
+  margin-bottom: 1em;
+}
+
+.profile_content, .profile_action {
+  /* border-radius: 2%; */
+  background-color: #fff5d7;
+  color: #E3A000;
+}
+.profile_content {
+  width: 60%;
+}
+
+.profile_action {
+  width: 30%;
+}
+
+.profile_action div {
+  margin-bottom: 2em;
 }
 
 /* in profile templates */
