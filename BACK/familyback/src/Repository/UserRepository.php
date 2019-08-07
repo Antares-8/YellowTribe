@@ -39,6 +39,18 @@ class UserRepository extends ServiceEntityRepository
         return $qb->getQuery()->getArrayResult();
     }
 
+    public function findTribebyUser($tribe)
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->join('u.tribe', 't')
+            ->select('t.name')
+            ->where('u.tribe = :myTribe')
+            ->setParameter('myTribe', $tribe)
+        ;
+
+        return $qb->getQuery()->getArrayResult();
+    }
+
     // return user firstname and lastname with birth date to add it in tribe calendar
     public function findUserBirthdayByTribe($tribe)
     {
@@ -62,7 +74,6 @@ class UserRepository extends ServiceEntityRepository
             ->addselect('u.avatar')
             ->where('u = :currentUser')
             ->setParameter('currentUser', $user)
-            //->addselect('u.tribe')
         ;
 
         return $qb->getQuery()->getArrayResult();

@@ -3,10 +3,53 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block header %}
-<h1>Mentions légales</h1>
+    {% include ('_nav.html.twig') %}
 {% endblock %}
 
 {% block body %}
 
-<a href="{{ path('homepage') }}"><p>Retour à l'accueil</p></a>
+<div class="legalmentionpage_container d-flex flex-column mb-5">
+
+    <h1 class="mb-4 text-center">Mentions légales</h1>
+
+    <div class="legal_content">
+        <div>Comme tout bon site qui se respecte, nous nous devions de créer notre page de mentions légales. Voici chose faite.</div>
+
+        <div>
+            <h2 class="pb-2">Éditeur</h2>
+            <p>Yellow Tribe corporation au capital de 0 € ayant aucun siège social dans le monde et donc aucun numéro d'immatriculation.</p>
+        </div>
+
+        <div>
+            <h2 class="pb-2">Directeur de la publication</h2>
+            <p>C'est nous ?</p>
+        </div>
+
+        <div>
+            <h2 class="pb-2">Adresse de courrier électronique et numéro de téléphone</h2>
+            <p>yellow-tribe@gmail.com (pas encore créé!) - 01.23.45.67.89 </p>
+        </div>
+
+        <div>
+            <h2 class="pb-2">Hébergeur du site</h2>
+            <p>(ça on l'a copié chez O'clock et en plus c'est vrai)</p>
+            <p>Gandi SAS au capital de 800 000 € ayant son siège social au 63-65 boulevard Massena à Paris (75013), immatriculée sous le numéro 423 093 459 au RCS de Paris.</p>
+        </div>
+
+        <div>
+            <h2 class="pb-2">Déclaration CNIL</h2>
+            <p>Rien à déclarer</p>
+        </div>
+
+        <div>Ne sachant pas quoi mettre réellement, nous vous invitons à lire les mentions légales très bien rédigées de notre école de formation O'Clock en suivant le lien ci-dessous. Jetez-y une oeil, elles valent le détour ...</div>
+
+        <div class="text-center"><a href="https://oclock.io/infos/mentions-legales" class="btn btn-warning btn-lg" role="button" target="_blank">Le lien</a></div>
+    </div>
+
+    
+
+</div>
+
+{% include ('_footer.html.twig') %}
+
 {% endblock %}

@@ -21,6 +21,64 @@ body {
   margin-top: 2em;
 }
 
+.description {
+  font-size: 2em;
+  color: #FFB400;
+  background-color: #FFFDD8;
+  width: 50%;
+  margin: auto;
+  border-radius: 1em;
+  padding: 15px;
+}
+
+.bold {
+  font-weight: bolder;
+  
+/* CONTACT PAGE */
+.contactpage_container {
+  width: 50%;
+  height: 100%;
+  margin: auto;
+  padding-top: 12em;
+}
+
+.card-developer {
+  width: 30%;
+}
+
+.card-developer .card-title {
+  text-transform: uppercase;
+}
+
+/* LEGAL MENTION PAGE */
+.legalmentionpage_container {
+  width: 50%;
+  height: auto;
+  margin: auto;
+  padding-top: 12em;
+}
+
+.legal_content {
+  background-color: #fff5d7;
+  color: #fcc53b;
+  padding: 3em;
+}
+
+.legal_content div {
+  padding-bottom: 2em;
+  font-size: 1.5em;
+}
+
+.legalmentionpage_container h1 {
+  font-size: 4em;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.legal_content h2 {
+  font-size: 1.2em;
+}
+
 /* LOGIN TEMPLATE */
 .login_container {
   height: 100%; 
@@ -169,6 +227,7 @@ body {
     background-color: black;
     color: grey;
     text-align: center;
+    margin-top: 5em;
   }
 
 .footer a {
