@@ -7,6 +7,7 @@ namespace App\Controller;
 
 use App\Entity\Event;
 use App\Entity\Tribe;
+use App\Utils\Slugger;
 use App\Entity\Comment;
 use App\Form\EventType;
 use App\Form\CommentType;
@@ -49,7 +50,7 @@ class EventController extends AbstractController
      * create a new event
      * @Route("/calendar/event/new", name="event_new", methods={"GET", "POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Slugger $slugger): Response
     {
         $connectedUser = $this->getUser();
         $userTribeId = $connectedUser->getTribe();
@@ -61,6 +62,12 @@ class EventController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
             $event->setUser($connectedUser);
             $event->setTribe($userTribeId);
+
+            
+            //Before my event is being saved, we want to get the title property updated in event. Using my service function slugify, that property will return the title's slug
+            
+            $slug = $slugger->slugify($event->getTitle());
+            $event->setSlug($slug);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($event);
@@ -161,12 +168,18 @@ class EventController extends AbstractController
      * update an event (if you are its creator)
      * @Route("calendar/event/{event}/edit", name="event_edit", methods={"GET", "POST"}, requirements={"event"="\d+"})
      */
-    public function edit(Request $request, Event $event): Response
+    public function edit(Request $request, Event $event, Slugger $slugger): Response
     {
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //Before my event is being saved, we want to get the title property updated in event. Using my service function slugify, that property will return the title's slug
+
+            $slug = $slugger->slugify($event->getTitle());
+            $event->setSlug($slug);
+
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash(
