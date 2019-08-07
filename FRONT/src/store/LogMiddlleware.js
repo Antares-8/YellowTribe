@@ -1,4 +1,4 @@
-import { FETCH_EVENT_CALENDAR, FETCH_NEWS, getDataEvents, getDataNews, getDataProfile, getDataTags } from 'src/store/reducer';
+import { FETCH_EVENT_CALENDAR, FETCH_NEWS, getDataEvents, getDataNews, getDataProfile, getDataTags, getBirthday } from 'src/store/reducer';
 import axios from 'axios';
 
 const logMiddleware = store => next => (action) => {
@@ -27,7 +27,7 @@ const logMiddleware = store => next => (action) => {
       axios.get(`http://95.142.174.217/api/${id}/birthdays`)
       .then((response) => {
         const { data } = response;
-        store.dispatch(getDataProfile(data));
+        store.dispatch(getBirthday(data));
       })
       .catch();
       break;

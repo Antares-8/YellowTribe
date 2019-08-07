@@ -13,7 +13,7 @@ const initialState = {
   events: [],
   news: [],
   tags: [],
-  userIdConnected: '8',
+  userIdConnected: '6',
   profile: [],
   birthday: [],
 };
@@ -277,7 +277,7 @@ export const getDataProfile = data => ({
   type: GET_DATA_PROFILE,
   data,
 });
-export const getDataBirthday = data => ({
+export const getBirthday = data => ({
   type: GET_DATA_BIRTHDAY,
   data,
 });

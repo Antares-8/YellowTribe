@@ -38,10 +38,16 @@ body {
 /* CONTACT PAGE */
 
 .contactpage_container {
-  width: 50%;
+  width: 70%;
   height: 100%;
   margin: auto;
   padding-top: 12em;
+}
+
+.contactpage_content {
+  background-color: #fff5d7;
+  color: #fcc53b;
+  padding: 3em;
 }
 
 .card-developer {
@@ -278,6 +284,10 @@ body {
 
 .event-date_month {
   font-size: 2em;
+}
+
+.event-title {
+  text-transform: uppercase;
 }
 
 .event-comment_section {

@@ -1,7 +1,7 @@
 // == Import : npm
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import classNames from 'class-names';
 
@@ -24,12 +24,12 @@ const App = ({ getIdUser }) => {
 const userName = document.getElementById('root');
   return (
     <div className="App">
-      <Router>
+      <BrowserRouter>
         <Route exact path="/" component={PageMain} />
         <Route path="/calendar" component={PageMain} />
         <Route path="/news" component={PageMain} />
         <Route path="/event" component={PageEvents} />
-      </Router>
+      </BrowserRouter>
     </div>
   );
 };

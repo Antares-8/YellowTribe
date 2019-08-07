@@ -6,7 +6,7 @@ import french from 'date-fns/locale/fr';
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { BrowserRouter, Link } from 'react-router-dom';
 
 
 // == Import : local
@@ -61,11 +61,13 @@ const Event = ({ idOpenEvent, closeEvent, events }) => {
       <hr />
       <div className="description"> {event.description}</div>
       <hr />
-      <Link to={`/event/${event.id}`}>
+      <BrowserRouter forceRefresh={true}>
+      <Link to={`/calendar/event/${event.id}`}>
         <div className="bouton">
           ouvrir l'event <Icon name='right chevron' />
         </div>
       </Link>
+      </BrowserRouter>
     </div>
   );
 };
