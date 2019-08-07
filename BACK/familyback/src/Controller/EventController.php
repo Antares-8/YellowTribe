@@ -89,6 +89,12 @@ class EventController extends AbstractController
         $connectedUser = $this->getUser();
         $userTribeId = $connectedUser->getTribe();
 
+        // condition when user try to reach an event which doesn't belong to his tribe
+        if ($userTribeId != $event->getTribe()) {
+
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig'); 
+        }
+
         $comment = new Comment();
         $commentForm = $this->createForm(CommentType::class, $comment);
         $commentForm->handleRequest($request);
