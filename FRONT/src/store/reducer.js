@@ -13,7 +13,8 @@ const initialState = {
   events: [],
   news: [],
   tags: [],
-  userIdConnected: '6',
+  userIdConnected: '',
+  tribeIdConnected: '',
   profile: [],
   birthday: [],
 };
@@ -43,6 +44,8 @@ const GET_DATA_TAGS = 'GET_DATA_TAGS';
 const GET_ID_USER = 'GET_ID_USER';
 const GET_DATA_PROFILE = 'GET_DATA_PROFILE';
 const GET_DATA_BIRTHDAY = 'GET_DATA_BIRTHDAY';
+export const GET_PROFILE = 'GET_PROFILE';
+
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -179,11 +182,14 @@ const reducer = (state = initialState, action = {}) => {
         tags: action.data,
       };
 
-    case GET_ID_USER:
+    case GET_ID_USER:{
+      console.log('j',action.user )
       return {
         ...state,
-        userIdConnected: action.data,
+        userIdConnected: action.user,
+        tribeIdConnected: action.tribe,
       };
+      }
     case GET_DATA_PROFILE:
       return {
         ...state,
@@ -269,9 +275,10 @@ export const getDataTags = data => ({
   type: GET_DATA_TAGS,
   data,
 });
-export const getIdUser = data => ({
+export const getIdUser = (tribe, user) => ({
   type: GET_ID_USER,
-  data,
+  tribe,
+  user,
 });
 export const getDataProfile = data => ({
   type: GET_DATA_PROFILE,
@@ -280,6 +287,9 @@ export const getDataProfile = data => ({
 export const getBirthday = data => ({
   type: GET_DATA_BIRTHDAY,
   data,
+});
+export const getProfile = () => ({
+  type: GET_PROFILE,
 });
 
 // == Selectors

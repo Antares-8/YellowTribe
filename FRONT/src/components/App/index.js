@@ -1,9 +1,7 @@
 // == Import : npm
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { Menu } from 'semantic-ui-react';
-import classNames from 'class-names';
 
 
 // == Import : local
@@ -13,15 +11,12 @@ import PageEvents from 'src/containers/PageEvents';
 import './app.scss';
 
 // == Composant
-const App = ({ getIdUser }) => {
+const App = ({ getProfile }) => {
 
   useEffect(() => {
-    const userId = document.getElementById('root');
-    // getIdUser(userId.className);
-    getIdUser('8');
+    getProfile();
   }, []);
 
-const userName = document.getElementById('root');
   return (
     <div className="App">
       <BrowserRouter>
@@ -35,7 +30,7 @@ const userName = document.getElementById('root');
 };
 
 App.propTypes = {
-  idOpenEvent: PropTypes.number.isRequired,
+  getProfile: PropTypes.func.isRequired,
 };
 
 // == Export

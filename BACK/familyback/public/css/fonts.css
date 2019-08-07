@@ -1,15 +1,15 @@
 @font-face {
   font-family: 'Reg';
   src:
-      url('public/fonts/beatrice_regular-webfont.woff2') format('woff2'),
-      url('public/fonts/beatrice_regular-webfont.woff') format('woff');
+      url('/fonts/beatrice_regular-webfont.woff2') format('woff2'),
+      url('/fonts/beatrice_regular-webfont.woff') format('woff');
       unicode-range: U+000-5FF;
 }
 
 @font-face {
   font-family: 'Bold';
   src:
-      url('public/fonts/beatrice_semibold-webfont.woff2') format('woff2'),
-      url('public/fonts/beatrice_semibold-webfont.woff') format('woff');
+      url('/fonts/beatrice_semibold-webfont.woff2') format('woff2'),
+      url('/fonts/beatrice_semibold-webfont.woff') format('woff');
       unicode-range: U+000-5FF;
 }
