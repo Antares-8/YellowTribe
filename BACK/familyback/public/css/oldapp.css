@@ -354,6 +354,24 @@ body {
   margin-right: 10em;
 }
 
+/**** MY EVENTS TEMPLATE ****/
+.myevents_container {
+  width: 70%;
+  height: auto;
+  padding-top: 8em;
+  margin: auto;
+}
+
+.myevents_container .event-detailed_container {
+  color: #E3A000;
+  margin-bottom: 2em;
+}
+
+.btn_create-event {
+  margin-top: 7em;
+  margin-right: 1.5em;
+}
+
 /**** EVENT FORM (CREATION) ****/
 .event-form_container {
   width: 50%;
