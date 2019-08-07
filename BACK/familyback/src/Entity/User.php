@@ -315,7 +315,7 @@ class User implements UserInterface, \Serializable
         return $this->avatar;
     }
 
-    public function setAvatar($avatar): self
+    public function setAvatar($avatar = null): self
     {
         $this->avatar = $avatar;
 
