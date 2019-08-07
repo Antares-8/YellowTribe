@@ -17,6 +17,7 @@ const createTable = (
   idOpenEvent,
   selectedDate,
   events,
+  birthday,
 ) => {
   const rows = [];
 
@@ -68,6 +69,8 @@ const createTable = (
     rows.push(
       <div className="row" key={`${day}${event.beginingDate}`}>
         {days}
+        {birthday = [{ beginingDate: "2019-08-10 18:00:00" }];
+        console.log(new Date(birthday[0].beginingDate))}
         {/* I'm begining a loop on the events datas */}
         {events.map((event) => {
           // test to know if the row is under or outside an event period
@@ -89,7 +92,6 @@ const createTable = (
           && dateFns.isSameDay(dayC.key, new Date(event.endingDate))
           && dateFns.isSameYear(dayC.key, new Date(event.endingDate)))
           + 1;
-          console.log(colSpanCalc);
           const colSpan = colSpanCalc === 0 ? colSpanEventCenterRow : colSpanCalc - col + 1;
           // if the test is empty we display the line
           const hidden = col === 0 ? 'none' : 'inline';
@@ -109,13 +111,15 @@ const createTable = (
             display: ${hidden};
           `;
           // I return the event in the DOM
-          return (
-            <Events key={`${keyEv} ${day}`} className={`events event${rowEvent} ${eventDisplay}`} id={event.id} onClick={clickHandleEvent}>
-              <div className="title">
-                {event.title}
-              </div>
-            </Events> 
-          )
+          if (col !== 0) {
+            return (
+              <Events key={`${keyEv} ${day}`} className={`events event${rowEvent} ${eventDisplay}`} id={event.id} onClick={clickHandleEvent}>
+                <div className="title">
+                  {event.title}
+                </div>
+              </Events>
+            );
+          }
         })}
       </div>
     );
@@ -134,12 +138,12 @@ const CellsMonth = ({
   idOpenEvent,
   fetchEventsCalendar,
   events,
+  birthday,
 }) => {
 
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
-    console.log('fetch action');
     fetchEventsCalendar();
   }, []);
 
@@ -151,6 +155,7 @@ const CellsMonth = ({
       idOpenEvent,
       selectedDate,
       events,
+      birthday,
     ));
   }, [
     currentDate,
@@ -159,6 +164,7 @@ const CellsMonth = ({
     idOpenEvent,
     selectedDate,
     events,
+    birthday,
   ]);
 
   return (
@@ -176,6 +182,7 @@ CellsMonth.propTypes = {
   idOpenEvent: PropTypes.string.isRequired,
   fetchEventsCalendar: PropTypes.func.isRequired,
   events: PropTypes.array.isRequired,
+  birthday: PropTypes.array.isRequired,
 };
 
 // == Export

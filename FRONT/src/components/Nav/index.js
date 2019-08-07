@@ -18,6 +18,7 @@ import HeaderYear from 'src/containers/Year/HeaderYear';
 
 // == Composant
 const Nav = ({ prevCalendarType, nextCalendarType, calendarType }) => {
+
   const [activeItem, setActiveItem] =
   window.location.pathname === '/calendar' || window.location.pathname === '/'
   ? useState('calendar')
@@ -27,7 +28,6 @@ const Nav = ({ prevCalendarType, nextCalendarType, calendarType }) => {
 
   const navHandle = (evt) => {
     const evtN = evt.target.closest('.link');
-    console.log(evtN.name);
     return (
       setActiveItem({ activeItem: evtN.name })
     )};
@@ -43,9 +43,10 @@ const Nav = ({ prevCalendarType, nextCalendarType, calendarType }) => {
   const eventPartHidden = classNames({
     hidden: activeItem === 'event',
   });
-  const eventPart = classNames({
-    hidden: activeItem !== 'event',
+  const newsPartHidden = classNames({
+    hidden: activeItem === 'news',
   });
+
 
   return (
     <>
@@ -57,7 +58,7 @@ const Nav = ({ prevCalendarType, nextCalendarType, calendarType }) => {
           </Menu>
         </nav>
         {/* // calendar type choices //  */}
-          <div className="type row flex-middle">
+          <div className={`type row flex-middle ${newsPartHidden}`}>
             <div className="col col-start">
               <div className="icon" onClick={clickLeftHandler}>
                 chevron_left
@@ -70,9 +71,9 @@ const Nav = ({ prevCalendarType, nextCalendarType, calendarType }) => {
               <div className="icon">chevron_right</div>
             </div>
           </div>
-        {calendarType === 'mois' && <HeaderMonth />}
-        {calendarType === 'semaines' && <HeaderWeek />}
-        {calendarType === 'années' && <HeaderYear />}
+        {calendarType === 'mois' && <HeaderMonth activeItem={activeItem} />}
+        {calendarType === 'semaines' && <HeaderWeek activeItem={activeItem} />}
+        {calendarType === 'années' && <HeaderYear activeItem={activeItem} />}
             
         {/* <Route exact path="/news" component={News} /> */}
       </div>

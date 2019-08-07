@@ -16,15 +16,8 @@ import './event.scss';
 
 
 // == Composant
-const Event = ({ idOpenEvent, closeEvent }) => {
-  console.log(window.location.pathname.slice(7)); 
-  useEffect(() => {
-    axios.get(`http://95.142.174.217/api/events/${idOpenEvent}`)
-      .then((res) => {
-        const eventData = res.data;
-        console.log(eventData);
-      });
-  }, []);
+const Event = ({ idOpenEvent, closeEvent, events }) => {
+  // console.log(window.location.pathname.slice(7)); 
 
   const clickCloseHandler = () => {
     closeEvent();
@@ -78,7 +71,7 @@ const Event = ({ idOpenEvent, closeEvent }) => {
 };
 
 Event.propTypes = {
-  idOpenEvent: PropTypes.number.isRequired,
+  idOpenEvent: PropTypes.string.isRequired,
   closeEvent: PropTypes.func.isRequired,
 };
 

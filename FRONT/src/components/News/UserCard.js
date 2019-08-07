@@ -1,5 +1,5 @@
 // == Import : npm
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import dateFns from 'date-fns';
 import french from 'date-fns/locale/fr';
@@ -13,23 +13,11 @@ import { Link } from 'react-router-dom';
 // import './Event.scss';
 
 // == Composant
-const UserCard = ({ idOpenEvent, closeEvent, data }) => {
-
-  const clickCloseHandler = () => {
-    closeEvent();
-  };
+const UserCard = ({ data }) => {
 
   const eventData = data;
   const event = eventData;
-  console.log('event:', event);
-  const formatHour = 'HH';
-  const formatDay = 'dddd';
-  const formatNumber = 'D';
-  const formatMonth = 'MMMM';
   const formatLarge = 'D MMMM';
-  const cercleColor = styled.div`
-    backgroundColor: ${event.color};
-  `;
 
 
   return (
@@ -49,9 +37,6 @@ const UserCard = ({ idOpenEvent, closeEvent, data }) => {
 };
 
 UserCard.propTypes = {
-  events: PropTypes.array.isRequired,
-  idOpenEvent: PropTypes.number.isRequired,
-  closeEvent: PropTypes.func.isRequired,
   data: PropTypes.array.isRequired,
 };
 

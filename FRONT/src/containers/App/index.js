@@ -6,7 +6,7 @@ import App from 'src/components/App';
 // import dataCategories from 'src/components/Data/events.json';
 
 // Action Creators
-import {  } from 'src/store/reducer';
+import { getIdUser } from 'src/store/reducer';
 
 // const categories = dataCategories.map(dataCategory => dataCategory.category);
 
@@ -15,7 +15,9 @@ const mapStateToProps = ({ idOpenEvent }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-
+  getIdUser: (id) => {
+    dispatch(getIdUser(id));
+  }
 });
 
 // Container

@@ -19,7 +19,7 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-    // search users created in the last 10 days
+    // search users created in the last 10 days (for newsfeed)
     public function findTribeUsersByDate($tribe) 
     {
         $date = new \DateTime('now'); 
@@ -39,14 +39,15 @@ class UserRepository extends ServiceEntityRepository
         return $qb->getQuery()->getArrayResult();
     }
 
+    // return user firstname and lastname with birth date to add it in tribe calendar
     public function findUserBirthdayByTribe($tribe)
     {
         $qb = $this->createQueryBuilder('u')
-            ->join('u.tribe', 't')
-            ->addselect('t')
+            ->select('u.birthDate')
+            ->addselect('u.firstname')
+            ->addselect('u.lastname')
             ->where('u.tribe = :myTribe')
             ->setParameter('myTribe', $tribe)
-            ->addselect('u.birthDate')
         ;
 
         return $qb->getQuery()->getArrayResult();
