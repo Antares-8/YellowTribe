@@ -285,6 +285,10 @@ body {
   font-size: 2em;
 }
 
+.event-title {
+  text-transform: uppercase;
+}
+
 .event-comment_section {
   padding-top: 1em;
 }

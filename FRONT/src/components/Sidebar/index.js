@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Checkbox, Label, Icon } from 'semantic-ui-react';
+import { Form, Checkbox, Label, Icon, Input } from 'semantic-ui-react';
 import classNames from 'class-names';
 
 import './sidebar.scss';
@@ -12,7 +12,69 @@ const Sidebar = ({ idOpenEvent, tags }) => {
   const withEvent = classNames({
     withEvent: idOpenEvent !== '',
   });
-  console.log(tags);
+
+  const [actualsTags, setActualsTags] = useState([]);
+  const [tagsFind, setTagsFind] = useState([]);
+  const [tagsCards, setTagsCards] = useState([]);
+
+  const createTags = () => {
+    console.log(actualsTags);
+    return setTagsCards(
+      actualsTags.map(tag => ([
+        <Label data={tag[0].id} key={tag.id}>
+          {tag[0].title}
+          <Icon name='delete' />
+        </Label>,
+      ])),
+    );
+  };
+
+  const searchTag = (search) => {
+    const searchLength = search.length;
+    // Reg for select the same length string than the letter search
+    if (searchLength !== 0) {
+      const limited = new RegExp(search, 'gi');
+      setTagsFind(
+        tags
+          .filter(tag => tag.title.match(limited))
+          .map(tag => ([
+            <div className="tagFind" onClick={clickHandlerNewTag}>
+              <div className="name" value={tag.id}>{tag.title}</div>
+            </div>,
+            <hr/>,
+          ])),
+      );
+    }
+  };
+
+  const changeSearchHandler = (evnt) => {
+    evnt.persist();
+    setTagsFind([]);
+    searchTag(evnt.target.value);
+  };
+
+  const deleteInput = () => {
+    const searchBar = document.querySelector('.searchBarTag');
+    console.log(searchBar);
+  }
+
+  const clickHandlerNewTag = (evt) => {
+    const idNewTags = evt.target.getAttribute('value');
+    console.log (evt.target).closest('.searchBar');
+    deleteInput();
+    const newTags = tags.filter(tag => tag.id == idNewTags);
+    return (setActualsTags([
+      ...actualsTags,
+      newTags,
+    ]));
+  };
+
+  const submitHandler = (evt) => {
+    evt.preventDefault();
+    createTags();
+  };
+
+  useEffect(() => createTags(), [tags, actualsTags])
 
   return (
     <div className={`sidebar ${withEvent}`}>
@@ -28,22 +90,17 @@ const Sidebar = ({ idOpenEvent, tags }) => {
           Tribe
         </div>
         <div className="tags">
-          <Label>
-            Adrienne
-            <Icon name='delete' />
-          </Label>
-          <Label image>
-            Zoe
-            <Icon name='delete' />
-          </Label>
-          <Label image>
-            Nan
-            <Icon name='delete' />
-          </Label>
+          <div className="searchBar">
+            <div className="ui input">
+              <Input placeholder='State' icon="search" id="searchBarTag" search selection onChange={changeSearchHandler} onSubmit={submitHandler} />
+            </div>
+            <div className="results">
+              {tagsFind}
+            </div>
+          </div>
+          {tagsCards}
         </div>
-      </div>
-      
-      
+      </div>   
     </div>
   );
 };
