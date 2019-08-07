@@ -4,9 +4,11 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 // == Import : local
 import EventBloc from 'src/components/PageEvents/EventBloc';
-import Header from 'src/components/Header';
+import Header from 'src/containers/Header';
 import LittleMonth from 'src/components/LittleMonth';
 import ModalNewEvent from 'src/components/Event/ModalNewEvent';
+import SearchBar from 'src/containers/Header/SearchBar';
+
 
 import './pageEvents.scss';
 
@@ -16,6 +18,7 @@ const PageEvents = () => {
   return (
     <div className="pageEvents">
       <Router>
+        <SearchBar />
         <EventBloc />
         <LittleMonth />
         <Header />

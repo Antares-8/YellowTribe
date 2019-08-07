@@ -60,6 +60,7 @@ header #logo {
   text-align: center;
   color: var(--text-dark);
   line-height: 1;
+  margin-top: 0.45em;
   margin-right: 4em;
   font-family: 'Bold', sans-serif;
 }
@@ -70,18 +71,32 @@ header #logo .icon {
 
 
 /// barre de recherche /// 
-.ui.input > input {
+.searchBar {
+  position: fixed;
+  top: 0.7em;
+  left: 15em;
+  z-index: 400;
+  border-radius: 1em;
+  border: 1px solid var(--border-dark);
+  background-color: var(--background-light); 
+
+}
+
+.searchBar .ui.input > input {
   padding: 0.4em 0.7em;
-  width: 20em;
+  width: 25em;
   display: flex; 
   flex-direction: column; 
   border-radius: 0.8em;
-  background-color: var(--background-light); 
   color: var(--text-light);
-  border: 1px solid var(--border-dark);
+  z-index:300;
+  background: none !important;
+  border: none !important;
+  font-family: 'Bold';
+  padding-top: 0.7em
 }
 
-.iconeNews {
+.searchBar .iconeNews {
   display: flex;
   justify-content: center;
   width: 2em;
@@ -90,6 +105,32 @@ header #logo .icon {
   box-shadow: 0px 0px 2px #888;
   padding: 0.5em 0.6em;
   margin-left: 1.3em;
+}
+
+.searchBar .results {
+  padding-top: 0.2em;
+  border-radius: 1em;
+  z-index:250;
+}
+
+.searchBar .results .eventFind {
+  display: flex;
+  color: var(--text-light);
+  padding: 0.2em 0.7em;
+}
+
+.searchBar .results hr {
+  background-color: var(--border-light);
+  border: 0;
+  height: 1px;
+  margin: 0.5em;
+}
+.searchBar .results hr:last-child {
+  height: 0px;
+}
+
+.searchBar .results .month {
+  margin-right: 0.4em;
 }
 
 //// LEFT /////

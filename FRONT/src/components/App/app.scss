@@ -90,7 +90,6 @@ nav .item {
   margin-left: 1.7em;
   float: left;
   width: 75%;
-  max-width: 80em;
   transition: width .2s ease; 
 }
 .main.withEvent {
@@ -232,4 +231,41 @@ nav .item {
   font-size: 190%;
   padding-bottom: 0.05em;
   padding-right: 0.2em;
+}
+
+@media screen and (min-width: 1000px) {
+  
+  .navigation .type.row {
+    left: 24.5em;
+    top: 5em;
+    bottom: inherit;
+  }
+  .navigation .header {
+    left: 40em;
+    top: 5em;
+    bottom: inherit;
+  }
+}
+
+@media screen and (min-width: 1550px) {
+  .main {
+    margin-left: 10.7em;
+    width: 60%;
+  }
+  nav {
+    margin-left: 9em;
+  }
+  .navigation .type.row {
+    left: 53em;
+    top: 5em;
+    bottom: inherit;
+  }
+  .navigation .header {
+    left: 69em;
+    top: 5em;
+    bottom: inherit;
+  }
+  .sidebar {
+    margin-right: 9em;
+  }
 }

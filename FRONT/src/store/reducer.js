@@ -12,6 +12,10 @@ const initialState = {
   categories: [],
   events: [],
   news: [],
+  tags: [],
+  userIdConnected: '8',
+  profile: [],
+  birthday: [],
 };
 
 
@@ -35,7 +39,10 @@ export const FETCH_EVENT_CALENDAR = 'FETCH_EVENT_CALENDAR';
 const GET_DATA_EVENTS = 'GET_DATA_EVENTS';
 export const FETCH_NEWS = 'FETCH_NEWS';
 const GET_DATA_NEWS = 'GET_DATA_NEWS';
-
+const GET_DATA_TAGS = 'GET_DATA_TAGS';
+const GET_ID_USER = 'GET_ID_USER';
+const GET_DATA_PROFILE = 'GET_DATA_PROFILE';
+const GET_DATA_BIRTHDAY = 'GET_DATA_BIRTHDAY';
 
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -165,6 +172,28 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         news: action.data,
       };
+    
+    case GET_DATA_TAGS:
+      return {
+        ...state,
+        tags: action.data,
+      };
+
+    case GET_ID_USER:
+      return {
+        ...state,
+        userIdConnected: action.data,
+      };
+    case GET_DATA_PROFILE:
+      return {
+        ...state,
+        profile: action.data,
+      };
+    case GET_DATA_BIRTHDAY:
+      return {
+        ...state,
+        birthday: action.data,
+      };
 
     default:
       return state;
@@ -234,6 +263,22 @@ export const fetchNews = () => ({
 });
 export const getDataNews = data => ({
   type: GET_DATA_NEWS,
+  data,
+});
+export const getDataTags = data => ({
+  type: GET_DATA_TAGS,
+  data,
+});
+export const getIdUser = data => ({
+  type: GET_ID_USER,
+  data,
+});
+export const getDataProfile = data => ({
+  type: GET_DATA_PROFILE,
+  data,
+});
+export const getDataBirthday = data => ({
+  type: GET_DATA_BIRTHDAY,
   data,
 });
 
