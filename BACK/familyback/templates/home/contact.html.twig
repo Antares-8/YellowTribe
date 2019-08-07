@@ -3,12 +3,27 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block header %}
-<h1>Nous contacter</h1>
+
+    {% include ('_nav.html.twig') %}
 
 {% endblock %}
 
 {% block body %}
 
-<a href="{{ path('homepage') }}"><p>Retour à l'accueil</p></a>
+<div class="homepage_container text-center d-flex flex-column">
+    <div>
+        Présentation du contenu de la page 
+    </div>
+    <div class="d-flex justify-content-between">
+        <div>Florence</div>
+        <div>Julien</div>
+        <div>Solenne</div>
+    </div>
+</div>
+
+
+
+{% include ('_footer.html.twig') %}
+
 
 {% endblock %}

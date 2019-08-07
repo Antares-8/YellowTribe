@@ -7,7 +7,8 @@
 <a href="{{ path('homepage') }}"><p>Retour à l'accueil</p></a>
  #}
 
-   <div id="root" class="{{ userTribeId.id }}">
+    {# /!\ really unsecured way /!\ #}
+   <div id="root" class="tribe-{{ tribe.id }} user-{{ user.id }}">
    </div>
 
 
