@@ -8,6 +8,7 @@ use App\Entity\Tribe;
 use App\Repository\TagRepository;
 use App\Repository\UserRepository;
 use App\Repository\EventRepository;
+use App\Repository\TribeRepository;
 use App\Repository\CommentRepository;
 use App\Repository\CategoryRepository;
 use Symfony\Component\Serializer\Serializer;
@@ -108,11 +109,18 @@ class APIController extends AbstractController
 
     /**
       * Data API connected user with tribe's name
-      * @Route("/user/{user}", name="user_data")
+      * @Route("/{tribe}/{user}", name="user_data")
       */
-    public function userData(UserRepository $userRepository, User $user)
+    public function userData(UserRepository $userRepository, User $user, Tribe $tribe)
     {
-        $userData = $userRepository->findCurrentUser($user);
+        $currentUser = $userRepository->findCurrentUser($user);
+        // TODO: improve this request
+        $currentTribe = $userRepository->findTribebyUser($tribe);
+
+        $userData = [];
+        $userData[] = $currentUser;
+        $userData[] = $currentTribe;
+        
 
         return $this->json($userData);
     }
