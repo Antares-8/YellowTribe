@@ -33,8 +33,10 @@ body {
 
 .bold {
   font-weight: bolder;
-  
+}
+
 /* CONTACT PAGE */
+
 .contactpage_container {
   width: 50%;
   height: 100%;
