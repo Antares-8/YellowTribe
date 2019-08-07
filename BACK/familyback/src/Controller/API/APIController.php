@@ -4,11 +4,11 @@ namespace App\Controller\API;
 
 use App\Entity\Event;
 use App\Entity\Tribe;
-//use JMS\Serializer\SerializerBuilder;
 use App\Repository\TagRepository;
 use App\Repository\UserRepository;
 use App\Repository\EventRepository;
 use App\Repository\CommentRepository;
+use App\Repository\CategoryRepository;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,7 +22,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
   * @Route("/api", name="api_")
   */
 
-class EventController extends AbstractController
+class APIController extends AbstractController
 {
 
     /**
@@ -93,4 +93,24 @@ class EventController extends AbstractController
         return $this->json($birthdays);
     }
 
+    /**
+     * Data API for categories
+     * @Route("/categories", name="categories_list")
+     */
+    public function categoriesList(CategoryRepository $categoryRepository)
+    {
+        $categories = $categoryRepository->findCategoryTitle(); 
+
+        return $this->json($categories);
+    }
+
+
+    /**
+      * Data API connected user with tribe's name
+      * /{tribe}/{user}
+      */
+    public function userData()
+    {
+        
+    }
 }
