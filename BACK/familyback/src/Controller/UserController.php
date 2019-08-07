@@ -42,6 +42,8 @@ class UserController extends AbstractController
         $oldPassword = $user->getPassword();
         $form->handleRequest($request);
 
+        $oldAvatar = $user->getAvatar();
+
         if ($form->isSubmitted() && $form->isValid()) {
 
             
@@ -57,6 +59,12 @@ class UserController extends AbstractController
             }
 
             $user->setPassword($encodedPassword);
+
+            if(is_null($user->getAvatar())){
+                $oldAvatar = $user->getAvatar()
+;           }
+
+            $user->setAvatar($oldAvatar);
 
             $this->getDoctrine()->getManager()->flush();
 
