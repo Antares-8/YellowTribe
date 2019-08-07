@@ -12,10 +12,8 @@ class AvatarType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $form = $this->createFormBuilder($avatar, [
-            'validation_groups' => ['registration'],
-        ])
-        // $builder
+
+        $builder
 
             ->add('avatar', FileType::class, [
                 'label' => 'Photo de profil (jpg,png,gif)',
