@@ -1,15 +1,24 @@
-body{
+body {
     font-family: 'Bold';
+    overflow-y: scroll;
 }
 
 /*** HEADER ***/
-
 .logo_content {
     background-image: url('../media/utils/logo2.png');
     background-size: cover;
     width: 193px;
     height: 33px;
 }
+
+.nav_container {
+    background-color: #E6B523;
+    position: fixed;
+    width: 100%;
+    padding: 0.8em 1.7em 0 1.7em;
+    height: 3.85em;
+}
+/*** HEADER ***/
 
 .homepage_container .intro {
     flex:1;
