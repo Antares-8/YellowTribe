@@ -23,7 +23,7 @@ const Header = ({ profile }) => {
     } 
   }, [profile]);
   const Avatar = styled.div`
-    background-image: url("public/cochon.jpg");
+    background-image: url(${tribeProfile.avatar});
     background-size: cover;
   `;
 
