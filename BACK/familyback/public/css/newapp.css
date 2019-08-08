@@ -1,16 +1,16 @@
-
 body{
-    font-familly: 'Bold';
+  font-family: 'Bold';
 }
+
 .logo_content {
-  background-image: url('../media/utils/logo2.png');
+  background-image: url('media/utils/logo2.png');
   background-size: cover;
   width: 193px;
   height: 33px;
 }
 .homepage_container .intro {
     flex:1;
-    background-image: url('../media/utils/background3.png');
+    background-image: url('media/utils/background3.png');
     background-size:cover;  
     height: 100%;
     padding: 0 2em; 
@@ -43,5 +43,5 @@ body{
   .fa-10x {
     color: #FFFDD8;
     font-size: 3em;
-    margin-righ: 2em;
+    margin-right: 2em;
   }
