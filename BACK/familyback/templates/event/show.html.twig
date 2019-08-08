@@ -88,7 +88,7 @@
                     </div>
 
                     {% if event.user == app.user %}
-                        <div class="">
+                        <div class="edit-icon">
                             <a href="{{ path('event_edit', {'event': event.id}) }}" class="btn btn-outline-warning btn-lg" role="button"><i class="far fa-edit"></i></a>
                         </div>
                     {% endif %}
@@ -132,14 +132,16 @@
                         {% endfor %}
                     </div>
 
-                    {{ form_start(commentForm) }}
-                        {{ form_widget(commentForm) }}
+                    <div class="comment-form">
+                        {{ form_start(commentForm) }}
+                            {{ form_widget(commentForm) }}
 
-                            <div class="float-right comment-form">
-                                <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Commenter') }}</button>
-                            </div>   
+                                <div class="float-left">
+                                    <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Commenter') }}</button>
+                                </div>   
 
-                    {{ form_end(commentForm) }}
+                        {{ form_end(commentForm) }}
+                    </div>
 
                 </div>
 

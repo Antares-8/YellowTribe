@@ -252,6 +252,12 @@ body {
 /*** /tribe_index ***/
 
 
+/*** TRIBE NEW ***/
+
+
+/*** /tribe_new ***/
+
+
 /*** INVITATION TEMPLATE ***/
 
 .invitation_container {
@@ -326,6 +332,11 @@ body {
   .event-title {
     text-transform: uppercase;
   }
+
+  .edit-icon {
+    margin-left: 3em;
+    margin-top : 2em;
+  }
   
   .event-comment_section {
     padding-top: 1em;
@@ -348,7 +359,8 @@ body {
 .comment-form {
     margin-left: 1em;
     margin-right: 10em;
-    margin-top: 2em;                    
+    margin-top: 2em;
+    margin-bottom: 2em;                    
 }  
 
 /*** /calendar/event/{event} ***/

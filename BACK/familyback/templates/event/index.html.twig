@@ -7,12 +7,15 @@
 <a href="{{ path('homepage') }}"><p>Retour à l'accueil</p></a>
  #}
 
-   <div id="root" tribe="{{ tribe.id }}" user="{{ user.id }}">
-   
-   
-   </div>
+  {% if user.tribe is null %}
 
+    <div id="root" tribe="null" user="{{user.id}}"></div>
 
+  {% else %}
+
+   <div id="root" tribe="{{ tribe.id }}" user="{{ user.id }}"></div>
+
+  {% endif %}
 
 
 
