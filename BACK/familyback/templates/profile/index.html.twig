@@ -2,23 +2,31 @@
 
 {% block title %}{{ title }}{% endblock %}
 
+{% block stylesheets %}
+
+    {% include ('_bootstrap.html.twig') %}
+    
+{% endblock %}
+
 {% block header %}
 
-  <div class="pt-2 d-flex justify-content-between align-items-center nav_container">
+    {% include "_nav.html.twig" %}
+
+  {# <div class="pt-2 d-flex justify-content-between align-items-center nav_container">
 
     <div class="float-left text-center"><i class="fas fa-sun fa-4x"></i><p class="logo_content">Yellow Tribe</p></div>
         
-        <div class="d-flex">
+      <div class="d-flex">
 
-            <p class="pl-2"><a href="{{ path('calendar') }}" class="btn btn-outline-warning btn-lg" role="button">Calendrier</a></p>
+          <p class="pl-2"><a href="{{ path('calendar') }}" class="btn btn-outline-warning btn-lg" role="button">Calendrier</a></p>
 
-            <a href="{{ path('app_logout') }}" class="fa_logout"><i class="fas fa-power-off fa-3x pl-3"></i></a>
-        
-        </div>
+          <a href="{{ path('app_logout') }}" class="fa_logout"><i class="fas fa-power-off fa-3x pl-3"></i></a>
+      
+      </div>
 
     </div>
 
-  </div>
+  </div> #}
 
 {% endblock %}
 
@@ -29,7 +37,9 @@
   <h1 class="text-center profile_title">Profil de {{ app.user.firstname }} {{ app.user.lastname }}</h1>
 
   <div class="d-flex justify-content-between">
+
     <div class="profile_content">
+
       <div class="text-center">Mes informations</div>
 
       <div class="d-flex justify-content-around">
@@ -42,7 +52,7 @@
           <div>Username : {{ app.user.username }}</div>
           <div>Email : {{ app.user.email }}</div>
 
-          <a href="{{ path('profile_edit') }}" class="btn btn-outline-warning btn-lg" role="button">Modifier mes informations</a>
+          <a href="{{ path('profile_edit') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button">Modifier mes informations</a>
 
         </div>
 
@@ -50,7 +60,7 @@
 
           {# <div>Votre avatar</div>  #}
           <img src="{{ asset(avatar_upload_path ~ (app.user.avatar ?: 'default-avatar.png')) | imagine_filter('thumb_back_list') }}"/>
-          <div><a href="{{ path('profile_avatar_edit') }}" class="btn btn-outline-warning btn-lg" role="button">Modifier</a></div>
+          <div><a href="{{ path('profile_avatar_edit') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button">Modifier</a></div>
 
         </div>
 
@@ -61,23 +71,37 @@
     </div>
 
     <div class="profile_action text-center">
+
     {% if app.user.tribe == null %}
+
       <div>Vous n'avez pas encore de tribu!</div>
-      <div><a href="{{ path('newTribe') }}" class="btn btn-primary btn-lg" role="button">Créer ma tribu</a></div>
+
+      <div><a href="{{ path('newTribe') }}" class="btn btn-primary btn-lg btn_backline" role="button">Créer ma tribu</a></div>
+
     {% else %}
-      <div><a href="{{ path('tribe') }}" class="btn btn-outline-warning btn-lg" role="button">Tribu des {{ app.user.tribe.name }}</a></div>
-      <div><a href="{{ path('send_invitation') }}" class="btn btn-outline-warning btn-lg" role="button">Inviter un nouveau membre</a></div>
+
+      <div><a href="{{ path('tribe') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button">Tribu des {{ app.user.tribe.name }}</a></div>
+
+      <div><a href="{{ path('send_invitation') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button">Inviter un nouveau membre</a></div>
+
     {% endif %}
-      <div><a href="{{ path('profile_edit') }}" class="btn btn-outline-warning btn-lg" role="button">Modifier mes informations</a></div>
-      <div><a href="{{ path('events_list') }}" class="btn btn-outline-warning btn-lg" role="button">Mes événements ({{ app.user.events|length }})</a></div>
-      <div><a href="{{ path('event_new') }}" class="btn btn-outline-warning btn-lg" role="button">Créer un événement</a></div>
-      <div><a href="{{ path('app_logout') }}" class="btn btn-outline-warning btn-lg" role="button">Déconnexion</a></div>
+
+      <div><a href="{{ path('profile_edit') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button">Modifier mes informations</a></div>
+
+      <div><a href="{{ path('events_list') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button">Mes événements ({{ app.user.events|length }})</a></div>
+
+      <div><a href="{{ path('event_new') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button">Créer un événement</a></div>
+
+      <div><a href="{{ path('app_logout') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button">Déconnexion</a></div>
     
     </div>
+
   <div>
 
 </div>
+
 </div>
+
 </div>
 
 {% include ('_footer.html.twig') %}

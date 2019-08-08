@@ -75,20 +75,6 @@ body {
   font-size: 1.2em;
 }
 
-
-/* SIGNUP TEMPLATE */
-.signup_container {
-  width: 50%;
-  margin: auto;
-  padding-top: 2em;
-  height: 100%;
-}
-
-.signup_container .btn {
-  color: #FFFDD8;
-  border: none;
-}
-
 /* INVITATION TEMPLATE */
 .invitation_container {
   width: 50%;
@@ -102,54 +88,7 @@ body {
 }
 
 /* PROFILE TEMPLATE */
-.profile_container {
-  width: 70%;
-  height: 100%;
-  margin: auto;
-  padding-top: 12em;
-}
 
-.profile_container .btn {
-  border: none;
-  background-color: #fcc53b;
-  color: #fff5d7;
-}
-
-.profile_title {
-  font-size: 3em;
-  /* font-weight: bold; */
-  margin-bottom: 1em;
-}
-
-.profile_content, .profile_action {
-  /* border-radius: 2%; */
-  background-color: #fff5d7;
-  color: #E3A000;
-}
-.profile_content {
-  width: 60%;
-}
-
-.profile_action {
-  width: 30%;
-}
-
-.profile_action div {
-  margin-bottom: 2em;
-}
-
-/* in profile templates */
-.fa_logout:hover, .fa_profile:hover {
-  color: #FFFDD8;
-}
-
-/* PROFILE EDITION */
-.profile-edit_container {
-  width: 50%;
-  margin: auto;
-  padding-top: 8em;
-  height: 100%;
-}
 
 /* AVATAR EDITION */
 .avatar-edit_container {
