@@ -99,7 +99,7 @@ body {
 
 /*** /homepage ***/
 
-/*** LOGIN ***/
+/*** LOGIN / SIGNUP ***/
 
 .login_container {
     /* background-image: url('../media/utils/background3.png');
@@ -115,6 +115,14 @@ body {
 .login_container .form-title {
     margin-bottom: 1em;
 }
+
+.signup_container {
+    width: 50%;
+    margin: auto;
+    padding-top: 8em;
+    height: 100%;
+    color: #FFFDD8;
+}  
 
 /*** /login ***/
 

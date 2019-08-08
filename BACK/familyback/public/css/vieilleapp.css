@@ -75,27 +75,6 @@ body {
   font-size: 1.2em;
 }
 
-/* LOGIN TEMPLATE */
-.login_container {
-  height: 100%; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 12em;
-}
-
-.login_container form input {
-  background-color: lightyellow;
-  border: none;
-}
-
-.btn_connexion {
-  color: #FFFDD8;
-}
-
-.btn_connexion:hover {
-  color: #FFFDD8;
-}
 
 /* SIGNUP TEMPLATE */
 .signup_container {

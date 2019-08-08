@@ -52,15 +52,25 @@ class UserType extends AbstractType
                 'label' => 'Email *',
                 'help' => 'L\'adresse email est utilisée comme identifiant de connexion',
                 'required' => true,
+                'constraints' => [
+                    new NotBlank(),
+                ],
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les champs "Mot de passe" ne sont pas identiques',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
-
+                'constraints' => [
+                    new NotBlank(),
+                ],
                 'first_options'  => ['label' => 'Mot de passe *'],
-                'second_options' => ['label' => 'Vérification du mot de passe *'],
+                'second_options' => [
+                    'label' => 'Vérification du mot de passe *',
+                    'constraints' => [
+                        new NotBlank(),
+                    ],
+                ],
             ])
             ->add('username', TextType::class, [
                 'empty_data' => '',
