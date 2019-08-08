@@ -64,7 +64,7 @@ const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEv
         let day = startDateMonth;
         let formattedDateD = '';
 
-        let rowEvent = 1;
+        let rowEvent = 2;
         while (day <= endDateMonth) {
           for (let i = 0; i < 7; i += 1) {
             formattedDateD = dateFns.format(day, dateFormatDay);
@@ -122,23 +122,25 @@ const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEv
                   eventDisplay: idOpenEvent == event.id,
                 });
 
-                // id row to know how to place the ligne on the grid row
-                rowEvent += 1;  
+                // id row to know how to place the ligne on the grid row  
                 // I create a styled components to fixe directly the col and span on the grid-colum style
                 const Events = styled.div`
                   grid-column: ${col} / span ${colSpan};
                   grid-row: ${rowEvent} / span 1;
                   display: ${hidden};
                 `;
+                if (col !== 0) {
+                  rowEvent += 1;  
                 // I return the event in the DOM
-                return (
-                  <Events key={`${event.beginingDate}${day}`} className={`events event${rowEvent} ${eventDisplay}`} id={event.id} onClick={clickHandleEvent}>
-                  </Events> 
-                )
+                  return (
+                    <Events key={`${event.beginingDate}${day}`} className={`events event${rowEvent} ${eventDisplay}`} id={event.id} onClick={clickHandleEvent}>
+                    </Events> 
+                  )
+                }
               })}
             </div>
           );
-          rowEvent = 1;
+          rowEvent = 2;
           days = [];
         }
         formattedDate = dateFns.format(month, dateFormatMonth);

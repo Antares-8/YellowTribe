@@ -56,13 +56,14 @@
 //// RIGHT /////
 
 header #logo {
-  font-size: 130%;
-  text-align: center;
-  color: var(--text-dark);
+  width: 158px;
+  height: 27px;
   line-height: 1;
-  margin-top: 0.45em;
+  margin-top: 0.15em;
   margin-right: 4em;
   font-family: 'Bold', sans-serif;
+  background-image: url('/public/1x/logo1.png');
+  background-size: cover;
 }
 
 header #logo .icon {
@@ -74,7 +75,7 @@ header #logo .icon {
 .searchBar {
   position: fixed;
   top: 0.7em;
-  left: 15em;
+  left: 17em;
   z-index: 400;
   border-radius: 1em;
   border: 1px solid var(--border-dark);
@@ -136,14 +137,16 @@ header #logo .icon {
 //// LEFT /////
 
 .headerRight .username {
-  margin-right: 2em;
-  margin-bottom: 0.2em;
-  font-size: 0.9rem;
+  margin-right: 2.2em;
+  margin-top: 0.2em;
+  font-size: 109%;
+  font-family: 'bold';
   color: var(--text-dark);
 }
 
 .headerRight .tribeName {
   font-size: 130%;
+  font-family: 'Bold';
 }
 
 .headerRight .profilePicture {
@@ -153,13 +156,21 @@ header #logo .icon {
   border: 1px solid var(--border-light); 
 }
 
-.ui.buttons .or:before {
-  margin-top: -1.26em;
-  margin-left: -1em;
-  width: 2.19em;
-  height: 2.19em;
-  border-radius: 2.19em;
+.ui.buttons {
+  position: relative;
+}
+
+.headerRight .avatar {
+  width: 33px;
+  height: 33px;
+  border-radius: 33px;
   border: 2px solid var(--border-light);
+  position: absolute;
+  text-align: center;
+  top: -1px;
+  left: -14px;
+  line-height: 1.78571429em;
+  box-shadow: 0 0 0 1px transparent inset;
 }
 
 .headerRight .ui.buttons .groupButton {
@@ -176,5 +187,8 @@ header #logo .icon {
 }
 .ui.basic.black.button, .ui.basic.black.buttons .button {
   box-shadow: none !important;
+}
+.ui.buttons:not(.vertical) > .basic.black.button:not(:first-child) {
+  margin-left: 4px;
 }
 

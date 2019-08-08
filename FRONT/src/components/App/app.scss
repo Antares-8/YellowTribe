@@ -130,7 +130,7 @@ nav .item {
   justify-content: space-around;
   left: 3em;
   bottom: 5em;
-  width: 15.3em;
+  width: 17.3em;
   padding: 0.4em 1em !important;
   font-size: 100% !important;
   z-index: 200;
@@ -146,7 +146,7 @@ nav .item {
   justify-content: space-around;
   left: 3em;
   bottom: 2em;
-  width: 15.3em;
+  width: 17.3em;
   padding: 0.4em 1em !important;
   font-size: 100% !important;
   -webkit-align-items: center;
@@ -166,7 +166,7 @@ nav .item {
   flex-grow: 1;
 }
 .header .col-center {
-  flex-grow: 2;
+  flex-grow: 3;
 }
 
 .type .col-start, 
@@ -174,7 +174,7 @@ nav .item {
   flex-grow: 1;
 }
 .type .col-center {
-  flex-grow: 2;
+  flex-grow: 3;
 }
 
 .navigation .header,
@@ -241,31 +241,41 @@ nav .item {
     bottom: inherit;
   }
   .navigation .header {
-    left: 40em;
+    left: 42em;
     top: 5em;
     bottom: inherit;
+  }
+  .event {
+    width: 37.5%;
   }
 }
 
 @media screen and (min-width: 1550px) {
   .main {
-    margin-left: 10.7em;
-    width: 60%;
+    margin-left: 7.7em;
+    width: 63%;
+  }
+  .main.withEvent {
+    width: 56.5%;
   }
   nav {
-    margin-left: 9em;
+    margin-left: 5.95em;
   }
   .navigation .type.row {
-    left: 53em;
+    left: 41em;
     top: 5em;
     bottom: inherit;
   }
   .navigation .header {
-    left: 69em;
+    left: 60em;
     top: 5em;
     bottom: inherit;
   }
   .sidebar {
     margin-right: 9em;
+  }
+  .event {
+    margin-right: 7.7em;
+    width: 27%;
   }
 }

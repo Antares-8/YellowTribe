@@ -78,7 +78,7 @@
     padding: 1.5em 0;
     border-bottom: 1px solid var(--border-light);
     position: sticky;
-    top: 8em;
+    top: 8.6em;
     z-index: 200;
     background-color: var(--background-light);
     border-top: 2px solid var( --border-light);
@@ -88,6 +88,24 @@
     display: flex;
     background-color: var(--background-light);
     padding-top: 1em;
+    padding-left: 0.9em;
+    position: relative;
+  }
+  .calendar .week .hours {
+    padding-right: 0.5em;
+  }
+  .calendar .week .hour {
+    margin-bottom: 1.5em;
+  }
+  .calendar .week .line {
+    position: absolute; 
+  }
+  .calendar .week .line hr {
+    margin: 2.9em 0;
+    width: 50em; 
+  }
+  .calendar .week .body .cell {
+    background-color: none !important; 
   }
 
   .calendar .week .body .row {
