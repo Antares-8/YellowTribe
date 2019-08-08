@@ -1,7 +1,7 @@
 /* HOMEPAGE */
 body {
   background-color: #FFB400;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 .homepage_container {
@@ -193,30 +193,6 @@ body {
   justify-content: center;
 }
 
-/* NAV */
-.nav_container {
-  position:fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  padding: 0 1em 0 1em;
-}
-
-/* .fa-sun {
-  color: #FFFDD8;
-}
-
-.logo_content {
-  font-weight: bold;
-}
-
-.btn_signup {
-  background-color: #E3A000;
-} */
-
-.nav_container .btn {
-  color: #FFFDD8;
-}
 
 /**** TRIBE TEMPLATE ****/
 .tribe-template_container {

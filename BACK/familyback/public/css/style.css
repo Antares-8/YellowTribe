@@ -18,8 +18,9 @@ body {
     padding: 0.8em 1.7em 0 1.7em;
     height: 3.85em;
 }
-/*** HEADER ***/
+/*** /HEADER ***/
 
+/*** HOMEPAGE ***/
 .homepage_container .intro {
     flex:1;
     background-image: url('../media/utils/background3.png');
@@ -58,3 +59,4 @@ body {
     font-size: 3em;
     margin-right: 2em;
 }
+/*** /HOMEPAGE ***/
