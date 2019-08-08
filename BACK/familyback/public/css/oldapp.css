@@ -1,8 +1,6 @@
 /* HOMEPAGE */
 body {
-  height: 100%;
   background-color: #FFB400;
-  color: #FFFDD8;
   overflow-y: scroll;
 }
 
@@ -13,9 +11,8 @@ body {
   justify-content: center;
 }
 
-.homepage_content {
+/* .homepage_content {
   padding-bottom: 12em; /* to center, 8em = homepage_content size + footer size */
-}
 
 .btn-login {
   margin-top: 2em;
