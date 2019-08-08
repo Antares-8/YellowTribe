@@ -17,6 +17,7 @@
 {% block body %}
     <div class="login_container d-flex flex-column text-center">
 
+        {# TODO: à modifier ou supprimer selon la redirection ok dans SecurityController.php #}
         {% if app.user %}
 
             <div class="checkbox mb-3">Vous êtes déjà connecté sur le compte de "{{ app.user.username }}"</div> <a href="{{ path('app_logout') }}" class="btn btn-outline-warning btn-lg btn-login" role="button">Déconnexion</a>

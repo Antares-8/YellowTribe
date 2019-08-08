@@ -116,15 +116,6 @@ body {
     margin-bottom: 1em;
 }
 
-.login_container form input {
-    background-color: #FFFDD8;
-    border: none;
-}
-
-.login_container form input:valid {
-    background-color: #FFFDD8;
-}
-
 /*** /login ***/
 
 
@@ -177,6 +168,15 @@ body {
 .btn_frontline:hover {
     border-color: #FFFDD8;
     background-color: #F9B233;
+}
+
+form input {
+    background-color: #FFFDD8;
+    border: none;
+}
+
+form input:valid {
+    background-color: #FFFDD8;
 }
 
 /*** /components ***/
