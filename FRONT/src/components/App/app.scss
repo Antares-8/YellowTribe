@@ -27,7 +27,7 @@
   --text-dark: #fef7e1;
   --text-light-dark: #fed661;
   --text-light: #fcc53b;
-  --text-light-light: #fff5d7;
+  --text-light-light: #ffe79f;
   --background-light: #fff5d7;
   --background-dark: #fcc53b;
   --border-dark: #e6b523;
@@ -163,18 +163,18 @@ nav .item {
 }
 .header .col-start, 
 .header .col-end {
-  flex-grow: 1;
+  flex-grow: 0;
 }
 .header .col-center {
-  flex-grow: 3;
+  flex-grow: 4;
 }
 
 .type .col-start, 
 .header .col-end {
-  flex-grow: 1;
+  flex-grow: 0;
 }
 .type .col-center {
-  flex-grow: 3;
+  flex-grow: 4;
 }
 
 .navigation .header,

@@ -70,7 +70,7 @@ const createTable = (
             })} */}
           <span className="number">{formattedDate}</span>
           <span className="bg">{formattedDate}</span>
-        </div>
+        </div>,
       );
       day = dateFns.addDays(day, 1);
     }
