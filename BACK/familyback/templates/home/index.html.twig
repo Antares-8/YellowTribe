@@ -6,36 +6,43 @@
 
 {% block header %}
 
-    {% include ('_nav.html.twig') %}
+    <div class="pt-2 d-flex justify-content-between align-items-center nav_container">
+
+    <div class="float-left text-center"><div class="logo_content"></div></div>
+
+    </div>
+
+  </div>
 
 {% endblock %}
 
 {% block body %}
     <div class="homepage_container text-center">
-        <div class="homepage_content">
-            <h1 class="display-1 logo">Yellow Tribe</h1>
-            <h2 class="display-4">Restez connecté avec votre tribu</h2>
-
-            <div class="fas_container">
-                <i class="fas fa-users fa-10x"></i>
-                <i class="fas fa-calendar-check fa-10x"></i>
-                <i class="fas fa-map-marker-alt fa-10x"></i>
+        <div class="intro">
+            <div class="homepage_content">
+                <h2 class="display-4">Restez<br/>connecté avec <br/>votre tribu</h2>
+                <div class="fas_container">
+                    <div class=" row argument">
+                        <i class="col-2 fas fa-users fa-10x"></i>
+                        <div class="col-10"> Creez votre propre Tribu </div>
+                    </div>
+                    <div class=" row argument">
+                        <i class="col-2 fas fa-calendar-check fa-10x"></i>
+                         <div class="col-10"> Organisez des évenement ensemble </div>
+                    </div>
+                    <div class="row argument">
+                        <i class="col-2 fas fa-map-marker-alt fa-10x"></i>
+                        <div class="col-10"> Partagez des souvenirs </div>
+                    </div>
+                </div>
             </div>
+        </div>
 
+        <div class="connexion">
+            <p class="pl-2"><a href="{{ path('app_login') }}" class="btn btn-outline-warning btn-lg btn_connexion" role="button">Connexion</a></p>
+            <p class="pl-2"><a href="{{ path('app_signup') }}" class="btn btn-warning btn-lg btn_signup" role="button">Inscription</a></p>
         </div>
     </div>
-
-    <div class="description">
-        <p>
-            <span class="bold">Le concept : </span>
-            Yellow Tribe est un site à usage familial permettant mutualiser un calendrier au sein d'une tribu. Elle permet aux membres d'une même tribu d'avoir accès à un calendrier, de pouvoir créer des événements (Mariage de Monique et Gilbert, faire garder Carlos de chat pendant les vacances, fête d'anniversaire de Timéo qui va avoir 8 ans, etc.) et de commenter ces événements ("ah ben non désolée, je pourrai pas venir au mariage, c'est trop dommage !").
-        </p>
-        <p>
-            <span class="bold">Comment ça marche ?</span>  Vous vous inscrivez sur le site, vous créez votre tribu, vous invitez les membres que vous souhaitez. Ceux-ci peuvent à leur tour s'inscrire et se connecter, ils font alors automaitquement partie de votre tribu. <br>
-            Chaque membre a alors la possibilité de créer des événements, d'y réagir, de consulter quels sont les membres de sa tribu, de tagger des personnes qui peuvent être extérieures à la tribu (mentionner que l'anniversaire de Timéo concerne aussi son petit frère Esteban, qui n'a que 4 ans et ne peut donc pas raisonnablement avoir de compte sur un site internet).
-        </p>            
-    </div>
-
 
 {% include ('_footer.html.twig') %}
 

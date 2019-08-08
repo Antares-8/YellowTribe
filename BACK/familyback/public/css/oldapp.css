@@ -1,8 +1,6 @@
 /* HOMEPAGE */
 body {
-  height: 100%;
   background-color: #FFB400;
-  color: #FFFDD8;
   overflow-y: scroll;
 }
 
@@ -13,9 +11,8 @@ body {
   justify-content: center;
 }
 
-.homepage_content {
+/* .homepage_content {
   padding-bottom: 12em; /* to center, 8em = homepage_content size + footer size */
-}
 
 .btn-login {
   margin-top: 2em;
@@ -352,6 +349,24 @@ body {
   padding: 1em 0 1em 1em;
   margin-left: 1em;
   margin-right: 10em;
+}
+
+/**** MY EVENTS TEMPLATE ****/
+.myevents_container {
+  width: 70%;
+  height: auto;
+  padding-top: 8em;
+  margin: auto;
+}
+
+.myevents_container .event-detailed_container {
+  color: #E3A000;
+  margin-bottom: 2em;
+}
+
+.btn_create-event {
+  margin-top: 7em;
+  margin-right: 1.5em;
 }
 
 /**** EVENT FORM (CREATION) ****/
