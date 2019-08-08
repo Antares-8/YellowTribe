@@ -134,9 +134,11 @@
 
                     {{ form_start(commentForm) }}
                         {{ form_widget(commentForm) }}
-                        <div class="float-right">
-                            <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Commenter') }}</button>
-                        </div>        
+
+                            <div class="float-right comment-form">
+                                <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Commenter') }}</button>
+                            </div>   
+
                     {{ form_end(commentForm) }}
 
                 </div>

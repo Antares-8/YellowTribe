@@ -2,27 +2,43 @@
 
 {% block title %}Invitation{% endblock %}
 
+{% block stylesheets %}
+
+    {% include ('_bootstrap.html.twig') %}
+    
+{% endblock %}
+
 {% block header %}
+
     {% include "_nav.html.twig" %}
+
 {% endblock %}
 
 {% block body %}
 
-<div class="invitation_container">
+    <div class="invitation_container">
 
-    <h1 class="display-4 text-center mb-3">Envoyer une invitation</h1>
+        <h1 class="display-4 text-center mb-3">Envoyer une invitation</h1>
 
-    <div class="text-justify mb-4">Veuillez renseigner l'adresse email de la personne que vous souhaitez inviter dans votre tribu. Notez que cette adresse devra être utilisée lors de sa future inscription et servira d'identifiant de connexion.</div>
+        <div class="text-justify mb-4">Veuillez renseigner l'adresse email de la personne que vous souhaitez inviter dans votre tribu. Notez que cette adresse devra être utilisée lors de sa future inscription et servira d'identifiant de connexion.</div>
 
-    <div>
-        {{ form_start(form) }}
-            {{ form_widget(form) }}
-           <div class="float-right">
-                <button class="btn btn-warning btn-lg">{{ button_label|default('Envoyer') }}</button>
-                <a href="{{ path('profile_index') }}" class="btn btn-outline-warning btn-lg" role="button">Annuler</a>
-            </div>        
-        {{ form_end(form) }}
+        <div>
+
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
+            <div class="float-right">
+            
+                    <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Envoyer') }}</button>
+                    
+                    <a href="{{ path('profile_index') }}" class="btn_backline btn btn-outline-warning btn-lg" role="button">Annuler</a>
+                
+                </div>        
+            {{ form_end(form) }}
+            
+        </div>
+
     </div>
-</div>
+
+    {% include "_footer.html.twig" %}
 
 {% endblock %}
