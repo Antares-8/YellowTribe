@@ -17,7 +17,7 @@ body {
     padding: 0.8em 1.7em 0 1.7em;
     height: 3.85em;
 }
-/*** /HEADER ***/
+/*** /header ***/
 
 /*** HOMEPAGE ***/
 .homepage_container {
@@ -97,7 +97,33 @@ body {
         /* letter-spacing: 0.5em; */
     }
 
-/*** /HOMEPAGE ***/
+/*** /homepage ***/
+
+
+/*** FOOTER ***/
+.footer {
+    /* position: fixed; */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 1em 0 1em 0;
+    background-color: #F9B233;
+    color: #FFFDD8;
+    text-align: center;
+  }
+
+.footer a {
+  text-decoration: none;
+  color: #FFFDD8;
+}
+
+.footer a:hover {
+  color: white;
+  border-bottom: 1px solid white;
+}
+
+/*** /footer ***/
+
 
 /*** COMPONENTS ***/
 .btn_backline {
@@ -122,3 +148,4 @@ body {
     border-color: #FFFDD8;
     background-color: #F9B233;
 }
+/*** /components ***/
