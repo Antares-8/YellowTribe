@@ -8,7 +8,7 @@
 
     {% for event in events %}
         <p>{{event.title}}<a href="{{ path('event_edit', {'event': event.id}) }}" class="btn btn-outline-warning btn-lg" role="button">Modifier cet événement</a>
-            <a href="{{ path('event_show', {'slug': event.slug}) }}" class="btn btn-outline-warning btn-lg" role="button"><i class="far fa-edit"></i></a>
+            <a href="{{ path('event_show', {'slug': event.slug}) }}" class="btn btn-outline-warning btn-lg" role="button">Voir</a>
         </p>
     {% endfor %}
 
