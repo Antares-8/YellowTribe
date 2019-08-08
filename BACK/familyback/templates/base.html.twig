@@ -9,8 +9,10 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <link href="{{ asset('css/1.css') }}" rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('css/oldapp.css') }}">
         <link href="{{ asset('css/fonts.css') }}" rel="stylesheet" >
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+        {# TODO: delete links below #}
+        <link href="{{ asset('css/oldapp.css') }}" rel="stylesheet">
         <link href="{{ asset('css/newapp.css') }}" rel="stylesheet" >
 
         {% block stylesheets %}{% endblock %}
@@ -18,8 +20,9 @@
 
 
     <body>
-                {% block header %}{% endblock %}
-
+        {% block header %}
+        
+        {% endblock %}
 
             {% for label, messages in app.flashes %}
                 {% for message in messages %}
@@ -33,9 +36,12 @@
 
         {% endblock %}
 
+
         <script type="text/javascript" src="{{ asset('js/vendors.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        
+        {% endblock %}
 
 
     </body>
