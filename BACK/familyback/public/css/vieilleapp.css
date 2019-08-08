@@ -1,24 +1,15 @@
 /* HOMEPAGE */
 body {
   background-color: #FFB400;
-  /* overflow-y: scroll; */
 }
 
-.homepage_container {
-  height: 100%; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-/* .homepage_content {
-  padding-bottom: 12em; /* to center, 8em = homepage_content size + footer size */
 
 .btn-login {
   margin-top: 2em;
 }
 
-.description {
+/* .description {
   font-size: 2em;
   color: #FFB400;
   background-color: #FFFDD8;
@@ -26,11 +17,11 @@ body {
   margin: auto;
   border-radius: 1em;
   padding: 15px;
-}
+} */
 
-.bold {
+/* .bold {
   font-weight: bolder;
-}
+} */
 
 /* CONTACT PAGE */
 
