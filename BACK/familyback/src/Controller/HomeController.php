@@ -13,6 +13,11 @@ class HomeController extends AbstractController
      */
     public function index()
     {
+        // if (user is connected ) {
+        //    redirection vers /calendar 
+        // }
+
+
         return $this->render('home/index.html.twig', [
             'title' => 'Welcome !',
         ]);
