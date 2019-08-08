@@ -43,7 +43,7 @@ const createTable = (
   };
 
 
-  let rowEvent = 1;
+  let rowEvent = 2;
   while (day <= endDate) {
     for (let i = 1; i < 8; i += 1) {
       formattedDate = dateFns.format(day, dateFormat);
@@ -59,6 +59,15 @@ const createTable = (
           col={i}
           onClick={() => dateClickHandler(cloneDay)}
         >
+          {/* {birthday.map( (hbirthday) => {
+            
+            const birthdayFns = new Date(hbirthday.birthDate);
+            console.log(dateFns.isSameDay(day.key, birthdayFns));
+            if (dateFns.isSameMonth(day.key, birthdayFns)
+            && dateFns.isSameDay(day.key, birthdayFns)) {
+              return (<div key={hbirthday.birthDate}>oui</div>);
+            }
+            })} */}
           <span className="number">{formattedDate}</span>
           <span className="bg">{formattedDate}</span>
         </div>
@@ -68,8 +77,6 @@ const createTable = (
     rows.push(
       <div className="row" key={`${day}${event.beginingDate}`}>
         {days}
-
-        {/* I'm begining a loop on the events datas */}
         {events.map((event) => {
           // test to know if the row is under or outside an event period
           const colEventCenterRow = new Date(days[6].key) > new Date(event.beginingDate)
@@ -100,7 +107,7 @@ const createTable = (
           });
 
           // id row to know how to place the ligne on the grid row
-          rowEvent += 1;  
+          
           keyEv +=1
           // I create a styled components to fixe directly the col and span on the grid-colum style
           const Events = styled.div`
@@ -110,10 +117,15 @@ const createTable = (
           `;
           // I return the event in the DOM
           if (col !== 0) {
+            rowEvent += 1;  
+            
             return (
               <Events key={`${keyEv} ${day}`} className={`events event${rowEvent} ${eventDisplay}`} id={event.id} onClick={clickHandleEvent}>
                 <div className="title">
-                  {event.title}
+                  {event.title.length > 25
+                    ? `${event.title.slice(0, 25)}...`
+                    : event.title
+                  }
                 </div>
               </Events>
             );
@@ -121,7 +133,7 @@ const createTable = (
         })}
       </div>
     );
-    rowEvent = 1;
+    rowEvent = 2;
     days = [];
   }
   return rows;

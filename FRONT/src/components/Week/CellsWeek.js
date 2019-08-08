@@ -53,8 +53,7 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick, idOpenEvent, openEv
             key={hour}
             onClick={() => dateClickHandler(clonehour)}
           >
-            <span className="number">{formattedDate}</span>
-            <span className="bg">{formattedDate}</span>
+            
           </div>
         );
         hour = dateFns.addHours(hour, 1);
@@ -100,15 +99,20 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick, idOpenEvent, openEv
               grid-column: ${rowEvent} /span 3;
               display: ${hidden};
             `;
-            rowEvent += 1; 
+            if (col !== 0) {
+              rowEvent += 1;  
             // I return the event in the DOM
-            return (
-              <Events key={`${event.beginingDate}${hour} ${eventDisplay}`} className={`events event${rowEvent} ${eventDisplay}`} id={event.id} onClick={clickHandleEvent}>
-                <div className="title">
-                  {event.title}
-                </div>
-              </Events>
-            )
+              return (
+                <Events key={`${event.beginingDate}${hour} ${eventDisplay}`} className={`events event${rowEvent} ${eventDisplay}`} id={event.id} onClick={clickHandleEvent}>
+                  <div className="title">
+                    {event.title.length > 25
+                      ? `${event.title.slice(0, 25)}...`
+                      : event.title
+                    }
+                  </div>
+                </Events>
+              )
+            }
           })}
         </div>
       );
@@ -120,6 +124,57 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick, idOpenEvent, openEv
   createTable();
   return (
     <div className="body">
+      <div className="hours">
+        <div className="hour">1h</div>
+        <div className="hour">2h</div>
+        <div className="hour">3h</div>
+        <div className="hour">4h</div>
+        <div className="hour">5h</div>
+        <div className="hour">6h</div>
+        <div className="hour">7h</div>
+        <div className="hour">8h</div>
+        <div className="hour">9h</div>
+        <div className="hour">10h</div>
+        <div className="hour">11h</div>
+        <div className="hour">12h</div>
+        <div className="hour">13h</div>
+        <div className="hour">14h</div>
+        <div className="hour">15h</div>
+        <div className="hour">16h</div>
+        <div className="hour">17h</div>
+        <div className="hour">18h</div>
+        <div className="hour">19h</div>
+        <div className="hour">20h</div>
+        <div className="hour">21h</div>
+        <div className="hour">22h</div>
+        <div className="hour">23h</div>
+        <div className="hour">00h</div>
+      </div>
+      <div className="line">
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+        <hr/>
+      </div>
       {rows}
     </div>
   );

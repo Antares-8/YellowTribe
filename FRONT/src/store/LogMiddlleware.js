@@ -1,4 +1,4 @@
-import { FETCH_EVENT_CALENDAR, FETCH_NEWS, getDataEvents, getDataNews, getDataProfile, getDataTags, getIdUser, fetchEventsCalendar, getBirthday, GET_PROFILE } from 'src/store/reducer';
+import { FETCH_EVENT_CALENDAR, FETCH_NEWS, getDataEvents, getDataNews, getDataProfile, getDataTags, getIdUser, fetchEventsCalendar, getBirthday, GET_PROFILE, getDataCategories } from 'src/store/reducer';
 import axios from 'axios';
 
 const logMiddleware = store => next => (action) => {
@@ -8,7 +8,7 @@ const logMiddleware = store => next => (action) => {
       const storeData = store.getState();
       const userId = storeData.userIdConnected;
       const tribeId = storeData.tribeIdConnected;
-
+      
       axios.get(`http://95.142.174.217/api/${tribeId}/events`)
         .then((response) => {
           const { data } = response;
@@ -37,10 +37,19 @@ const logMiddleware = store => next => (action) => {
         })
         .catch();
 
+      axios.get(`http://95.142.174.217/api/${tribeId}/categories`)
+        .then((response) => {
+          const { data } = response;
+          store.dispatch(getDataCategories(data));
+        })
+        .catch();
+
       break;
     };
 
     case FETCH_NEWS: {
+      const storeData = store.getState();
+      const tribeId = storeData.tribeIdConnected;
       axios.get(`http://95.142.174.217/api/${tribeId}/news`)
         .then((response) => {
           const { data } = response;
@@ -54,8 +63,8 @@ const logMiddleware = store => next => (action) => {
       const userIdR = document.getElementById('root');
       const tribe = userIdR.getAttribute('tribe');
       const user = userIdR.getAttribute('user');
-      getIdUser(tribe, user);
-      fetchEventsCalendar();
+      store.dispatch(getIdUser(tribe, user));
+      store.dispatch(fetchEventsCalendar());
 
       break;
     }

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react'
 import dateFns from 'date-fns';
 import french from 'date-fns/locale/fr';
+import { BrowserRouter, Link } from 'react-router-dom';
+
 
 import './header.scss';
 
@@ -24,11 +26,15 @@ const SearchBar = ({ profile, events }) => {
         events
           .filter(event => event.title.match(limited))
           .map(event => ([
-            <div className="eventFind">
-              <div className="number">{dateFns.format(new Date(event.beginingDate), formatNumber, { locale: french })}/</div>
-              <div className="month">{dateFns.format(new Date(event.beginingDate), formatMonth, { locale: french })} </div>
-              <div className="title">{event.title}</div>
-            </div>,
+            <BrowserRouter forceRefresh={true}>
+              <Link to={`/calendar/event/${event.id}`}>
+                <div className="eventFind">
+                  <div className="number">{dateFns.format(new Date(event.beginingDate), formatNumber, { locale: french })}/</div>
+                  <div className="month">{dateFns.format(new Date(event.beginingDate), formatMonth, { locale: french })} </div>
+                  <div className="title">{event.title}</div>
+                </div>
+              </Link>
+            </BrowserRouter>,
             <hr/>,
           ])),
       );
