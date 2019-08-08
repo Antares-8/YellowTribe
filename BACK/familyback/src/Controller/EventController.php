@@ -88,8 +88,8 @@ class EventController extends AbstractController
     }
 
     /**
-     * show a particular event in detailed
-     * @Route("/calendar/event/{event}", name="event_show", methods={"GET", "POST"})
+     * show a particular detailed event
+     * @Route("/calendar/event/{slug}", name="event_show", methods={"GET", "POST"})
      */
     public function show(Event $event, Request $request)
     {

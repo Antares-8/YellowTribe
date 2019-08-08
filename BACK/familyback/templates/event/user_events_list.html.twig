@@ -7,7 +7,9 @@
     <p>Vous avez créé {{ events|length }} événements : </p>
 
     {% for event in events %}
-        <p>{{event.title}}<a href="{{ path('event_edit', {'event': event.id}) }}" class="btn btn-outline-warning btn-lg" role="button">Modifier cet événement</a></p>
+        <p>{{event.title}}<a href="{{ path('event_edit', {'event': event.id}) }}" class="btn btn-outline-warning btn-lg" role="button">Modifier cet événement</a>
+            <a href="{{ path('event_show', {'slug': event.slug}) }}" class="btn btn-outline-warning btn-lg" role="button"><i class="far fa-edit"></i></a>
+        </p>
     {% endfor %}
 
     <p><a href="{{ path('event_new') }}" class="btn btn-outline-warning btn-lg" role="button"><i class="fas fa-plus"></i> Créer un nouvel événement</a></p>
