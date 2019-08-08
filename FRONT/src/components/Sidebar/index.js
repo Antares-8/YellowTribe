@@ -6,13 +6,13 @@ import classNames from 'class-names';
 import './sidebar.scss';
 
 
-const Sidebar = ({ idOpenEvent, tags }) => {
+const Sidebar = ({ idOpenEvent, tags, categories }) => {
 
   // classNames //
   const withEvent = classNames({
     withEvent: idOpenEvent !== '',
   });
-
+  const [categoriesArray, setCategoriesArray] = useState([]);
   const [actualsTags, setActualsTags] = useState([]);
   const [tagsFind, setTagsFind] = useState([]);
   const [tagsCards, setTagsCards] = useState([]);
@@ -75,6 +75,7 @@ const Sidebar = ({ idOpenEvent, tags }) => {
   };
 
   useEffect(() => createTags(), [tags, actualsTags])
+  useEffect(() => setCategoriesArray(categories), [categories])
 
   return (
     <div className={`sidebar ${withEvent}`}>
@@ -83,7 +84,8 @@ const Sidebar = ({ idOpenEvent, tags }) => {
       </div>
       <Form>
         <Form.Field control={Checkbox} label={<label>All</label>} />
-        <Form.Field control={Checkbox} label={<label>choix2</label>} />
+        {console.log('cat', categoriesArray)}
+        {categories.forEach(categorie => <Form.Field control={Checkbox} label={<label>choix2</label>} />)}
       </Form>
       <div className="tribeTag">
         <div className="title">
@@ -108,6 +110,7 @@ const Sidebar = ({ idOpenEvent, tags }) => {
 Sidebar.propTypes = {
   idOpenEvent: PropTypes.string.isRequired,
   tags: PropTypes.array.isRequired,
+  categories: PropTypes.array.isRequired,
 };
 
 // == Export

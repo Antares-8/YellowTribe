@@ -17,6 +17,7 @@ const initialState = {
   tribeIdConnected: '',
   profile: [],
   birthday: [],
+  
 };
 
 
@@ -35,7 +36,6 @@ const ADD_CATEGORY = 'ADD_CATEGORY';
 const MODAL_EVENT = 'MODAL_EVENT';
 const OPEN_EVENT = 'OPEN_EVENT';
 const CLOSE_EVENT = 'CLOSE_EVENT';
-const ADD_CATEGORIES_IN_STATE = 'ADD_CATEGORIES_IN_STATE';
 export const FETCH_EVENT_CALENDAR = 'FETCH_EVENT_CALENDAR';
 const GET_DATA_EVENTS = 'GET_DATA_EVENTS';
 export const FETCH_NEWS = 'FETCH_NEWS';
@@ -45,6 +45,7 @@ const GET_ID_USER = 'GET_ID_USER';
 const GET_DATA_PROFILE = 'GET_DATA_PROFILE';
 const GET_DATA_BIRTHDAY = 'GET_DATA_BIRTHDAY';
 export const GET_PROFILE = 'GET_PROFILE';
+const GET_DATA_CATEGORIES = 'GET_DATA_CATEGORIES';
 
 
 // == Reducer
@@ -159,11 +160,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         idOpenEvent: '',
       };
-    case ADD_CATEGORIES_IN_STATE:
-      return {
-        ...state,
-        categories: action.categories,
-      };
+
     case GET_DATA_EVENTS:
       return {
         ...state,
@@ -182,23 +179,29 @@ const reducer = (state = initialState, action = {}) => {
         tags: action.data,
       };
 
-    case GET_ID_USER:{
-      console.log('j',action.user )
+    case GET_ID_USER:
       return {
         ...state,
         userIdConnected: action.user,
         tribeIdConnected: action.tribe,
       };
-      }
+      
     case GET_DATA_PROFILE:
       return {
         ...state,
         profile: action.data,
       };
+
     case GET_DATA_BIRTHDAY:
       return {
         ...state,
         birthday: action.data,
+      };
+
+    case GET_DATA_CATEGORIES:
+      return {
+        ...state,
+        categories: action.data,
       };
 
     default:
@@ -290,6 +293,10 @@ export const getBirthday = data => ({
 });
 export const getProfile = () => ({
   type: GET_PROFILE,
+});
+export const getDataCategories = data => ({
+  type: GET_DATA_CATEGORIES,
+  data,
 });
 
 // == Selectors
