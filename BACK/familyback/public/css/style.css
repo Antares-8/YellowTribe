@@ -490,6 +490,44 @@ body {
 /*** /contact-us***/
 
 
+/*** LEGAL MENTION ***/
+
+.legalmentionpage_container {
+    width: 50%;
+    height: auto;
+    margin: auto;
+    padding-top: 12em;
+}
+
+.legalmentionpage_container h1 {
+    color: #FFFDD8;
+    margin-bottom: 1em;
+}
+ 
+.legal_content {
+    background-color: #fff5d7;
+    color: #fcc53b;
+    padding: 3em;
+}
+  
+.legal_content div {
+    padding-bottom: 2em;
+    font-size: 1.5em;
+}
+  
+.legalmentionpage_container h1 {
+    font-size: 4em;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+  
+.legal_content h2 {
+    font-size: 1.2em;
+}
+
+/*** /legal_mention ***/
+
+
 /*** ERROR 404 CUSTOM ***/
 
 #custom-404 {
