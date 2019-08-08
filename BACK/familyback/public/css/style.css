@@ -326,6 +326,12 @@ body {
 
 .form-check {
     display: flex;
+}
+
+.event-calendar_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }  
   
   .event-detailed_section {
