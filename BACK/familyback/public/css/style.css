@@ -254,6 +254,7 @@ body {
 
 /*** TRIBE NEW ***/
 
+/* see section "INVITATION TEMPLATE" same css */
 
 /*** /tribe_new ***/
 
@@ -334,8 +335,7 @@ body {
   }
 
   .edit-icon {
-    margin-left: 3em;
-    margin-top : 2em;
+    margin-top : 0.8em;
   }
   
   .event-comment_section {
