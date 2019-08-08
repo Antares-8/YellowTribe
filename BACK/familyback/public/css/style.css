@@ -315,8 +315,18 @@ body {
   }
 
   .calendar-icon {
-    font-size: 800%;
+    font-size: 1000%;
+    display: flex;
+    justify-content: center;
   }
+
+/* .form-check-input {
+    border-radius: 5px;        
+} */
+
+.form-check {
+    display: flex;
+}  
   
   .event-detailed_section {
     border-bottom: 1px solid #e6b523;
@@ -417,6 +427,30 @@ body {
 }
 
 /*** /footer ***/
+
+
+/*** ERROR 404 CUSTOM ***/
+
+#custom-404 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 6em;
+    color: #FFFDD8;
+}
+  
+#custom-404 h1 {
+    font-size: 5em;
+}
+  
+#custom-404 .fas {
+    font-size: 6em;
+    margin-top: 2.5em;
+    margin-bottom: 2.5em;
+    color: #FFFDD8;
+}
+
+/*** /error_404 ***/
 
 
 /*** COMPONENTS ***/
