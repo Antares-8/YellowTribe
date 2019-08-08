@@ -37,7 +37,7 @@ const logMiddleware = store => next => (action) => {
         })
         .catch();
 
-      axios.get(`http://95.142.174.217/api/${tribeId}/categories`)
+      axios.get(`http://95.142.174.217/api/categories`)
         .then((response) => {
           const { data } = response;
           store.dispatch(getDataCategories(data));

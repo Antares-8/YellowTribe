@@ -11,7 +11,6 @@ const Header = ({ profile }) => {
 
   const [userProfile, setUserProfile] = useState([]);
   const [tribeProfile, setTribeProfile] = useState([]);
-  console.log(userProfile);
   
   useEffect(() => {
     const profilePart = profile.map(profile0 => profile0[0]);

@@ -12,6 +12,7 @@ const Sidebar = ({ idOpenEvent, tags, categories }) => {
   const withEvent = classNames({
     withEvent: idOpenEvent !== '',
   });
+  const [categoriesLabel, setCategoriesLabel] = useState([]);
   const [categoriesArray, setCategoriesArray] = useState([]);
   const [actualsTags, setActualsTags] = useState([]);
   const [tagsFind, setTagsFind] = useState([]);
@@ -74,8 +75,22 @@ const Sidebar = ({ idOpenEvent, tags, categories }) => {
     createTags();
   };
 
-  useEffect(() => createTags(), [tags, actualsTags])
-  useEffect(() => setCategoriesArray(categories), [categories])
+  let cat = [];
+  const displayCategories = () => {
+    if (categoriesArray !== []) {
+      
+      categoriesArray.forEach(categorie => { cat.push(
+        <Form.Field key={categorie.title} control={Checkbox} label={<label>{categorie.title}</label>} />
+      ) 
+      setCategoriesLabel(cat);
+    });
+    }
+  };
+
+  useEffect(() => createTags(), [tags, actualsTags]);
+  useEffect(() => setCategoriesArray(categories), [categories]);
+  useEffect(() => displayCategories(), [categoriesArray]);
+  
 
   return (
     <div className={`sidebar ${withEvent}`}>
@@ -84,8 +99,7 @@ const Sidebar = ({ idOpenEvent, tags, categories }) => {
       </div>
       <Form>
         <Form.Field control={Checkbox} label={<label>All</label>} />
-        {console.log('cat', categoriesArray)}
-        {categories.forEach(categorie => <Form.Field control={Checkbox} label={<label>choix2</label>} />)}
+        {categoriesLabel}
       </Form>
       <div className="tribeTag">
         <div className="title">
