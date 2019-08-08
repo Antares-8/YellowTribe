@@ -1,27 +1,6 @@
 
 
-/* CONTACT PAGE */
 
-.contactpage_container {
-  width: 70%;
-  height: 100%;
-  margin: auto;
-  padding-top: 12em;
-}
-
-.contactpage_content {
-  background-color: #fff5d7;
-  color: #fcc53b;
-  padding: 3em;
-}
-
-.card-developer {
-  width: 30%;
-}
-
-.card-developer .card-title {
-  text-transform: uppercase;
-}
 
 /* LEGAL MENTION PAGE */
 .legalmentionpage_container {

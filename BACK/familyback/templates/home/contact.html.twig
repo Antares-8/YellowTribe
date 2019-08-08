@@ -2,9 +2,15 @@
 
 {% block title %}{{ title }}{% endblock %}
 
+{% block stylesheets %}
+
+    {% include ('_bootstrap.html.twig') %}
+    
+{% endblock %}
+
 {% block header %}
 
-    {% include ('_nav.html.twig') %}
+    {% include "_nav.html.twig" %}
 
 {% endblock %}
 
