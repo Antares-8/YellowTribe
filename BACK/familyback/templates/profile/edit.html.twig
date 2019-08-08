@@ -31,23 +31,24 @@
 {% endblock %}
 
 {% block body %}
-<div class="profile-edit_container">
 
-    <h1 class="display-4 text-center mb-3">Modifier mes informations</h1>
+    <div class="profile-edit_container">
 
-    <div class="profile-edit_form">
+        <h1 class="display-4 text-center mb-3">Modifier mes informations</h1>
 
-        {{ form_start(form) }}
-            {{ form_widget(form) }}
-                <div class="float-right">
-                    <a href="{{ path('profile_index') }}" class="btn btn-outline-warning btn-lg" role="button">Annuler</a>
-                    <button class="btn btn-warning btn-lg">{{ button_label|default('Valider mes modifications') }}</button>
-                </div>
-        {{ form_end(form) }}
+        <div class="profile-edit_form">
+
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
+                    <div class="float-right">
+                        <a href="{{ path('profile_index') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button">Annuler</a>
+                        <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Valider mes modifications') }}</button>
+                    </div>
+            {{ form_end(form) }}
+
+        </div>
 
     </div>
-
-</div>
 
 {% include ('_footer.html.twig') %}
 

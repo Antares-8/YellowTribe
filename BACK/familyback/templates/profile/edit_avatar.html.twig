@@ -2,28 +2,38 @@
 
 {% block title %}{{ title }}{% endblock %}
 
+{% block stylesheets %}
+
+    {% include ('_bootstrap.html.twig') %}
+    
+{% endblock %}
+
 {% block header %}
+
     {% include "_nav.html.twig" %}
+
 {% endblock %}
 
 {% block body %}
 
 <div class="avatar-edit_container">
 
-    <h1 class="display-4 text-center mb-3">Modifier sa photo de profil</h1>
+    <h1 class="form-title display-4 text-center mb-3">Modifier son avatar</h1>
 
-    <div class="text-justify mb-4">Texte explicatif si besoin</div>
 
     <div>
         {{ form_start(form) }}
             {{ form_widget(form) }}
                 <div class="float-right">
-                        <button class="btn btn-warning btn-lg">{{ button_label|default('Modifier') }}</button>
-                        <a href="{{ path('profile_index') }}" class="btn btn-outline-warning btn-lg" role="button">Annuler</a>
+                        <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Modifier') }}</button>
+                        <a href="{{ path('profile_index') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button">Annuler</a>
                 </div> 
         {{ form_end(form) }}
     </div>
 
 </div>
+
+
+{% include ('_footer.html.twig') %}
 
 {% endblock %}
