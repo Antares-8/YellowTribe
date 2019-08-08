@@ -18,7 +18,7 @@
 
     <div class="homepage_container text-center">
 
-        <div class="intro"> {# to the left #}
+        <div class="intro"> {# left section #}
 
             <div class="homepage-intro_content">
 
@@ -50,11 +50,11 @@
 
         </div>
 
-        <div class="connexion"> {# to the right #}
+        <div class="connexion"> {# right section #}
 
-            <p class="pl-2"><a href="{{ path('app_login') }}" class="btn btn-outline-warning btn-lg btn_connexion" role="button">Connexion</a></p>
+            <div class="connexion_button mb-3"><a href="{{ path('app_login') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button">Connexion</a></div>
 
-            <p class="pl-2"><a href="{{ path('app_signup') }}" class="btn btn-warning btn-lg btn_signup" role="button">Inscription</a></p>
+            <div class="connexion_button "><a href="{{ path('app_signup') }}" class="btn btn-warning btn-lg btn_frontline" role="button">Inscription</a></div>
 
         </div>
     </div>
