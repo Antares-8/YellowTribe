@@ -242,27 +242,6 @@ body {
   margin-bottom: 2.5em;
 }
 
-/* FOOTER */
-.footer {
-    /* position: fixed; */
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    padding: 1em 0 1em 0;
-    background-color: black;
-    color: grey;
-    text-align: center;
-    margin-top: 5em;
-  }
-
-.footer a {
-  text-decoration: none;
-  color: grey;
-}
-
-.footer a:hover {
-  color: white;
-}
 
 /**** EVENT DETAILED TEMPLATE ****/
 .event-template_container {

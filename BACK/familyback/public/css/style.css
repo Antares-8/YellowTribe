@@ -99,10 +99,39 @@ body {
 
 /*** /homepage ***/
 
+/*** LOGIN ***/
+
+.login_container {
+    /* background-image: url('../media/utils/background3.png');
+    background-size: cover; */
+    height: 100%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10em;
+    color: #FFFDD8;
+}
+
+.login_container .form-title {
+    margin-bottom: 1em;
+}
+
+.login_container form input {
+    background-color: #FFFDD8;
+    border: none;
+}
+
+.login_container form input:valid {
+    background-color: #FFFDD8;
+}
+
+/*** /login ***/
+
 
 /*** FOOTER ***/
+
 .footer {
-    /* position: fixed; */
+    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -126,6 +155,7 @@ body {
 
 
 /*** COMPONENTS ***/
+
 .btn_backline {
     color: #FFFDD8;
     border-color: #FFFDD8;
@@ -148,4 +178,5 @@ body {
     border-color: #FFFDD8;
     background-color: #F9B233;
 }
+
 /*** /components ***/
