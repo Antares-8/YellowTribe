@@ -11,7 +11,6 @@ const Header = ({ profile }) => {
 
   const [userProfile, setUserProfile] = useState([]);
   const [tribeProfile, setTribeProfile] = useState([]);
-  console.log(userProfile);
   
   useEffect(() => {
     const profilePart = profile.map(profile0 => profile0[0]);
@@ -23,7 +22,7 @@ const Header = ({ profile }) => {
     } 
   }, [profile]);
   const Avatar = styled.div`
-    background-image: url("public/cochon.jpg");
+    background-image: url(${tribeProfile.avatar});
     background-size: cover;
   `;
 

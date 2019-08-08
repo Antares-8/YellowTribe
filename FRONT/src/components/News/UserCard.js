@@ -22,16 +22,14 @@ const UserCard = ({ data }) => {
 
   return (
     <div className="userCard">
-      <Link to={`/event/${event.id}`}>
         <div className="mainPart">
-          <img src="public/cochon.jpg" className="avatar" alt="profilpicture"/>
+          <img src={event.avatar} className="avatar" alt="profilpicture" />
           <div className="textPart">
             <div className="name">{event.firstname} {event.lastname}</div>
             <div className="explication"> à rejoint la tribu {event.tribe.name}</div>
             <div className="explication"> le {dateFns.format(new Date(event.createdAt), formatLarge, { locale: french })}</div>
           </div>
         </div>
-      </Link>
     </div>
   );
 };
