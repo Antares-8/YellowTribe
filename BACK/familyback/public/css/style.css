@@ -11,7 +11,7 @@ body {
 }
 
 .nav_container {
-    background-color: #E6B523;
+    background-color: #F9B233; /* #E6B523;*/
     position: fixed;
     width: 100%;
     padding: 0.8em 1.7em 0 1.7em;
@@ -91,10 +91,10 @@ body {
     }
 
     .homepage_container .connexion .connexion_button .btn {
-        text-transform: uppercase;
+        /* text-transform: uppercase; */
         font-weight: bold;
         width: 50%;
-        letter-spacing: 0.5em;
+        /* letter-spacing: 0.5em; */
     }
 
 /*** /HOMEPAGE ***/
