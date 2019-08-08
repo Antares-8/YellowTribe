@@ -40,9 +40,13 @@
 
             {{ form_start(form) }}
                 {{ form_widget(form) }}
+                
                     <div class="float-right">
-                        <a href="{{ path('profile_index') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button">Annuler</a>
+
                         <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Valider mes modifications') }}</button>
+
+                        <a href="{{ path('profile_index') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button">Annuler</a>
+
                     </div>
             {{ form_end(form) }}
 

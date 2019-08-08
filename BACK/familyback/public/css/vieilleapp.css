@@ -87,39 +87,6 @@ body {
   justify-content: center;
 }
 
-/* PROFILE TEMPLATE */
-
-
-/* AVATAR EDITION */
-.avatar-edit_container {
-  width: 50%;
-  margin: auto;
-  line-height: 2em;
-  height: 80%; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-
-/**** TRIBE TEMPLATE ****/
-.tribe-template_container {
-  margin-top: 8em;
-}
-
-.fa-invite:hover {
-  color: #FFFDD8;
-}
-
-.tag_badge {
-  font-size: 1em;
-  margin: 0.5em 0.5em 0 0;
-}
-
-.fa-plus-square {
-  width: 100%;
-}
 
 /****   ALL BUTTONS   ****/
 .btn {

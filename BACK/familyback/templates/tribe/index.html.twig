@@ -2,96 +2,111 @@
 
 {% block title %}La Tribu des {{ tribe.name }}{% endblock %}
 
+{% block stylesheets %}
+
+    {% include ('_bootstrap.html.twig') %}
+    
+{% endblock %}
+
 {% block header %}
 
-  <div class="pt-2 d-flex justify-content-between align-items-center nav_container">
-
-    <div class="float-left text-center"><i class="fas fa-sun fa-4x"></i><p class="logo_content">Yellow Tribe</p></div>
-        
-        <div class="d-flex">
-
-            <p class="pl-2"><a href="{{ path('calendar') }}" class="btn btn-outline-warning btn-lg" role="button">Calendrier</a></p>
-
-            <a href="{{ path('profile_index') }}" class="fa_profile"><i class="fas fa-user fa-3x pl-3"></i></a>
-
-            <a href="{{ path('app_logout') }}" class="fa_logout"><i class="fas fa-power-off fa-3x pl-3"></i></a>
-        
-        </div>
-
-    </div>
-
-  </div>
+    {% include "_nav.html.twig" %}
 
 {% endblock %}
 
 {% block body %}
 
 <div class="tribe-template_container">
+
     <h1 class="text-center display-4">Tribu {{ tribe.name }}</h1>
 
     <div class="row mt-4">
-        <div class="col-2">
+
+        <div class="col-2 tag_section">
+
             <h3 class="text-center font-weight-bold mb-3">TAGS</h3>
 
             {% if tribe.tags is empty %}
 
                 <div class="text-justify">
+
                     <div class="mb-3">Oh non! votre tribu n'a toujours pas de tag !</div>
-                    <div class="mb-3">Les tags servent à identifier les personnes liées à un événement. Ils représentent chaque membre de la tribu, et même ceux qui ne possèdent pas de compte. Vous pouvez donc créer un tag pour grand-mère Yeta qui refuse de toucher à un ordinateur ou bien pour les enfants de votre frère qui préfèrent jouer à Fortnite.</div>
+                    
+                    <div class="mb-3">Les tags servent à identifier les personnes liées à un événement. Ils représentent chaque membre de la tribu, et même ceux qui ne possèdent pas de compte. Vous pouvez donc créer un tag pour grand-mère Yeta qui refuse de toucher à un ordinateur ou bien pour les petits cousins qui préfèrent jouer à Fortnite.</div>
 
                     {{ form_start(form) }}
                         {{ form_widget(form) }}
                         <div class="float-right">
-                            <button class="btn btn-warning btn-lg">{{ button_label|default('Envoyer') }}</button>
+
+                            <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Ajouter') }}</button>
+                       
                         </div>        
                     {{ form_end(form) }}
+
                 </div>
 
             {% else %}
 
                 <div class="">
+
                     {{ form_start(form) }}
                         {{ form_widget(form) }}
                         <div class="d-flex justify-content-center">
-                            <button class="btn btn-warning btn-lg">{{ button_label|default('Ajouter') }}</button>     
+
+                            <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Ajouter') }}</button>     
+                        
                         </div>  
                     {{ form_end(form) }}
+
                 </div>
 
                 <div class="d-flex flex-wrap mt-3">
+
                     {% for tag in tribe.tags %}
-                        <div class="badge badge-info tag_badge">{{ tag.title }}</div>
+
+                        <div class="badge badge-warning tag_badge">{{ tag.title }}</div>
+                    
                     {% endfor %}
+
                 </div>
 
             {% endif %}
+
         </div>
 
-        <div class="col-10">
-            <a href="{{ path('send_invitation') }}" class="btn btn-outline-warning btn-lg mb-3" role="button"><div class=""><i class="fas fa-plus"></i> Inviter un nouvel utilisateur</div></a>
+        <div class="col-10 member_section">
+
+            <a href="{{ path('send_invitation') }}" class="btn btn-outline-warning btn-lg mb-3 btn_backline" role="button"><div class=""><i class="fas fa-plus"></i> Inviter un nouvel utilisateur</div></a>
 
             <div class="card-container d-flex flex-wrap">
 
                 {% for user in tribe.users %}
-                    <div class="card mb-3 bg-warning mr-3" style="max-width: 30%;">
-                        <div class="row no-gutters d-flex align-items-center">
-                            <div class="col-md-5">
-                                <img src="{{ asset(avatar_upload_path ~ (app.user.avatar ?: 'default-avatar.png')) | imagine_filter('thumb_back_list') }}" class="card-img" alt="avatar par défault">
-                            </div>
-                            <div class="col-md-7">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ user.firstname }} {{ user.lastname }} ({{ user.username }})</h5>
-                                <p class="card-text"></p>
-                                <p class="card-text"><small class="">Membre depuis le {{ user.createdAt|date("d M Y") }}</small></p>
-                            </div>
-                            </div>
+                    <div class="member_card">
+
+                        <div class="member_avatar">
+
+                            <img src="{{ asset(avatar_upload_path ~ (app.user.avatar ?: 'default-avatar.png')) | imagine_filter('thumb_back_list') }}" class="card-img avatar_square" alt="avatar par défault">
+
                         </div>
+
+                        <div class="member_information">
+
+                            <div class="member_name">{{ user.firstname }} {{ user.lastname }} ({{ user.username }})</div>
+                                                        
+                            <div class="member_created-date"><small class="">Membre depuis le {{ user.createdAt|date("d M Y") }}</small></div>
+
+                        </div>
+
                     </div>
+
                 {% endfor %}
                 
                 
             </div>
+
         </div>
+
     </div>
+
 </div>
 {% endblock %}

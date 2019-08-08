@@ -140,7 +140,6 @@ body {
     margin-bottom: 1em;
 }
 
-
 .profile_content, .profile_action {
     /* border-radius: 2%; */
     color: #E3A000;
@@ -168,10 +167,9 @@ body {
     margin: auto;
     padding-top: 8em;
     height: 100%;
-  }
+    color: #FFFDD8;
 
-
-
+}
 
 /*** /profile edition ***/
 
@@ -192,6 +190,145 @@ body {
 
 /*** /avatar_edition ***/
 
+
+/*** TRIBE INDEX ***/
+.tribe-template_container {
+    padding-top: 8em;
+    width: 80%;
+    margin: auto;
+    color: #FFFDD8;
+}
+
+.tag_badge {
+    font-size: 1em;
+    margin: 0.5em 0.5em 0 0;
+    color: #FFFDD8;
+    border: 1px solid #FFFDD8;
+}
+
+.tag_section {
+    padding-top: 1.2em;
+    height: auto;
+    border: 1px solid #FFFDD8;
+    border-radius: 0.5em;
+}
+
+.fa-plus-square {
+    width: 100%;
+}
+
+.member_card {
+    display: flex;
+    width: 23%;
+    margin: 0 1em 1em 0;
+    height: 8em;
+}
+
+.member_avatar {
+    width: 50%;
+    margin: 0.2em;
+}
+
+.member_information {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.member_name {
+    font-weight: bold;
+}
+
+.member_created-date {
+    justify-content: flex-end;
+}
+
+.avatar_square {
+    border-radius: 50%;
+    width: 100%;
+    height: 7em;
+}
+
+/*** /tribe_index ***/
+
+
+/*** EVENT NEW ***/
+
+.event-form_container {
+    width: 35%;
+    margin: auto;
+    padding-top: 8em;
+    height: 100%;
+    color: #FFFDD8;
+}
+
+/*** /event_new ***/
+
+
+/*** EVENT SHOW ***/
+
+.event-template_container {
+    width: 100%;
+    margin-top: 8em;
+    margin-left: 5em;
+    color: #fcc53b;
+  }
+  
+  .event-calendar_container {
+    /*border: 1px solid #FFFDD8;*/
+    background-color: #fff5d7;
+    border-radius: 10px 0 0 0;
+    padding: 1em;
+    margin-right: 1em;
+  }
+  
+  .event-detailed_container {
+    /*border: 1px solid #FFFDD8;*/
+    background-color: #fff5d7;
+    border-radius: 0 10px 0 0;
+    padding: 0 1em 1em 1em;
+  }
+  
+  .event-detailed_section {
+    border-bottom: 1px solid #e6b523;
+    padding: 1em;
+  }
+  
+  .event-date_day {
+    font-size: 1.5em;
+  }
+  
+  .event-date_number {
+    font-size: 3.5em;
+  }
+  
+  .event-date_month {
+    font-size: 2em;
+  }
+  
+  .event-title {
+    text-transform: uppercase;
+  }
+  
+  .event-comment_section {
+    padding-top: 1em;
+  }
+    
+  .comment-heading {
+    margin-top: 1.5em;
+    margin-bottom: 1.2em;      
+  }
+
+  .comment_content {
+    background-color: white;
+    padding: 1em 0 1em 1em;
+    margin-left: 1em;
+    margin-right: 10em;
+    margin-bottom: 2em;    
+    
+  }
+
+/*** /calendar/event/{event} ***/
 
 /*** FOOTER ***/
 
