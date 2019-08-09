@@ -8,15 +8,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     /**
-     * TODO: formulaire de connexion + POST (2ème method?)
      * @Route("/", name="homepage", methods={"GET"})
      */
     public function index()
     {
-        // if (user is connected ) {
-        //    redirection vers /calendar 
-        // }
-
 
         return $this->render('home/index.html.twig', [
             'title' => 'Welcome !',

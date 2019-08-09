@@ -56,6 +56,12 @@ class EventController extends AbstractController
         $connectedUser = $this->getUser();
         $userTribeId = $connectedUser->getTribe();
 
+        // redirect user who doesn't belong to a tribe yet to new tribe tpl 
+        if ($userTribeId == null) {
+
+            return $this->redirectToRoute('newTribe');
+        }
+
         $event = new Event();
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
@@ -90,6 +96,12 @@ class EventController extends AbstractController
     {
         $connectedUser = $this->getUser();
         $userTribeId = $connectedUser->getTribe();
+
+        // redirect new user who doesn't belong to a tribe yet to new tribe tpl 
+        if ($userTribeId == null) {
+
+            return $this->redirectToRoute('newTribe');
+        }
 
         // condition when user try to reach an event which doesn't belong to his tribe
         if ($userTribeId != $event->getTribe()) {
@@ -150,6 +162,14 @@ class EventController extends AbstractController
     public function userEventList(EventRepository $eventRepository)
     {
         $connectedUser = $this->getUser();
+        $userTribeId = $connectedUser->getTribe();
+
+        // redirect new user who doesn't belong to a tribe yet to new tribe tpl 
+        if ($userTribeId == null) {
+
+            return $this->redirectToRoute('newTribe');
+        }
+
         $events = $eventRepository->findEventByUser($connectedUser);
         
 
@@ -165,6 +185,15 @@ class EventController extends AbstractController
      */
     public function edit(Request $request, Event $event): Response
     {
+        $connectedUser = $this->getUser();
+        $userTribeId = $connectedUser->getTribe();
+
+        // redirect new user who doesn't belong to a tribe yet to new tribe tpl 
+        if ($userTribeId == null) {
+
+            return $this->redirectToRoute('newTribe');
+        }
+        
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
 
