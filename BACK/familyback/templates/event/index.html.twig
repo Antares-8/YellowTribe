@@ -3,22 +3,15 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block body %}
-{# <h1>Page Calendrier</h1>
-<a href="{{ path('homepage') }}"><p>Retour à l'accueil</p></a>
- #}
 
-  {% if user.tribe is null %}
+    {% if user.tribe is null %}
 
-    <div id="root" tribe="null" user="{{user.id}}"></div>
+        <div id="root" tribe="null" user="{{user.id}}"></div>
 
-  {% else %}
+    {% else %}
 
-   <div id="root" tribe="{{ tribe.id }}" user="{{ user.id }}"></div>
+        <div id="root" tribe="{{ tribe.id }}" user="{{ user.id }}"></div>
 
-  {% endif %}
-
-
-    {% include "_footer.html.twig" %}
-
+    {% endif %}
 
 {% endblock %}

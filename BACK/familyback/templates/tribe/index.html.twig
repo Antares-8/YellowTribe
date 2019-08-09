@@ -16,97 +16,98 @@
 
 {% block body %}
 
-<div class="tribe-template_container">
+    <div class="tribe-template_container">
 
-    <h1 class="text-center display-4">Tribu {{ tribe.name }}</h1>
+        <h1 class="text-center display-4">Tribu {{ tribe.name }}</h1>
 
-    <div class="row mt-4">
+        <div class="row mt-4">
 
-        <div class="col-2 tag_section">
+            <div class="col-2 tag_section">
 
-            <h3 class="text-center font-weight-bold mb-3">TAGS</h3>
+                <h3 class="text-center font-weight-bold mb-3">TAGS</h3>
 
-            {% if tribe.tags is empty %}
+                {% if tribe.tags is empty %}
 
-                <div class="text-justify">
+                    <div class="text-justify">
 
-                    <div class="mb-3">Oh non! votre tribu n'a toujours pas de tag !</div>
-                    
-                    <div class="mb-3">Les tags servent à identifier les personnes liées à un événement. Ils représentent chaque membre de la tribu, et même ceux qui ne possèdent pas de compte. Vous pouvez donc créer un tag pour grand-mère Yeta qui refuse de toucher à un ordinateur ou bien pour les petits cousins qui préfèrent jouer à Fortnite.</div>
-
-                    {{ form_start(form) }}
-                        {{ form_widget(form) }}
-                        <div class="float-right">
-
-                            <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Ajouter') }}</button>
-                       
-                        </div>        
-                    {{ form_end(form) }}
-
-                </div>
-
-            {% else %}
-
-                <div class="">
-
-                    {{ form_start(form) }}
-                        {{ form_widget(form) }}
-                        <div class="d-flex justify-content-center">
-
-                            <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Ajouter') }}</button>     
+                        <div class="mb-3">Oh non! votre tribu n'a toujours pas de tag !</div>
                         
-                        </div>  
-                    {{ form_end(form) }}
+                        <div class="mb-3">Les tags servent à identifier les personnes liées à un événement. Ils représentent chaque membre de la tribu, et même ceux qui ne possèdent pas de compte. Vous pouvez donc créer un tag pour grand-mère Yeta qui refuse de toucher à un ordinateur ou bien pour les petits cousins qui préfèrent jouer à Fortnite.</div>
 
-                </div>
+                        {{ form_start(form) }}
+                            {{ form_widget(form) }}
+                            <div class="float-right">
 
-                <div class="d-flex flex-wrap mt-3">
-
-                    {% for tag in tribe.tags %}
-
-                        <div class="badge badge-warning tag_badge">{{ tag.title }}</div>
-                    
-                    {% endfor %}
-
-                </div>
-
-            {% endif %}
-
-        </div>
-
-        <div class="col-10 member_section">
-
-            <a href="{{ path('send_invitation') }}" class="btn btn-outline-warning btn-lg mb-3 btn_backline" role="button"><div class=""><i class="fas fa-plus"></i> Inviter un nouvel utilisateur</div></a>
-
-            <div class="card-container d-flex flex-wrap">
-
-                {% for user in tribe.users %}
-                    <div class="member_card">
-
-                        <div class="member_avatar">
-
-                            <img src="{{ asset(avatar_upload_path ~ (app.user.avatar ?: 'default-avatar.png')) | imagine_filter('thumb_back_list') }}" class="card-img avatar_square" alt="avatar par défault">
-
-                        </div>
-
-                        <div class="member_information">
-
-                            <div class="member_name">{{ user.firstname }} {{ user.lastname }} ({{ user.username }})</div>
-                                                        
-                            <div class="member_created-date"><small class="">Membre depuis le {{ user.createdAt|date("d M Y") }}</small></div>
-
-                        </div>
+                                <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Ajouter') }}</button>
+                        
+                            </div>        
+                        {{ form_end(form) }}
 
                     </div>
 
-                {% endfor %}
-                
-                
+                {% else %}
+
+                    <div class="">
+
+                        {{ form_start(form) }}
+                            {{ form_widget(form) }}
+                            <div class="d-flex justify-content-center">
+
+                                <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Ajouter') }}</button>     
+                            
+                            </div>  
+                        {{ form_end(form) }}
+
+                    </div>
+
+                    <div class="d-flex flex-wrap mt-3">
+
+                        {% for tag in tribe.tags %}
+
+                            <div class="badge badge-warning tag_badge">{{ tag.title }}</div>
+                        
+                        {% endfor %}
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+            <div class="col-10 member_section">
+
+                <a href="{{ path('send_invitation') }}" class="btn btn-outline-warning btn-lg mb-3 btn_backline" role="button"><div class=""><i class="fas fa-plus"></i> Inviter un nouvel utilisateur</div></a>
+
+                <div class="card-container d-flex flex-wrap">
+
+                    {% for user in tribe.users %}
+                        <div class="member_card">
+
+                            <div class="member_avatar">
+
+                                <img src="{{ asset(avatar_upload_path ~ (app.user.avatar ?: 'default-avatar.png')) | imagine_filter('thumb_back_list') }}" class="card-img avatar_square" alt="avatar par défault">
+
+                            </div>
+
+                            <div class="member_information">
+
+                                <div class="member_name">{{ user.firstname }} {{ user.lastname }} ({{ user.username }})</div>
+                                                            
+                                <div class="member_created-date"><small class="">Membre depuis le {{ user.createdAt|date("d M Y") }}</small></div>
+
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+                    
+                    
+                </div>
+
             </div>
 
         </div>
 
     </div>
 
-</div>
 {% endblock %}

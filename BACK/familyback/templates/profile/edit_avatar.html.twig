@@ -16,29 +16,26 @@
 
 {% block body %}
 
-<div class="avatar-edit_container">
+    <div class="avatar-edit_container">
 
-    <h1 class="form-title display-4 text-center mb-3">Modifier son avatar</h1>
+        <h1 class="form-title display-4 text-center mb-3">Modifier son avatar</h1>
 
 
-    <div>
+        <div>
 
-        {{ form_start(form) }}
-            {{ form_widget(form) }}
-                <div class="float-right">
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
+                    <div class="float-right">
 
-                        <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Modifier') }}</button>
+                            <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Modifier') }}</button>
 
-                        <a href="{{ path('profile_index') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button">Annuler</a>
-                        
-                </div> 
-        {{ form_end(form) }}
+                            <a href="{{ path('profile_index') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button">Annuler</a>
+                            
+                    </div> 
+            {{ form_end(form) }}
+
+        </div>
 
     </div>
-
-</div>
-
-
-{% include ('_footer.html.twig') %}
 
 {% endblock %}

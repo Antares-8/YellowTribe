@@ -32,15 +32,16 @@
 
         {% block body %}     
 
+             
+
         {% endblock %}
 
+        {% include ('_footer.html.twig') %}  
 
         <script type="text/javascript" src="{{ asset('js/vendors.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
         {% block javascripts %}
-        
         {% endblock %}
-
 
     </body>
 </html>
