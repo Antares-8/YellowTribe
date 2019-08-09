@@ -36,16 +36,13 @@
 {% block body %}
 
 {# TODO: mettre en forme ce template #}
-<div class="event-form_container">
-    <h1 class="display-4 text-center mb-3">Créez un nouvel événement</h1>
+    <div class="event-form_container">
+        <h1 class="display-4 text-center mb-3">Créez un nouvel événement</h1>
 
-    <div>
-        {{ include('event/_form.html.twig') }}
+        <div>
+            {{ include('event/_form.html.twig') }}
+        </div>
+        
     </div>
-    
-</div>
-
-    {% include "_footer.html.twig" %}
-
 
 {% endblock %}
