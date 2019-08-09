@@ -19,13 +19,20 @@ class GuestController extends AbstractController
      */
     public function sendInvitation(Request $request): Response
     {
+        $user = $this->getUser();
+        $tribe = $user->getTribe();
+
+        // redirect user who doesn't belong to a tribe yet to new tribe tpl 
+        if ($tribe == null) {
+
+            return $this->redirectToRoute('newTribe');
+        }
+
         $invitation = new Guest();
         $form = $this->createForm(InvitationType::class, $invitation);
         $form->handleRequest($request); 
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user = $this->getUser();
-            $tribe = $user->getTribe();
             $invitation->setTribe($tribe);
              
             $entityManager = $this->getDoctrine()->getManager(); 

@@ -2,34 +2,30 @@
 
 {% block title %}{{ event.title }}{% endblock %}
 
+{% block stylesheets %}
+
+    {% include ('_bootstrap.html.twig') %}
+    
+{% endblock %}
+
 {% block header %}
 
-  <div class="pt-2 d-flex justify-content-between align-items-center nav_container">
-
-    <div class="float-left text-center"><i class="fas fa-sun fa-4x"></i><p class="logo_content">Yellow Tribe</p></div>
-        
-        <div class="d-flex">
-
-            <p class="pl-2"><a href="{{ path('calendar') }}" class="btn btn-outline-warning btn-lg" role="button">Calendrier</a></p>
-
-            <a href="{{ path('profile_index') }}" class="fa_profile"><i class="fas fa-user fa-3x pl-3"></i></a>
-
-            <a href="{{ path('app_logout') }}" class="fa_logout"><i class="fas fa-power-off fa-3x pl-3"></i></a>
-        
-        </div>
-
-    </div>
-
-  </div>
+    {% include "_nav.html.twig" %}
 
 {% endblock %}
 
 {% block body %}
 
     <div class="event-template_container">
+
         <div class="row">
+
             <div class="root col-2 event-calendar_container">
-                <i class="fas fa-calendar-alt fa-10x"></i>
+
+                <i class="fas fa-user-friends calendar-icon"></i>
+                {# <i class="fas fa-user-tag calendar-icon"></i> #}
+                {# <i class="fas fa-calendar-alt calendar-icon"></i> #}
+
                 <div class="event-tag_container">
 
                 {% if event.tribe.tags is empty %}
@@ -45,19 +41,22 @@
                     {{ form_start(tagForm) }}
                         {{ form_widget(tagForm) }}
                         <div class="d-flex justify-content-center">
-                            <button class="btn btn-warning btn-lg">{{ button_label|default('Tagger') }}</button>
+                            <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Tagger') }}</button>
                         </div>        
                     {{ form_end(tagForm) }}
+
                     </div>
 
                     {% for tag in event.tags %}
 
-                        <div class="badge badge-info tag_badge">{{ tag.title }}</div>
+                        <div class="badge badge-warning tag_badge">{{ tag.title }}</div>
                     
                     {% endfor %}
 
                 {% endif %}
+
                 </div>
+
             </div>
 
             <div class="col-9 event-detailed_container">
@@ -79,10 +78,11 @@
                     </div>
 
                     {% if event.user == app.user %}
-                        <div class="">
-                            <a href="{{ path('event_edit', {'event': event.id}) }}" class="btn btn-outline-warning btn-lg" role="button"><i class="far fa-edit"></i></a>
+                        <div class="edit-icon d-flex align-content-end">
+                            <a href="{{ path('event_edit', {'event': event.id}) }}" class="btn btn-outline-warning btn-lg" role="button"><i class="fas fa-edit"></i></a>
                         </div>
                     {% endif %}
+
                 </div>
 
                 <div class="event-detailed_section">
@@ -105,9 +105,10 @@
                     <div class="comment-detailed mb-2">
                         {% for comment in event.comments %}
 
-                            <div class="d-flex mb-2">
+                            <div class="d-flex mb-2 comment-heading">
                                 <div class="mr-2"><i class="fas fa-user"></i></div>
                                 <div class="mr-2 font-weight-bold"> {{ comment.user.username }}</div>
+
                                 <div> 
                                     {% if comment.createdAt|date('d/m/Y') == "now"|date('d/m/Y') %}
                                         | aujourd'hui 
@@ -116,6 +117,7 @@
                                     {% endif %}
                                     à {{ comment.createdAt|date('H:i') }} 
                                 </div>
+
                             </div>
 
                             <div class="comment_content mb-2">{{ comment.content }}</div>
@@ -123,20 +125,22 @@
                         {% endfor %}
                     </div>
 
-                    {{ form_start(commentForm) }}
-                        {{ form_widget(commentForm) }}
-                        <div class="float-right">
-                            <button class="btn btn-warning btn-lg">{{ button_label|default('Commenter') }}</button>
-                        </div>        
-                    {{ form_end(commentForm) }}
+                    <div class="comment-form">
+
+                        {{ form_start(commentForm) }}
+                            {{ form_widget(commentForm) }}
+
+                                <div class="float-left">
+                                    <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Commenter') }}</button>
+                                </div>   
+
+                        {{ form_end(commentForm) }}
+
+                    </div>
 
                 </div>
-
             </div>
         </div>
     </div>
-
-{% include ('_footer.html.twig') %}
-
 
 {% endblock %}

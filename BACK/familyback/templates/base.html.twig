@@ -10,9 +10,6 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/fonts.css') }}" rel="stylesheet" >
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-        {# TODO: delete links below #}
-        <link href="{{ asset('css/oldapp.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/newapp.css') }}" rel="stylesheet" >
 
     </head>
 
@@ -32,15 +29,16 @@
 
         {% block body %}     
 
+             
+
         {% endblock %}
 
+        {% include ('_footer.html.twig') %}  
 
         <script type="text/javascript" src="{{ asset('js/vendors.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
         {% block javascripts %}
-        
         {% endblock %}
-
 
     </body>
 </html>

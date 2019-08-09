@@ -1,27 +1,25 @@
 <div class="d-flex justify-content-between align-items-center nav_container">
 
-    <div class="float-left text-center"><p class="logo_content"></p></div>
+    <div class="float-left text-center"><a href="{{ path('homepage') }}"><p class="logo_content"></p></a></div>
 
-    {# {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="right_nav">
+            {# <div class="d-flex"> #}
 
-        <div class="d-flex">
+                <p class="pl-2"><a href="{{ path('profile_index') }}" class="btn btn-outline-warning btn-lg btn_frontline" role="button"><i class="fas fa-user-alt"></i></a></p>
 
-            <p class="pl-2"><a href="{{ path('profile_index') }}" class="btn btn-outline-warning btn-lg" role="button">Profil</a></p>
+                <p class="pl-2"><a href="{{ path('calendar') }}" class="btn btn-outline-warning btn-lg btn_frontline" role="button"><i class="fas fa-calendar-alt"></i></a></p>
 
-            <p class="pl-2"><a href="{{ path('calendar') }}" class="btn btn-outline-warning btn-lg" role="button">Calendrier</a></p>
+            {# </div> #}
 
+            {# <div class="d-flex"> #}
+
+                <p class="pl-2"><a href="{{ path('tribe') }}" class="btn btn-warning btn-lg btn_signup btn_frontline" role="button">{{ app.user.tribe }}</a></p>
+
+                <p class="pl-2"><a href="{{ path('app_logout') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button"><i class="fas fa-sign-out-alt"></i></a></p>
+
+            {# </div> #}
         </div>
-
-    {% else %}
-
-        <div class="d-flex">
-
-            <p class="pl-2"><a href="{{ path('app_login') }}" class="btn btn-outline-warning btn-lg btn_connexion" role="button">Connexion</a></p>
-
-            <p class="pl-2"><a href="{{ path('app_signup') }}" class="btn btn-warning btn-lg btn_signup" role="button">Inscription</a></p>
-
-        </div>
-
-    {% endif %} #}
+    {% endif %} 
     
 </div>

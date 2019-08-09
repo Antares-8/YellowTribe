@@ -2,22 +2,37 @@
 
 {% block title %}Log in!{% endblock %}
 
+{% block stylesheets %}
+
+    {% include ('_bootstrap.html.twig') %}
+    
+{% endblock %}
+
 {% block header %}
+
     {% include "_nav.html.twig" %}
+
 {% endblock %}
 
 {% block body %}
     <div class="login_container d-flex flex-column text-center">
-        {% if app.user %}
-            <div class="checkbox mb-3">Vous êtes déjà connecté sur le compte de "{{ app.user.username }}"</div> <a href="{{ path('app_logout') }}" class="btn btn-outline-warning btn-lg btn-login" role="button">Déconnexion</a>
-        {% else %}
-            <div>
-                <form method="post">
 
-                    <h1 class="h3 mb-3 font-weight-normal display-4">Se connecter</h1>
+        {# TODO: à modifier ou supprimer selon la redirection ok dans SecurityController.php #}
+        {% if app.user %}
+
+            <div class="checkbox mb-3">Vous êtes déjà connecté sur le compte de "{{ app.user.username }}"</div> <a href="{{ path('app_logout') }}" class="btn btn-outline-warning btn-lg btn-login" role="button">Déconnexion</a>
+
+        {% else %}
+
+            <div>
+
+                <form method="post">
+                    <h1 class="form-title h3 font-weight-normal display-4">Se connecter</h1>
 
                         {% if error %}
+
                             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+
                         {% endif %}
 
 
@@ -31,14 +46,17 @@
                         value="{{ csrf_token('authenticate') }}"
                     >
 
-                    <div class="d-flex justify-content-center">
-                        <button class="btn btn-lg btn-outline-warning btn_connexion" type="submit">
+                    <div class="d-flex justify-content-center btn-form">
+                        <button class="btn btn-lg btn-outline-warning btn_frontline" type="submit">
                             Connexion
                         </button>
                     </div>
+                    
                 </form>
+
             </div>
 
          {% endif %}
     </div>
+
 {% endblock %}

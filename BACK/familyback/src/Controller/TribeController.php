@@ -22,6 +22,12 @@ class TribeController extends AbstractController
         $connectedUser = $this->getUser();
         $userTribeId = $connectedUser->getTribe();
 
+        // redirect new user who doesn't belong to a tribe yet to new tribe tpl 
+        if ($userTribeId == null) {
+
+            return $this->redirectToRoute('newTribe');
+        }
+        
         $tag = new Tag();
         $form = $this->createForm(TagType::class, $tag);
         $form->handleRequest($request);

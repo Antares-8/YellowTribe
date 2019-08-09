@@ -2,23 +2,41 @@
 
 {% block title %}Mise à jour d'un événement{% endblock %}
 
+{% block stylesheets %}
+
+    {% include ('_bootstrap.html.twig') %}
+    
+{% endblock %}
+
+{% block header %}
+
+    {% include "_nav.html.twig" %}
+
+{% endblock %}
+
 {% block body %}
 
-    {# TODO: mettre en forme ce template #}
     <div class="event-form_container">
+
         <h1 class="display-4 text-center mb-3">Modifiez votre événement</h1>
 
         <div>
+
             {{ form_start(form) }}
             {{ form_widget(form) }}
                     <div class="float-right">
-                        <button class="btn btn-warning btn-lg">{{ button_label|default('Modifier') }}</button>
-                        <a href="{{ path('calendar') }}" class="btn btn-outline-warning btn-lg" role="button">Annuler</a>
+                        
+                        <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Modifier') }}</button>
+                        
+                        <a href="{{ path('calendar') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button">Annuler</a>
+                    
                     </div> 
-            {{ form_end(form) }}        
+            {{ form_end(form) }}  
+                  
         </div>
         
-        <a href="{{ path('events_list') }}"><button class="btn">Retour à la liste des événements</button></a>
+        {# <a href="{{ path('events_list') }}"><button class="btn">Mes événements</button></a> #}
+    
     </div>
 
 {% endblock %}

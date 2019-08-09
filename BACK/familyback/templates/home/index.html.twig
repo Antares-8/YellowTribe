@@ -17,34 +17,56 @@
 {% block body %}
 
     <div class="homepage_container text-center">
-        <div class="intro">
-            <div class="homepage_content">
-                <h2 class="display-4">Restez<br/>connecté avec <br/>votre tribu</h2>
-                <div class="fas_container">
-                    <div class=" row argument">
-                        <i class="col-2 fas fa-users fa-10x"></i>
-                        <div class="col-10"> Créez votre propre Tribu </div>
+
+        <div class="intro"> {# left section #}
+
+            <div class="homepage-intro_content">
+
+                <h2 class="homepage_catchphrase">
+                    <span>Restez</span>
+                    <span>connecté avec</span>
+                    <span>votre tribu</span>
+                </h2>
+
+                <div class="argument_container">
+
+                    <div class="argument_content">
+                        <i class="fas fa-users argument_icon"></i>
+                        <div class="argument_sentence"> Créez votre propre Tribu </div>
                     </div>
-                    <div class=" row argument">
-                        <i class="col-2 fas fa-calendar-check fa-10x"></i>
-                         <div class="col-10"> Organisez des événements ensemble </div>
+
+                    <div class="argument_content">
+                        <i class="fas fa-calendar-check argument_icon"></i>
+                        <div class="argument_sentence"> Organisez des événements ensemble </div>
                     </div>
-                    <div class="row argument">
-                        <i class="col-2 fas fa-map-marker-alt fa-10x"></i>
-                        <div class="col-10"> Partagez des souvenirs </div>
+
+                    <div class="argument_content">
+                        <i class="fas fa-map-marker-alt argument_icon"></i>
+                        <div class="argument_sentence"> Partagez des souvenirs </div>
                     </div>
+
                 </div>
             </div>
+
         </div>
 
-        <div class="connexion">
-            <p class="pl-2"><a href="{{ path('app_login') }}" class="btn btn-outline-warning btn-lg btn_connexion" role="button">Connexion</a></p>
-            <p class="pl-2"><a href="{{ path('app_signup') }}" class="btn btn-warning btn-lg btn_signup" role="button">Inscription</a></p>
+        <div class="connexion"> {# right section #}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+            <div class="mb-3 connected_username">{{ app.user.username }}</div>
+
+            <div class="connexion_button mb-3"><a href="{{ path('profile_index') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button">Accéder à votre profil</a></div>
+
+            {% else %}
+
+            <div class="connexion_button mb-3"><a href="{{ path('app_login') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button">Connexion</a></div>
+
+            <div class="connexion_button "><a href="{{ path('app_signup') }}" class="btn btn-warning btn-lg btn_frontline" role="button">Inscription</a></div>
+
+            {% endif %}
+
         </div>
     </div>
-
-{% include ('_footer.html.twig') %}
-
 
 {% endblock %}
 
