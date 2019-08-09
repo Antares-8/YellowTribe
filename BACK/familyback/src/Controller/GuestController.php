@@ -11,10 +11,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class GuestController extends AbstractController
 {
-    // TODO: list of guest? "/tribe/guests" + can add a name with email to personalize invitation ("Bonjour Martine, username vous invite à rejoindre la tribu!")
-    // TODO: add properties $name + $message ?
+    // @TODO: list of guest? "/tribe/guests" + can add a name with email to personalize invitation ("Bonjour Martine, username vous invite à rejoindre la tribu!")
+    // @TODO: add properties $name + $message ?
 
     /** 
+     * Send an invitation to a guest
+     * 
      * @Route("/tribe/invitation", name="send_invitation", methods={"GET", "POST"})
      */
     public function sendInvitation(Request $request): Response
