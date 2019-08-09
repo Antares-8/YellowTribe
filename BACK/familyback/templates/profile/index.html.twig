@@ -19,7 +19,37 @@
     <div class="profile_container">
 
         <div class="profile-content_information">
-            
+
+            <div class="user_avatar-section">
+
+                <div class="user_avatar-content"><img src="{{ asset(avatar_upload_path ~ (app.user.avatar ?: 'default-avatar.png')) | imagine_filter('thumb_back_list') }}" class="user_avatar"/></div>
+
+                <div class="user_avatar-edit"><a href="{{ path('profile_avatar_edit') }}" class="user_avatar-link"><i class="fas fa-plus-circle"></i></a></div>
+
+            </div>
+
+            <div class="user_username">{{ app.user.username }}</div>
+
+            <div class="user_event-action">
+
+                <div><a href="{{ path('events_list') }}" class="btn btn-outline-warning btn-lg btn_frontline" role="button">Mes événements ({{ app.user.events|length }})</a></div>
+
+                <div><a href="{{ path('event_new') }}" class="btn btn-outline-warning btn-lg btn_frontline" role="button">Créer un événement</a></div>
+
+            </div>
+
+            <div class="user_identity">
+                <i class="fas fa-user"></i> 
+                <div>{{ app.user.firstname }} {{ app.user.lastname }}</div>
+            </div>
+
+            <div class="user_identity">
+                <i class="fas fa-at"></i> 
+                <div>{{ app.user.email }}</div>
+            </div>
+
+            <div><a href="{{ path('profile_edit') }}" class="btn btn-outline-warning btn-lg btn_frontline" role="button">Modifier mes informations</a></div>
+
         </div>
 
         <div class="profile-content_tribe">

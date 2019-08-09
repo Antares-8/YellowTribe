@@ -135,9 +135,9 @@ body {
 /*** PROFILE ***/
 
 .profile_container {
-    width: 90%;
+    width: 100%;
     height: 100%;
-    margin: auto;
+    /* margin: auto; */
     /* padding-top: 12em; */
     display: flex;
     color: #FFFDD8;
@@ -151,9 +151,64 @@ body {
     align-items: center;
 }
 
+.profile-content_information .user_avatar-section {
+    display: flex;
+    width: 100%;
+    height: 12em;
+    justify-content: center;
+    margin-bottom: 1.2em;
+    margin-left: 3em;
+}
+.profile-content_information .user_avatar-section .user_avatar-content {
+    position: relative; 
+}
+
+.profile-content_information .user_avatar-section .user_avatar {
+    border-radius: 50%;
+    width: 12em;
+    height: 100%; 
+}
+
+.profile-content_information .user_avatar-section .user_avatar-edit {
+    position: relative;
+    top: 0;
+    right: 2.6em;
+}
+
+.profile-content_information .user_avatar-section .user_avatar-link {
+    color:  rgba(255, 253, 216, 0.664); 
+    font-size: 3em;
+}
+
+.profile-content_information .user_avatar-section .user_avatar-link:hover {
+    color: #FFFDD8;
+}
+
+.profile-content_information .user_username {
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.user_event-action {
+    display: flex;
+    width: 70%;
+    justify-content: space-around;
+    margin-block-end: 3em;
+}
+
+.profile-content_information .user_identity {
+    font-size: 2em;
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+
 .profile-content_tribe {
+    background-image: url('../media/utils/background3.png');
+    background-size:cover;
     width: 50%;
-    border-left: 2px solid orange;
     display: flex;
     flex-direction: column;
     justify-content: center;
