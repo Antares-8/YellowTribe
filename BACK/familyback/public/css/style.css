@@ -217,6 +217,14 @@ body {
     color: #FFFDD8;
 }
 
+.tribe_details {
+    display: flex;
+    justify-content: center;
+    width: 75%;
+    padding: 3em;
+    margin: auto;
+}
+
 .tag_badge {
     font-size: 1em;
     margin: 0.5em 0.5em 0 0;
@@ -259,6 +267,12 @@ body {
 
 .member_created-date {
     justify-content: flex-end;
+}
+
+.member_section {
+    /* margin-right: 2em; */
+    /* border: 1px solid #FFFDD8;
+    border-radius: 0.5em; */
 }
 
 .avatar_square {
