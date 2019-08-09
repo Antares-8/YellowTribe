@@ -295,6 +295,7 @@ body {
 .tribe-template_container .tribe_name {
     font-size: 4em;
     font-weight: bold;
+    padding-right: 4em;
 }
 
 .tribe_details {
@@ -304,11 +305,12 @@ body {
     margin: auto;
 }
 
-.tag_badge {
-    font-size: 1em;
-    margin: 0.5em 0.5em 0 0;
+.tribe_tag_badge {
+    font-size: 0.9em;
     color: #FFFDD8;
     border: 1px solid #FFFDD8;
+    background-color: #F9B233;
+    margin: 0.1em 0.1em;
 }
 
 .tag_section {
@@ -318,6 +320,36 @@ body {
     border-radius: 0.5em;
     width: 15%;
     margin-top: 2.5em;
+}
+
+.tag_section h3 {
+    font-size: 1.6em;
+    border: 1px solid #FFFDD8;
+    border-radius: 10px;
+    width: 5em; 
+    margin: auto;
+    background-color: #F9B233;
+    padding: 0.3em 0 0.2em 0;
+    margin-bottom: 0.5em;
+}
+
+.tag_section .tag_information {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 0.5em;
+    font-size: 0.9em;
+}
+
+.tag_section form input {
+    width: 80%;
+    margin: auto;
+    font-size: 0.8em;
+}
+
+.tag_section form small {
+    width: 80%;
+    margin: auto;
+    font-size: 0.8em;
 }
 
 .fa-plus-square {
@@ -465,7 +497,13 @@ body {
     margin: 0.8em;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
+    font-size: 0.9em;
+    color: #FFFDD8;
+    border: 1px solid #FFFDD8;
+    background-color: #F9B233;
+    margin: 0.1em 0.1em;
 }  
   
   .event-detailed_section {
