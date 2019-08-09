@@ -12,9 +12,12 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Repository\GuestRepository;
 
+
 class SecurityController extends AbstractController
 {
     /**
+     * Login
+     * 
      * @Route("/login", name="app_login")
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
@@ -32,6 +35,7 @@ class SecurityController extends AbstractController
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
+
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
@@ -39,6 +43,8 @@ class SecurityController extends AbstractController
     }
 
     /**
+     * Connexion
+     * 
      * @Route("/signup", name="app_signup", methods={"GET", "POST"})
      */
     public function signup(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuestRepository $guestRepository): Response
@@ -54,7 +60,7 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('profile_index');
             }
 
-        // TODO: si déjà connecté (donc possède un compte), rediriger l'utilisateur vers son profil 
+        // @TODO: if already connected, redirect the user to his profile 
 
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -69,12 +75,12 @@ class SecurityController extends AbstractController
 
             $user->setPassword($encodedPassword);
 
-            // find all guest email (is it a secure method?)
+            // find all guests's email (is it a secure method ?)
             $guestMails = $guestRepository->findAll(); 
             // new user's mail 
             $userMail = $user->getEmail();
 
-            // check if $userMail match with a $guestMail. If it does, setTribe for the new user
+            // check if $userMail matches with a $guestMail. If it does, setTribe for the new user
             foreach ($guestMails as $checkMail) {
                 if ($userMail == $checkMail->getEmail()) {
 
@@ -89,11 +95,10 @@ class SecurityController extends AbstractController
 
                     $this->addFlash(
                         'success',
-                        'Bienvenue dans la tribu "' . $user->getTribe() . '"! Vous pouvez vous connecter.'
+                        'Bienvenue dans la tribu "' . $user->getTribe() . '" ! Vous pouvez vous connecter.'
                     );
 
                     return $this->redirectToRoute('app_login');
-
                 } 
             }
 
@@ -103,7 +108,7 @@ class SecurityController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Bienvenue chez Yellow Tribe! Vous pouvez vous connecter avec votre email et votre mot de passe'
+                'Bienvenue chez Yellow Tribe ! Vous pouvez vous connecter avec votre email et votre mot de passe'
             );
             
             return $this->redirectToRoute('app_login');
