@@ -88,11 +88,11 @@
                 <div class="event-detailed_section">
                     {% if event.endingDate is empty %}
 
-                        <div class="mb-2"><i class="fas fa-calendar-alt pr-2"></i> le {{ event.beginingDate|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM') }} à {{ event.beginingDate|date('H') }}h{{ event.beginingDate|date('i') }}</div>
+                        <div class="mb-2"><i class="fas fa-calendar-alt pr-2"></i> le {{ event.beginingDate|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }} à {{ event.beginingDate|date('H') }}h{{ event.beginingDate|date('i') }}</div>
 
                     {% else %}
 
-                        <div class="mb-2"><i class="fas fa-calendar-alt pr-2"></i> du {{ event.beginingDate|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM') }} au {{ event.endingDate|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM') }}</div>
+                        <div class="mb-2"><i class="fas fa-calendar-alt pr-2"></i> du {{ event.beginingDate|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }} au {{ event.endingDate|localizeddate('none', 'none', 'fr', null, 'EEEE d MMMM Y') }}</div>
 
                     {% endif %}
 
