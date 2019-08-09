@@ -111,6 +111,8 @@ class APIController extends AbstractController
 
 
     /**
+     * For V2 ! 
+     * 
       * Data API connected user with tribe's name
 
       * @Route("/{tribe}/{user}", name="user_data")

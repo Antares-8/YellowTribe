@@ -60,7 +60,7 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('profile_index');
             }
 
-        // @TODO: si déjà connecté (donc possède un compte), rediriger l'utilisateur vers son profil 
+        // @TODO: if already connected, redirect the user to his profile 
 
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
