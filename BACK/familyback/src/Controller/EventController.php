@@ -1,8 +1,5 @@
 <?php
-/*
-    Controller used to send data for front (calendar)
 
-*/
 namespace App\Controller;
 
 use App\Entity\Event;
@@ -193,7 +190,7 @@ class EventController extends AbstractController
 
             return $this->redirectToRoute('newTribe');
         }
-        
+
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
 
