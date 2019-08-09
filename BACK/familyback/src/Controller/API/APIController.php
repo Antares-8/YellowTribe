@@ -28,7 +28,8 @@ class APIController extends AbstractController
 {
 
     /**
-     * Data API for events to add them in calendar
+     * Data API to show events by tribe when user is connected 
+     * 
      * @Route("/{tribe}/events", name="events_list")
      */
     public function eventsList(EventRepository $repository, Tribe $tribe): JsonResponse
@@ -40,12 +41,12 @@ class APIController extends AbstractController
 
     /**
      * Data API for newsfeed | search all news (comments, members, events) from the last 10 days 
+     * 
      * @Route("/{tribe}/news", name="news_list")
      */
     public function newsList(UserRepository $userRepository, CommentRepository $commentRepository, EventRepository $eventRepository, Tribe $tribe): JsonResponse
     {
-        //dd($tribe->getId());
-        //$news = $eventRepository->findAllNews($tribe);
+
         $lastEvents = $eventRepository->findTribeEventsByDate($tribe);
         $lastComments = $commentRepository->findTribeCommentsByDate($tribe);
         $lastUsers = $userRepository->findTribeUsersByDate($tribe);
@@ -68,13 +69,13 @@ class APIController extends AbstractController
 
         }
 
-        //dd($events);
         return $this->json($news);
     }
 
  
     /**
      * Data API for tags to add them in calendar and newsfeed views
+     * 
      * @Route("/{tribe}/tags", name="tags_list")
      */
     public function tagsList(TagRepository $repository, Tribe $tribe): JsonResponse
@@ -86,6 +87,7 @@ class APIController extends AbstractController
 
     /**
      * Data API for birth dates to add them in calendar
+     * 
      * @Route("/{tribe}/birthdays", name="birthdays_list")
      */
     public function birthdaysList(UserRepository $userRepository, Tribe $tribe): JsonResponse
@@ -96,7 +98,8 @@ class APIController extends AbstractController
     }
 
     /**
-     * Data API for categories
+     * Data API for categories to add them in calendar
+     * 
      * @Route("/categories", name="categories_list")
      */
     public function categoriesList(CategoryRepository $categoryRepository)
@@ -109,6 +112,7 @@ class APIController extends AbstractController
 
     /**
       * Data API connected user with tribe's name
+
       * @Route("/{tribe}/{user}", name="user_data")
       */
     public function userData(UserRepository $userRepository, User $user, Tribe $tribe)
@@ -121,7 +125,6 @@ class APIController extends AbstractController
         $userData[] = $currentUser;
         $userData[] = $currentTribe;
         
-
         return $this->json($userData);
     }
 }
