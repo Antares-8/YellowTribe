@@ -1,6 +1,7 @@
 .sidebar {
   position: fixed; 
-  top: 22em;
+  bottom: 0;
+  margin-bottom: 1.7em;
   right: 1.7em;
   width: 19%;
   z-index: 200;
@@ -20,7 +21,7 @@
 }
 
 .sidebar .ui.checkbox label {
-  color: var(--text-dark);
+  color: var(--text-light);
 }
 
 /// WITH EVENT OPEN /// 
@@ -33,4 +34,18 @@
 
 .sidebar .searchBar {
   position: inherit;
+}
+
+// categories // 
+
+.sidebar .ui.form {
+  display: flex; 
+  flex-direction: column; 
+}
+
+.sidebar .categorie {
+  border-radius: 0.8em;
+  background-color: var(--background-light);
+  padding: 0.5em 0.7em;
+  margin: 0.2em 0;
 }

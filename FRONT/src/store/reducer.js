@@ -17,7 +17,7 @@ const initialState = {
   tribeIdConnected: '',
   profile: [],
   birthday: [],
-  
+  activeCategories: 'all',
 };
 
 
@@ -46,6 +46,7 @@ const GET_DATA_PROFILE = 'GET_DATA_PROFILE';
 const GET_DATA_BIRTHDAY = 'GET_DATA_BIRTHDAY';
 export const GET_PROFILE = 'GET_PROFILE';
 const GET_DATA_CATEGORIES = 'GET_DATA_CATEGORIES';
+const CHANGE_ACTIVE_CATEGORIES = 'CHANGE_ACTIVE_CATEGORIES';
 
 
 // == Reducer
@@ -203,6 +204,11 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         categories: action.data,
       };
+    case CHANGE_ACTIVE_CATEGORIES:
+      return {
+        ...state,
+        activeCategories: action.data,
+      };
 
     default:
       return state;
@@ -296,6 +302,10 @@ export const getProfile = () => ({
 });
 export const getDataCategories = data => ({
   type: GET_DATA_CATEGORIES,
+  data,
+});
+export const changeActiveCategories = data => ({
+  type: CHANGE_ACTIVE_CATEGORIES,
   data,
 });
 

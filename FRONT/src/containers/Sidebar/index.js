@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Sidebar from 'src/components/Sidebar';
 
 // Action Creators
-import { showModalNewEvent } from 'src/store/reducer';
+import { changeActiveCategories } from 'src/store/reducer';
 
 
 const mapStateToProps = ({ modalNewEvent, idOpenEvent, tags, categories }) => ({
@@ -17,11 +17,8 @@ const mapStateToProps = ({ modalNewEvent, idOpenEvent, tags, categories }) => ({
 
 
 const mapDispatchToProps = dispatch => ({
-  showModalNewEvent: () => {
-    dispatch(showModalNewEvent());
-  },
-  addCategorieInState: categoriesTable => {
-    dispatch(addCategorieInState(categoriesTable));
+  changeActiveCategories: (data) => {
+    dispatch(changeActiveCategories(data));
   },
 });
 
