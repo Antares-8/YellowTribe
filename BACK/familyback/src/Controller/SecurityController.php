@@ -19,10 +19,11 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // TODO: réessayer le redirection si l'utilisateur est déjà connecté et se retrouve sur cette page
-        // if ($this->getUser()) {
-        //    $this->redirectToRoute('target_path');
-        // }
+        // if user connected, he is redirected to calendar view 
+        if ($this->getUser()) {
+
+           return $this->redirectToRoute('calendar');
+        }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
