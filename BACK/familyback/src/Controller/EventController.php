@@ -20,9 +20,12 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+
 class EventController extends AbstractController
 {
     /**
+     * Get events by tribe
+     * 
      * @Route("/calendar", name="calendar", methods={"GET","POST"})
      */
     public function indexCalendar(EventRepository $eventRepository): Response
@@ -31,7 +34,7 @@ class EventController extends AbstractController
         $userTribeId = $connectedUser->getTribe();
         //dump($userTribeId);
 
-        // redirect new user who doesn't belong to a tribe yet to new tribe tpl 
+        // redirect new user who doesn't belong to a tribe yet to the new tribe tpl 
         if ($userTribeId == null) {
 
             return $this->redirectToRoute('newTribe');
@@ -45,7 +48,8 @@ class EventController extends AbstractController
     }
 
     /**
-     * create a new event
+     * Create a new event
+     * 
      * @Route("/calendar/event/new", name="event_new", methods={"GET", "POST"})
      */
     public function new(Request $request): Response
@@ -80,13 +84,13 @@ class EventController extends AbstractController
         }
 
         return $this->render('event/new.html.twig', [
-            //'event' => $event,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * show a particular event in detailed
+     * show a detailed event
+     * 
      * @Route("/calendar/event/{event}", name="event_show", methods={"GET", "POST"})
      */
     public function show(Event $event, Request $request)
@@ -106,6 +110,7 @@ class EventController extends AbstractController
             return $this->render('bundles/TwigBundle/Exception/error404.html.twig'); 
         }
 
+        // possibility to add a comment
         $comment = new Comment();
         $commentForm = $this->createForm(CommentType::class, $comment);
         $commentForm->handleRequest($request);
@@ -154,6 +159,8 @@ class EventController extends AbstractController
     }
 
     /**
+     * Read events by connceted user
+     * 
      * @Route("profile/myevents", name="events_list", methods={"GET"})
      */
     public function userEventList(EventRepository $eventRepository)
@@ -177,7 +184,8 @@ class EventController extends AbstractController
     }
 
     /**
-     * update an event (if you are its creator)
+     * Update an event (if you are its creator)
+     * 
      * @Route("calendar/event/{event}/edit", name="event_edit", methods={"GET", "POST"}, requirements={"event"="\d+"})
      */
     public function edit(Request $request, Event $event): Response
@@ -211,23 +219,6 @@ class EventController extends AbstractController
         ]);
     }
 
-    /**
-     * TODO: remove this function (user can't delete event)
-     * @Route("/event/{id}", name="event_delete", methods={"DELETE"}, requirements={"id"="\d+"})
-     */
-    public function delete(Request $request, Event $event): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$event->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($event);
-            $entityManager->flush();
-
-            $this->addFlash(
-                'danger',
-                'L\'événement a bien été supprimé'
-            );
-        }
-
-        return $this->redirectToRoute('event');
-    }
+    // No delete function : we don't want the user to delete an event. Only an admin would do it.
+    // @todo : admin part (cf. easyadmin bundle)
 }
