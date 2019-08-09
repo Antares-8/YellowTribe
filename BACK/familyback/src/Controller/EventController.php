@@ -34,9 +34,11 @@ class EventController extends AbstractController
         $userTribeId = $connectedUser->getTribe();
         //dump($userTribeId);
 
-        // search and find all events binded to user's tribe
-        $events = $eventRepository->findAllEventsByTribe($userTribeId);
-        $jsonEvents = $this->json($events);
+        // redirect new user who doesn't belong to a tribe yet to new tribe tpl 
+        if ($userTribeId == null) {
+
+            return $this->redirectToRoute('newTribe');
+        }
 
         return $this->render('event/index.html.twig', [
             'title' => 'Calendrier',
