@@ -51,10 +51,19 @@
         </div>
 
         <div class="connexion"> {# right section #}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+            <div class="mb-3 connected_username">{{ app.user.username }}</div>
+
+            <div class="connexion_button mb-3"><a href="{{ path('profile_index') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button">Accèder à votre profil</a></div>
+
+            {% else %}
 
             <div class="connexion_button mb-3"><a href="{{ path('app_login') }}" class="btn btn-outline-warning btn-lg btn_backline" role="button">Connexion</a></div>
 
             <div class="connexion_button "><a href="{{ path('app_signup') }}" class="btn btn-warning btn-lg btn_frontline" role="button">Inscription</a></div>
+
+            {% endif %}
 
         </div>
     </div>
