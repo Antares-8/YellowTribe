@@ -53,7 +53,7 @@ const Nav = ({ prevCalendarType, nextCalendarType, calendarType }) => {
       <div className={`navigation ${eventPartHidden}`}>
         <nav>
           <Menu tabular>
-            <Link to="/calendar" name="calendar" className="link" onClick={navHandle}><Menu.Item active={activeItem.activeItem === 'calendar' || activeItem === 'calendar'}>calendar</Menu.Item></Link>
+            <Link to="/calendar" name="calendar" className="link" onClick={navHandle}><Menu.Item active={activeItem.activeItem === 'calendar' || activeItem === 'calendar'}>calendrier</Menu.Item></Link>
             <Link to="/news" name="news" className="link" onClick={navHandle}><Menu.Item active={activeItem.activeItem === 'news' || activeItem === 'news'}>fil d'actu</Menu.Item></Link>
           </Menu>
         </nav>

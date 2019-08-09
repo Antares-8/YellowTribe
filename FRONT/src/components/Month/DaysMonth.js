@@ -12,7 +12,9 @@ const DaysMonth = ({ currentDate }) => {
 
   const dateFormat = 'dddd';
   const days = [];
-  const startDate = dateFns.startOfWeek(currentDate);
+  const startDate = dateFns.startOfWeek(currentDate, {weekStartsOn: 1});
+
+  console.log(startDate);
 
   const createDate = () => {
     for (let i = 0; i < 7; i += 1) {

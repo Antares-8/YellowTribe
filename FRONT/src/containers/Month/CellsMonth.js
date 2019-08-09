@@ -8,7 +8,7 @@ import CellsMonth from 'src/components/Month/CellsMonth';
 import { onDateClick, openEvent, fetchEventsCalendar } from 'src/store/reducer';
 
 
-const mapStateToProps = ({ currentDate, selectedDate, eventDate, idOpenEvent, events, birthday }) => {
+const mapStateToProps = ({ currentDate, selectedDate, eventDate, idOpenEvent, events, categories, activeCategories, birthday }) => {
   return {
     currentDate,
     selectedDate,
@@ -16,6 +16,8 @@ const mapStateToProps = ({ currentDate, selectedDate, eventDate, idOpenEvent, ev
     idOpenEvent,
     events,
     birthday,
+    activeCategories,
+    categories,
   };
 };
 

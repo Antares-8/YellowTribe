@@ -17,6 +17,8 @@ const createTable = (
   selectedDate,
   events,
   birthday,
+  activeCategories,
+  categories,
 ) => {
   const rows = [];
 
@@ -59,17 +61,16 @@ const createTable = (
           col={i}
           onClick={() => dateClickHandler(cloneDay)}
         >
-          {/* {birthday.map( (hbirthday) => {
-            
+          {birthday.map( (hbirthday) => {
             const birthdayFns = new Date(hbirthday.birthDate);
-            console.log(dateFns.isSameDay(day.key, birthdayFns));
-            if (dateFns.isSameMonth(day.key, birthdayFns)
-            && dateFns.isSameDay(day.key, birthdayFns)) {
-              return (<div key={hbirthday.birthDate}>oui</div>);
+            const birthdayDay = dateFns.getDayOfYear(birthdayFns);
+            console.log(hbirthday);
+            const dateDay = dateFns.getDayOfYear(day);
+            if (birthdayDay === dateDay) {
+              return (<div key={hbirthday.birthDate}>🎉 {hbirthday.firstname}</div>);
             }
-            })} */}
+            })}
           <span className="number">{formattedDate}</span>
-          <span className="bg">{formattedDate}</span>
         </div>,
       );
       day = dateFns.addDays(day, 1);
@@ -99,7 +100,7 @@ const createTable = (
           + 1;
           const colSpan = colSpanCalc === 0 ? colSpanEventCenterRow : colSpanCalc - col + 1;
           // if the test is empty we display the line
-          const hidden = col === 0 ? 'none' : 'inline';
+          let hidden = col === 0 ? 'none' : 'inline';
 
           // classNames to know if the event is the event display
           const eventDisplay = classNames({
@@ -110,9 +111,18 @@ const createTable = (
           
           keyEv +=1
           // I create a styled components to fixe directly the col and span on the grid-colum style
+          // category.color
+          console.log('activeCategories', activeCategories);
+          if (activeCategories == event.category.title || activeCategories == 'All') {
+            hidden = 'inline';
+          }
+          else {
+            hidden = 'none';
+          }
           const Events = styled.div`
             grid-column: ${col} / span ${colSpan};
             grid-row: ${rowEvent} / span 3;
+            background-color: ${event.category.color}
             display: ${hidden};
           `;
           // I return the event in the DOM
@@ -147,14 +157,17 @@ const CellsMonth = ({
   onDateClick,
   openEvent,
   idOpenEvent,
-  fetchEventsCalendar,
+  activeCategories,
   events,
   birthday,
+  categories,
 }) => {
 
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
+    console.log('active', categories);
+
     setRows(createTable(
       currentDate,
       onDateClick,
@@ -163,6 +176,8 @@ const CellsMonth = ({
       selectedDate,
       events,
       birthday,
+      activeCategories,
+      categories,
     ));
   }, [
     currentDate,
@@ -172,6 +187,8 @@ const CellsMonth = ({
     selectedDate,
     events,
     birthday,
+    activeCategories,
+    categories,
   ]);
 
   return (
@@ -190,6 +207,7 @@ CellsMonth.propTypes = {
   fetchEventsCalendar: PropTypes.func.isRequired,
   events: PropTypes.array.isRequired,
   birthday: PropTypes.array.isRequired,
+  activeCategories: PropTypes.string.isRequired,
 };
 
 // == Export
