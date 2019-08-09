@@ -15,13 +15,14 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
-
 /**
  * @Route("/profile", name="profile_")
  */
 class UserController extends AbstractController
 {
     /**
+     * User's profile
+     * 
      * @Route("/", name="index")
      */
     public function index()
@@ -32,6 +33,8 @@ class UserController extends AbstractController
     }
 
     /**
+     * Update user's profile
+     * 
      * @Route("/edit", name="edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
@@ -60,12 +63,6 @@ class UserController extends AbstractController
 
             $user->setPassword($encodedPassword);
 
-            // if(is_null($user->getAvatar())){
-            //     $oldAvatar = $user->getAvatar();           
-            //}
-
-            // $user->setAvatar($oldAvatar);
-
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash(
@@ -84,6 +81,8 @@ class UserController extends AbstractController
     }
 
     /**
+     * Update user's avatar
+     * 
      * @Route("/avatar/edit", name="avatar_edit", methods={"GET", "POST"})
      */
      public function avatarEdit(Request $request): Response
@@ -135,6 +134,8 @@ class UserController extends AbstractController
      }
 
     /**
+     * Generating a unique file name for avatars 
+     * 
      * @return string
      */
     private function generateUniqueFileName()
