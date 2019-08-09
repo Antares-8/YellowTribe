@@ -38,6 +38,11 @@ class SecurityController extends AbstractController
      */
     public function signup(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuestRepository $guestRepository): Response
     {
+        // if user connected, he is redirected to calendar view 
+        if ($this->getUser()) {
+
+            return $this->redirectToRoute('calendar');
+            }
 
         // TODO: si déjà connecté (donc possède un compte), rediriger l'utilisateur vers son profil 
 
