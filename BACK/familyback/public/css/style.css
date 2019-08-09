@@ -11,12 +11,23 @@ body {
 }
 
 .nav_container {
-    background-color: #F9B233; /* #E6B523;*/
+    background-color: #F9B233;
     position: fixed;
     width: 100%;
-    padding: 0.8em 1.7em 0 1.7em;
+    padding: 1em 1.7em 1em 1.7em;
     height: 3.85em;
 }
+
+.right_nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.right_nav .btn_frontline:hover {
+    border-color: #F9B233;
+}
+
+
 /*** /header ***/
 
 /*** HOMEPAGE ***/
@@ -306,7 +317,6 @@ body {
   }
   
   .event-calendar_container {
-    /*border: 1px solid #FFFDD8;*/
     background-color: #fff5d7;
     border-radius: 10px 0 0 0;
     padding: 1em;
@@ -314,7 +324,6 @@ body {
   }
   
   .event-detailed_container {
-    /*border: 1px solid #FFFDD8;*/
     background-color: #fff5d7;
     border-radius: 0 10px 0 0;
     padding: 0 1em 1em 1em;
