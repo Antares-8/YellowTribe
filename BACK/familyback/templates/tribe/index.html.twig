@@ -18,15 +18,15 @@
 
     <div class="tribe-template_container">
 
-        <h1 class="text-center display-4">Tribu "{{ tribe.name }}"</h1>
+        <h1 class="text-center tribe_name">Les {{ tribe.name }}</h1>
 
-        <div class="row mt-4 tribe_details">
+        <div class="tribe_details">
 
-            <div class="col-9 member_section">
+            <div class="member_section">
 
-                <a href="{{ path('send_invitation') }}" class="btn btn-outline-warning btn-lg mb-3 btn_backline" role="button"><div class=""><i class="fas fa-plus"></i> Inviter un nouveau membre</div></a>
+                <div class="invite_btn"><a href="{{ path('send_invitation') }}" class="btn btn-outline-warning btn-lg mb-3 btn_backline" role="button"><div class=""><i class="fas fa-plus"></i> Inviter un nouveau membre</div></a></div>
 
-                <div class="card-container d-flex flex-wrap">
+                <div class="member_list">
 
                     {% for user in tribe.users %}
                         <div class="member_card">
@@ -37,13 +37,13 @@
 
                             </div>
 
-                            <div class="member_information">
+                            {# <div class="member_information"> #}
 
-                                <div class="member_name">{{ user.firstname }} {{ user.lastname }} ({{ user.username }})</div>
+                            <div class="member_name">{{ user.username }}</div>
                                                             
-                                <div class="member_created-date"><small class="">Membre depuis le {{ user.createdAt|date("d M Y") }}</small></div>
+                                {# <div class="member_created-date"><small class="">Membre depuis le {{ user.createdAt|date("d M Y") }}</small></div> #}
 
-                            </div>
+                            {# </div> #}
 
                         </div>
 
@@ -54,9 +54,9 @@
 
             </div>
 
-            <div class="col-3 tag_section">
+            <div class="tag_section">
 
-                    <h3 class="text-center font-weight-bold mb-3">TAGS</h3>
+                    <h3 class="text-center font-weight-bold">TAGS</h3>
     
                     {% if tribe.tags is empty %}
     
