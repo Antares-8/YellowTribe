@@ -19,10 +19,16 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // TODO: réessayer le redirection si l'utilisateur est déjà connecté et se retrouve sur cette page
-        // if ($this->getUser()) {
-        //    $this->redirectToRoute('target_path');
-        // }
+        // if user connected, he is redirected to calendar view 
+        if ($this->getUser()) {
+
+            $this->addFlash(
+                'success',
+                'Vous êtes déjà connecté'
+            );
+
+           return $this->redirectToRoute('profile_index');
+        }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -37,6 +43,16 @@ class SecurityController extends AbstractController
      */
     public function signup(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuestRepository $guestRepository): Response
     {
+        // if user connected, he is redirected to calendar view 
+        if ($this->getUser()) {
+
+            $this->addFlash(
+                'success',
+                'Vous possédez déjà votre compte'
+            );
+
+            return $this->redirectToRoute('profile_index');
+            }
 
         // TODO: si déjà connecté (donc possède un compte), rediriger l'utilisateur vers son profil 
 

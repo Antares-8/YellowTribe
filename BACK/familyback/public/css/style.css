@@ -88,6 +88,12 @@ body {
         justify-content: center;
         flex-direction: column;
         width: 50%;
+        color: #FFFDD8;
+    }
+
+    .connected_username {
+        font-weight: bold;
+        font-size: 3em;
     }
 
     .homepage_container .connexion .connexion_button .btn {

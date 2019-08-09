@@ -22,7 +22,9 @@
 
             <div class="root col-2 event-calendar_container">
 
-                <i class="fas fa-calendar-alt calendar-icon"></i>
+                <i class="fas fa-user-friends calendar-icon"></i>
+                {# <i class="fas fa-user-tag calendar-icon"></i> #}
+                {# <i class="fas fa-calendar-alt calendar-icon"></i> #}
 
                 <div class="event-tag_container">
 
@@ -77,7 +79,7 @@
 
                     {% if event.user == app.user %}
                         <div class="edit-icon d-flex align-content-end">
-                            <a href="{{ path('event_edit', {'event': event.id}) }}" class="btn btn-outline-warning btn-lg" role="button"><i class="far fa-edit"></i></a>
+                            <a href="{{ path('event_edit', {'event': event.id}) }}" class="btn btn-outline-warning btn-lg" role="button"><i class="fas fa-edit"></i></a>
                         </div>
                     {% endif %}
 
