@@ -135,19 +135,61 @@ body {
 /*** PROFILE ***/
 
 .profile_container {
-    width: 70%;
+    width: 90%;
     height: 100%;
     margin: auto;
-    padding-top: 12em;
+    /* padding-top: 12em; */
+    display: flex;
+    color: #FFFDD8;
 }
 
-.profile_title {
+.profile-content_information {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-content_tribe {
+    width: 50%;
+    border-left: 2px solid orange;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-content_tribe .tribe_null{
+    font-size: 3em;
+    text-align: center;
+}
+
+.profile-content_tribe .tribe_name {
+    font-weight: bold;
+    font-size: 3.5em;
+}
+
+.profile-content_tribe .tribe_name span {
+    font-size: 1.5em;
+}
+
+.profile-content_tribe .tribe_icon {
+    font-size: 6em;
+}
+
+.profile-content_tribe .tribe_btn .btn {
+    margin-top: 2em;
+    width: 100%;
+}
+
+/* .profile_title {
     font-size: 3em;
     margin-bottom: 1em;
-}
+} */
 
-.profile_content, .profile_action {
-    /* border-radius: 2%; */
+/* .profile_content, .profile_action {
+    border-radius: 2%;
     color: #E3A000;
 }
 
@@ -161,7 +203,7 @@ body {
 
 .profile_action div {
     margin-bottom: 2em;
-}
+} */
 
 /*** /profile ***/
 
