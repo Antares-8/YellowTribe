@@ -455,27 +455,27 @@ body {
     margin-left: 5em;
     color: #fcc53b;
     margin-bottom: 10em;
-  }
-  
-  .event-calendar_container {
+}
+ 
+.event-calendar_container {
     background-color: #fff5d7;
     border-radius: 10px 0 0 0;
     padding: 1em;
     margin-right: 1em;
-  }
+}
   
-  .event-detailed_container {
+.event-detailed_container {
     background-color: #fff5d7;
     border-radius: 0 10px 0 0;
     padding: 0 1em 1em 1em;
-  }
+}
 
-  .calendar-icon {
+.calendar-icon {
     font-size: 1000%;
     display: flex;
     justify-content: center;
     padding-top: 0;
-  }
+}
 
 .form-check {
     display: flex;
@@ -484,7 +484,6 @@ body {
 .event-calendar_container {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
 }
 
 .event-tag_container {
@@ -494,7 +493,16 @@ body {
 
 }
 
-.tag_badge {
+.event_participant {
+    margin-bottom: 3em;
+}
+
+
+.event-tag_container .event_participant h3 {
+    font-size: 1.5em;
+}
+
+.event-tag_container .event_participant .tag_badge {
     margin: 0.8em;
     display: flex;
     flex-direction: column;

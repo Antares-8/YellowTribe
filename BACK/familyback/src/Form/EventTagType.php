@@ -30,7 +30,7 @@ class EventTagType extends AbstractType
                 },
                 //'choices' => $group->getTags(),
                 'choice_label' => 'title',
-                'label' => 'Tagger les personnes concernées par l\'événement !',
+                'label' => 'Tagger + de membres dans cet événement',
                 'expanded' => true,
                 'multiple' => true,
                 'constraints' => [

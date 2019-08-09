@@ -28,6 +28,17 @@
 
                 <div class="event-tag_container">
 
+                    <div class="event_participant">
+
+                        <h3 class="text-center">Participants</h3>
+                        
+                        {% for tag in event.tags %}
+
+                            <div class="badge badge-warning tag_badge">{{ tag.title }}</div>
+                        
+                        {% endfor %}
+
+                    </div>
                 {% if event.tribe.tags is empty %}
 
                     <div>
@@ -47,11 +58,7 @@
 
                     </div>
 
-                    {% for tag in event.tags %}
 
-                        <div class="badge badge-warning tag_badge">{{ tag.title }}</div>
-                    
-                    {% endfor %}
 
                 {% endif %}
 
