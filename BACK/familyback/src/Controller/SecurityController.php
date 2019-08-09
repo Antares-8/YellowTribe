@@ -22,7 +22,12 @@ class SecurityController extends AbstractController
         // if user connected, he is redirected to calendar view 
         if ($this->getUser()) {
 
-           return $this->redirectToRoute('calendar');
+            $this->addFlash(
+                'success',
+                'Vous êtes déjà connecté'
+            );
+
+           return $this->redirectToRoute('profile_index');
         }
 
         // get the login error if there is one
@@ -41,7 +46,12 @@ class SecurityController extends AbstractController
         // if user connected, he is redirected to calendar view 
         if ($this->getUser()) {
 
-            return $this->redirectToRoute('calendar');
+            $this->addFlash(
+                'success',
+                'Vous possédez déjà votre compte'
+            );
+
+            return $this->redirectToRoute('profile_index');
             }
 
         // TODO: si déjà connecté (donc possède un compte), rediriger l'utilisateur vers son profil 
