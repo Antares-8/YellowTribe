@@ -17,6 +17,8 @@
 {% block body %}
     <div class="login_container d-flex flex-column text-center">
 
+        {% include ('_flashMessage.html.twig') %}
+
         {# TODO: à modifier ou supprimer selon la redirection ok dans SecurityController.php #}
         {% if app.user %}
 

@@ -46,7 +46,7 @@ class GuestController extends AbstractController
                 'Invitation envoyée à l\'adresse ' . $invitation->getEmail() 
             );
 
-            return $this->redirectToRoute('profile_index');
+            return $this->redirectToRoute('send_invitation');
         }
 
         return $this->render('tribe/invite_members.html.twig', [

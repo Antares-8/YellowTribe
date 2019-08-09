@@ -17,6 +17,8 @@
 {% block body %}
 
     <div class="tribe-template_container">
+    
+        {% include ('_flashMessage.html.twig') %}
 
         <h1 class="text-center tribe_name">Les {{ tribe.name }}</h1>
 
