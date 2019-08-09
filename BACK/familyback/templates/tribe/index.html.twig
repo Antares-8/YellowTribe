@@ -85,7 +85,7 @@
 
                             <div class="member_avatar">
 
-                                <img src="{{ asset(avatar_upload_path ~ (app.user.avatar ?: 'default-avatar.png')) | imagine_filter('thumb_back_list') }}" class="card-img avatar_square" alt="avatar par défault">
+                                <img src="{{ asset(avatar_upload_path ~ (user.avatar ?: 'default-avatar.png')) | imagine_filter('thumb_back_list') }}" class="card-img avatar_square" alt="avatar par défault">
 
                             </div>
 
