@@ -40,6 +40,8 @@ class EventRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('e')
             ->join('e.tribe', 't')
             ->addselect('t')
+            ->join('e.category', 'c')
+            ->addselect('c')
             ->where('e.tribe = :myTribe')
             ->setParameter('myTribe', $tribe)
         ;
