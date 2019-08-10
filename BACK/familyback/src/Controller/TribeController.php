@@ -42,7 +42,7 @@ class TribeController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Le tag '. $tag->getTitle() .' a bien été créé!'
+                'Le tag '. $tag->getTitle() .' a bien été créé !'
             );
 
             // redirect to the same page with modification

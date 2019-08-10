@@ -756,4 +756,17 @@ form input:valid {
     background-color: #FFFDD8;
 }
 
+.flash-message {
+    width: 50%;
+    display: flex;
+    margin: auto;
+    margin-bottom: 3em;
+}
+
+.alert-info {
+    background-color: #FFFDD8;
+    color: #F9B233;
+    border: 1px solid #F9B233;
+}
+
 /*** /components ***/

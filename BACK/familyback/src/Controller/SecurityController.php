@@ -98,7 +98,7 @@ class SecurityController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Bienvenue chez Yellow Tribe ! Vous pouvez vous connecter avec votre email et votre mot de passe'
+                'Bienvenue chez Yellow Tribe ! Vous pouvez vous connecter avec votre email et votre mot de passe.'
             );
             
             return $this->redirectToRoute('app_login');
