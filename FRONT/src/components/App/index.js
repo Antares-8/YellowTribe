@@ -23,7 +23,6 @@ const App = ({ getProfile }) => {
         <Route exact path="/" component={PageMain} />
         <Route path="/calendar" component={PageMain} />
         <Route path="/news" component={PageMain} />
-        <Route path="/event" component={PageEvents} />
       </BrowserRouter>
     </div>
   );

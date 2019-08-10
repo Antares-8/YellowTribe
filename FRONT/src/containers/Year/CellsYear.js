@@ -8,13 +8,15 @@ import CellsYear from 'src/components/Year/CellsYear';
 import { onDateClick, openEvent } from 'src/store/reducer';
 
 
-const mapStateToProps = ({ currentDate, selectedDate, eventDate, idOpenEvent, events }) => {
+const mapStateToProps = ({ currentDate, selectedDate, eventDate, idOpenEvent, events, birthday, activeCategories }) => {
   return {
     currentDate,
     selectedDate,
     eventDate,
     idOpenEvent,
     events,
+    birthday,
+    activeCategories,
   };
 };
 

@@ -12,7 +12,7 @@ import french from 'date-fns/locale/fr';
 // == Import : local
 
 // == Composant
-const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEvent, events }) => {
+const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEvent, events, birthday, activeCategories }) => {
 
   // about year calendar
 
@@ -80,6 +80,14 @@ const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEv
                 key={day}
                 onClick={() => dateClickHandlerW(cloneDay)}
               >
+              {birthday.map( (hbirthday) => {
+                const birthdayFns = new Date(hbirthday.birthDate);
+                const birthdayDay = dateFns.getDayOfYear(birthdayFns);
+                const dateDay = dateFns.getDayOfYear(day);
+                if (birthdayDay === dateDay) {
+                  return (<div key={hbirthday.birthDate} className="birthday">🎉<span className="firstname">{hbirthday.firstname}</span></div>);
+                }
+              })}
                 <span className="number">{formattedDateD}</span>
               </div>
             );
@@ -115,18 +123,24 @@ const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEv
 
                 const colSpan = colSpanCalc === 0 ? colSpanEventCenterRow : colSpanCalc - col + 1;
                 // if the test is empty we display the line
-                const hidden = col === 0 ? 'none' : 'inline';
+                let hidden = col === 0 ? 'none' : 'inline';
 
                 // classNames to know if the event is the event display
                 const eventDisplay = classNames({
                   eventDisplay: idOpenEvent == event.id,
                 });
 
-                // id row to know how to place the ligne on the grid row  
-                // I create a styled components to fixe directly the col and span on the grid-colum style
+                if (activeCategories == event.category.title || activeCategories == 'All') {
+                  hidden = 'inline';
+                }
+                else {
+                  hidden = 'none';
+                }
                 const Events = styled.div`
                   grid-column: ${col} / span ${colSpan};
                   grid-row: ${rowEvent} / span 1;
+                  background-color: ${event.category.color}
+                  border-color: darken(${event.category.color}, 30%);
                   display: ${hidden};
                 `;
                 if (col !== 0) {
@@ -134,6 +148,12 @@ const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEv
                 // I return the event in the DOM
                   return (
                     <Events key={`${event.beginingDate}${day}`} className={`events event${rowEvent} ${eventDisplay}`} id={event.id} onClick={clickHandleEvent}>
+                      <div className="title">
+                        {event.title.length > 25
+                          ? `${event.title.slice(0, 25)}...`
+                          : event.title
+                        }
+                      </div>
                     </Events> 
                   )
                 }
@@ -146,7 +166,7 @@ const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEv
         formattedDate = dateFns.format(month, dateFormatMonth);
         months.push(
           <div key={month} className="month">
-            {formattedDate}
+            <div className="nameMonth">{formattedDate}</div>
             {rows}
           </div>,
         );
@@ -178,6 +198,8 @@ CellsYear.propTypes = {
   openEvent: PropTypes.func.isRequired,
   idOpenEvent: PropTypes.string.isRequired,
   events: PropTypes.array.isRequired,
+  birthday: PropTypes.string.isRequired,
+  activeCategories: PropTypes.string.isRequired,
 };
 
 // == Export

@@ -104,17 +104,17 @@ const reducer = (state = initialState, action = {}) => {
       if (state.calendarType === 'mois') {
         return {
           ...state,
-          calendarType: 'années',
+          calendarType: 'semaines',
         };
       } if (state.calendarType === 'années') {
         return {
           ...state,
-          calendarType: 'semaines',
+          calendarType: 'mois',
         };
       }
       return {
         ...state,
-        calendarType: 'mois',
+        calendarType: 'années',
       };
     }
 
@@ -261,10 +261,6 @@ export const openEvent = id => ({
 });
 export const closeEvent = () => ({
   type: CLOSE_EVENT,
-});
-export const addCategorieInState = categories => ({
-  type: ADD_CATEGORIES_IN_STATE,
-  categories,
 });
 export const fetchEventsCalendar = () => ({
   type: FETCH_EVENT_CALENDAR,

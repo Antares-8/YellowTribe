@@ -45,7 +45,6 @@
 body {
   margin:0;
   background-color: var(--background-dark);
-  
 }
 
 #root {
@@ -162,20 +161,22 @@ nav .item {
   margin: 0 !important; 
 }
 .header .col-start, 
-.header .col-end {
+.type .col-start, 
+.header .col-end,
+.type .col-end {
   flex-grow: 0;
 }
+
+.type .col-center,
 .header .col-center {
   flex-grow: 4;
 }
 
 .type .col-start, 
-.header .col-end {
+.type .col-end {
   flex-grow: 0;
 }
-.type .col-center {
-  flex-grow: 4;
-}
+
 
 .navigation .header,
 .navigation .type {

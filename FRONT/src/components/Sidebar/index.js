@@ -6,7 +6,7 @@ import classNames from 'class-names';
 import './sidebar.scss';
 
 
-const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories }) => {
+const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, activeCategories }) => {
 
   // classNames //
   const withEvent = classNames({
@@ -279,12 +279,12 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories }) => {
     }
   };
 
+ 
+
   const cat = [];
   const displayCategories = () => {
     if (categoriesArray !== undefined) {
       if (categoriesArray.length !== 0) {
-        console.log('all', all.checked);
-        console.log('aniv', anniversaires[0].title);
 
         cat.push(
           <Form>
@@ -340,6 +340,7 @@ Sidebar.propTypes = {
   idOpenEvent: PropTypes.string.isRequired,
   tags: PropTypes.array.isRequired,
   categories: PropTypes.array.isRequired,
+  activeCategories: PropTypes.string.isRequired,
 };
 
 // == Export

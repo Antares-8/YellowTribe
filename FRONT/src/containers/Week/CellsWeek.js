@@ -8,11 +8,12 @@ import CellsWeek from 'src/components/Week/CellsWeek';
 import { onDateClick, openEvent } from 'src/store/reducer';
 
 
-const mapStateToProps = ({ currentDate, selectedDate, events }) => {
+const mapStateToProps = ({ currentDate, selectedDate, events, activeCategories }) => {
   return {
     currentDate,
     selectedDate,
     events,
+    activeCategories,
   };
 };
 

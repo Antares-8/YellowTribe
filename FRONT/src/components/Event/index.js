@@ -10,7 +10,6 @@ import { BrowserRouter, Link } from 'react-router-dom';
 
 // == Import : local
 // import './Event.scss';
-import events from 'src/components/Data/events.json';
 import './event.scss';
 
 
@@ -46,8 +45,8 @@ const Event = ({ idOpenEvent, closeEvent, events }) => {
           <div className="mainTitle">{event.title}</div>
           <div className="baseTitle">
             <div className="author">Organisé par <span>{event.user}</span> / </div>
-            <div className="cercle" style={{ backgroundColor: event.color }}></div>
-            <div className="author"> Categorie <span>{event.category}</span></div>
+            <div className="cercle" style={{ backgroundColor: event.category.color }}></div>
+            <div className="author"> Categorie <span>{event.category.title}</span></div>
           </div>
         </div>
       </div>
@@ -74,6 +73,7 @@ const Event = ({ idOpenEvent, closeEvent, events }) => {
 Event.propTypes = {
   idOpenEvent: PropTypes.string.isRequired,
   closeEvent: PropTypes.func.isRequired,
+  events: PropTypes.array.isRequired,
 };
 
 // == Export

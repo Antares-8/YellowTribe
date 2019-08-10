@@ -1,4 +1,8 @@
 
+body {
+  overflow: hidden;
+}
+
 /* GRID */
   .row {
     display: flex;
@@ -12,12 +16,17 @@
     grid-auto-flow: dense;
     grid-gap: 3px 0px;
   }
+
+  .Month .body {
+    padding: 0em 0.8em;
+    background-color: var(--background-light);
+  }
   
   .week .body .row {
     display: grid;
     flex-basis: 100%;
     grid-template-columns: 1.2rem repeat(5, 0.8rem);
-    grid-template-rows: repeat(24, 1fr);
+    grid-template-rows: repeat(24, 3rem);
     grid-auto-flow: column;
     grid-gap: 0px 0px;
   }
@@ -78,7 +87,7 @@
     padding: 1.5em 0;
     border-bottom: 1px solid var(--border-light);
     position: sticky;
-    top: 8.6em;
+    top: 1.6em;
     z-index: 200;
     background-color: var(--background-light);
     border-top: 2px solid var( --border-light);
@@ -90,6 +99,9 @@
     padding-top: 1em;
     padding-left: 0.9em;
     position: relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 30em;
   }
   .calendar .week .hours {
     padding-right: 0.5em;
@@ -102,14 +114,11 @@
   }
   .calendar .week .line hr {
     margin: 2.9em 0;
-    width: 50em; 
+    width: 140em; 
   }
+  
   .calendar .week .body .cell {
     background-color: none !important; 
-  }
-
-  .calendar .week .body .row {
-    border-right: 1px solid var(--border-light);
   }
 
   .calendar .week .days .number {
@@ -134,17 +143,6 @@
     cursor: pointer;
     background: var(--neutral-color);
     transition: 0.25s ease-out;
-  }
-  
-  .calendar .body .cell:hover {
-    background: var(--text-light-light);
-    transition: 0.5s ease-out;
-  }
-  
-  .calendar .body .event {
-    border-left: 10px solid transparent;
-    border-image: linear-gradient(45deg, #ff3c1a 0%,#f17853 40%);
-    border-image-slice: 1;
   }
   
   .calendar .body .row {
@@ -207,24 +205,27 @@
     transition: .5s ease-in;
   }
   
+  
 
   /// event MONTH /// 
   .events {
-    z-index: 50; 
+    z-index: 0; 
     border-radius: 0.5em;
-    border: 0.5px solid #89178a4f;
+    border: 0.5px solid;
+    border-color: darken(#ffeca2,30%);
     background-color: #faaefb;
     font-size: 78%;
   }
   .events .title {
     width: 10em;
     padding: 0.25em 1em;
+    cursor: pointer;
   }
   .event2 {
     background-color:#f114f34f; 
   }
   .event2:hover, .event3:hover, .event4:hover {
-    z-index:100;
+    z-index:1;
   }
   .event2:hover{
     background-color: #faaefb;
@@ -234,42 +235,79 @@
     background-color: #faaefb;
     z-index:100;
   }
+
+  .calendar .row .addEvent {
+    display:none;
+  }
+
+  .calendar .body .cell:hover {
+    background: var(--text-light-light);
+    transition: 0.5s ease-out;
+  }
+  .calendar .body .cell:hover .addEvent {
+    display: block;
+    border-radius: 25px;
+    width: 70px;
+    height: 18px;
+    position: absolute;
+    top: 6px;
+    right: 3em;
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+    padding: 0.3em 0.7em;
+    font-size: 59%;
+  }
+
   /// event WEEK /// 
   .week .events .title {
     width: 10em;
-    padding: 0.25em 1em;
-    transform: rotate(-90deg) translateX(-29px) translateY(-32px);
+    -webkit-transform: rotate(-90deg) translateX(-29px) translateY(-32px);
+    transform: rotate(-90deg) translateX(-29px) translateY(-37px);
+    line-height: 1.4;
+    position: absolute;
   }
   
 
   
   // YEAR //
   .calendar .year {
-    padding: 2em;
+    padding: 2em 1em;
     background-color: var(--background-light);
   }
 .calendar .year .body {
   display: flex;
   flex-direction: column; 
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 30em;
+}
+.calendar .year .month {
+  width: calc( 100% / 3);
+  padding: 1.1em 1.5em 1.5em 1.5em;
+  margin: 0.5em;
+  border-radius: 1em;
+  border: 0.5px solid;
+}
+
+.calendar .year .body .cell .number {
+  top:0;
+}
+.calendar .year .body .cell {
+  overflow: visible;
 }
 
 .calendar .year .body .trimester  {
   display: flex;
 }
-
-.calendar .year .month  {
-  width: calc( 100% / 3);
-  margin: 1.5em;
-}
 .calendar .year .row {
   display: grid;
-    -webkit-flex-basis: 100%;
-    /* flex-basis: 100%; */
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: 1.2rem repeat(2, 1.1rem);
-    /* grid-auto-flow: dense; */
-    /* grid-gap: 0; */
-    height: 4em;
+  -webkit-flex-basis: 100%;
+  /* flex-basis: 100%; */
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 1.2rem repeat(2, 0.9rem);
+  /* grid-auto-flow: dense; */
+  /* grid-gap: 0; */
+  height: 4em;
 }
 .calendar .year .row {
   text-align: center;
@@ -279,4 +317,68 @@
 }
 .calendar .year .row .col.cell.disabled{
   color: #eee;
+}
+.calendar .year .body .selected .number {
+  width: 20px;
+  height: 20px;
+  padding: 0.36em;
+  top: -4px;
+}
+.calendar .year .body .events {
+  position: relative
+}
+
+.calendar .year .body .events .title {
+  display:none;
+}
+.calendar .year .body .events:hover .title {
+  display:block;
+  position: absolute;
+  top: -17px;
+  right: -40px;
+  width: 9em;
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+  border-radius: 1em;
+}
+
+.calendar .year .nameMonth {
+  padding-bottom: 1.4em;
+  display: inline-block;
+}
+.calendar .year .birthday {
+  position: absolute;
+  right: 18px;
+}
+.calendar .year .birthday:hover .firstname {
+  display:block;
+  position: absolute;
+  top: -17px;
+  right: -40px;
+  width: 9em;
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+  border-radius: 1em;
+  z-index: 2;
+}
+
+.calendar .year .birthday .firstname {
+  display:none
+}
+
+@media screen and (min-width: 1024px) {
+  .calendar .week .body {
+    height: 28.5em;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .calendar .week .body {
+    height: 43.5em;
+  }
+}
+@media screen and (min-width: 2500px) {
+  .calendar .week .body {
+    height: 72em;
+  }
 }

@@ -9,7 +9,7 @@ import styled from 'styled-components';
 // == Import : local
 
 // == Composant
-const CellsWeek = ({ currentDate, selectedDate, onDateClick, idOpenEvent, openEvent, events }) => {
+const CellsWeek = ({ currentDate, selectedDate, onDateClick, idOpenEvent, openEvent, events, activeCategories }) => {
 
   const weekStart = dateFns.startOfWeek(currentDate);
   const weekEnd = dateFns.endOfWeek(weekStart);
@@ -39,7 +39,6 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick, idOpenEvent, openEv
   const createTable = () => {
     let rowEvent = 1;
     while (hour <= endDate) {
-      let keyCell = 1;
       for (let i = 1; i < 25; i += 1) {
         formattedDate = dateFns.format(hour, dateFormat);
         const clonehour = hour;
@@ -92,11 +91,18 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick, idOpenEvent, openEv
             });
 
             // if the test is empty we display the line
-            const hidden = col === 0 ? 'none' : 'inline';
+            let hidden = col === 0 ? 'none' : 'inline';
+            if (activeCategories == event.category.title || activeCategories == 'All') {
+              hidden = 'inline';
+            }
+            else {
+              hidden = 'none';
+            }
             // I create a styled components to fixe directly the col and span on the grid-colum style
             const Events = styled.div`
               grid-row: ${col} / span ${colSpan};
               grid-column: ${rowEvent} /span 3;
+              background-color: ${event.category.color};
               display: ${hidden};
             `;
             if (col !== 0) {

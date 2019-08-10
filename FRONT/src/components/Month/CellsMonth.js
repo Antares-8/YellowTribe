@@ -5,6 +5,7 @@ import dateFns from 'date-fns';
 import classNames from 'class-names';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { BrowserRouter, Link } from 'react-router-dom';
 
 // == Import : local
 // import events from 'src/components/Data/events.json';
@@ -18,7 +19,6 @@ const createTable = (
   events,
   birthday,
   activeCategories,
-  categories,
 ) => {
   const rows = [];
 
@@ -41,7 +41,12 @@ const createTable = (
 
   const clickHandleEvent = (evt) => {
     const { id } = evt.target;
-    openEvent(id);
+    if (id === idOpenEvent) {
+      openEvent('');
+    }
+    else {
+      openEvent(id);
+    }
   };
 
 
@@ -55,23 +60,25 @@ const createTable = (
         selected: dateFns.isSameMonth(day, monthStart) && dateFns.isSameDay(day, selectedDate),
       });
       days.push(
-        <div
-          className={`col cell ${selected}`}
-          key={day}
-          col={i}
-          onClick={() => dateClickHandler(cloneDay)}
-        >
-          {birthday.map( (hbirthday) => {
-            const birthdayFns = new Date(hbirthday.birthDate);
-            const birthdayDay = dateFns.getDayOfYear(birthdayFns);
-            console.log(hbirthday);
-            const dateDay = dateFns.getDayOfYear(day);
-            if (birthdayDay === dateDay) {
-              return (<div key={hbirthday.birthDate}>🎉 {hbirthday.firstname}</div>);
-            }
-            })}
-          <span className="number">{formattedDate}</span>
-        </div>,
+          <div
+            className={`col cell ${selected}`}
+            key={day}
+            col={i}
+            onClick={() => dateClickHandler(cloneDay)}
+          >
+            <Link to={`/calendar/event/new?date=${new Date(day)}`}>
+              <div className="addEvent"><span className="icon">add</span>évènement</div>
+            </Link>
+            {birthday.map( (hbirthday) => {
+                const birthdayFns = new Date(hbirthday.birthDate);
+                const birthdayDay = dateFns.getDayOfYear(birthdayFns);
+                const dateDay = dateFns.getDayOfYear(day);
+                if (birthdayDay === dateDay) {
+                  return (<div key={hbirthday.birthDate}>🎉 {hbirthday.firstname}</div>);
+                }
+              })}
+            <span className="number">{formattedDate}</span>
+          </div>,
       );
       day = dateFns.addDays(day, 1);
     }
@@ -112,7 +119,6 @@ const createTable = (
           keyEv +=1
           // I create a styled components to fixe directly the col and span on the grid-colum style
           // category.color
-          console.log('activeCategories', activeCategories);
           if (activeCategories == event.category.title || activeCategories == 'All') {
             hidden = 'inline';
           }
@@ -131,7 +137,7 @@ const createTable = (
             
             return (
               <Events key={`${keyEv} ${day}`} className={`events event${rowEvent} ${eventDisplay}`} id={event.id} onClick={clickHandleEvent}>
-                <div className="title">
+                <div className="title" onClick={clickHandleEvent}>
                   {event.title.length > 25
                     ? `${event.title.slice(0, 25)}...`
                     : event.title
@@ -166,7 +172,6 @@ const CellsMonth = ({
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
-    console.log('active', categories);
 
     setRows(createTable(
       currentDate,
@@ -193,7 +198,9 @@ const CellsMonth = ({
 
   return (
     <div className="body">
-      {rows}
+      <BrowserRouter forceRefresh={true}>
+        {rows}
+      </BrowserRouter>
     </div>
   );
 };
