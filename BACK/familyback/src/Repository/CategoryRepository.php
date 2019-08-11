@@ -24,6 +24,7 @@ class CategoryRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('c')
             ->select('c.title')
             ->addselect('c.color')
+            ->addselect('c.darkcolor')
         ;
 
         return $qb->getQuery()->getArrayResult();

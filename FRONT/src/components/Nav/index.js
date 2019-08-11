@@ -1,5 +1,5 @@
 // == Import : npm
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
@@ -7,11 +7,6 @@ import classNames from 'class-names';
 
 
 // == Import : local
-import Calendar from 'src/containers/Calendar';
-import Event from 'src/components/Event';
-// import News from 'src/components/News';
-import Header from 'src/components/Header';
-import Sidebar from 'src/containers/Sidebar';
 import HeaderMonth from 'src/containers/Month/HeaderMonth';
 import HeaderWeek from 'src/containers/Week/HeaderWeek';
 import HeaderYear from 'src/containers/Year/HeaderYear';

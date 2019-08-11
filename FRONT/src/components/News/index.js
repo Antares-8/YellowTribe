@@ -11,9 +11,12 @@ import './news.scss';
 
 
 // == Composant
-const News = ({ news, fetchNews }) => {
+const News = ({ news, fetchNews, closeEvent }) => {
 
   const [cards, setCards] = useState([]);
+  useEffect(() => {
+    closeEvent();
+  }, []);
 
   const createCards = (news) => {
     const cardsTable = [];
@@ -56,6 +59,7 @@ const News = ({ news, fetchNews }) => {
 News.propTypes = {
   news: PropTypes.array.isRequired,
   fetchNews: PropTypes.func.isRequired,
+  closeEvent: PropTypes.func.isRequired,
 };
 
 // == Export

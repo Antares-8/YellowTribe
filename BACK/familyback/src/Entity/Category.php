@@ -33,6 +33,11 @@ class Category
      */
     private $color;
 
+    /**
+     * @ORM\Column(type="string", length=30, nullable=true)
+     */
+    private $darkcolor;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
@@ -91,6 +96,17 @@ class Category
         return $this->title;
     }
 
+    public function getDarkcolor(): ?string
+    {
+        return $this->darkcolor;
+    }
+
+    public function setDarkcolor(?string $darkcolor): self
+    {
+        $this->darkcolor = $darkcolor;
+
+        return $this;
+    }
     public function getColor(): ?string
     {
         return $this->color;

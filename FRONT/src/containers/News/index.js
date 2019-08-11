@@ -6,7 +6,7 @@ import News from 'src/components/News';
 // import dataCategories from 'src/components/Data/events.json';
 
 // Action Creators
-import { fetchNews } from 'src/store/reducer';
+import { fetchNews, closeEvent } from 'src/store/reducer';
 
 // const categories = dataCategories.map(dataCategory => dataCategory.category);
 
@@ -18,6 +18,9 @@ const mapStateToProps = ({ news }) => ({
 const mapDispatchToProps = dispatch => ({
   fetchNews: () => {
     dispatch(fetchNews());
+  },
+  closeEvent: () => {
+    dispatch(closeEvent());
   },
 });
 
