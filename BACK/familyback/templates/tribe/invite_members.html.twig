@@ -28,13 +28,16 @@
 
             {{ form_start(form) }}
                 {{ form_widget(form) }}
-            <div class="float-right">
-            
-                    <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Envoyer') }}</button>
+                    <div class="float-right">
                     
-                    <a href="{{ path('profile_index') }}" class="btn_backline btn btn-outline-warning btn-lg" role="button">Annuler</a>
-                
-                </div>        
+                        <button class="btn btn-warning btn-lg btn_frontline">{{ button_label|default('Envoyer') }}</button>
+                        {# <input type="hidden" name="_csrf_token"
+                        value="{{ csrf_token('authenticate') }}"
+                        > #}
+                        
+                        <a href="{{ path('profile_index') }}" class="btn_backline btn btn-outline-warning btn-lg" role="button">Annuler</a>
+                    
+                    </div>        
             {{ form_end(form) }}
             
         </div>

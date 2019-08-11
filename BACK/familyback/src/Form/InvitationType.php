@@ -15,13 +15,12 @@ class InvitationType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
+                'label' => 'Email de l\'invité *',
+                'required' => true,
                 'constraints' => [
                     new NotBlank(),
                 ],
-                'label' => 'Email invité',
-                // 'help' => 'Veuillez renseigner l\'adresse email de la personne que vous souhaitez inviter',
             ])
-            // ->add('tribe')
         ;
     }
 
