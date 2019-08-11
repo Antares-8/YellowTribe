@@ -34,10 +34,7 @@ const createTable = (
   let formattedDate = '';
   let keyEv = [];
 
-  // call click date function from reducer
-  const dateClickHandler = (cloneDay) => {
-    onDateClick(dateFns.parse(cloneDay));
-  };
+  
 
   const clickHandleEvent = (evt) => {
     const { id } = evt.target;
@@ -60,25 +57,25 @@ const createTable = (
         selected: dateFns.isSameMonth(day, monthStart) && dateFns.isSameDay(day, selectedDate),
       });
       days.push(
-          <div
-            className={`col cell ${selected}`}
-            key={day}
-            col={i}
-            onClick={() => dateClickHandler(cloneDay)}
-          >
-            <Link to={`/calendar/event/new?date=${new Date(day)}`}>
-              <div className="addEvent"><span className="icon">add</span>évènement</div>
-            </Link>
-            {birthday.map( (hbirthday) => {
-                const birthdayFns = new Date(hbirthday.birthDate);
-                const birthdayDay = dateFns.getDayOfYear(birthdayFns);
-                const dateDay = dateFns.getDayOfYear(day);
-                if (birthdayDay === dateDay) {
-                  return (<div key={hbirthday.birthDate}>🎉 {hbirthday.firstname}</div>);
-                }
-              })}
-            <span className="number">{formattedDate}</span>
-          </div>,
+        <div
+          className={`col cell ${selected}`}
+          key={day}
+          col={i}
+          onClick={() => dateClickHandler(cloneDay)}
+        >
+          <Link to={`/calendar/event/new?date=${new Date(day)}`}>
+            <div className="addEvent"><span className="icon">add</span>évènement</div>
+          </Link>
+          {birthday.map( (hbirthday) => {
+            const birthdayFns = new Date(hbirthday.birthDate);
+            const birthdayDay = dateFns.getDayOfYear(birthdayFns);
+            const dateDay = dateFns.getDayOfYear(day);
+            if (birthdayDay === dateDay) {
+              return (<div key={hbirthday.birthDate}>🎉 {hbirthday.firstname}</div>);
+            }
+          })}
+          <span className="number">{formattedDate}</span>
+        </div>,
       );
       day = dateFns.addDays(day, 1);
     }
@@ -110,13 +107,10 @@ const createTable = (
           let hidden = col === 0 ? 'none' : 'inline';
 
           // classNames to know if the event is the event display
-          const eventDisplay = classNames({
-            eventDisplay: idOpenEvent == event.id,
-          });
 
           // id row to know how to place the ligne on the grid row
-          
-          keyEv +=1
+
+          keyEv += 1;
           // I create a styled components to fixe directly the col and span on the grid-colum style
           // category.color
           if (activeCategories == event.category.title || activeCategories == 'All') {
@@ -125,18 +119,28 @@ const createTable = (
           else {
             hidden = 'none';
           }
+
+          const border = idOpenEvent == event.id
+            ? `4px solid ${event.category.color}`
+            : `2px solid ${event.category.darkcolor}`;
+
+          const background = idOpenEvent == event.id
+            ? `${event.category.darkcolor}`
+            : `${event.category.color}`;
+
           const Events = styled.div`
-            grid-column: ${col} / span ${colSpan};
-            grid-row: ${rowEvent} / span 3;
-            background-color: ${event.category.color}
-            display: ${hidden};
+              grid-column: ${col} / span ${colSpan};
+              grid-row: ${rowEvent} / span 3;
+              background-color: ${background};
+              border: ${border};
+              display: ${hidden};
           `;
           // I return the event in the DOM
           if (col !== 0) {
             rowEvent += 1;  
             
             return (
-              <Events key={`${keyEv} ${day}`} className={`events event${rowEvent} ${eventDisplay}`} id={event.id} onClick={clickHandleEvent}>
+              <Events key={`${keyEv} ${day}`} className={`events event${rowEvent}`} id={event.id} onClick={clickHandleEvent}>
                 <div className="title" onClick={clickHandleEvent}>
                   {event.title.length > 25
                     ? `${event.title.slice(0, 25)}...`
@@ -166,7 +170,6 @@ const CellsMonth = ({
   activeCategories,
   events,
   birthday,
-  categories,
 }) => {
 
   const [rows, setRows] = useState([]);
@@ -182,7 +185,6 @@ const CellsMonth = ({
       events,
       birthday,
       activeCategories,
-      categories,
     ));
   }, [
     currentDate,
@@ -193,7 +195,6 @@ const CellsMonth = ({
     events,
     birthday,
     activeCategories,
-    categories,
   ]);
 
   return (
@@ -211,7 +212,6 @@ CellsMonth.propTypes = {
   onDateClick: PropTypes.func.isRequired,
   openEvent: PropTypes.func.isRequired,
   idOpenEvent: PropTypes.string.isRequired,
-  fetchEventsCalendar: PropTypes.func.isRequired,
   events: PropTypes.array.isRequired,
   birthday: PropTypes.array.isRequired,
   activeCategories: PropTypes.string.isRequired,

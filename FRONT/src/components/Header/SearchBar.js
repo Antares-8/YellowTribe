@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Input } from 'semantic-ui-react'
+import { Input } from 'semantic-ui-react';
 import dateFns from 'date-fns';
 import french from 'date-fns/locale/fr';
 import { BrowserRouter, Link } from 'react-router-dom';
@@ -8,7 +8,7 @@ import { BrowserRouter, Link } from 'react-router-dom';
 
 import './header.scss';
 
-const SearchBar = ({ profile, events }) => {
+const SearchBar = ({ events }) => {
 
   // creation of hookState for the events who match with the search
   const [eventsFind, setEventsFind] = useState([]);
@@ -50,7 +50,7 @@ const SearchBar = ({ profile, events }) => {
   return (
     <div className="searchBar">
       <div className="ui input">
-        <Input placeholder='State' icon="search" search selection onChange={changeSearchHandler} />
+        <Input placeholder="Chercher un évènement" icon="search" search onChange={changeSearchHandler} />
       </div>
       <div className="results">
         {eventsFind}
@@ -60,7 +60,6 @@ const SearchBar = ({ profile, events }) => {
 };
 
 SearchBar.propTypes = {
-  profile: PropTypes.array.isRequired,
   events: PropTypes.array.isRequired,
 };
 

@@ -6,15 +6,15 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 // == Import : local
 import PageMain from 'src/containers/PageMain';
-import PageEvents from 'src/containers/PageEvents';
 
 import './app.scss';
 
 // == Composant
-const App = ({ getProfile }) => {
+const App = ({ getProfile, fetchEventsCalendar }) => {
 
   useEffect(() => {
     getProfile();
+    fetchEventsCalendar();
   }, []);
 
   return (
@@ -30,6 +30,7 @@ const App = ({ getProfile }) => {
 
 App.propTypes = {
   getProfile: PropTypes.func.isRequired,
+  fetchEventsCalendar: PropTypes.func.isRequired,
 };
 
 // == Export

@@ -1,4 +1,4 @@
-import { FETCH_EVENT_CALENDAR, FETCH_NEWS, getDataEvents, getDataNews, getDataProfile, getDataTags, getIdUser, fetchEventsCalendar, getBirthday, GET_PROFILE, getDataCategories } from 'src/store/reducer';
+import { FETCH_EVENT_CALENDAR, FETCH_NEWS, getDataEvents, getDataNews, getDataProfile, getDataTags, fetchNews, getIdUser, fetchEventsCalendar, getBirthday, GET_PROFILE, getDataCategories } from 'src/store/reducer';
 import axios from 'axios';
 
 const logMiddleware = store => next => (action) => {
@@ -65,6 +65,7 @@ const logMiddleware = store => next => (action) => {
       const user = userIdR.getAttribute('user');
       store.dispatch(getIdUser(tribe, user));
       store.dispatch(fetchEventsCalendar());
+      store.dispatch(fetchNews());
 
       break;
     }

@@ -6,7 +6,7 @@ import App from 'src/components/App';
 // import dataCategories from 'src/components/Data/events.json';
 
 // Action Creators
-import { getProfile } from 'src/store/reducer';
+import { getProfile, fetchEventsCalendar } from 'src/store/reducer';
 
 // const categories = dataCategories.map(dataCategory => dataCategory.category);
 
@@ -17,6 +17,9 @@ const mapStateToProps = ({ idOpenEvent }) => ({
 const mapDispatchToProps = dispatch => ({
   getProfile: () => {
     dispatch(getProfile());
+  },
+  fetchEventsCalendar: () => {
+    dispatch(fetchEventsCalendar());
   },
 });
 

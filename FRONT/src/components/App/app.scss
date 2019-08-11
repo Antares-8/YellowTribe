@@ -1,6 +1,10 @@
 /* FONT IMPORTS */
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
+.news a:hover {
+  color: var(--text-light);
+}
+
 .icon {
   font-family: 'Material Icons', serif;
   font-style: normal;
@@ -226,6 +230,7 @@ nav .item {
 }
 .modalEvent .ui.button .addEvent{
   font-size: 110%;
+  font-family: 'Reg';
 }
 
 .modalEvent .icon {

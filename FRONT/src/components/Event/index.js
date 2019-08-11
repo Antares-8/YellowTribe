@@ -15,7 +15,6 @@ import './event.scss';
 
 // == Composant
 const Event = ({ idOpenEvent, closeEvent, events }) => {
-  // console.log(window.location.pathname.slice(7)); 
 
   const clickCloseHandler = () => {
     closeEvent();
@@ -62,7 +61,7 @@ const Event = ({ idOpenEvent, closeEvent, events }) => {
       <BrowserRouter forceRefresh={true}>
         <Link to={`/calendar/event/${event.id}`}>
           <div className="bouton">
-            ouvrir l'event <Icon name='right chevron' />
+            ouvrir l'event <Icon name="right chevron" />
           </div>
         </Link>
       </BrowserRouter>
