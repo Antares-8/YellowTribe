@@ -380,11 +380,9 @@ body {
     margin-bottom: 0.6em;
 }
 
-/* .member_information {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-} */
+.empty-tags {
+    padding: 1.5em;
+}
 
 .member_name {
     font-weight: bold;
