@@ -52,7 +52,6 @@ class User implements UserInterface, \Serializable
      * @var string
      * @ORM\Column(type="string", length=255)
      * @Assert\Email(strict=true, message="Le format de l'email est incorrect")
-     * @Assert\Email(checkMX=true, message="Aucun serveur mail n'a été trouvé pour ce domaine")
      */
     private $email;
 
