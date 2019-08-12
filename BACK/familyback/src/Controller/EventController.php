@@ -67,6 +67,14 @@ class EventController extends AbstractController
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
 
+        //dump($request->query->get('date'));
+        if (isset($_GET['date'])) {
+            //dump($_GET['date']);
+            $date = new \DateTime('2019-08-12');
+
+            $form->get('beginingDate')->setData($date);
+        }
+
         if($form->isSubmitted() && $form->isValid()) {
             $event->setUser($connectedUser);
             $event->setTribe($userTribeId);
