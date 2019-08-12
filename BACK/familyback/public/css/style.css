@@ -171,14 +171,15 @@ body {
     margin-bottom: 1.2em;
     margin-left: 3em;
 }
+
 .profile-content_information .user_avatar-section .user_avatar-content {
     position: relative; 
 }
 
 .profile-content_information .user_avatar-section .user_avatar {
-    border-radius: 50%;
-    width: 12em;
-    height: 100%; 
+    /* border-radius: 50%; */
+    width: 8em;
+    height: 100%;  
 }
 
 .profile-content_information .user_avatar-section .user_avatar-edit {
