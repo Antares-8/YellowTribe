@@ -123,8 +123,8 @@ const createTable = (
           }
 
           const border = idOpenEvent == event.id
-            ? `4px solid ${event.category.color}`
-            : `2px solid ${event.category.darkcolor}`;
+            ? `3px solid ${event.category.color}`
+            : `1px solid ${event.category.darkcolor}`;
 
           const background = idOpenEvent == event.id
             ? `${event.category.darkcolor}`
