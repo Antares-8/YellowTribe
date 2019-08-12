@@ -224,14 +224,6 @@ body {
   .event2:hover, .event3:hover, .event4:hover {
     z-index:1;
   }
-  .event2:hover{
-    background-color: #faaefb;
-  }
-  .events.eventDisplay {
-    border: 2px solid #828a17ad;
-    background-color: #faaefb;
-    z-index:100;
-  }
 
   .calendar .row .addEvent {
     display:none;
@@ -263,7 +255,6 @@ body {
     line-height: 1.4;
     position: absolute;
   }
-  
 
   
   // YEAR //
