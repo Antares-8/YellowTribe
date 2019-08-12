@@ -69,10 +69,10 @@ class EventController extends AbstractController
 
         //dump($request->query->get('date'));
         if (isset($_GET['date'])) {
-            //dump($_GET['date']);
-            $date = new \DateTime('2019-08-12');
+            dump($_GET['date']);
+            // $date = new \DateTime($_GET['date']);
 
-            $form->get('beginingDate')->setData($date);
+            // $form->get('beginingDate')->setData($date);
         }
 
         if($form->isSubmitted() && $form->isValid()) {
