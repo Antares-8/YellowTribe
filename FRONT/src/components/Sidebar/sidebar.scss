@@ -34,6 +34,14 @@
 
 .sidebar .searchBar {
   position: inherit;
+  margin-bottom: 0.7em;
+}
+.tags .ui.label:last-child {
+  background-color: var(--background-light);
+  color: var(--background-dark);
+}
+.tags .name {
+  padding-left: 0.6em;  
 }
 
 // categories // 
