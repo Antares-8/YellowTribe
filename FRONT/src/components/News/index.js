@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 // == Import : local
 import EventCard from 'src/components/News/EventCard';
 import UserCard from 'src/components/News/UserCard';
+import CommentCard from 'src/components/News/CommentCard';
 
 import './news.scss';
 
@@ -18,7 +19,7 @@ const News = ({ news, fetchNews, closeEvent }) => {
     closeEvent();
   }, []);
 
-  const createCards = (news) => {
+  const createCards = () => {
     const cardsTable = [];
     if (news !== undefined) {
       news.forEach((data) => {

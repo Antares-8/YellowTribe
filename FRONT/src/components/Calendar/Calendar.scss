@@ -352,6 +352,18 @@ body {
   display:none
 }
 
+.calendar .year .number:hover {
+  width: 20px;
+  height: 20px;
+  padding: 0.36em;
+  top: -4px;
+  text-align: center;
+  border-radius: 20px;
+  color: var(--text-dark);
+  right: 0.25em;
+  background-color: var(--background-dark);
+}
+
 @media screen and (min-width: 1024px) {
   .calendar .week .body {
     height: 28.5em;

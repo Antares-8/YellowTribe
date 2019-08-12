@@ -21,8 +21,13 @@ const Header = ({ profile }) => {
       setTribeProfile(profilePart[1]);
     } 
   }, [profile]);
+
+  const avatar = userProfile.avatar !== null
+    ? `../media/cache/thumb_back_list/uploads/avatars/${userProfile.avatar}`
+    : '../media/utils/defaultAvatar.png';
+
   const Avatar = styled.div`
-    background-image: url(${tribeProfile.avatar});
+    background-image: url(${avatar});
     background-size: cover;
   `;
 

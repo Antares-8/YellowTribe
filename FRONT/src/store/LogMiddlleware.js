@@ -53,7 +53,7 @@ const logMiddleware = store => next => (action) => {
       axios.get(`http://95.142.174.217/api/${tribeId}/news`)
         .then((response) => {
           const { data } = response;
-          const filtedDatas = data.sort((dataN, b) => new Date(dataN.createdAt) - new Date(b.createdAt));
+          const filtedDatas = data.sort((dataN, b) => new Date(b.createdAt) - new Date(dataN.createdAt));
           store.dispatch(getDataNews(filtedDatas));
         })
         .catch();

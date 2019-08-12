@@ -19,11 +19,15 @@ const UserCard = ({ data }) => {
   const event = eventData;
   const formatLarge = 'D MMMM';
 
+  const avatar = event.avatar !== null
+    ? `../media/cache/thumb_back_list/uploads/avatars/${event.avatar}`
+    : '../media/utils/defaultAvatar.png';
+
 
   return (
     <div className="userCard">
         <div className="mainPart">
-          <img src={event.avatar} className="avatar" alt="profilpicture" />
+          <img src={avatar} className="avatar" alt="profilpicture" />
           <div className="textPart">
             <div className="name">{event.firstname} {event.lastname}</div>
             <div className="explication"> à rejoint la tribu {event.tribe.name}</div>
