@@ -19,9 +19,6 @@ const News = ({ news, fetchNews, closeEvent }) => {
     closeEvent();
   }, []);
 
-  console.log(news);
-
-
   const createCards = () => {
     const cardsTable = [];
     if (news !== undefined) {
