@@ -18,7 +18,7 @@ body {
   max-width: 80em;
   border: 1px solid var(--border-light);
   background-color: var(--background-light);
-  border-top-right-radius: 1em;
+  border-radius: 0.8em;
 }
 
 .eventCard .titlePart {
@@ -35,6 +35,8 @@ body {
     display: flex; 
     flex-direction: column; 
   }
+
+  
   /// Titrage + baseline /// 
     .eventCard .title .mainTitle {
       text-transform: uppercase;
@@ -51,10 +53,18 @@ body {
         font-family: 'Bold'; 
       }
       .eventCard .title .baseTitle .cercle {
-        width: 1em;
-        height: 1em;
-        border-radius: 1em;
-        margin: 0em 0.6em; 
+        width: 1.2em;
+        height: 1.2em;
+        border-radius: 1.2em;
+      }
+      .eventCard .title .baseTitle .author {
+        margin-right: 0.6em;
+      }
+      .eventCard .title .baseTitle .category {
+        margin-left: 0.6em;
+      }
+      .eventCard hr {
+        margin: 0.7em 0em 0.7em 0;
       }
   /// Date à coté du titre  /// 
     .eventCard .titleDate .day{
@@ -76,29 +86,16 @@ body {
 
   .eventCard .icon {
     margin-right : 0.3em;
-    font-size: 139%;
+    font-size: 100%;
     margin-bottom: 0.2em;
   }
   .eventCard .dates {
-    line-height: 1.05;
+    line-height: 1.4;
+    font-size: 95%;
   }
   .eventCard .location {
-    margin-top: 0.6em; 
-  }
-
-  /// Boutton // 
-
-  .eventCard .bouton {
-    background-color: var(--background-dark); 
-    color: var(--text-dark);
-    border-radius: 0.5em; 
-    padding: 0.3em 0.5em 0.3em 1.2em; 
-    display: inline; 
-    float: right; 
-  }
-  
-  .eventCard .bouton .icon {
-    font-size: 100%; 
+    line-height: 1.4;
+    font-size: 95%;
   }
 
   //// user Card /// 

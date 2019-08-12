@@ -46,8 +46,6 @@ const createTable = (
     }
   };
   const phpDate = dateFns.format(day, phpFormat);
-  console.log(phpDate);
-
 
   let rowEvent = 2;
   while (day <= endDate) {

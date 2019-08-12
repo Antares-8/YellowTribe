@@ -1,12 +1,12 @@
 /* eslint-disable no-loop-func */
 // == Import : npm
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import dateFns from 'date-fns';
 import classNames from 'class-names';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import axios from 'axios';
 import french from 'date-fns/locale/fr';
+import { Link } from 'react-router-dom';
 
 
 // == Import : local
@@ -22,6 +22,7 @@ const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEv
   const endDate = dateFns.endOfMonth(yearEnd);
 
   const dateFormatMonth = 'MMMM';
+  const phpFormat = 'YYYY-MM-DD HH:mm:ss';
   const trimester = [];
 
   let months = [];
@@ -36,8 +37,14 @@ const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEv
   };
   const clickHandleEvent = (evt) => {
     const { id } = evt.target;
-    openEvent(id);
+    if (id === idOpenEvent) {
+      openEvent('');
+    }
+    else {
+      openEvent(id);
+    }
   };
+
 
   // classNames
 
@@ -73,6 +80,7 @@ const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEv
               disabled: dateFns.isSameMonth(day, monthStart) === false,
               selected: dateFns.isSameMonth(day, monthStart) && dateFns.isSameDay(day, selectedDate),
             });
+            const phpDate = dateFns.format(month, phpFormat);
             days.push(
               <div
                 className={`col cell ${selected}`}
@@ -87,7 +95,9 @@ const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEv
                   return (<div key={hbirthday.birthDate} className="birthday">🎉<span className="firstname">{hbirthday.firstname}</span></div>);
                 }
               })}
+              <Link to={`/calendar/event/new?date=${phpDate}`}>
                 <span className="number">{formattedDateD}</span>
+              </Link>
               </div>
             );
             day = dateFns.addDays(day, 1);
@@ -147,7 +157,7 @@ const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEv
                 // I return the event in the DOM
                   return (
                     <Events key={`${event.beginingDate}${day}`} className={`events event${rowEvent} ${eventDisplay}`} id={event.id} onClick={clickHandleEvent}>
-                      <div className="title">
+                      <div className="title" id={event.id} onClick={clickHandleEvent}>
                         {event.title.length > 25
                           ? `${event.title.slice(0, 25)}...`
                           : event.title

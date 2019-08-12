@@ -30,9 +30,13 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick, idOpenEvent, openEv
 
   // click on a event row to display the event page
   const clickHandleEvent = (evt) => {
-    console.log(evt.target);
     const { id } = evt.target;
-    openEvent(id);
+    if (id === idOpenEvent) {
+      openEvent('');
+    }
+    else {
+      openEvent(id);
+    }
   };
 
 
@@ -89,7 +93,7 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick, idOpenEvent, openEv
             const eventDisplay = classNames({
               eventDisplay: idOpenEvent == event.id,
             });
-
+            console.log(idOpenEvent, event.id);
             // if the test is empty we display the line
             let hidden = col === 0 ? 'none' : 'inline';
             if (activeCategories == event.category.title || activeCategories == 'All') {

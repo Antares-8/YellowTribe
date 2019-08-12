@@ -11,15 +11,15 @@ import { BrowserRouter, Link } from 'react-router-dom';
 // import './Event.scss';
 
 // == Composant
-const EventCard = ({ data }) => {
+const CommentCard = ({ data }) => {
 
-  const eventData = data;
-  const event = eventData;
+  const { event } = data;
   const formatHour = 'HH';
   const formatDay = 'dddd';
   const formatNumber = 'D';
   const formatMonth = 'MMMM';
   const formatLarge = 'dddd D MMMM';
+  console.log('comment', event);
 
   const Categorie = styled.div`
   background-color: ${event.category.color};
@@ -30,6 +30,7 @@ const EventCard = ({ data }) => {
   font-size: 80%;
 `;
 
+  
   return (
     <div className="eventCard">
       <BrowserRouter forceRefresh={true}>
@@ -66,9 +67,9 @@ const EventCard = ({ data }) => {
   );
 };
 
-EventCard.propTypes = {
+CommentCard.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
 // == Export
-export default EventCard;
+export default CommentCard;
