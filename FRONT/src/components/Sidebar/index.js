@@ -40,6 +40,16 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
     );
   };
 
+  const clickHandlerNewTag = (evt) => {
+    const idNewTags = evt.target.getAttribute('value');
+    setTagsFind([]);
+    const newTags = tags.filter(tag => tag.id == idNewTags);
+    return (setActualsTags([
+      ...actualsTags,
+      newTags,
+    ]));
+  };
+
   const searchTag = (search) => {
     const searchLength = search.length;
     // Reg for select the same length string than the letter search
@@ -62,20 +72,6 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
     evnt.persist();
     setTagsFind([]);
     searchTag(evnt.target.value);
-  };
-
-  const deleteInput = () => {
-    const searchBar = document.querySelector('.searchBarTag');
-  }
-
-  const clickHandlerNewTag = (evt) => {
-    const idNewTags = evt.target.getAttribute('value');
-    deleteInput();
-    const newTags = tags.filter(tag => tag.id == idNewTags);
-    return (setActualsTags([
-      ...actualsTags,
-      newTags,
-    ]));
   };
 
   const submitHandler = (evt) => {
@@ -335,7 +331,7 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
         <div className="tags">
           <div className="searchBar">
             <div className="ui input">
-              <Input placeholder='State' icon="search" id="searchBarTag" search selection onChange={changeSearchHandler} onSubmit={submitHandler} />
+              <Input placeholder="Tags" icon="search" id="searchBarTag" search selection onChange={changeSearchHandler} onSubmit={submitHandler} />
             </div>
             <div className="results">
               {tagsFind}
