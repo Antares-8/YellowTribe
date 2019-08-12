@@ -12,7 +12,8 @@ body {
 
 .nav_container {
     background-color: #F9B233;
-    position: fixed;
+    position: sticky;
+    top: 0;
     width: 100%;
     padding: 1em 1.7em 1em 1.7em;
     height: 3.85em;
@@ -572,6 +573,7 @@ body {
     width: 70%;
     height: auto;
     padding-top: 8em;
+    padding-bottom: 5em;
     margin: auto;
     color: #FFFDD8;
   }
