@@ -140,7 +140,6 @@ body {
     position: relative;
     border-right: 1px solid var(--border-color);
     overflow: hidden;
-    cursor: pointer;
     background: var(--neutral-color);
     transition: 0.25s ease-out;
   }
@@ -239,7 +238,6 @@ body {
   }
 
   .calendar .body .cell:hover {
-    background: var(--text-light-light);
     transition: 0.5s ease-out;
   }
   .calendar .body .cell:hover .addEvent {
@@ -254,13 +252,14 @@ body {
     color: var(--text-dark);
     padding: 0.3em 0.7em;
     font-size: 59%;
+    cursor: pointer;
   }
 
   /// event WEEK /// 
   .week .events .title {
-    width: 10em;
+    width: 6.5em;
     -webkit-transform: rotate(-90deg) translateX(-29px) translateY(-32px);
-    transform: rotate(-90deg) translateX(-29px) translateY(-37px);
+    transform: rotate(-90deg) translateX(-22px) translateY(-17px);
     line-height: 1.4;
     position: absolute;
   }
@@ -313,9 +312,7 @@ body {
 .calendar .year .row .number  {
   font-size: 85%;
 }
-.calendar .year .row .col.cell.disabled{
-  color: #eee;
-}
+
 .calendar .year .body .selected .number {
   width: 20px;
   height: 20px;

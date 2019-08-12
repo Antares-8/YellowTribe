@@ -160,8 +160,8 @@ const createTable = (
             return (
               <Events key={`${keyEv} ${day}`} className={`events event${rowEvent}`} id={event.id} onClick={clickHandleEvent}>
                 <span className="title" onClick={clickHandleEvent}>
-                  {event.title.length > 25
-                    ? `${event.title.slice(0, 25)}...`
+                  {event.title.length > 20
+                    ? `${event.title.slice(0, 20)}...`
                     : event.title
                   }
                 </span>
