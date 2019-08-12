@@ -15,6 +15,7 @@ body {
     position: fixed;
     top: 0;
     right: 0;
+    z-index: 2;
     width: 100%;
     padding: 1em 1.7em 1em 1.7em;
     height: 3.85em;
@@ -451,6 +452,7 @@ body {
     margin-left: 5em;
     color: #fcc53b;
     margin-bottom: 10em;
+    z-index: 1;
 }
  
 .event-calendar_container {
