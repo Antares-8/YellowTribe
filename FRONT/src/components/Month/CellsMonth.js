@@ -22,9 +22,9 @@ const createTable = (
 ) => {
   const rows = [];
 
-  const monthStart = dateFns.startOfMonth(currentDate);
+  const monthStart = dateFns.startOfMonth(currentDate, {weekStartsOn: 1});
   const monthEnd = dateFns.endOfMonth(monthStart);
-  const startDate = dateFns.startOfWeek(monthStart);
+  const startDate = dateFns.startOfWeek(monthStart, {weekStartsOn: 1});
   const endDate = dateFns.endOfWeek(monthEnd);
 
   const dateFormat = 'D';
@@ -123,8 +123,8 @@ const createTable = (
           }
 
           const border = idOpenEvent == event.id
-            ? `4px solid ${event.category.color}`
-            : `2px solid ${event.category.darkcolor}`;
+            ? `3px solid ${event.category.color}`
+            : `1px solid ${event.category.darkcolor}`;
 
           const background = idOpenEvent == event.id
             ? `${event.category.darkcolor}`

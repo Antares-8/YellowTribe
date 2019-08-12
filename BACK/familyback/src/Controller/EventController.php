@@ -14,6 +14,7 @@ use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -70,7 +71,7 @@ class EventController extends AbstractController
         //dump($request->query->get('date'));
         if (isset($_GET['date'])) {
             //dump($_GET['date']);
-            $date = new \DateTime('2019-08-12');
+            $date = new \DateTime($_GET['date']);
 
             $form->get('beginingDate')->setData($date);
         }
@@ -78,6 +79,16 @@ class EventController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
             $event->setUser($connectedUser);
             $event->setTribe($userTribeId);
+
+            // if (!$form->get('endingDate')->getData()) {
+
+            //     $end = new \DateTime();
+            //     $end->modify("+ 1 hour");
+            //     //$end->modify("+ 1 hour");
+            //     //dd($end);
+            //     $event->setEndingDate($end);
+            //     //$event->setBeginingDate($start);
+            // }
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($event);
