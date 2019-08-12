@@ -173,7 +173,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         news: action.data,
       };
-    
+
     case GET_DATA_TAGS:
       return {
         ...state,
@@ -186,7 +186,7 @@ const reducer = (state = initialState, action = {}) => {
         userIdConnected: action.user,
         tribeIdConnected: action.tribe,
       };
-      
+
     case GET_DATA_PROFILE:
       return {
         ...state,

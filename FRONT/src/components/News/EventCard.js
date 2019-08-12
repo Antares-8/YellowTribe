@@ -37,7 +37,7 @@ const EventCard = ({ data }) => {
             <div className="title"> 
               <div className="mainTitle">{event.title}</div>
               <div className="baseTitle">
-                <div className="author">Organisé par <span>{event.user}</span> / </div>
+                <div className="author">Organisé par <span>{event.user.firstname}</span> / </div>
                 <div className="cercle" style={{ backgroundColor: event.color }}></div>
                 <div className="author"> Categorie <span>{event.category}</span></div>
               </div>
