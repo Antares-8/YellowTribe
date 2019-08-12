@@ -22,9 +22,9 @@ const createTable = (
 ) => {
   const rows = [];
 
-  const monthStart = dateFns.startOfMonth(currentDate);
+  const monthStart = dateFns.startOfMonth(currentDate, {weekStartsOn: 1});
   const monthEnd = dateFns.endOfMonth(monthStart);
-  const startDate = dateFns.startOfWeek(monthStart);
+  const startDate = dateFns.startOfWeek(monthStart, {weekStartsOn: 1});
   const endDate = dateFns.endOfWeek(monthEnd);
 
   const dateFormat = 'D';

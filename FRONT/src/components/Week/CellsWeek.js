@@ -99,12 +99,33 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick, idOpenEvent, openEv
               hidden = 'none';
             }
             // I create a styled components to fixe directly the col and span on the grid-colum style
-            const Events = styled.div`
+            const border = idOpenEvent == event.id
+            ? `4px solid ${event.category.color}`
+            : `2px solid ${event.category.darkcolor}`;
+
+          const background = idOpenEvent == event.id
+            ? `${event.category.darkcolor}`
+            : `${event.category.color}`;
+
+          const zIndex = idOpenEvent == event.id
+            ? "1"
+            : "0";
+          
+          const color = idOpenEvent == event.id
+            ? "#fef7e1"
+            : "#fcc53b";
+
+
+          const Events = styled.div`
               grid-row: ${col} / span ${colSpan};
-              grid-column: ${rowEvent} /span 3;
-              background-color: ${event.category.color};
+              grid-column: ${rowEvent} / span 3;
+              background-color: ${background};
+              border: ${border};
               display: ${hidden};
-            `;
+              z-index: ${zIndex};
+              color: ${color}
+          `;
+
             if (col !== 0) {
               rowEvent += 1;  
             // I return the event in the DOM
