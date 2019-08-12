@@ -113,6 +113,7 @@ const createTable = (
           keyEv += 1;
           // I create a styled components to fixe directly the col and span on the grid-colum style
           // category.color
+          
           if (activeCategories == event.category.title || activeCategories == 'All') {
             hidden = 'inline';
           }
