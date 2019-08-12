@@ -176,9 +176,9 @@ body {
 }
 
 .profile-content_information .user_avatar-section .user_avatar {
-    border-radius: 50%;
-    width: 12em;
-    height: 100%; 
+    /* border-radius: 50%; */
+    width: auto;
+    height: 12em; 
 }
 
 .profile-content_information .user_avatar-section .user_avatar-edit {
@@ -188,7 +188,7 @@ body {
 }
 
 .profile-content_information .user_avatar-section .user_avatar-link {
-    color:  rgba(255, 253, 216, 0.664); 
+    color:  rgba(255, 253, 216, 0.466); 
     font-size: 3em;
 }
 
