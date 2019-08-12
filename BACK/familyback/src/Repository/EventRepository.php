@@ -42,6 +42,8 @@ class EventRepository extends ServiceEntityRepository
             ->addselect('t')
             ->join('e.category', 'c')
             ->addselect('c')
+            ->join('e.user', 'u')
+            ->addselect('u.username')
             ->where('e.tribe = :myTribe')
             ->setParameter('myTribe', $tribe)
         ;
