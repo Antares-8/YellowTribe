@@ -89,7 +89,7 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
   const [anniversaires, setAnniversaires] = useState([{ title: 'Anniversaires' }]);
   const [repas, setRepas] = useState([{ title: 'Repas' }]);
   const [sorties, setSorties] = useState([{ title: 'Sorties' }]);
-  const [chills, setChills] = useState([{ title: 'Chills' }]);
+  const [vacances, setVacances] = useState([{ title: 'vacances' }]);
   const [autres, setAutres] = useState([{ title: 'Autres' }]);
 
 
@@ -113,8 +113,8 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
     if (sorties.checked === true) {
       changeActiveCategories(sorties[0].title);
     }
-    if (chills.checked === true) {
-      changeActiveCategories(chills[0].title);
+    if (vacances.checked === true) {
+      changeActiveCategories(vacances[0].title);
     }
     if (autres.checked === true) {
       changeActiveCategories(autres[0].title);
@@ -145,8 +145,8 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
       ...sorties,
       checked: false,
     });
-    setChills({
-      ...chills,
+    setVacances({
+      ...vacances,
       checked: false,
     });
     setAutres({
@@ -257,20 +257,20 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
       });
     }
   };
-  /// CHILLS ///
-  const changeHandlerCheckChills = () => {
-    if (chills.length == 1) {
+  /// vacances ///
+  const changeHandlerCheckvacances = () => {
+    if (vacances.length == 1) {
       unCheckAll();
-      setChills({
-        ...chills,
-        checked: !chills.checked,
+      setvacances({
+        ...vacances,
+        checked: !vacances.checked,
       });
     }
-    if (chills.checked == false) {
+    if (vacances.checked == false) {
       unCheckAll();
-      setChills({
-        ...chills,
-        checked: !chills.checked,
+      setvacances({
+        ...vacances,
+        checked: !vacances.checked,
       });
     }
   };
@@ -306,7 +306,7 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
             <Checkbox key="4" label={{ children: 'Anniversaires' }} className="categorie" checked={anniversaires.checked} value="all" onChange={changeHandlerCheckAnniversaires} style={{ backgroundColor: categoriesArray[2].color }} />
             <Checkbox key="5" label={{ children: 'Repas' }} checked={repas.checked} className="categorie" value="all" onChange={changeHandlerCheckRepas} style={{ backgroundColor: categoriesArray[3].color }} />
             <Checkbox key="6" label={{ children: 'Sorties' }} checked={sorties.checked} className="categorie" value="all" onChange={changeHandlerCheckSorties} style={{ backgroundColor: categoriesArray[4].color }} />
-            <Checkbox key="7" label={{ children: 'Chills' }} checked={chills.checked} className="categorie" value="all" onChange={changeHandlerCheckChills} style={{ backgroundColor: categoriesArray[5].color }} />
+            <Checkbox key="7" label={{ children: 'Vacances' }} checked={vacances.checked} className="categorie" value="all" onChange={changeHandlerCheckvacances} style={{ backgroundColor: categoriesArray[5].color }} />
             <Checkbox key="8" label={{ children: 'Autres' }} checked={autres.checked} className="categorie" value="all" onChange={changeHandlerCheckAutres} style={{ backgroundColor: categoriesArray[6].color }} />
           </Form>,
         );
@@ -317,8 +317,8 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
 
   useEffect(() => createTags(), [tags, actualsTags]);
   useEffect(() => setCategoriesArray(categories), [categories]);
-  useEffect(() => displayCategories(), [categoriesArray, all, services, celebrations, anniversaires, chills, sorties, repas, autres]);
-  useEffect(() => active(), [all, services, celebrations, anniversaires, chills, sorties, repas, autres]);
+  useEffect(() => displayCategories(), [categoriesArray, all, services, celebrations, anniversaires, vacances, sorties, repas, autres]);
+  useEffect(() => active(), [all, services, celebrations, anniversaires, vacances, sorties, repas, autres]);
   useEffect(() => changeHandlerCheckAll(), []);
 
 

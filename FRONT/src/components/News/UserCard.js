@@ -27,7 +27,11 @@ const UserCard = ({ data }) => {
   return (
     <div className="userCard">
         <div className="mainPart">
+        <div className="imgPart">
           <img src={avatar} className="avatar" alt="profilpicture" />
+          <hr />
+          <div className="newEventType"> Nouvel <br/> utilisateur</div>
+        </div>
           <div className="textPart">
             <div className="name">{event.firstname} {event.lastname}</div>
             <div className="explication"> à rejoint la tribu {event.tribe.name}</div>
