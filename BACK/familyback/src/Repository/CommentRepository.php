@@ -40,6 +40,8 @@ class CommentRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('c')
                 ->join('c.tribe', 't')
                 ->addselect('t')
+                ->join('c.event', 'e')
+                ->addselect('e')
                 ->where('c.tribe = :myTribe')
                 ->andWhere('c.createdAt > :date')
                 ->setParameters([
