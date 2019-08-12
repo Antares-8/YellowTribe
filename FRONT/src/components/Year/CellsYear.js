@@ -73,7 +73,6 @@ const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEv
               disabled: dateFns.isSameMonth(day, monthStart) === false,
               selected: dateFns.isSameMonth(day, monthStart) && dateFns.isSameDay(day, selectedDate),
             });
-            console.log(dateFns.isSameMonth(day, monthStart));
             days.push(
               <div
                 className={`col cell ${selected}`}
@@ -163,7 +162,7 @@ const CellsYear = ({ currentDate, selectedDate, onDateClick, openEvent, idOpenEv
           rowEvent = 2;
           days = [];
         }
-        formattedDate = dateFns.format(month, dateFormatMonth);
+        formattedDate = dateFns.format(month, dateFormatMonth, { locale: french });
         months.push(
           <div key={month} className="month">
             <div className="nameMonth">{formattedDate}</div>

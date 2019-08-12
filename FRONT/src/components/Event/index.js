@@ -31,6 +31,8 @@ const Event = ({ idOpenEvent, closeEvent, events }) => {
     backgroundColor: ${event.color};
   `;
 
+  console.log(event.user.firstname);
+
   return (
     <div className="event">
       <div className="icon close" onClick={clickCloseHandler}>close</div>
@@ -43,7 +45,7 @@ const Event = ({ idOpenEvent, closeEvent, events }) => {
         <div className="title"> 
           <div className="mainTitle">{event.title}</div>
           <div className="baseTitle">
-            <div className="author">Organisé par <span>{event.user}</span> / </div>
+            <div className="author">Organisé par <span>{event.user.firstname}</span> / </div>
             <div className="cercle" style={{ backgroundColor: event.category.color }}></div>
             <div className="author"> Categorie <span>{event.category.title}</span></div>
           </div>

@@ -28,13 +28,13 @@ const createTable = (
   const endDate = dateFns.endOfWeek(monthEnd);
 
   const dateFormat = 'D';
+  const phpFormat = 'YYYY-MM-DD HH:mm:ss';
 
   let days = [];
   let day = startDate;
   let formattedDate = '';
   let keyEv = [];
 
-  
 
   const clickHandleEvent = (evt) => {
     const { id } = evt.target;
@@ -45,6 +45,8 @@ const createTable = (
       openEvent(id);
     }
   };
+  const phpDate = dateFns.format(day, phpFormat);
+  console.log(phpDate);
 
 
   let rowEvent = 2;
@@ -63,7 +65,7 @@ const createTable = (
           col={i}
           onClick={() => dateClickHandler(cloneDay)}
         >
-          <Link to={`/calendar/event/new?date=${new Date(day)}`}>
+          <Link to={`/calendar/event/new?date=${phpDate}`}>
             <div className="addEvent"><span className="icon">add</span>évènement</div>
           </Link>
           {birthday.map( (hbirthday) => {
@@ -128,12 +130,28 @@ const createTable = (
             ? `${event.category.darkcolor}`
             : `${event.category.color}`;
 
+          const zIndex = idOpenEvent == event.id
+            ? "1"
+            : "0";
+
+          const padding = idOpenEvent == event.id
+            ? "0 0.5em"
+            : "0.1em 0.7em";
+          
+          const color = idOpenEvent == event.id
+            ? "#fef7e1"
+            : "#fcc53b";
+
+
           const Events = styled.div`
               grid-column: ${col} / span ${colSpan};
               grid-row: ${rowEvent} / span 3;
               background-color: ${background};
               border: ${border};
               display: ${hidden};
+              padding: ${padding};
+              z-index: ${zIndex};
+              color: ${color}
           `;
           // I return the event in the DOM
           if (col !== 0) {
@@ -141,12 +159,12 @@ const createTable = (
             
             return (
               <Events key={`${keyEv} ${day}`} className={`events event${rowEvent}`} id={event.id} onClick={clickHandleEvent}>
-                <div className="title" onClick={clickHandleEvent}>
-                  {event.title.length > 25
-                    ? `${event.title.slice(0, 25)}...`
+                <span className="title" onClick={clickHandleEvent}>
+                  {event.title.length > 20
+                    ? `${event.title.slice(0, 20)}...`
                     : event.title
                   }
-                </div>
+                </span>
               </Events>
             );
           }

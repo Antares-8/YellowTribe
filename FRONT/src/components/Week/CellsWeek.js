@@ -111,8 +111,8 @@ const CellsWeek = ({ currentDate, selectedDate, onDateClick, idOpenEvent, openEv
               return (
                 <Events key={`${event.beginingDate}${hour} ${eventDisplay}`} className={`events event${rowEvent} ${eventDisplay}`} id={event.id} onClick={clickHandleEvent}>
                   <div className="title">
-                    {event.title.length > 25
-                      ? `${event.title.slice(0, 25)}...`
+                    {event.title.length > 20
+                      ? `${event.title.slice(0, 20)}...`
                       : event.title
                     }
                   </div>
