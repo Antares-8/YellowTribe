@@ -71,7 +71,7 @@ const createTable = (
             const birthdayDay = dateFns.getDayOfYear(birthdayFns);
             const dateDay = dateFns.getDayOfYear(day);
             if (birthdayDay === dateDay) {
-              return (<div key={hbirthday.birthDate}>🎉 {hbirthday.firstname}</div>);
+              return (<div key={hbirthday.birthDate}><i class="fas fa-birthday-cake"></i> {hbirthday.firstname}</div>);
             }
           })}
           <span className="number">{formattedDate}</span>
@@ -80,7 +80,8 @@ const createTable = (
       day = dateFns.addDays(day, 1);
     }
     rows.push(
-      <div className="row" key={`${day}${event.beginingDate}`}>
+      // <div className="row" key={`${day}${event.beginingDate}`}>
+      <div className="row" key={`${day}`}>
         {days}
         {events.map((event) => {
           // test to know if the row is under or outside an event period
