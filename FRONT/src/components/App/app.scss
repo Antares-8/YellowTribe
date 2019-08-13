@@ -111,6 +111,7 @@ nav .item {
 /// NAV ////
 .ui.tabular.menu {
   border-bottom: none;
+  margin-top: 2em;
 }
 
 .ui.tabular.menu .item {
@@ -220,6 +221,7 @@ nav .item {
   position: fixed;
   top: 4.375em;
   right: 1.3em;
+  margin-top: 2em;
   border-radius: 0.8em;
   border: 0.18em solid var(--text-dark);
   background-color: var(--background-dark);
@@ -259,6 +261,7 @@ nav .item {
 @media screen and (min-width: 1550px) {
   .main {
     margin-left: 7.7em;
+    margin-top: 8em;
     width: 63%;
   }
   .main.withEvent {
@@ -271,10 +274,12 @@ nav .item {
     left: 41em;
     top: 5em;
     bottom: inherit;
+    margin-top: 2em;
   }
   .navigation .header {
     left: 60em;
     top: 5em;
+    margin-top: 2em;
     bottom: inherit;
   }
   .sidebar {

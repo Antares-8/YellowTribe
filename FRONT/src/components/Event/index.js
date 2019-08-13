@@ -63,7 +63,7 @@ const Event = ({ idOpenEvent, closeEvent, events }) => {
       <BrowserRouter forceRefresh={true}>
         <Link to={`/calendar/event/${event.id}`}>
           <div className="bouton">
-            ouvrir l'event <Icon name="right chevron" />
+            Voir <Icon name="right chevron" />
           </div>
         </Link>
       </BrowserRouter>
