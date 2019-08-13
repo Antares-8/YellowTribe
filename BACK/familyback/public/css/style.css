@@ -13,6 +13,9 @@ body {
 .nav_container {
     background-color: #F9B233;
     position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
     width: 100%;
     padding: 1em 1.7em 1em 1.7em;
     height: 3.85em;
@@ -176,9 +179,9 @@ body {
 }
 
 .profile-content_information .user_avatar-section .user_avatar {
-    border-radius: 50%;
-    width: 12em;
-    height: 100%; 
+    /* border-radius: 50%; */
+    width: auto;
+    height: 12em; 
 }
 
 .profile-content_information .user_avatar-section .user_avatar-edit {
@@ -188,7 +191,7 @@ body {
 }
 
 .profile-content_information .user_avatar-section .user_avatar-link {
-    color:  rgba(255, 253, 216, 0.664); 
+    color:  rgba(255, 253, 216, 0.466); 
     font-size: 3em;
 }
 
@@ -449,6 +452,7 @@ body {
     margin-left: 5em;
     color: #fcc53b;
     margin-bottom: 10em;
+    z-index: 1;
 }
  
 .event-calendar_container {
@@ -572,6 +576,7 @@ body {
     width: 70%;
     height: auto;
     padding-top: 8em;
+    padding-bottom: 5em;
     margin: auto;
     color: #FFFDD8;
   }
