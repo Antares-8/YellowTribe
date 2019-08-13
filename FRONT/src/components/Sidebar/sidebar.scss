@@ -1,6 +1,6 @@
 .sidebar {
   position: fixed; 
-  bottom: 0;
+  top: 10em;
   margin-bottom: 1.7em;
   right: 1.7em;
   width: 19%;
@@ -21,7 +21,7 @@
 }
 
 .sidebar .ui.checkbox label {
-  color: var(--text-light);
+  color: grey;
 }
 
 /// WITH EVENT OPEN /// 
@@ -49,6 +49,11 @@
 .sidebar .ui.form {
   display: flex; 
   flex-direction: column; 
+}
+
+.ui .form .checkbox .catgegorie {
+  color: var(--text-dark);
+  font-weight: bold;
 }
 
 .sidebar .categorie {
