@@ -300,12 +300,12 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
 
         cat.push(
           <Form>
-            <Checkbox key="1" label={{ children: 'All' }} className="categorie" checked={all.checked} value="all" onChange={changeHandlerCheckAll} />
-            <Checkbox key="2" label={{ children: 'Services' }} className="categorie" checked={services.checked} value="all" onChange={changeHandlerCheckServices} style={{ backgroundColor: categoriesArray[0].color }} />
-            <Checkbox key="3" label={{ children: 'Célébrations' }} className="categorie" checked={celebrations.checked} value="all" onChange={changeHandlerCheckCelebrations} style={{ backgroundColor: categoriesArray[1].color }} />
-            <Checkbox key="4" label={{ children: 'Anniversaires' }} className="categorie" checked={anniversaires.checked} value="all" onChange={changeHandlerCheckAnniversaires} style={{ backgroundColor: categoriesArray[2].color }} />
+            <Checkbox key="1" label={{ children: 'Toutes' }} className="categorie" checked={all.checked} value="all" onChange={changeHandlerCheckAll} />
+            <Checkbox key="2" label={{ children: 'Service' }} className="categorie" checked={services.checked} value="all" onChange={changeHandlerCheckServices} style={{ backgroundColor: categoriesArray[0].color }} />
+            <Checkbox key="3" label={{ children: 'Fête' }} className="categorie" checked={celebrations.checked} value="all" onChange={changeHandlerCheckCelebrations} style={{ backgroundColor: categoriesArray[1].color }} />
+            <Checkbox key="4" label={{ children: 'Mariage / PACS' }} className="categorie" checked={anniversaires.checked} value="all" onChange={changeHandlerCheckAnniversaires} style={{ backgroundColor: categoriesArray[2].color }} />
             <Checkbox key="5" label={{ children: 'Repas' }} checked={repas.checked} className="categorie" value="all" onChange={changeHandlerCheckRepas} style={{ backgroundColor: categoriesArray[3].color }} />
-            <Checkbox key="6" label={{ children: 'Sorties' }} checked={sorties.checked} className="categorie" value="all" onChange={changeHandlerCheckSorties} style={{ backgroundColor: categoriesArray[4].color }} />
+            <Checkbox key="6" label={{ children: 'Sortie' }} checked={sorties.checked} className="categorie" value="all" onChange={changeHandlerCheckSorties} style={{ backgroundColor: categoriesArray[4].color }} />
             <Checkbox key="7" label={{ children: 'Vacances' }} checked={vacances.checked} className="categorie" value="all" onChange={changeHandlerCheckvacances} style={{ backgroundColor: categoriesArray[5].color }} />
             <Checkbox key="8" label={{ children: 'Autres' }} checked={autres.checked} className="categorie" value="all" onChange={changeHandlerCheckAutres} style={{ backgroundColor: categoriesArray[6].color }} />
           </Form>,
