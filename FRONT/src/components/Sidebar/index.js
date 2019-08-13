@@ -324,7 +324,20 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
         categories
       </div>
       {categoriesLabels}
- 
+      {/* <div className="tribeTag">
+
+        <div className="tags">
+          <div className="searchBar">
+            <div className="ui input">
+              <Input placeholder="Tags" icon="search" id="searchBarTag" search selection onChange={changeSearchHandler} onSubmit={submitHandler} />
+            </div>
+            <div className="results">
+              {tagsFind}
+            </div>
+          </div>
+          {tagsCards}
+        </div>
+      </div>    */}
     </div>
   );
 };
