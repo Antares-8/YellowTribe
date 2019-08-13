@@ -40,16 +40,6 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
     );
   };
 
-  const clickHandlerNewTag = (evt) => {
-    const idNewTags = evt.target.getAttribute('value');
-    setTagsFind([]);
-    const newTags = tags.filter(tag => tag.id == idNewTags);
-    return (setActualsTags([
-      ...actualsTags,
-      newTags,
-    ]));
-  };
-
   const searchTag = (search) => {
     const searchLength = search.length;
     // Reg for select the same length string than the letter search
@@ -74,40 +64,54 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
     searchTag(evnt.target.value);
   };
 
+  const deleteInput = () => {
+    const searchBar = document.querySelector('.searchBarTag');
+  }
+
+  const clickHandlerNewTag = (evt) => {
+    const idNewTags = evt.target.getAttribute('value');
+    deleteInput();
+    const newTags = tags.filter(tag => tag.id == idNewTags);
+    return (setActualsTags([
+      ...actualsTags,
+      newTags,
+    ]));
+  };
+
   const submitHandler = (evt) => {
     evt.preventDefault();
     createTags();
   };
 
-  const [toutes, setToutes] = useState([{ title: 'Toutes' }]);
-  const [service, setService] = useState([{ title: 'Service' }]);
-  const [fete, setFete] = useState([{ title: 'Fête' }]);
-  const [mariage, setMariage] = useState([{ title: 'Mariage' }]);
+  const [all, setAll] = useState([{ title: 'All' }]);
+  const [services, setServices] = useState([{ title: 'Services' }]);
+  const [celebrations, setCelebrations] = useState([{ title: 'Célébrations' }]);
+  const [anniversaires, setAnniversaires] = useState([{ title: 'Anniversaires' }]);
   const [repas, setRepas] = useState([{ title: 'Repas' }]);
-  const [sortie, setSortie] = useState([{ title: 'Sortie' }]);
-  const [vacances, setVacances] = useState([{ title: 'Vacances' }]);
+  const [sorties, setSorties] = useState([{ title: 'Sorties' }]);
+  const [vacances, setVacances] = useState([{ title: 'vacances' }]);
   const [autres, setAutres] = useState([{ title: 'Autres' }]);
 
 
   /// ALL /// 
   const active = () => {
-    if (toutes.checked === true) {
-      changeActiveCategories(toutes[0].title);
+    if (all.checked === true) {
+      changeActiveCategories(all[0].title);
     }
-    if (service.checked === true) {
-      changeActiveCategories(service[0].title);
+    if (services.checked === true) {
+      changeActiveCategories(services[0].title);
     }
-    if (fete.checked === true) {
-      changeActiveCategories(fete[0].title);
+    if (celebrations.checked === true) {
+      changeActiveCategories(celebrations[0].title);
     }
-    if (mariage.checked === true) {
-      changeActiveCategories(mariage[0].title);
+    if (anniversaires.checked === true) {
+      changeActiveCategories(anniversaires[0].title);
     }
     if (repas.checked === true) {
       changeActiveCategories(repas[0].title);
     }
-    if (sortie.checked === true) {
-      changeActiveCategories(sortie[0].title);
+    if (sorties.checked === true) {
+      changeActiveCategories(sorties[0].title);
     }
     if (vacances.checked === true) {
       changeActiveCategories(vacances[0].title);
@@ -116,29 +120,29 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
       changeActiveCategories(autres[0].title);
     }
   };
-  const unCheckToutes = () => {
-    setToutes({
-      ...toutes,
+  const unCheckAll = () => {
+    setAll({
+      ...all,
       checked: false,
     });
-    setService({
-      ...service,
+    setServices({
+      ...services,
       checked: false,
     });
-    setFete({
-      ...fete,
+    setCelebrations({
+      ...celebrations,
       checked: false,
     });
-    setMariage({
-      ...mariage,
+    setAnniversaires({
+      ...anniversaires,
       checked: false,
     });
     setRepas({
       ...repas,
       checked: false,
     });
-    setSortie({
-      ...sortie,
+    setSorties({
+      ...sorties,
       checked: false,
     });
     setVacances({
@@ -152,84 +156,84 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
   };
   
 
-  const changeHandlerCheckToutes = () => {
-    if (toutes.length == 1) {
-      unCheckToutes();
-      setToutes({
-        ...toutes,
-        checked: !toutes.checked,
+  const changeHandlerCheckAll = () => {
+    if (all.length == 1) {
+      unCheckAll();
+      setAll({
+        ...all,
+        checked: !all.checked,
       });
     }
-    if (toutes.checked == false) {
-      unCheckToutes();
-      setToutes({
-        ...toutes,
-        checked: !toutes.checked,
-      });
-    }
-  };
-  /// SERVICE /// 
-  const changeHandlerCheckService = () => {
-    if (service.length == 1) {
-      unCheckToutes();
-      setService({
-        ...service,
-        checked: !service.checked,
-      });
-    }
-    if (service.checked == false) {
-      unCheckToutes();
-      setService({
-        ...service,
-        checked: !service.checked,
+    if (all.checked == false) {
+      unCheckAll();
+      setAll({
+        ...all,
+        checked: !all.checked,
       });
     }
   };
-  /// FETE /// 
-  const changeHandlerCheckFete = () => {
-    if (fete.length == 1) {
-      unCheckToutes();
-      setFete({
-        ...fete,
-        checked: !fete.checked,
+  /// SERVICES /// 
+  const changeHandlerCheckServices = () => {
+    if (services.length == 1) {
+      unCheckAll();
+      setServices({
+        ...services,
+        checked: !services.checked,
       });
     }
-    if (fete.checked == false) {
-      unCheckToutes();
-      setFete({
-        ...fete,
-        checked: !fete.checked,
+    if (services.checked == false) {
+      unCheckAll();
+      setServices({
+        ...services,
+        checked: !services.checked,
       });
     }
   };
-   /// MARIAGE ///
-  const changeHandlerCheckMariage = () => {
-    if (mariage.length == 1) {
-      unCheckToutes();
-      setMariage({
-        ...mariage,
-        checked: !mariage.checked,
+  /// CELEBRATIONS /// 
+  const changeHandlerCheckCelebrations = () => {
+    if (celebrations.length == 1) {
+      unCheckAll();
+      setCelebrations({
+        ...celebrations,
+        checked: !celebrations.checked,
       });
     }
-    if (mariage.checked == false) {
-      unCheckToutes();
-      setMariage({
-        ...mariage,
-        checked: !mariage.checked,
+    if (celebrations.checked == false) {
+      unCheckAll();
+      setCelebrations({
+        ...celebrations,
+        checked: !celebrations.checked,
+      });
+    }
+  };
+   /// ANNIVERSAIRES ///
+  const changeHandlerCheckAnniversaires = () => {
+    if (anniversaires.length == 1) {
+      unCheckAll();
+      setAnniversaires({
+        ...anniversaires,
+        checked: !anniversaires.checked,
+      });
+    }
+    if (anniversaires.checked == false) {
+      unCheckAll();
+      setAnniversaires({
+        ...anniversaires,
+        checked: !anniversaires.checked,
       });
     }
   };
   /// REPAS ///
   const changeHandlerCheckRepas = () => {
     if (repas.length == 1) {
-      unCheckToutes();
+      unCheckAll();
       setRepas({
         ...repas,
         checked: !repas.checked,
       });
     }
     if (repas.checked == false) {
-      unCheckToutes();
+      unCheckAll();
       setRepas({
         ...repas,
         checked: !repas.checked,
@@ -237,34 +241,34 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
     }
   };
   /// SORTIES ///
-  const changeHandlerCheckSortie = () => {
-    if (sortie.length == 1) {
-      unCheckToutes();
-      setSortie({
-        ...sortie,
-        checked: !sortie.checked,
+  const changeHandlerCheckSorties = () => {
+    if (sorties.length == 1) {
+      unCheckAll();
+      setSorties({
+        ...sorties,
+        checked: !sorties.checked,
       });
     }
-    if (sortie.checked == false) {
-      unCheckToutes();
-      setSortie({
-        ...sortie,
-        checked: !sortie.checked,
+    if (sorties.checked == false) {
+      unCheckAll();
+      setSorties({
+        ...sorties,
+        checked: !sorties.checked,
       });
     }
   };
   /// vacances ///
-  const changeHandlerCheckVacances = () => {
+  const changeHandlerCheckvacances = () => {
     if (vacances.length == 1) {
-      unCheckToutes();
-      setVacances({
+      unCheckAll();
+      setvacances({
         ...vacances,
         checked: !vacances.checked,
       });
     }
     if (vacances.checked == false) {
-      unCheckToutes();
-      setVacances({
+      unCheckAll();
+      setvacances({
         ...vacances,
         checked: !vacances.checked,
       });
@@ -273,14 +277,14 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
    /// AUTRES ///
   const changeHandlerCheckAutres = () => {
     if (autres.length == 1) {
-      unCheckToutes();
+      unCheckAll();
       setAutres({
         ...autres,
         checked: !autres.checked,
       });
     }
     if (autres.checked == false) {
-      unCheckToutes();
+      unCheckAll();
       setAutres({
         ...autres,
         checked: !autres.checked,
@@ -296,13 +300,13 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
 
         cat.push(
           <Form>
-            <Checkbox key="1" label={{ children: 'Toutes' }} className="categorie" checked={toutes.checked} value="all" onChange={changeHandlerCheckToutes} />
-            <Checkbox key="2" label={{ children: 'Service' }} className="categorie" checked={service.checked} value="all" onChange={changeHandlerCheckService} style={{ backgroundColor: categoriesArray[0].color }} />
-            <Checkbox key="3" label={{ children: 'Fête' }} className="categorie" checked={fete.checked} value="all" onChange={changeHandlerCheckFete} style={{ backgroundColor: categoriesArray[1].color }} />
-            <Checkbox key="4" label={{ children: 'Mariage / PACS' }} className="categorie" checked={mariage.checked} value="all" onChange={changeHandlerCheckMariage} style={{ backgroundColor: categoriesArray[2].color }} />
+            <Checkbox key="1" label={{ children: 'All' }} className="categorie" checked={all.checked} value="all" onChange={changeHandlerCheckAll} />
+            <Checkbox key="2" label={{ children: 'Services' }} className="categorie" checked={services.checked} value="all" onChange={changeHandlerCheckServices} style={{ backgroundColor: categoriesArray[0].color }} />
+            <Checkbox key="3" label={{ children: 'Célébrations' }} className="categorie" checked={celebrations.checked} value="all" onChange={changeHandlerCheckCelebrations} style={{ backgroundColor: categoriesArray[1].color }} />
+            <Checkbox key="4" label={{ children: 'Anniversaires' }} className="categorie" checked={anniversaires.checked} value="all" onChange={changeHandlerCheckAnniversaires} style={{ backgroundColor: categoriesArray[2].color }} />
             <Checkbox key="5" label={{ children: 'Repas' }} checked={repas.checked} className="categorie" value="all" onChange={changeHandlerCheckRepas} style={{ backgroundColor: categoriesArray[3].color }} />
-            <Checkbox key="6" label={{ children: 'Sortie' }} checked={sortie.checked} className="categorie" value="all" onChange={changeHandlerCheckSortie} style={{ backgroundColor: categoriesArray[4].color }} />
-            <Checkbox key="7" label={{ children: 'Vacances' }} checked={vacances.checked} className="categorie" value="all" onChange={changeHandlerCheckVacances} style={{ backgroundColor: categoriesArray[5].color }} />
+            <Checkbox key="6" label={{ children: 'Sorties' }} checked={sorties.checked} className="categorie" value="all" onChange={changeHandlerCheckSorties} style={{ backgroundColor: categoriesArray[4].color }} />
+            <Checkbox key="7" label={{ children: 'Vacances' }} checked={vacances.checked} className="categorie" value="all" onChange={changeHandlerCheckvacances} style={{ backgroundColor: categoriesArray[5].color }} />
             <Checkbox key="8" label={{ children: 'Autres' }} checked={autres.checked} className="categorie" value="all" onChange={changeHandlerCheckAutres} style={{ backgroundColor: categoriesArray[6].color }} />
           </Form>,
         );
@@ -313,9 +317,9 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
 
   useEffect(() => createTags(), [tags, actualsTags]);
   useEffect(() => setCategoriesArray(categories), [categories]);
-  useEffect(() => displayCategories(), [categoriesArray, toutes, service, fete, mariage, vacances, sortie, repas, autres]);
-  useEffect(() => active(), [toutes, service, fete, mariage, vacances, sortie, repas, autres]);
-  useEffect(() => changeHandlerCheckToutes(), []);
+  useEffect(() => displayCategories(), [categoriesArray, all, services, celebrations, anniversaires, vacances, sorties, repas, autres]);
+  useEffect(() => active(), [all, services, celebrations, anniversaires, vacances, sorties, repas, autres]);
+  useEffect(() => changeHandlerCheckAll(), []);
 
 
   return (
@@ -325,11 +329,13 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
       </div>
       {categoriesLabels}
       {/* <div className="tribeTag">
-
+        <div className="title">
+          Tribe
+        </div>
         <div className="tags">
           <div className="searchBar">
             <div className="ui input">
-              <Input placeholder="Tags" icon="search" id="searchBarTag" search selection onChange={changeSearchHandler} onSubmit={submitHandler} />
+              <Input placeholder='State' icon="search" id="searchBarTag" search selection onChange={changeSearchHandler} onSubmit={submitHandler} />
             </div>
             <div className="results">
               {tagsFind}
