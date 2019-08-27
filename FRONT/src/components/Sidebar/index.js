@@ -40,16 +40,6 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
     );
   };
 
-  const clickHandlerNewTag = (evt) => {
-    const idNewTags = evt.target.getAttribute('value');
-    setTagsFind([]);
-    const newTags = tags.filter(tag => tag.id == idNewTags);
-    return (setActualsTags([
-      ...actualsTags,
-      newTags,
-    ]));
-  };
-
   const searchTag = (search) => {
     const searchLength = search.length;
     // Reg for select the same length string than the letter search
@@ -74,18 +64,32 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
     searchTag(evnt.target.value);
   };
 
+  const deleteInput = () => {
+    const searchBar = document.querySelector('.searchBarTag');
+  }
+
+  const clickHandlerNewTag = (evt) => {
+    const idNewTags = evt.target.getAttribute('value');
+    deleteInput();
+    const newTags = tags.filter(tag => tag.id == idNewTags);
+    return (setActualsTags([
+      ...actualsTags,
+      newTags,
+    ]));
+  };
+
   const submitHandler = (evt) => {
     evt.preventDefault();
     createTags();
   };
 
-  const [all, setAll] = useState([{ title: 'Toutes' }]);
-  const [services, setServices] = useState([{ title: 'Service' }]);
-  const [celebrations, setCelebrations] = useState([{ title: 'Fête' }]);
-  const [anniversaires, setAnniversaires] = useState([{ title: 'Mariage / PACS' }]);
+  const [all, setAll] = useState([{ title: 'All' }]);
+  const [services, setServices] = useState([{ title: 'Services' }]);
+  const [celebrations, setCelebrations] = useState([{ title: 'Célébrations' }]);
+  const [anniversaires, setAnniversaires] = useState([{ title: 'Anniversaires' }]);
   const [repas, setRepas] = useState([{ title: 'Repas' }]);
-  const [sorties, setSorties] = useState([{ title: 'Sortie' }]);
-  const [vacances, setVacances] = useState([{ title: 'Vacances' }]);
+  const [sorties, setSorties] = useState([{ title: 'Sorties' }]);
+  const [vacances, setVacances] = useState([{ title: 'vacances' }]);
   const [autres, setAutres] = useState([{ title: 'Autres' }]);
 
 
@@ -324,12 +328,14 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
         categories
       </div>
       {categoriesLabels}
-      <div className="tribeTag">
-
+      {/* <div className="tribeTag">
+        <div className="title">
+          Tribe
+        </div>
         <div className="tags">
           <div className="searchBar">
             <div className="ui input">
-              <Input placeholder="Tags" icon="search" id="searchBarTag" search selection onChange={changeSearchHandler} onSubmit={submitHandler} />
+              <Input placeholder='State' icon="search" id="searchBarTag" search selection onChange={changeSearchHandler} onSubmit={submitHandler} />
             </div>
             <div className="results">
               {tagsFind}
@@ -337,7 +343,7 @@ const Sidebar = ({ idOpenEvent, tags, categories, changeActiveCategories, active
           </div>
           {tagsCards}
         </div>
-      </div>   
+      </div>    */}
     </div>
   );
 };
