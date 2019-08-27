@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190802121255 extends AbstractMigration
+final class Version20190827130841 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,8 +22,7 @@ final class Version20190802121255 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE app_user ADD avatar VARCHAR(255) DEFAULT NULL');
-        $this->addSql('ALTER TABLE category ADD color VARCHAR(30) DEFAULT NULL');
+        $this->addSql('ALTER TABLE category ADD darkcolor VARCHAR(30) DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -31,7 +30,6 @@ final class Version20190802121255 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE app_user DROP avatar');
-        $this->addSql('ALTER TABLE category DROP color');
+        $this->addSql('ALTER TABLE category DROP darkcolor');
     }
 }
